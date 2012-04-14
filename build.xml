@@ -1,0 +1,58 @@
+<project name="Jentry" default="" basedir="src">
+    <property name="src" location="."/>
+    <property name="gen" location="../generated"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <target name="initialize">
+        <delete dir="${gen}" />
+    </target>
+    <target name="generate" depends="initialize">
+        <generateSpecificTypes fileBase="ArrayFactory"
+                               package="core\array"/>
+    </target>
+
+    <macrodef name="generateSpecificTypes"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Bool" keyType="boolean"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Char" keyType="char"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Byte" keyType="byte"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Short" keyType="short"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Int" keyType="int"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Float" keyType="float"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Double" keyType="double"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Long" keyType="long"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="CharSequence" keyType="CharSequence"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Object" keyType="Object"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="generateKeys">
+        <attribute name="keyTypeName"/>
+        <attribute name="keyType"/>
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <copy file="${src}/@{package}/@{fileBase}_KeyTypeName_.java"
+                  tofile="${gen}/@{package}/@{fileBase}@{keyTypeName}.java">
+                <filterset  begintoken="_" endtoken="_">
+                    <filter token="KeyTypeName" value="@{keyTypeName}"/>
+                    <filter token="key" value="@{keyType}" />
+                </filterset>
+            </copy>
+        </sequential>
+    </macrodef>
+</project>
