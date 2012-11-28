@@ -22,6 +22,7 @@ public abstract class GrowthStrategy
         @Override
         public int growthRequest( int currentSize, int minimumAcceptable )
         {
+            if (currentSize==0) currentSize=1;
             int size = currentSize * 2;
             while( size < minimumAcceptable ) size *= 2;
             return size;

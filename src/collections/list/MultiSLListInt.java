@@ -6,6 +6,8 @@ import core.array.ArrayGrowthException;
 import core.array.ArrayUtil;
 import core.array.GrowthStrategy;
 
+import java.util.Arrays;
+
 
 /**
  * Copyright © 2012 Max Miller
@@ -35,7 +37,7 @@ public class MultiSLListInt
     protected int[] heads;
     protected int[] nexts;
     protected int freeListPtr = Const.NO_ENTRY;
-    protected int nextUnusedEntry = 0;
+    protected int nextUnusedEntry;
     protected int maxHead = -1;
     protected int size;
 
@@ -43,6 +45,10 @@ public class MultiSLListInt
     {
         this.heads = new int[ initialListSize ];
         this.nexts = new int[ totalEntrySize - initialListSize ];
+        Arrays.fill( nexts, Const.NO_ENTRY );
+        Arrays.fill( heads, Const.NO_ENTRY );
+        maxHead = initialListSize - 1;
+        nextUnusedEntry = initialListSize;
     }
 
     /**
@@ -52,11 +58,17 @@ public class MultiSLListInt
      * @param listHead the head of the list
      * @return the entry the next free entry
      */
-    protected int getNextEntry( int listHead )
+    protected int insert( int listHead, int val )
     {
-        if( listHead > maxHead ) //if we are greater, may have to grow heads
+        if( listHead >  maxHead ) //grow check
         {
             growHeads( GrowthStrategy.doubleGrowth, listHead );
+        }
+        if( heads[ listHead ] == Const.NO_ENTRY )
+        {
+            heads[ listHead ] = val;
+            size++;
+            return listHead;
         }
 
         //entry is spot where we are to insert the value
@@ -74,13 +86,17 @@ public class MultiSLListInt
                                                                     Const.NO_ENTRY,
                                                                     growthStrategy );
         }
-        //Prepend the entry to the linked list, //TODO: make function, comment
-        // and test
-        heads[entry] = heads[listHead];
-        nexts[entry] = nexts[listHead];
-        nexts[listHead] = entry;
+        //Prepend the entry to the linked list
+        if( heads.length <= entry ) growHeads( GrowthStrategy.doubleGrowth,
+                                               size );
+        heads[ entry ] = heads[ listHead ];
+        nexts[ entry ] = nexts[ listHead ];
+        nexts[ listHead ] = entry;
+        heads[ listHead ] = val;
+        size++;
         return entry;
     }
+
 
     /**
      * <p>The method will grow the set of available heads. This will consist of
@@ -118,26 +134,16 @@ public class MultiSLListInt
      *
      * @param growthStrategy the strategy for growing the list heads (the
      *                       default is double.
-     * @param listHead       the listHead that is forcing us to grow
+     * @param minSize        the minSize that is forcing us to grow
      */
     protected void growHeads( GrowthStrategy growthStrategy,
-                              int listHead )
+                              int minSize )
     {
-        int newHeadSize = growthStrategy.growthRequest( maxHead, listHead );
-        //must be able to grow
-        if( newHeadSize < listHead )
-        {
-            throw new ArrayGrowthException( this.getClass(), maxHead,
-                                            listHead, Types.Int );
-        }
-        maxHead = newHeadSize;
-    }
-
-    public int insert( int listHead, int value )
-    {
-        int entry = getNextEntry( listHead );
-        heads[ entry ] = value;
-        return entry;
+        heads = ArrayUtil.ArrayProviderInt.grow( heads, minSize,
+                                                 Const.NO_ENTRY,
+                                                 growthStrategy );
+        //TODO: is this necessary? guaranteed?
+       // nextUnusedEntry = heads.length;
     }
 
 
