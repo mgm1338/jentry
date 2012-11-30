@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import sun.reflect.generics.scope.ConstructorScope;
 
+import java.util.ArrayList;
+
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
@@ -13,8 +15,10 @@ import sun.reflect.generics.scope.ConstructorScope;
 public class TestMultiSLList
 {
 
+
     /**
-     * Arrays for loaded test data
+     * Arrays for loaded test data ( may be out of order, however the list
+     * contents should be identical)
      * <p/>
      * idx  heads   nexts
      * 0    8       3
@@ -47,20 +51,47 @@ public class TestMultiSLList
         dataLoadedLists.insert( 1, 16 );
         dataLoadedLists.insert( 1, 15 );
 
-        //TODO: LIST IS CORRECT BUT DOESNT MATCH FOR 1, i believe is correct,
-        //TODO: make better list verification method and deal with logic
+        assertListContents( dataLoadedLists, 0, 9, 8 );
+        assertListContents( dataLoadedLists, 1, 17, 16, 15 );
+        assertListContents( dataLoadedLists, 2, 6 );
 
-        //assert our loading data from the sample load
-        int[] expectedHeads = { 8, 15, 6, 9, 16, 17 };
-        int[] expectedNexts = { 3, 4, Const.NO_ENTRY, Const.NO_ENTRY, 5,
-                                Const.NO_ENTRY };
-        for( int i = 0; i < 6; i++ )
+
+    }
+
+
+    protected void assertListContents( MultiSLListInt list,
+                                       int head, int... values )
+    {
+        //collect list
+        int ptr = head;
+        ArrayList contents = new ArrayList();
+        while( ptr != -1 && list.heads[ ptr ] != Const.NO_ENTRY )
         {
-            TestCase.assertEquals( dataLoadedLists.heads[ i ],
-                                   expectedHeads[ i ] );
-            TestCase.assertEquals( dataLoadedLists.nexts[ i ],
-                                   expectedNexts[ i ] );
+            contents.add( list.heads[ ptr ] );
+            ptr = ( list.nexts.length > ptr ) ? list.nexts[ ptr ] : -1;
 
+        }
+
+        if( values == null ) values = new int[ 0 ];
+        if( contents.size() != values.length )
+        {
+            TestCase.fail( "Do not have the same number of items in the list " +
+                           "for head value of [" + head + "], " +
+                           "we expected [" + values.length + "] however there " +
+                           "were [" + contents.size() + "]" );
+        }
+
+        int len = values.length;
+        for( int i = 0; i < len; i++ )
+        {
+
+            if( !contents.contains( values[ i ] ) )
+            {
+
+                TestCase.fail( "For head value [" + head + "] we expected to " +
+                               "find value [" + values[ i ] + "] but did not " +
+                               "find it" );
+            }
         }
     }
 
@@ -71,11 +102,82 @@ public class TestMultiSLList
     }
 
 
+    @Test
+    public void removeFromSingleList()
+    {
+        TestCase.assertTrue( dataLoadedLists.getSize() == 6 );
+        dataLoadedLists.removeEntryFromList( 2, 6 );
+        //free list ptr cannot be head ptr
+        TestCase.assertTrue( dataLoadedLists.freeListPtr == Const.NO_ENTRY );
+        assertListContents( dataLoadedLists, 2, null );
+        TestCase.assertTrue( dataLoadedLists.getSize() == 5 );
 
 
+    }
 
 
+    @Test
+    public void removeFirstEntryForList()
+    {
+        TestCase.assertTrue( dataLoadedLists.getSize() == 6 );
+        dataLoadedLists.removeEntryFromList( 0, 8 );
+        TestCase.assertTrue( dataLoadedLists.freeListPtr == Const.NO_ENTRY );
+        assertListContents( dataLoadedLists, 0, 9 );
+        TestCase.assertTrue( dataLoadedLists.getSize() == 5 );
+    }
 
+    @Test
+    public void removeLastEntryForList()
+    {
+        TestCase.assertTrue( dataLoadedLists.getSize() == 6 );
+        dataLoadedLists.removeEntryFromList( 0, 9 );
+        TestCase.assertTrue( dataLoadedLists.freeListPtr == Const.NO_ENTRY );
+        assertListContents( dataLoadedLists, 0, 8 );
+        TestCase.assertTrue( dataLoadedLists.getSize() == 5 );
+    }
+
+    @Test
+    public void removeMiddleFromList()
+    {
+        TestCase.assertTrue( dataLoadedLists.getSize() == 6 );
+        dataLoadedLists.removeEntryFromList( 1, 16 );
+        TestCase.assertTrue( dataLoadedLists.freeListPtr == Const.NO_ENTRY );
+        assertListContents( dataLoadedLists, 1, 15, 17 );
+        TestCase.assertTrue( dataLoadedLists.getSize() == 5 );
+    }
+
+    @Test
+    public void removeFromWrongHead()
+    {
+        try
+        {
+            dataLoadedLists.removeEntryFromList( 0, 16 );
+            TestCase.fail();
+
+        }
+        catch( RuntimeException e )
+        {
+
+        }
+    }
+
+    @Test
+    public void removeNonexistentValue()
+    {
+        try
+        {
+            dataLoadedLists.removeEntryFromList( 0, 0 );
+            TestCase.fail();
+
+        }
+        catch( RuntimeException e )
+        {
+
+        }
+    }
+
+    //free list ptr test, make list with exact sizes, remove one at end
+    //then add it, assert didnt grow or anything
 
 
 }

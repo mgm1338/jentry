@@ -41,6 +41,14 @@ public class MultiSLListInt
     protected int maxHead = -1;
     protected int size;
 
+    /**
+     * Constructor
+     *
+     * @param initialListSize the initial size of heads
+     * @param totalEntrySize the expected size of total entries (assume a
+     *                       hashing function that will create linked lists
+     *                       of the same size).
+     */
     public MultiSLListInt( int initialListSize, int totalEntrySize )
     {
         this.heads = new int[ initialListSize ];
