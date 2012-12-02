@@ -17,12 +17,15 @@ public abstract class GrowthStrategy
     public abstract int growthRequest( int currentSize, int minimumAcceptable );
 
     public static final GrowthStrategy doubleGrowth = new DoubleGrowth();
+
     protected static final class DoubleGrowth extends GrowthStrategy
     {
         @Override
         public int growthRequest( int currentSize, int minimumAcceptable )
         {
-            if (currentSize==0) currentSize=1;
+            if( minimumAcceptable <= 0 || currentSize >= minimumAcceptable )
+                return currentSize;
+            if( currentSize == 0 ) currentSize = 1;
             int size = currentSize * 2;
             while( size < minimumAcceptable ) size *= 2;
             return size;

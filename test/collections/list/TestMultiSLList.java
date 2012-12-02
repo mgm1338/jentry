@@ -4,7 +4,6 @@ import core.Const;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import sun.reflect.generics.scope.ConstructorScope;
 
 import java.util.ArrayList;
 
@@ -33,17 +32,17 @@ public class TestMultiSLList
      * 1 = 15->16-17
      */
 
-    MultiSLListInt lists;
-    MultiSLListInt dataLoadedLists;
+    MultiListInt lists;
+    MultiListInt dataLoadedLists;
 
     @Before
     public void setup()
     {
-        lists = new MultiSLListInt( 8, 16 );
+        lists = new MultiListInt( 8, 16 );
         //we know the set of lists/data, this is example of what constructor
         // parameters mean, note that in this case, 0,1,
         // 2 must be the head values
-        dataLoadedLists = new MultiSLListInt( 3, 6 );
+        dataLoadedLists = new MultiListInt( 3, 6 );
         dataLoadedLists.insert( 0, 9 );
         dataLoadedLists.insert( 1, 17 );
         dataLoadedLists.insert( 2, 6 );
@@ -59,7 +58,7 @@ public class TestMultiSLList
     }
 
 
-    protected void assertListContents( MultiSLListInt list,
+    protected void assertListContents( MultiListInt list,
                                        int head, int... values )
     {
         //collect list
