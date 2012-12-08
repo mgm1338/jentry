@@ -1,6 +1,6 @@
 <project name="Jentry" default="" basedir="src">
     <property name="src" location="."/>
-    <property name="gen" location="../generated"/>
+    <property name="gen" location="main/generated"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
 
@@ -9,7 +9,7 @@
     </target>
     <target name="generate" depends="initialize">
         <generateSpecificTypes fileBase="ArrayFactory"
-                               package="core\array"/>
+                               package="main\core\array\factory"/>
     </target>
 
     <macrodef name="generateSpecificTypes"
@@ -47,7 +47,7 @@
         <attribute name="package"/>
         <sequential>
             <copy file="${src}/@{package}/@{fileBase}_KeyTypeName_.java"
-                  tofile="${gen}/@{package}/@{fileBase}@{keyTypeName}.java">
+                  tofile="@{package}/@{fileBase}@{keyTypeName}.java">
                 <filterset  begintoken="_" endtoken="_">
                     <filter token="KeyTypeName" value="@{keyTypeName}"/>
                     <filter token="key" value="@{keyType}" />
