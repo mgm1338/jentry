@@ -201,10 +201,73 @@ public class MultiListInt
     }
 
 
-    //update the free list
-    public void removeEntryFromList( int listHead, int entry )
+    public boolean remove( int listHead, int value )
     {
 
+        int entry = listHead;
+        int prev = Const.NO_ENTRY;
+        while (heads[entry]!=value )
+        {
+            if (nexts[entry]==Const.NO_ENTRY) return false;
+
+            prev = entry;
+            entry = nexts[entry];
+
+        }
+        if (prev==Const.NO_ENTRY) //removing first item
+        {
+            int next = nexts[entry];
+            if (next!=Const.NO_ENTRY) //we have another item after this, move this to head
+            {
+                heads[entry] = heads[next];
+                heads[next] = Const.NO_ENTRY;
+                int nextOfNext = nexts[next];
+                //now that we have new head, we update next if necessary
+                if (nextOfNext!=Const.NO_ENTRY)
+                {
+                    nexts[entry] = nextOfNext;
+                    updateFreePointer(next);
+                }
+                else
+                {
+                    nexts[entry] = Const.NO_ENTRY;
+                }
+                nexts[next] = Const.NO_ENTRY;
+            }
+            else //just head entry, easy clean up
+            {
+                heads[entry] = Const.NO_ENTRY;
+            }
+        }//prev is a valid entry, if nexts is valid, we switch the next of the prev to be new item
+        else if (nexts[entry]!=Const.NO_ENTRY)
+        {
+            nexts[prev] = nexts[entry];
+            heads[entry] = Const.NO_ENTRY;
+            nexts[entry] = Const.NO_ENTRY;
+        }
+        else //easy case, no clean up, no next
+        {
+            heads[entry] = Const.NO_ENTRY;
+        }
+        updateFreePointer(entry);
+        size--;
+        return true;
+    }
+
+    private void updateFreePointer(int entry)
+    {
+        if (entry > maxHead)
+        {
+            if (freeListPtr==Const.NO_ENTRY)
+            {
+                freeListPtr = entry;
+            }
+            else //creates a linked list using un-used nexts nodes
+            {
+                nexts[entry] = freeListPtr;
+                freeListPtr = entry;
+            }
+        }
     }
 
 
