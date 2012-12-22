@@ -2,32 +2,29 @@ package collections.list;
 
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
-
-import java.util.Arrays;
 
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
  * <p/>
- * <p>A collection of singly linked int heads, together in two arrays
- * structure. The first item of the list will be inserted into the
+ * <p>A collection of singly linked lists of its, stored together in two arrays.
+ * The first item of the list will be inserted into the
  * index of [head], while following items will be inserted after all
- * the heads are used up. Therefore when inserting items into this list,
- * ensure that the items that you insert to are compact (mostly sequential
- * starting from 0).
+ * the heads are used up. See #{@link #insert(int, int)} for more details.
  * <p/>
+ * <p>When items are removed, a freelist will store the removed items
+ * (using the same arrays that are used for the inserted values), so that the
+ * structure will avoid allocating unless it is completely necessary.
+ * See {@link #remove(int, int)} for more information.</p>
  * <p/>
  * <p>
- * An example of usage of this list will be a Hash collection using a modulus
- * function. If using a HashSetInt where there are 8 'buckets', then doing
- * a modulus of 8 will result in the items being in lists 0-7. This structure
- * is used for this purpose by the Hash collections in Jentry.
+ * An example of usage of this list will be with the Hash collections in Jentry.
+ * //TODO: more to follow when its written
  * </p>
  * <p/>
  * <p/>
- * Representation - 2 heads
+ * Example Representation - 2 heads
  * <pre>
  *   heads nexts
  * 0 [9]   [2 ]
@@ -41,17 +38,39 @@ import java.util.Arrays;
  */
 public class MultiListInt
 {
-    /** Strategy for growing the MultiList, see {@link GrowthStrategy } */
+    /**
+     * Strategy for growing the MultiList, see {@link GrowthStrategy }
+     */
     private static GrowthStrategy growthStrategy = GrowthStrategy.doubleGrowth;
-    /** Factory for creating new int[] arrays */
+    /**
+     * Factory for creating new int[] arrays
+     */
     private static ArrayFactoryInt intFactory = ArrayFactoryInt
             .defaultintProvider;
 
+    /**
+     * The heads array, will store the actual values
+     */
     protected int[] heads;
+    /**
+     * Pointer to the next value, or Const.NO_ENTRY if none exists
+     */
     protected int[] nexts;
+    /**
+     * Pointer to the start of the free list
+     */
     protected int freeListPtr = Const.NO_ENTRY;
+    /**
+     * The  next (non-head) item to store a value.
+     */
     protected int nextUnusedEntry;
+    /**
+     * Current max-head item
+     */
     protected int maxHead = -1;
+    /**
+     * Number of elements inserted into the sturcture
+     */
     protected int size;
 
     /**
@@ -62,11 +81,11 @@ public class MultiListInt
      *                        hashing function that will create linked lists
      *                        of the same size).
      */
-    public MultiListInt( int initialListSize, int totalEntrySize )
+    public MultiListInt (int initialListSize, int totalEntrySize)
     {
-        this.heads = intFactory.alloc( initialListSize, Const.NO_ENTRY );
-        this.nexts = intFactory.alloc( totalEntrySize - initialListSize,
-                                       Const.NO_ENTRY );
+        this.heads = intFactory.alloc (initialListSize, Const.NO_ENTRY);
+        this.nexts = intFactory.alloc (totalEntrySize - initialListSize,
+                                       Const.NO_ENTRY);
         maxHead = initialListSize - 1;
         nextUnusedEntry = initialListSize;
     }
@@ -114,41 +133,45 @@ public class MultiListInt
      * @param listHead the head of the list
      * @return the entry the next free entry
      */
-    protected int insert( int listHead, int val )
+    public int insert (int listHead, int val)
     {
-        if( listHead > maxHead ) //grow check
+        if (listHead > maxHead) //growth check
         {
-            growHeads( GrowthStrategy.doubleGrowth, listHead );
+            growHeads (GrowthStrategy.doubleGrowth, listHead);
         }
-        if( heads[ listHead ] == Const.NO_ENTRY )
+        //first item, takes head spot
+        if (heads[listHead] == Const.NO_ENTRY)
         {
-            heads[ listHead ] = val;
+            heads[listHead] = val;
             size++;
             return listHead;
         }
 
-        //entry is spot where we are to insert the value
+        //entry is idx to insert value
         int entry;
-        if( freeListPtr != Const.NO_ENTRY ) //have a free one
+        if (freeListPtr != Const.NO_ENTRY) //try free list
         {
             entry = freeListPtr;
-            freeListPtr = nexts[ entry ];
+            freeListPtr = nexts[entry];
         }
         else
         {
             entry = nextUnusedEntry++;
-            nexts = intFactory.ensureArrayCapacity( nexts,
+            nexts = intFactory.ensureArrayCapacity (nexts,
                                                     nextUnusedEntry,
                                                     Const.NO_ENTRY,
-                                                    growthStrategy );
+                                                    growthStrategy);
         }
         //Prepend the entry to the linked list
-        if( heads.length <= entry ) growHeads( GrowthStrategy.doubleGrowth,
-                                               entry +1);
-        heads[ entry ] = heads[ listHead ];
-        nexts[ entry ] = nexts[ listHead ];
-        nexts[ listHead ] = entry;
-        heads[ listHead ] = val;
+        if (heads.length <= entry)
+        {
+            growHeads (GrowthStrategy.doubleGrowth,
+                       entry + 1);
+        }
+        heads[entry] = heads[listHead];
+        nexts[entry] = nexts[listHead];
+        nexts[listHead] = entry;
+        heads[listHead] = val;
         size++;
         return entry;
     }
@@ -192,41 +215,51 @@ public class MultiListInt
      *                       default is double.
      * @param minSize        the minSize that is forcing us to grow
      */
-    protected void growHeads( GrowthStrategy growthStrategy,
-                              int minSize )
+    protected void growHeads (GrowthStrategy growthStrategy,
+                              int minSize)
     {
-        heads = intFactory.grow( heads, minSize,
+        heads = intFactory.grow (heads, minSize,
                                  Const.NO_ENTRY,
-                                 growthStrategy );
+                                 growthStrategy);
+        //TODO: formalize params and check this one out
     }
 
 
-    public boolean remove( int listHead, int value )
+    /**
+     * Remove an item the structure. If the item exists in the listHead
+     * specified, then it will remove it and return true, otherwise
+     * return false.
+     *
+     * @param listHead the linked list to check
+     * @param value    the value to remove
+     * @return true if removed, false otherwise
+     */
+    public boolean remove (int listHead, int value)
     {
-
+        //when searching, keep the previous entry, to update its next ptr
         int entry = listHead;
         int prev = Const.NO_ENTRY;
-        while (heads[entry]!=value )
+        while (heads[entry] != value)
         {
-            if (nexts[entry]==Const.NO_ENTRY) return false;
+            if (nexts[entry] == Const.NO_ENTRY) return false;
 
             prev = entry;
             entry = nexts[entry];
 
         }
-        if (prev==Const.NO_ENTRY) //removing first item
+        if (prev == Const.NO_ENTRY) //removing first item
         {
             int next = nexts[entry];
-            if (next!=Const.NO_ENTRY) //we have another item after this, move this to head
+            if (next != Const.NO_ENTRY) //more items in list, move to head
             {
                 heads[entry] = heads[next];
                 heads[next] = Const.NO_ENTRY;
                 int nextOfNext = nexts[next];
                 //now that we have new head, we update next if necessary
-                if (nextOfNext!=Const.NO_ENTRY)
+                if (nextOfNext != Const.NO_ENTRY)
                 {
                     nexts[entry] = nextOfNext;
-                    updateFreePointer(next);
+                    updateFreePointer (next);
                 }
                 else
                 {
@@ -234,35 +267,43 @@ public class MultiListInt
                 }
                 nexts[next] = Const.NO_ENTRY;
             }
-            else //just head entry, easy clean up
+            else //just head entry, easy clean up, no next
             {
                 heads[entry] = Const.NO_ENTRY;
             }
-        }//prev is a valid entry, if nexts is valid, we switch the next of the prev to be new item
-        else if (nexts[entry]!=Const.NO_ENTRY)
+        }
+        //prev is a valid entry, however we are not at end of list
+        else if (nexts[entry] != Const.NO_ENTRY)
         {
             nexts[prev] = nexts[entry];
             heads[entry] = Const.NO_ENTRY;
             nexts[entry] = Const.NO_ENTRY;
         }
-        else //easy case, no clean up, no next
+        else //easy case,end of list
         {
             heads[entry] = Const.NO_ENTRY;
         }
-        updateFreePointer(entry);
+        updateFreePointer (entry);
         size--;
         return true;
     }
 
-    private void updateFreePointer(int entry)
+
+    /**
+     * Utility method to handle the linked list of 'free' items.
+     *
+     * @param entry the removed entry
+     */
+    private void updateFreePointer (int entry)
     {
+        //must be past the maxHead, the head items are reserved
         if (entry > maxHead)
         {
-            if (freeListPtr==Const.NO_ENTRY)
+            if (freeListPtr == Const.NO_ENTRY) //start list
             {
                 freeListPtr = entry;
             }
-            else //creates a linked list using un-used nexts nodes
+            else //creates a linked list using the un-used nexts
             {
                 nexts[entry] = freeListPtr;
                 freeListPtr = entry;
@@ -278,68 +319,82 @@ public class MultiListInt
      * a {@link GrowthStrategy#doubleGrowth} strategy.
      * </p
      *
-     * @param listHead
-     * @param targetArray
-     * @return
+     * @param listHead    the head of the list
+     * @param targetArray the target array, if null will allocate, if too small
+     *                    will grow
+     * @return the int[] representation of the list
      */
-    public int[] returnList( int listHead, int[] targetArray, boolean flagEnd )
+    public int[] getList (int listHead, int[] targetArray, boolean flagEnd)
     {
-        if( targetArray == null ) targetArray = intFactory.alloc( size /
-                                                                  maxHead );
+        if (targetArray == null)    //allocate
+        {
+            targetArray = intFactory.alloc (size /
+                                                    maxHead);
+        }
+
         int i = 0;
         int prevEntry = Const.NO_ENTRY;
-        while( heads[ listHead ] != Const.NO_ENTRY )
+        while (heads[listHead] != Const.NO_ENTRY)
         {
-            targetArray = intFactory.
-                    ensureArrayCapacity( targetArray,
+            targetArray = intFactory.    //check size
+                    ensureArrayCapacity (targetArray,
                                          i,
                                          Const.NO_ENTRY,
-                                         GrowthStrategy.doubleGrowth );
+                                         GrowthStrategy.doubleGrowth);
 
-            int entry = getNextEntryForList( listHead, prevEntry );
-            targetArray[ i++ ] = heads[ entry ];
+            int entry = getNextEntryForList (listHead, prevEntry);
+            targetArray[i++] = heads[entry];
             prevEntry = entry;
         }
-        if( flagEnd && targetArray.length >= i )
+        if (flagEnd && targetArray.length >= i)
         {
-            targetArray[ i ] = Const.NO_ENTRY;
+            targetArray[i] = Const.NO_ENTRY;
         }
         return targetArray;
     }
 
     /**
-     * Given an entry, return the value. To cycle through the items in a
-     * particular list, use this method accompanied by
-     * {@link #getNextEntryForList(int, int)}  }
+     * <p>
+     * Given an entry, return the value. This is a very powerful method,
+     * and should be employed whenever one knows the entry (index), as it
+     * is simply a direct array access.
+     * </p>
+     * To cycle through the items in a particular list, use this method
+     * accompanied by{@link #getNextEntryForList(int, int)}}, see above
+     * in {@link #getList(int, int[], boolean)}  }.
      *
      * @param entry the entry
      * @return the value for the entry
      */
-    public int getValue( int entry )
+    public int getValue (int entry)
     {
-        return heads[ entry ];
+        return heads[entry];
     }
 
 
     /**
-     * For the list signified by <i>listHead</i>, return the next entry. If
+     * <p>For the list signified by <i>listHead</i>, return the next entry. If
      * the previous entry is Const.NoEntry, will return the head entry,
      * otherwise return the next of the previous entry.
+     * </p>
+     * <p/>
+     * <p>If using this to iterate an entire list, consider using
+     * {@link #getList(int, int[], boolean)}  }</p>
      *
      * @param listHead  the listHead of the list
      * @param prevEntry the previous entry (Const.NO_ENTRY) if none
      * @return the next entry for the listHead
      */
-    public int getNextEntryForList( int listHead, int prevEntry )
+    public int getNextEntryForList (int listHead, int prevEntry)
     {
-        if( prevEntry == Const.NO_ENTRY )
+        if (prevEntry == Const.NO_ENTRY)
         {
             return listHead;
         }
-        return nexts[ prevEntry ];
+        return nexts[prevEntry];
     }
 
-    public int getSize()
+    public int getSize ()
     {
         return size;
     }
