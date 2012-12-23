@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 /**
  * millemax
  * <p/>
- * A strategy for growing collections, in elements.
+ * A strategy for growing collections.
  */
 public abstract class GrowthStrategy
 {

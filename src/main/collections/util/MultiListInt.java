@@ -1,7 +1,10 @@
-package collections.list;
+package collections.util;
 
 import core.Const;
 import core.array.GrowthStrategy;
+import core.array.factory.ArrayFactoryInt;
+
+import java.util.Arrays;
 
 
 /**
@@ -19,8 +22,10 @@ import core.array.GrowthStrategy;
  * See {@link #remove(int, int)} for more information.</p>
  * <p/>
  * <p>
- * An example of usage of this list will be with the Hash collections in Jentry.
- * //TODO: more to follow when its written
+ * This is a utility collection because it does not follow the standard
+ * conventions of a Jentry collection, but it instead of a building block
+ * of many of the collections, including all of the HashSet and HashMap
+ * collections.
  * </p>
  * <p/>
  * <p/>
@@ -133,7 +138,7 @@ public class MultiListInt
      * @param listHead the head of the list
      * @return the entry the next free entry
      */
-    public int insert (int listHead, int val)
+    public void insert (int listHead, int val)
     {
         if (listHead > maxHead) //growth check
         {
@@ -144,7 +149,7 @@ public class MultiListInt
         {
             heads[listHead] = val;
             size++;
-            return listHead;
+            return;
         }
 
         //entry is idx to insert value
@@ -152,7 +157,8 @@ public class MultiListInt
         if (freeListPtr != Const.NO_ENTRY) //try free list
         {
             entry = freeListPtr;
-            freeListPtr = nexts[entry];
+            freeListPtr = (nexts[entry] == Const.NO_ENTRY) ? Const.NO_ENTRY
+                                                           : nexts[entry];
         }
         else
         {
@@ -165,15 +171,16 @@ public class MultiListInt
         //Prepend the entry to the linked list
         if (heads.length <= entry)
         {
-            growHeads (GrowthStrategy.doubleGrowth,
-                       entry + 1);
+            heads = intFactory.grow (heads, entry + 1, Const.NO_ENTRY,
+                                     growthStrategy);
+            nexts = intFactory.grow (nexts, entry + 1, Const.NO_ENTRY,
+                                     growthStrategy);
         }
         heads[entry] = heads[listHead];
         nexts[entry] = nexts[listHead];
         nexts[listHead] = entry;
         heads[listHead] = val;
         size++;
-        return entry;
     }
 
 
@@ -213,15 +220,34 @@ public class MultiListInt
      *
      * @param growthStrategy the strategy for growing the list heads (the
      *                       default is double.
-     * @param minSize        the minSize that is forcing us to grow
+     * @param newMaxHead     the minSize that is forcing us to grow
      */
     protected void growHeads (GrowthStrategy growthStrategy,
-                              int minSize)
+                              int newMaxHead)
     {
-        heads = intFactory.grow (heads, minSize,
-                                 Const.NO_ENTRY,
-                                 growthStrategy);
-        //TODO: formalize params and check this one out
+        int shift = newMaxHead - maxHead;
+        int minNewSize = size + newMaxHead+1; //may overgrow if heads full, but
+                                            //necessary for size 0
+        int oldLen = heads.length;
+        int copyLen = oldLen-maxHead-1;
+        heads = intFactory.ensureArrayCapacity (heads, minNewSize,
+                                                Const.NO_ENTRY,
+                                                growthStrategy);
+        nexts = intFactory.ensureArrayCapacity (nexts, minNewSize,
+                                                Const.NO_ENTRY,
+                                                growthStrategy);
+        for (int i = 0; i < oldLen; i++)
+        {
+            if (nexts[i]!=Const.NO_ENTRY)
+            {
+                nexts[i]+=shift;
+            }
+        }
+        System.arraycopy (heads, maxHead+1, heads, newMaxHead+1,copyLen);
+        System.arraycopy (nexts, maxHead+1, nexts, newMaxHead+1,copyLen);
+
+        Arrays.fill (heads, maxHead+1, newMaxHead, Const.NO_ENTRY);
+        maxHead = newMaxHead;
     }
 
 
@@ -259,13 +285,12 @@ public class MultiListInt
                 if (nextOfNext != Const.NO_ENTRY)
                 {
                     nexts[entry] = nextOfNext;
-                    updateFreePointer (next);
                 }
                 else
                 {
                     nexts[entry] = Const.NO_ENTRY;
                 }
-                nexts[next] = Const.NO_ENTRY;
+                updateFreePointer (next);
             }
             else //just head entry, easy clean up, no next
             {
@@ -278,12 +303,14 @@ public class MultiListInt
             nexts[prev] = nexts[entry];
             heads[entry] = Const.NO_ENTRY;
             nexts[entry] = Const.NO_ENTRY;
+            updateFreePointer (entry);
         }
         else //easy case,end of list
         {
             heads[entry] = Const.NO_ENTRY;
+            nexts[prev] = Const.NO_ENTRY;
+            updateFreePointer (entry);
         }
-        updateFreePointer (entry);
         size--;
         return true;
     }
@@ -305,6 +332,7 @@ public class MultiListInt
             }
             else //creates a linked list using the un-used nexts
             {
+                nexts[freeListPtr] = Const.NO_ENTRY;
                 nexts[entry] = freeListPtr;
                 freeListPtr = entry;
             }
@@ -326,6 +354,10 @@ public class MultiListInt
      */
     public int[] getList (int listHead, int[] targetArray, boolean flagEnd)
     {
+        if (listHead > maxHead)
+        {
+            throw new IllegalArgumentException ("No list for " + listHead);
+        }
         if (targetArray == null)    //allocate
         {
             targetArray = intFactory.alloc (size /
@@ -334,7 +366,8 @@ public class MultiListInt
 
         int i = 0;
         int prevEntry = Const.NO_ENTRY;
-        while (heads[listHead] != Const.NO_ENTRY)
+        int entry = getNextEntryForList (listHead, prevEntry);
+        while (entry != Const.NO_ENTRY)
         {
             targetArray = intFactory.    //check size
                     ensureArrayCapacity (targetArray,
@@ -342,9 +375,9 @@ public class MultiListInt
                                          Const.NO_ENTRY,
                                          GrowthStrategy.doubleGrowth);
 
-            int entry = getNextEntryForList (listHead, prevEntry);
             targetArray[i++] = heads[entry];
             prevEntry = entry;
+            entry = getNextEntryForList (listHead, prevEntry);
         }
         if (flagEnd && targetArray.length >= i)
         {
@@ -352,25 +385,6 @@ public class MultiListInt
         }
         return targetArray;
     }
-
-    /**
-     * <p>
-     * Given an entry, return the value. This is a very powerful method,
-     * and should be employed whenever one knows the entry (index), as it
-     * is simply a direct array access.
-     * </p>
-     * To cycle through the items in a particular list, use this method
-     * accompanied by{@link #getNextEntryForList(int, int)}}, see above
-     * in {@link #getList(int, int[], boolean)}  }.
-     *
-     * @param entry the entry
-     * @return the value for the entry
-     */
-    public int getValue (int entry)
-    {
-        return heads[entry];
-    }
-
 
     /**
      * <p>For the list signified by <i>listHead</i>, return the next entry. If
