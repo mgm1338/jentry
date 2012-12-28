@@ -7,6 +7,4 @@ package core.stub;
  */
 public class _key_
 {
-
-
 }

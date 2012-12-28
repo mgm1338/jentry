@@ -35,6 +35,10 @@ package core.stub;
 public class DefaultValueProvider
 {
     /** Stub of the class to allow for compilation of generating classes. */
+
+    public static final Default_KeyTypeName_ defaultProvider_key_ = new
+        Default_KeyTypeName_();
+
     public static class Default_KeyTypeName_
     {
         public static final _key_ getValue()

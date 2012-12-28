@@ -1,5 +1,7 @@
 package core;
 
+import core.stub._key_;
+
 /**
  * millemax
  * Date: 3/23/12
@@ -8,6 +10,7 @@ package core;
 public class Const
 {
     public static final int NO_ENTRY = -1;
-    
-    
+
+
+
 }

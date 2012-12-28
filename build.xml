@@ -10,6 +10,10 @@
     <target name="generate" depends="initialize">
         <generateSpecificTypes fileBase="ArrayFactory"
                                package="main\core\array\factory"/>
+        <generateSpecificTypes fileBase="Collection"
+                               package="main\collections"/>
+        <generateSpecificTypes fileBase="HashSet"
+                               package="main\collections\hash\set"/>
     </target>
 
     <macrodef name="generateSpecificTypes"

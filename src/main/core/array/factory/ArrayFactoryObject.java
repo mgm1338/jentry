@@ -48,6 +48,24 @@ public abstract class ArrayFactoryObject
                                                  GrowthStrategy growthStrategy);
 
     /**
+     * Overloaded method:
+     * <p/>
+     * For the <i>array</i> passed, ensure that it has the length
+     * to store at least as many items as <i>minSize</i>> If this is not
+     * the case, then try to grow the array with {@link GrowthStrategy } passed.
+     *
+     * @param array          the array to check
+     * @param minSize        the minimum number of elements this array should be able
+     *                       to hold.
+     * @param growthStrategy see {@link GrowthStrategy }
+     * @return the array, either the same structure, or the newly allocated
+     *         array
+     */
+    public abstract Object[] ensureArrayCapacity (Object[] array,
+                                                 int minSize,
+                                                 GrowthStrategy growthStrategy);
+
+    /**
      * <p>
      * When we are not checking to make sure that an array is large enough
      * (see {@link #ensureArrayCapacity(Object[],
@@ -72,7 +90,6 @@ public abstract class ArrayFactoryObject
     public abstract Object[] grow (Object[] array, int minSize,
                                   Object defaultValue,
                                   GrowthStrategy growthStrategy);
-
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -110,10 +127,27 @@ public abstract class ArrayFactoryObject
                 }
                 Object[] temp = new Object[newSize];
                 System.arraycopy (array, 0, temp, 0, len);
-                if (defaultValue != DefaultValueProvider.DefaultObject.getValue ())
+                Arrays.fill (temp, len, newSize, defaultValue);
+                return temp;
+            }
+            return array;
+        }
+
+        @Override
+        public Object[] ensureArrayCapacity (Object[] array, int minSize,
+                                            GrowthStrategy growthStrategy)
+        {
+            int len = array.length;
+            if (minSize > len)
+            {
+                int newSize = growthStrategy.growthRequest (len, minSize);
+                if (newSize < minSize)
                 {
-                    Arrays.fill (temp, len, newSize, defaultValue);
+                    throw new ArrayGrowthException (ArrayFactoryObject.class, len,
+                                                    minSize, Types.Int);
                 }
+                Object[] temp = new Object[newSize];
+                System.arraycopy (array, 0, temp, 0, len);
                 return temp;
             }
             return array;

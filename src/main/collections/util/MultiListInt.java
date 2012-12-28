@@ -46,12 +46,11 @@ public class MultiListInt
     /**
      * Strategy for growing the MultiList, see {@link GrowthStrategy }
      */
-    private static GrowthStrategy growthStrategy = GrowthStrategy.doubleGrowth;
+    private final GrowthStrategy growthStrategy;
     /**
      * Factory for creating new int[] arrays
      */
-    private static ArrayFactoryInt intFactory = ArrayFactoryInt
-            .defaultintProvider;
+    private final ArrayFactoryInt intFactory;
 
     /**
      * The heads array, will store the actual values
@@ -78,16 +77,19 @@ public class MultiListInt
      */
     protected int size;
 
-    /**
-     * Constructor
-     *
-     * @param initialListSize the initial size of heads
-     * @param totalEntrySize  the expected size of total entries (assume a
-     *                        hashing function that will create linked lists
-     *                        of the same size).
-     */
+
     public MultiListInt (int initialListSize, int totalEntrySize)
     {
+        this (initialListSize, totalEntrySize,
+              GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultintProvider);
+    }
+
+    public MultiListInt (int initialListSize, int totalEntrySize,
+                         GrowthStrategy growthStrategy,
+                         ArrayFactoryInt intFactory)
+    {
+        this.growthStrategy = growthStrategy;
+        this.intFactory = intFactory;
         this.heads = intFactory.alloc (initialListSize, Const.NO_ENTRY);
         this.nexts = intFactory.alloc (totalEntrySize - initialListSize,
                                        Const.NO_ENTRY);
@@ -222,14 +224,14 @@ public class MultiListInt
      *                       default is double.
      * @param newMaxHead     the minSize that is forcing us to grow
      */
-    protected void growHeads (GrowthStrategy growthStrategy,
+    public void growHeads (GrowthStrategy growthStrategy,
                               int newMaxHead)
     {
         int shift = newMaxHead - maxHead;
-        int minNewSize = size + newMaxHead+1; //may overgrow if heads full, but
-                                            //necessary for size 0
+        int minNewSize = size + newMaxHead + 1; //may overgrow if heads full,
+        // but necessary for size 0
         int oldLen = heads.length;
-        int copyLen = oldLen-maxHead-1;
+        int copyLen = oldLen - maxHead - 1;
         heads = intFactory.ensureArrayCapacity (heads, minNewSize,
                                                 Const.NO_ENTRY,
                                                 growthStrategy);
@@ -238,15 +240,15 @@ public class MultiListInt
                                                 growthStrategy);
         for (int i = 0; i < oldLen; i++)
         {
-            if (nexts[i]!=Const.NO_ENTRY)
+            if (nexts[i] != Const.NO_ENTRY)
             {
-                nexts[i]+=shift;
+                nexts[i] += shift;
             }
         }
-        System.arraycopy (heads, maxHead+1, heads, newMaxHead+1,copyLen);
-        System.arraycopy (nexts, maxHead+1, nexts, newMaxHead+1,copyLen);
+        System.arraycopy (heads, maxHead + 1, heads, newMaxHead + 1, copyLen);
+        System.arraycopy (nexts, maxHead + 1, nexts, newMaxHead + 1, copyLen);
 
-        Arrays.fill (heads, maxHead+1, newMaxHead, Const.NO_ENTRY);
+        Arrays.fill (heads, maxHead + 1, newMaxHead, Const.NO_ENTRY);
         maxHead = newMaxHead;
     }
 
