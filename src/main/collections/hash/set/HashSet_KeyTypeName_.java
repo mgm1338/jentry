@@ -150,6 +150,12 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         return entry;
     }
 
+    /**
+     *
+     *
+     * @param value the value to remove
+     * @return
+     */
     @Override
     public boolean remove (_key_ value)
     {
@@ -211,16 +217,21 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         freeList[freeListPtr++] = entry;
     }
 
-
+    /**
+     * Return the next available entry. If one is on the freelist, this should be returned first. Otherwise,
+     * get the next entry, which will be compact (the next un-used entry iteratively).
+     *
+     * @return the next available entry
+     */
     protected int getNextEntry ()
     {
         if (freeListPtr != 0)
         {
             return freeList[freeListPtr--];
         }
-        nextEntry++;
-        //only do check if we are not on freelist
+        //not on freelist, need growth check
         valFactory.ensureArrayCapacity (keys, nextEntry, growthStrategy);
+        nextEntry++;
         return nextEntry;
     }
 

@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/hash/Hasher.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/Collection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/collections/hash/TestHashSet_KeyTypeName_.java" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryBool.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryByte.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryChar.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryCharSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryLong.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\generated\main\core\array\factory\ArrayFactoryShort.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryBool.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryBool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryByte.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryByte.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryChar.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryChar.java" />
@@ -18,34 +25,80 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryObject.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryShort.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryShort.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/ArrayGrowthException.java" afterPath="$PROJECT_DIR$/src/main/core/array/ArrayGrowthException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/util/comparator/CharSequenceCmp.java" afterPath="$PROJECT_DIR$/src/main/core/util/comparator/CharSequenceCmp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionBool.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionBool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionByte.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionByte.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionChar.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionChar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionCharSequence.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionCharSequence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionDouble.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionDouble.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionFloat.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionFloat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionInt.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionInt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionLong.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionLong.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionObject.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionShort.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionShort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/Const.java" afterPath="$PROJECT_DIR$/src/main/core/Const.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/stub/DefaultValueProvider.java" afterPath="$PROJECT_DIR$/src/main/core/stub/DefaultValueProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/core/array/growth/DoubleGrowthTest.java" afterPath="$PROJECT_DIR$/src/test/core/array/growth/DoubleGrowthTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/array/GrowthStrategy.java" afterPath="$PROJECT_DIR$/src/main/core/array/GrowthStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetByte.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetByte.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetChar.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetChar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetCharSequence.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetCharSequence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetDouble.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetDouble.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetFloat.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetFloat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetInt.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetInt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetLong.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetLong.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetObject.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetShort.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetShort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/Hasher.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/Hasher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java" afterPath="$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Jentry.iml" afterPath="$PROJECT_DIR$/Jentry.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/util/MultiListInt.java" afterPath="$PROJECT_DIR$/src/main/collections/util/MultiListInt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/util/TestMultiSLList.java" afterPath="$PROJECT_DIR$/src/test/collections/util/TestMultiSLList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/Types.java" afterPath="$PROJECT_DIR$/src/main/core/Types.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/stub/_key_.java" afterPath="$PROJECT_DIR$/src/main/core/stub/_key_.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/stub/_val_.java" afterPath="$PROJECT_DIR$/src/main/core/stub/_val_.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ant.xml" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Jentry.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356672527385" ignored="false" />
-    <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356639610849" ignored="false" />
+    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358219488371" ignored="false" />
+    <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358219560831" ignored="false" />
     <file path="/MultiListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356641442049" ignored="false" />
     <file path="/TestMultiSLList.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356300252626" ignored="false" />
-    <file path="/a.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356203387018" ignored="false" />
+    <file path="/a.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358179898030" ignored="false" />
     <file path="/sample.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356203475590" ignored="false" />
     <file path="/Types.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356637433629" ignored="false" />
     <file path="/ArrayFactory_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356672397274" ignored="false" />
-    <file path="/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356672180384" ignored="false" />
+    <file path="/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358187024134" ignored="false" />
     <file path="/HashFunction_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356636628549" ignored="false" />
     <file path="/Hasher.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356638546497" ignored="false" />
     <file path="/HashFunctions.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356672186154" ignored="false" />
     <file path="/_key_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356636517320" ignored="false" />
     <file path="/IntValueConverter.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356637867813" ignored="false" />
-    <file path="/Collection_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356671808773" ignored="false" />
+    <file path="/Collection_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358219944103" ignored="false" />
     <file path="/DefaultValueProvider.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356640962417" ignored="false" />
     <file path="/Const.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356641814221" ignored="false" />
     <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356671936937" ignored="false" />
+    <file path="/File Header.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358187294508" ignored="false" />
+    <file path="/Collection.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358219674596" ignored="false" />
+    <file path="/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358220230145" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,23 +107,23 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_growthTest.coverage" NAME="TestMultiSLList.growthTest Coverage Results" MODIFIED="1356296518948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.util.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_FullListOnFreeListPtr.coverage" NAME="TestMultiSLList.FullListOnFreeListPtr Coverage Results" MODIFIED="1356213025630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.list.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_testDataLoad.coverage" NAME="TestMultiSLList.testDataLoad Coverage Results" MODIFIED="1355608111297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.list.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_removeMiddleFromLongList.coverage" NAME="TestMultiSLList.removeMiddleFromLongList Coverage Results" MODIFIED="1356207806028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.list.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList.coverage" NAME="TestMultiSLList Coverage Results" MODIFIED="1356300258665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.util.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_growthTest.coverage" NAME="TestMultiSLList.growthTest Coverage Results" MODIFIED="1356296518948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.util.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_testDataLoad.coverage" NAME="TestMultiSLList.testDataLoad Coverage Results" MODIFIED="1355608111297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.list.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_growHeadsTest.coverage" NAME="TestMultiSLList.growHeadsTest Coverage Results" MODIFIED="1356297968677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.util.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_removeMiddleFromLongList.coverage" NAME="TestMultiSLList.removeMiddleFromLongList Coverage Results" MODIFIED="1356207806028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.list.*</FILTER>
     </SUITE>
   </component>
   <component name="CoverageOptionsProvider">
@@ -83,6 +136,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -118,7 +172,6 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -128,23 +181,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HashSet_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
+      <file leaf-file-name="Collection_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="46" selection-start="7987" selection-end="7987" vertical-scroll-proportion="-12.84">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="32" column="7" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArrayFactoryByte.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryByte.java">
+      <file leaf-file-name="IntValueConverter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="24" selection-start="5835" selection-end="5835" vertical-scroll-proportion="0.0">
+            <state line="49" column="5" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestHashSet_KeyTypeName_.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/collections/hash/TestHashSet_KeyTypeName_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="8" selection-start="403" selection-end="403" vertical-scroll-proportion="0.4098737">
               <folding>
-                <marker date="1356672460903" expanded="true" signature="1604:2397" placeholder="/**...*/" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,79 +213,26 @@
       <file leaf-file-name="HashFunctions.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="77" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
+            <state line="42" column="45" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectionBool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/CollectionBool.java">
+      <file leaf-file-name="Collection.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/Collection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="37" selection-start="3320" selection-end="3320" vertical-scroll-proportion="0.0">
+            <state line="10" column="2" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArrayFactory_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java">
+      <file leaf-file-name="HashSet_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="40" selection-start="6121" selection-end="6121" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Const.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/Const.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+            <state line="25" column="57" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MultiListInt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/util/MultiListInt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="408" column="41" selection-start="13296" selection-end="13296" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Collection_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="17" selection-start="1688" selection-end="1688" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HashSetBool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="60" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -248,8 +255,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/collections/hash/HashSet_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/hash/HashFunction_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/core/stub/_key_.java" />
         <option value="$PROJECT_DIR$/src/main/core/Types.java" />
         <option value="$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java" />
@@ -259,11 +264,13 @@
         <option value="$PROJECT_DIR$/src/main/collections/util/MultiListInt.java" />
         <option value="$PROJECT_DIR$/src/main/core/Const.java" />
         <option value="$PROJECT_DIR$/build.xml" />
-        <option value="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java" />
         <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java" />
         <option value="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/Collection.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/src/test/collections/hash/TestHashSet_KeyTypeName_.java" />
       </list>
     </option>
   </component>
@@ -277,8 +284,9 @@
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
         <option name="importAutomatically" value="true" />
-        <option name="keepSourceFolders" value="false" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -318,7 +326,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -362,7 +370,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -413,6 +420,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hash" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -443,37 +502,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="array" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="array" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="factory" />
+              <option name="myItemId" value="stub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -522,54 +551,25 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="hash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="set" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
+    <property name="options.lastSelected" value="editing.templates" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.xml" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -587,12 +587,13 @@
       <recent name="collections.hash" />
       <recent name="core.array" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\Jentry\src\test\collections" />
+      <recent name="C:\dev\Jentry\src\main\collections" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="collections.hash" />
       <recent name="collections.hash.set" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\dev\Jentry\src\main\collections" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TestMultiSLList">
@@ -916,29 +917,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.6732673" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.6732673" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36193618" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32673267" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16755603" sideWeight="0.44554454" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18089648" sideWeight="0.6732673" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16275346" sideWeight="0.67112595" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32673267" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919957" sideWeight="0.67216724" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1031,131 +1034,107 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/core/stub/_val_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/core/stub/_key_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="32" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_25/src.zip!/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="27" selection-start="5309" selection-end="5309" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#20533#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="7" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="32" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryInt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="47" selection-start="3049" selection-end="3049" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1356672460918" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-          </folding>
-        </state>
+        <state line="77" column="47" selection-start="3049" selection-end="3049" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/core/stub/DefaultValueProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="65" selection-start="1032" selection-end="1052" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="38" column="65" selection-start="1032" selection-end="1052" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/core/Const.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+        <state line="11" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.22051887">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/collections/util/MultiListInt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="408" column="41" selection-start="13296" selection-end="13296" vertical-scroll-proportion="0.0">
+        <state line="408" column="9" selection-start="13296" selection-end="13296" vertical-scroll-proportion="0.6992925">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/collections/CollectionBool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="37" selection-start="3320" selection-end="3320" vertical-scroll-proportion="0.0">
+        <state line="93" column="37" selection-start="3320" selection-end="3320" vertical-scroll-proportion="0.5389151">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryByte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="24" selection-start="5835" selection-end="5835" vertical-scroll-proportion="0.02004717" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="28" selection-start="6121" selection-end="6121" vertical-scroll-proportion="0.02004717">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="47" selection-start="136" selection-end="136" vertical-scroll-proportion="0.019473081">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="54" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.02004717" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="2" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="7" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/core/stub/IntValueConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="5" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="57" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="77" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSetBool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="60" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryByte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="24" selection-start="5835" selection-end="5835" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1356672460903" expanded="true" signature="1604:2397" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="40" selection-start="6121" selection-end="6121" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="17" selection-start="1688" selection-end="1688" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="46" selection-start="7987" selection-end="7987" vertical-scroll-proportion="-12.84">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
+        <state line="42" column="45" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/collections/hash/TestHashSet_KeyTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="8" selection-start="403" selection-end="403" vertical-scroll-proportion="0.4098737">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
