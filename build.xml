@@ -14,6 +14,8 @@
                                package="main\collections"/>
         <generateSpecificTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
+        <generateSpecificTypes fileBase="TestHashSet"
+                               package="test\collections\hash\set"/>
     </target>
 
     <macrodef name="generateSpecificTypes"

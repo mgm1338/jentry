@@ -405,9 +405,9 @@ public class MultiListInt
     {
         if (prevEntry == Const.NO_ENTRY)
         {
-            return listHead;
+            return heads[listHead];
         }
-        return nexts[prevEntry];
+        return prevEntry<nexts.length ? nexts[prevEntry] : Const.NO_ENTRY;
     }
 
     public int getSize ()

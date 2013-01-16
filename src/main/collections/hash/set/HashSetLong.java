@@ -84,6 +84,7 @@ public class HashSetLong implements CollectionLong
         this.intFactory = intFactory;
         bucketList = new MultiListInt (initialSize, initialSize);
         freeList = intFactory.alloc (DEFAULT_FREE_LIST_SIZE);
+        keys = ArrayFactoryLong.defaultlongProvider.alloc( initialSize );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
@@ -150,6 +151,12 @@ public class HashSetLong implements CollectionLong
         return entry;
     }
 
+    /**
+     *
+     *
+     * @param value the value to remove
+     * @return
+     */
     @Override
     public boolean remove (long value)
     {
@@ -188,6 +195,7 @@ public class HashSetLong implements CollectionLong
             {
                 bucket = getBucket (keys[entry]);
                 newBucketList.insert (bucket, entry);
+                prevEntry = entry;
             }
         }
         bucketList = newBucketList;
@@ -211,17 +219,21 @@ public class HashSetLong implements CollectionLong
         freeList[freeListPtr++] = entry;
     }
 
-
+    /**
+     * Return the next available entry. If one is on the freelist, this should be returned first. Otherwise,
+     * get the next entry, which will be compact (the next un-used entry iteratively).
+     *
+     * @return the next available entry
+     */
     protected int getNextEntry ()
     {
         if (freeListPtr != 0)
         {
             return freeList[freeListPtr--];
         }
-        nextEntry++;
-        //only do check if we are not on freelist
+        //not on freelist, need growth check
         valFactory.ensureArrayCapacity (keys, nextEntry, growthStrategy);
-        return nextEntry;
+        return nextEntry++;
     }
 
 

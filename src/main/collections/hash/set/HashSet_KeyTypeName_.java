@@ -84,6 +84,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         this.intFactory = intFactory;
         bucketList = new MultiListInt (initialSize, initialSize);
         freeList = intFactory.alloc (DEFAULT_FREE_LIST_SIZE);
+        keys = ArrayFactory_KeyTypeName_.default_key_Provider.alloc( initialSize );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
@@ -194,6 +195,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
             {
                 bucket = getBucket (keys[entry]);
                 newBucketList.insert (bucket, entry);
+                prevEntry = entry;
             }
         }
         bucketList = newBucketList;
@@ -231,8 +233,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         }
         //not on freelist, need growth check
         valFactory.ensureArrayCapacity (keys, nextEntry, growthStrategy);
-        nextEntry++;
-        return nextEntry;
+        return nextEntry++;
     }
 
 
