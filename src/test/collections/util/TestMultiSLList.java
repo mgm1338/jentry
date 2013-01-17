@@ -16,8 +16,8 @@ public class TestMultiSLList
 {
 
 
-    MultiListInt lists;
-    MultiListInt dataLoadedLists;
+    MultiLinkedListInt lists;
+    MultiLinkedListInt dataLoadedLists;
 
     /**
      * Loaded test data:
@@ -39,11 +39,11 @@ public class TestMultiSLList
     @Before
     public void setup ()
     {
-        lists = new MultiListInt (8, 16);
+        lists = new MultiLinkedListInt(8, 16);
         //we know the set of lists/data, this is example of what constructor
         // parameters mean, note that in this case, 0,1,
         // 2 must be the head values
-        dataLoadedLists = new MultiListInt (3, 6);
+        dataLoadedLists = new MultiLinkedListInt(3, 6);
         TestCase.assertEquals (dataLoadedLists.getSize (), 0);
         dataLoadedLists.insert (0, 9);
         dataLoadedLists.insert (1, 17);
@@ -69,7 +69,7 @@ public class TestMultiSLList
      * @param values expected values (can be passed null, but will be converted
      *               to size 0)
      */
-    protected void assertListContents (MultiListInt list,
+    protected void assertListContents (MultiLinkedListInt list,
                                        int head, int... values)
     {
         //collect list
@@ -204,7 +204,7 @@ public class TestMultiSLList
     public void removeMiddleFromLongList ()
     {
         //data load
-        MultiListInt longListChain = new MultiListInt (2, 16);
+        MultiLinkedListInt longListChain = new MultiLinkedListInt(2, 16);
         for (int i = 0; i < 8; i++)
         {
             longListChain.insert (0, i);
@@ -353,7 +353,7 @@ public class TestMultiSLList
     @Test
     public void growNewList()
     {
-        MultiListInt list = new MultiListInt (1, 1);
+        MultiLinkedListInt list = new MultiLinkedListInt(1, 1);
         list.growHeads (GrowthStrategy.doubleGrowth, 8);
         TestCase.assertTrue (list.heads.length>=8);
         TestCase.assertTrue (list.nexts.length>=8);

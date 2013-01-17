@@ -2,7 +2,7 @@ package collections.hash.set;
 
 import collections.Collection_KeyTypeName_;
 import collections.hash.HashFunctions;
-import collections.util.MultiListInt;
+import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
@@ -22,16 +22,14 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     protected static final int DEFAULT_FREE_LIST_SIZE = 16;
 
 
-    /**
-     * Factory that will provide us with
-     */
+    /** Factory that will provide us with */
     protected final ArrayFactory_KeyTypeName_ valFactory;
     protected final ArrayFactoryInt intFactory;
     protected final HashFunctions.HashFunction_KeyTypeName_ hashFunction;
     protected final GrowthStrategy growthStrategy;
 
     //this list will hold indexes into the set array
-    protected MultiListInt bucketList;
+    protected MultiLinkedListInt bucketList;
     protected _key_ keys[];
 
     protected int nextEntry = 0;
@@ -50,13 +48,13 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      *                    capacity large enough so that the default load
      *                    factor (.75) does not cause growth.
      */
-    public HashSet_KeyTypeName_ (int initialSize)
+    public HashSet_KeyTypeName_( int initialSize )
     {
-        this (initialSize, DEFAULT_LOAD_FACTOR,
+        this( initialSize, DEFAULT_LOAD_FACTOR,
               ArrayFactory_KeyTypeName_.default_key_Provider,
               ArrayFactoryInt.defaultintProvider,
               HashFunctions.hashFunction_KeyTypeName_,
-              GrowthStrategy.doubleGrowth);
+              GrowthStrategy.doubleGrowth );
     }
 
     /**
@@ -75,49 +73,49 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @param hashFunction   hash function to use for the hash set
      * @param growthStrategy strategy for growing the structures
      */
-    public HashSet_KeyTypeName_ (int initialSize, double loadFactor,
+    public HashSet_KeyTypeName_( int initialSize, double loadFactor,
                                  ArrayFactory_KeyTypeName_ valFactory,
                                  ArrayFactoryInt intFactory,
                                  HashFunctions.HashFunction_KeyTypeName_ hashFunction,
-                                 GrowthStrategy growthStrategy)
+                                 GrowthStrategy growthStrategy )
     {
         this.valFactory = valFactory;
         this.intFactory = intFactory;
-        bucketList = new MultiListInt (initialSize, initialSize);
-        freeList = intFactory.alloc (DEFAULT_FREE_LIST_SIZE);
+        bucketList = new MultiLinkedListInt( initialSize, initialSize );
+        freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
         keys = ArrayFactory_KeyTypeName_.default_key_Provider.alloc( initialSize,
                                                                      IntValueConverter._key_FromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
         this.loadFactor = loadFactor;
-        this.loadFactorSize = (int) (initialSize * loadFactor);
+        this.loadFactorSize = ( int ) ( initialSize * loadFactor );
     }
 
     @Override
-    public int getSize ()
+    public int getSize()
     {
         return size;
     }
 
     @Override
-    public boolean isEmpty ()
+    public boolean isEmpty()
     {
         return size == 0;
     }
 
     @Override
-    public int contains (_key_ value)
+    public int contains( _key_ value )
     {
-        int bucket = getBucket (value);
-        return inBucketList (bucket, value);
+        int bucket = getBucket( value );
+        return inBucketList( bucket, value );
     }
 
     @Override
-    public void clear ()
+    public void clear()
     {
-        Arrays.fill (keys, 0, nextEntry,
-                     DefaultValueProvider.Default_KeyTypeName_.getValue ());
+        Arrays.fill( keys, 0, nextEntry,
+                     DefaultValueProvider.Default_KeyTypeName_.getValue() );
     }
 
     /**
@@ -127,50 +125,48 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @return the value
      */
     @Override
-    public _key_ get (int entry)
+    public _key_ get( int entry )
     {
-        return keys[entry];
+        return keys[ entry ];
     }
 
     @Override
-    public int insert (_key_ key)
+    public int insert( _key_ key )
     {
-        int bucket = getBucket (key);
+        int bucket = getBucket( key );
         int entry;
         //if our key exists in linked list, return its entry
-        if ((entry = inBucketList (bucket, key)) != Const.NO_ENTRY)
+        if( ( entry = inBucketList( bucket, key ) ) != Const.NO_ENTRY )
         {
             return entry;
         }
-        entry = getNextEntry ();
-        keys[entry] = key;
-        bucketList.insert (bucket, entry);
+        entry = getNextEntry();
+        keys[ entry ] = key;
+        bucketList.insert( bucket, entry );
         size++;
-        if (size == loadFactorSize)
+        if( size == loadFactorSize )
         {
-            reHash ();
+            reHash();
         }
         return entry;
     }
 
     /**
-     *
-     *
      * @param value the value to remove
      * @return
      */
     @Override
-    public boolean remove (_key_ value)
+    public boolean remove( _key_ value )
     {
-        int bucket = getBucket (value);
-        int entry = inBucketList (bucket, value);
-        if (entry == Const.NO_ENTRY)
+        int bucket = getBucket( value );
+        int entry = inBucketList( bucket, value );
+        if( entry == Const.NO_ENTRY )
         {
             return false;
         }
-        bucketList.remove (bucket, entry);
+        bucketList.remove( bucket, entry );
         size--;
-        addEntryToFreeList (entry);
+        addEntryToFreeList( entry );
         return true;
     }
 
@@ -180,28 +176,31 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * not effect the items in the keys at all, we are just re-mapping
      * the entries to different buckets.</p>
      */
-    private void reHash ()
+    private void reHash()
     {
-        int newSize = GrowthStrategy.doubleGrowth.growthRequest (size, size + 1);
-        MultiListInt newBucketList = new MultiListInt (newSize,
-                                                       newSize);
-        for (int i = 0; i < numBuckets; i++)
+        int newSize = GrowthStrategy.doubleGrowth.growthRequest( size, size + 1 );
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( newSize,
+                                                                   newSize );
+        for( int i = 0; i < numBuckets; i++ )
         {
-            int prevEntry = Const.NO_ENTRY;
+            int prevIdx = Const.NO_ENTRY;
+            int idx;
             int entry;
             int bucket;
             //iterate through old buckets rather than keys to ensure we
             //only get valid items
-            while ((entry = bucketList.getNextHeadForList( i, prevEntry ))
-                    != Const.NO_ENTRY)
+            while( ( idx = bucketList.getNextIdxForList( i, prevIdx ) )
+                   != Const.NO_ENTRY )
             {
-                bucket = getBucket (keys[entry]);
-                newBucketList.insert (bucket, entry);
-                prevEntry = entry;
+                entry = bucketList.getHead( idx );
+                if( entry == Const.NO_ENTRY ) break;
+                bucket = getBucket( keys[ entry ] );
+                newBucketList.insert( bucket, entry );
+                prevIdx = idx;
             }
         }
         bucketList = newBucketList;
-        loadFactorSize = (int) (newSize * loadFactor);
+        loadFactorSize = ( int ) ( newSize * loadFactor );
     }
 
     /**
@@ -211,14 +210,14 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      *
      * @param entry the entry to add to the free list of entries
      */
-    private void addEntryToFreeList (int entry)
+    private void addEntryToFreeList( int entry )
     {
         int curLen = freeList.length;
-        if (freeListPtr >= freeList.length)
+        if( freeListPtr >= freeList.length )
         {
-            intFactory.grow (freeList, curLen * 2, 0, growthStrategy);
+            intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
-        freeList[freeListPtr++] = entry;
+        freeList[ freeListPtr++ ] = entry;
     }
 
     /**
@@ -227,14 +226,14 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      *
      * @return the next available entry
      */
-    protected int getNextEntry ()
+    protected int getNextEntry()
     {
-        if (freeListPtr != 0)
+        if( freeListPtr != 0 )
         {
-            return freeList[freeListPtr--];
+            return freeList[ freeListPtr-- ];
         }
         //not on freelist, need growth check
-        valFactory.ensureArrayCapacity (keys, nextEntry, growthStrategy);
+        valFactory.ensureArrayCapacity( keys, nextEntry, growthStrategy );
         return nextEntry++;
     }
 
@@ -245,9 +244,9 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      *
      * @return the bucket
      */
-    private int getBucket (_key_ key)
+    private int getBucket( _key_ key )
     {
-        return hashFunction.getHashCode (key) % numBuckets;
+        return hashFunction.getHashCode( key ) % numBuckets;
     }
 
     /**
@@ -260,16 +259,16 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @param key    the key we are checking
      * @return the entry of the item, or Const.NO_ENTRY
      */
-    protected int inBucketList (int bucket, _key_ key)
+    protected int inBucketList( int bucket, _key_ key )
     {
         //get key for the head
-        int bucketListEntry= bucketList.getNextEntryForList( bucket, Const.NO_ENTRY );
-        while (bucketListEntry!=Const.NO_ENTRY)
+        int bucketListEntry = bucketList.getNextIdxForList( bucket, Const.NO_ENTRY );
+        while( bucketListEntry != Const.NO_ENTRY )
         {
             int keyEntry = bucketList.getHead( bucketListEntry );
-            if (keyEntry==Const.NO_ENTRY) return Const.NO_ENTRY;
-            if (keys[keyEntry]==key) return keyEntry;
-            bucketListEntry = bucketList.getNextEntryForList( bucket, bucketListEntry );
+            if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
+            if( keys[ keyEntry ] == key ) return keyEntry;
+            bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
     }
