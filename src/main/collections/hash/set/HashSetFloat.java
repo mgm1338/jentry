@@ -18,7 +18,8 @@ import java.util.Arrays;
  */
 public class HashSetFloat implements CollectionFloat
 {
-    private static final int DEFAULT_FREE_LIST_SIZE = 16;
+    protected final static double DEFAULT_LOAD_FACTOR = .75;
+    protected static final int DEFAULT_FREE_LIST_SIZE = 16;
 
 
     /**
@@ -51,7 +52,7 @@ public class HashSetFloat implements CollectionFloat
      */
     public HashSetFloat (int initialSize)
     {
-        this (initialSize, .75,
+        this (initialSize, DEFAULT_LOAD_FACTOR,
               ArrayFactoryFloat.defaultfloatProvider,
               ArrayFactoryInt.defaultintProvider,
               HashFunctions.hashFunctionFloat,
@@ -84,7 +85,8 @@ public class HashSetFloat implements CollectionFloat
         this.intFactory = intFactory;
         bucketList = new MultiListInt (initialSize, initialSize);
         freeList = intFactory.alloc (DEFAULT_FREE_LIST_SIZE);
-        keys = ArrayFactoryFloat.defaultfloatProvider.alloc( initialSize );
+        keys = ArrayFactoryFloat.defaultfloatProvider.alloc( initialSize,
+                                                                     IntValueConverter.floatFromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
@@ -190,7 +192,7 @@ public class HashSetFloat implements CollectionFloat
             int bucket;
             //iterate through old buckets rather than keys to ensure we
             //only get valid items
-            while ((entry = bucketList.getNextEntryForList (i, prevEntry))
+            while ((entry = bucketList.getNextHeadForList( i, prevEntry ))
                     != Const.NO_ENTRY)
             {
                 bucket = getBucket (keys[entry]);
@@ -260,11 +262,14 @@ public class HashSetFloat implements CollectionFloat
      */
     protected int inBucketList (int bucket, float key)
     {
-        int testEntry = bucketList.getNextEntryForList (bucket, Const.NO_ENTRY);
-        while (testEntry != Const.NO_ENTRY)
+        //get key for the head
+        int bucketListEntry= bucketList.getNextEntryForList( bucket, Const.NO_ENTRY );
+        while (bucketListEntry!=Const.NO_ENTRY)
         {
-            if (keys[testEntry] == key) return testEntry;
-            testEntry = bucketList.getNextEntryForList (bucket, testEntry);
+            int keyEntry = bucketList.getHead( bucketListEntry );
+            if (keyEntry==Const.NO_ENTRY) return Const.NO_ENTRY;
+            if (keys[keyEntry]==key) return keyEntry;
+            bucketListEntry = bucketList.getNextEntryForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
     }

@@ -16,6 +16,10 @@
                                package="main\collections\hash\set"/>
         <generateSpecificTypes fileBase="TestHashSet"
                                package="test\collections\hash\set"/>
+        <!--DELETE BOOLEAN HASH SET-->
+        <delete file="main\collections\hash\set\HashSetBool.java" />
+        <delete file="test\collections\hash\set\TestHashSetBool.java" />
+
     </target>
 
     <macrodef name="generateSpecificTypes"

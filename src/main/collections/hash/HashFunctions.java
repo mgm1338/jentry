@@ -37,7 +37,7 @@ public class HashFunctions
             new HashFunction_KeyTypeName_ ();
 
 
-    public static final class HashFunction_KeyTypeName_
+    public static class HashFunction_KeyTypeName_
     {
         public int getHashCode (_key_ k)
         {
