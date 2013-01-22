@@ -37,7 +37,7 @@ public interface CollectionCharSequence extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( CharSequence value );
+    boolean contains( CharSequence value );
 
     /**
      * <p>

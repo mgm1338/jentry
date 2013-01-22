@@ -37,7 +37,7 @@ public interface CollectionFloat extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( float value );
+    boolean contains( float value );
 
     /**
      * <p>

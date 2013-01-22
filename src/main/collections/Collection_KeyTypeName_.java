@@ -37,7 +37,7 @@ public interface Collection_KeyTypeName_ extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( _key_ value );
+    boolean contains( _key_ value );
 
     /**
      * <p>

@@ -37,7 +37,7 @@ public interface CollectionByte extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( byte value );
+    boolean contains( byte value );
 
     /**
      * <p>

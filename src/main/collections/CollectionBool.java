@@ -37,7 +37,7 @@ public interface CollectionBool extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( boolean value );
+    boolean contains( boolean value );
 
     /**
      * <p>

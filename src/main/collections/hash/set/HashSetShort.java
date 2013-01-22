@@ -9,6 +9,7 @@ import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryShort;
 import core.stub.DefaultValueProvider;
 import core.stub.*;
+import core.util.comparator.EqualityFunctions;
 
 import java.util.Arrays;
 
@@ -27,6 +28,8 @@ public class HashSetShort implements CollectionShort
     protected final ArrayFactoryInt intFactory;
     protected final HashFunctions.HashFunctionShort hashFunction;
     protected final GrowthStrategy growthStrategy;
+    protected final EqualityFunctions.EqualsShort equalityFunction = new
+            EqualityFunctions.EqualsShort();
 
     //this list will hold indexes into the set array
     protected MultiLinkedListInt bucketList;
@@ -105,10 +108,10 @@ public class HashSetShort implements CollectionShort
     }
 
     @Override
-    public int contains( short value )
+    public boolean contains( short value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value );
+        return inBucketList( bucket, value )!=Const.NO_ENTRY;
     }
 
     @Override
@@ -119,7 +122,22 @@ public class HashSetShort implements CollectionShort
     }
 
     /**
-     * Unchecked method to retrieve an item in the set.
+     * Method for checking to see if an item is in the HashSet. This will retrieve the entry
+     * for the item, or return Const.NO_ENTRY if the item is not in the set.
+     *
+     * @param val the value
+     * @return the entry of the item (handle), or Const.NO_ENTRY
+     */
+    public int getEntry( short val )
+    {
+        int bucket = getBucket( val );
+        return inBucketList( bucket, val );
+    }
+
+    /**
+     * UNCHECKED method to retrieve an item in the set. This should be used with caution, as it may potentially
+     * return a value that was removed. See {@link #getEntry(short)}  above for getting a specific value.
+     *
      *
      * @param entry the entry into the set
      * @return the value
@@ -129,6 +147,7 @@ public class HashSetShort implements CollectionShort
     {
         return keys[ entry ];
     }
+
 
     @Override
     public int insert( short key )
@@ -213,9 +232,9 @@ public class HashSetShort implements CollectionShort
     private void addEntryToFreeList( int entry )
     {
         int curLen = freeList.length;
-        if( freeListPtr >= freeList.length )
+        if( freeListPtr >= curLen )
         {
-            intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
+            freeList=  intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
         freeList[ freeListPtr++ ] = entry;
     }
@@ -230,10 +249,10 @@ public class HashSetShort implements CollectionShort
     {
         if( freeListPtr != 0 )
         {
-            return freeList[ freeListPtr-- ];
+            return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        valFactory.ensureArrayCapacity( keys, nextEntry, growthStrategy );
+        keys = valFactory.ensureArrayCapacity( keys, nextEntry+1, growthStrategy );
         return nextEntry++;
     }
 
@@ -267,7 +286,8 @@ public class HashSetShort implements CollectionShort
         {
             int keyEntry = bucketList.getHead( bucketListEntry );
             if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
-            if( keys[ keyEntry ] == key ) return keyEntry;
+            //check equals
+            if (equalityFunction.equals( keys[keyEntry], key )) return keyEntry;
             bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;

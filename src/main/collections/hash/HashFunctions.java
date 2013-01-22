@@ -12,8 +12,6 @@ import core.stub._key_;
 public class HashFunctions
 {
 
-    public static final HashFunctionBool hashFunctionBool =
-            new HashFunctionBool ();
     public static final HashFunctionChar hashFunctionChar =
             new HashFunctionChar ();
     public static final HashFunctionByte hashFunctionByte =
@@ -45,13 +43,6 @@ public class HashFunctions
         }
     }
 
-    public static class HashFunctionBool
-    {
-        public int getHashCode (boolean b)
-        {
-            return Hasher.getHashCode (IntValueConverter.toInt (b));
-        }
-    }
 
     public static class HashFunctionChar
     {

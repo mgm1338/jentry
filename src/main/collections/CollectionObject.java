@@ -37,7 +37,7 @@ public interface CollectionObject extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( Object value );
+    boolean contains( Object value );
 
     /**
      * <p>

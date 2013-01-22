@@ -37,7 +37,7 @@ public interface CollectionChar extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( char value );
+    boolean contains( char value );
 
     /**
      * <p>

@@ -262,7 +262,7 @@ public class MultiLinkedListInt
         }
         if( prev == Const.NO_ENTRY ) //removing first item
         {
-            int next = nexts[ testIdx ];
+            int next = ( nexts.length > testIdx ) ? nexts[ testIdx ] : Const.NO_ENTRY;
             if( next != Const.NO_ENTRY ) //more items in list, move to head
             {
                 heads[ testIdx ] = heads[ next ];

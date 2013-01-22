@@ -37,7 +37,7 @@ public interface CollectionLong extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( long value );
+    boolean contains( long value );
 
     /**
      * <p>

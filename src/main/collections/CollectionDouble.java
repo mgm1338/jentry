@@ -37,7 +37,7 @@ public interface CollectionDouble extends collections.Collection
      * @param value the value
      * @return entry or Const.NO_ENTRY (-1)
      */
-    int contains( double value );
+    boolean contains( double value );
 
     /**
      * <p>
