@@ -1,5 +1,6 @@
 package collections.util;
 
+import collections.Collection;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
@@ -42,7 +43,7 @@ import java.util.Arrays;
  * <p/>
  * Is equivalent to one list with values 9,8,17, and one with values 80,45.
  */
-public class MultiLinkedListInt
+public class MultiLinkedListInt implements Collection
 {
     /** Strategy for growing the MultiList, see {@link GrowthStrategy } */
     private final GrowthStrategy growthStrategy;
@@ -66,7 +67,7 @@ public class MultiLinkedListInt
     public MultiLinkedListInt( int initialListSize, int totalSize )
     {
         this( initialListSize, totalSize,
-              GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultintProvider );
+              GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultIntProvider );
     }
 
     public MultiLinkedListInt( int initialListSize, int totalSize,
@@ -401,5 +402,26 @@ public class MultiLinkedListInt
     public int getSize()
     {
         return size;
+    }
+
+    @Override
+    public boolean isEmpty()
+    {
+        return size==0;
+    }
+
+    public void clear()
+    {
+        Arrays.fill( heads, Const.NO_ENTRY);
+        Arrays.fill( nexts, Const.NO_ENTRY);
+        freeListPtr = Const.NO_ENTRY;
+        size = 0;
+        nextUnusedIdx = maxHead+1;
+    }
+
+    @Override
+    public Collection copy()
+    {
+        return null;
     }
 }

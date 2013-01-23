@@ -79,8 +79,8 @@ public class TestHashSetByte
         if( template ) return;
 
         //artificially making every item go into the same bucket
-        hashSet = new HashSetByte( 8, 1.00, ArrayFactoryByte.defaultbyteProvider,
-                                            ArrayFactoryInt.defaultintProvider, new SameBucketHashFunctionByte(),
+        hashSet = new HashSetByte( 8, 1.00, ArrayFactoryByte.defaultByteProvider,
+                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionByte(),
                                             GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
@@ -236,6 +236,90 @@ public class TestHashSetByte
 
 
     }
+
+    @Test
+    public void clearTest()
+    {
+        if (template) return;
+        hashSet = new HashSetByte( TEST_SIZE );
+        //fill
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+        }
+
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i ) );
+        }
+        //clear
+        hashSet.clear();
+        //assert size and empty
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+        // fill up again more stuff
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+        }
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i ) );
+        }
+        hashSet.clear();
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+    }
+
+
+    //free list, exactly same with same pointer
+    //keys, same keys
+    //size is same, rehash size is same, load factor same
+    //same growth, factories
+    @Test
+    public void fullCopyValidSetTest()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void fullCopyEmptySet()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void fullCopyNullTest()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void randomInsertionTest()
+    {
+        if (template) return;
+
+    }
+
 
 
     protected class SameBucketHashFunctionByte extends HashFunctions.HashFunctionByte

@@ -100,7 +100,7 @@ public abstract class ArrayFactory_KeyTypeName_
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactory_KeyTypeName_ default_key_Provider = new
+    public static final ArrayFactory_KeyTypeName_ default_KeyTypeName_Provider = new
             ArrayProvider_KeyTypeName_Impl ();
 
 

@@ -234,7 +234,7 @@ public class TestMultiSLList
     }
 
     @Test
-    public void FullListOnFreeListPtr ()
+    public void fullListFreeListPtr()
     {
 
         //remove list 1, create a 3 list free list
@@ -375,6 +375,32 @@ public class TestMultiSLList
         //must be old size + size (this can overgrow, but necessary for 0)
         TestCase.assertTrue (dataLoadedLists.heads.length>=12);
         TestCase.assertTrue (dataLoadedLists.nexts.length>=12);
+    }
+
+    @Test
+    public void clearTest()
+    {
+        dataLoadedLists.clear();
+        TestCase.assertEquals( dataLoadedLists.getSize(), 0 );
+        TestCase.assertEquals( dataLoadedLists.maxHead+1,dataLoadedLists.nextUnusedIdx );
+        dataLoadedLists.insert (0, 9);
+        dataLoadedLists.insert (1, 17);
+        dataLoadedLists.insert (2, 6);
+        dataLoadedLists.insert (0, 8);
+        dataLoadedLists.insert (1, 16);
+        dataLoadedLists.insert (1, 15);
+        TestCase.assertEquals (dataLoadedLists.getSize (), 6);
+
+        assertListContents (dataLoadedLists, 0, 9, 8);
+        assertListContents (dataLoadedLists, 1, 17, 16, 15);
+        assertListContents (dataLoadedLists, 2, 6);
+
+    }
+
+    @Test
+    public void deepCopyTest()
+    {
+
     }
 
 }

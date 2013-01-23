@@ -79,8 +79,8 @@ public class TestHashSetFloat
         if( template ) return;
 
         //artificially making every item go into the same bucket
-        hashSet = new HashSetFloat( 8, 1.00, ArrayFactoryFloat.defaultfloatProvider,
-                                            ArrayFactoryInt.defaultintProvider, new SameBucketHashFunctionFloat(),
+        hashSet = new HashSetFloat( 8, 1.00, ArrayFactoryFloat.defaultFloatProvider,
+                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionFloat(),
                                             GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
@@ -236,6 +236,90 @@ public class TestHashSetFloat
 
 
     }
+
+    @Test
+    public void clearTest()
+    {
+        if (template) return;
+        hashSet = new HashSetFloat( TEST_SIZE );
+        //fill
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter.floatFromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i ) ) );
+        }
+
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.floatFromInt( i ) );
+        }
+        //clear
+        hashSet.clear();
+        //assert size and empty
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+        // fill up again more stuff
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter.floatFromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i ) ) );
+        }
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.floatFromInt( i ) );
+        }
+        hashSet.clear();
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+    }
+
+
+    //free list, exactly same with same pointer
+    //keys, same keys
+    //size is same, rehash size is same, load factor same
+    //same growth, factories
+    @Test
+    public void fullCopyValidSetTest()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void fullCopyEmptySet()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void fullCopyNullTest()
+    {
+        if (template) return;
+
+    }
+
+    @Test
+    public void randomInsertionTest()
+    {
+        if (template) return;
+
+    }
+
 
 
     protected class SameBucketHashFunctionFloat extends HashFunctions.HashFunctionFloat

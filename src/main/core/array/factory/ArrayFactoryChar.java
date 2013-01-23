@@ -100,7 +100,7 @@ public abstract class ArrayFactoryChar
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryChar defaultcharProvider = new
+    public static final ArrayFactoryChar defaultCharProvider = new
             ArrayProviderCharImpl ();
 
 

@@ -100,7 +100,7 @@ public abstract class ArrayFactoryInt
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryInt defaultintProvider = new
+    public static final ArrayFactoryInt defaultIntProvider = new
             ArrayProviderIntImpl ();
 
 

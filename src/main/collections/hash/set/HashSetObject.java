@@ -55,7 +55,7 @@ public class HashSetObject implements CollectionObject
     {
         this( initialSize, DEFAULT_LOAD_FACTOR,
               ArrayFactoryObject.defaultObjectProvider,
-              ArrayFactoryInt.defaultintProvider,
+              ArrayFactoryInt.defaultIntProvider,
               HashFunctions.hashFunctionObject,
               GrowthStrategy.doubleGrowth );
     }
@@ -111,14 +111,15 @@ public class HashSetObject implements CollectionObject
     public boolean contains( Object value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value )!=Const.NO_ENTRY;
+        return inBucketList( bucket, value ) != Const.NO_ENTRY;
     }
 
     @Override
     public void clear()
     {
-        Arrays.fill( keys, 0, nextEntry,
-                     DefaultValueProvider.DefaultObject.getValue() );
+        bucketList.clear();
+        size = 0;
+        freeListPtr = nextEntry = 0;
     }
 
     /**
@@ -137,7 +138,6 @@ public class HashSetObject implements CollectionObject
     /**
      * UNCHECKED method to retrieve an item in the set. This should be used with caution, as it may potentially
      * return a value that was removed. See {@link #getEntry(Object)}  above for getting a specific value.
-     *
      *
      * @param entry the entry into the set
      * @return the value
@@ -234,7 +234,7 @@ public class HashSetObject implements CollectionObject
         int curLen = freeList.length;
         if( freeListPtr >= curLen )
         {
-            freeList=  intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
+            freeList = intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
         freeList[ freeListPtr++ ] = entry;
     }
@@ -252,7 +252,7 @@ public class HashSetObject implements CollectionObject
             return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        keys = valFactory.ensureArrayCapacity( keys, nextEntry+1, growthStrategy );
+        keys = valFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
         return nextEntry++;
     }
 
@@ -287,9 +287,29 @@ public class HashSetObject implements CollectionObject
             int keyEntry = bucketList.getHead( bucketListEntry );
             if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
             //check equals
-            if (equalityFunction.equals( keys[keyEntry], key )) return keyEntry;
+            if( equalityFunction.equals( keys[ keyEntry ], key ) ) return keyEntry;
             bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
+    }
+
+
+    public HashSetObject copy()
+    {
+
+        HashSetObject target = new HashSetObject( ( int ) ( size / loadFactor ), loadFactor,
+                                                                this.valFactory, this.intFactory, this.hashFunction,
+                                                                this.growthStrategy );
+        int keyLen = keys.length;
+        Object[] targetKeys = target.keys;
+        valFactory.ensureArrayCapacity( targetKeys, keyLen, IntValueConverter.ObjectFromInt( Const.NO_ENTRY ),
+                                        GrowthStrategy.toExactSize );
+        System.arraycopy( keys, 0, targetKeys, 0, keyLen );
+
+
+        intFactory.ensureArrayCapacity( target.freeList, this.freeList.length, GrowthStrategy.toExactSize );
+
+        return target;
+
     }
 }

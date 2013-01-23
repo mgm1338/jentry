@@ -100,7 +100,7 @@ public abstract class ArrayFactoryByte
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryByte defaultbyteProvider = new
+    public static final ArrayFactoryByte defaultByteProvider = new
             ArrayProviderByteImpl ();
 
 

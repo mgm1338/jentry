@@ -21,6 +21,8 @@ public abstract class GrowthStrategy
 
     public static final GrowthStrategy doubleGrowth = new DoubleGrowth();
 
+    public static final GrowthStrategy toExactSize = new ExactSizeGrowth();
+
     protected static final class DoubleGrowth extends GrowthStrategy
     {
         @Override
@@ -32,6 +34,15 @@ public abstract class GrowthStrategy
             int size = currentSize * 2;
             while( size < minimumAcceptable ) size *= 2;
             return size;
+        }
+    }
+
+    protected static final class ExactSizeGrowth extends GrowthStrategy
+    {
+        @Override
+        public int growthRequest( int currentSize, int minimumAcceptable )
+        {
+           return minimumAcceptable;
         }
     }
     

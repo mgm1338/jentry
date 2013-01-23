@@ -54,8 +54,8 @@ public class HashSetShort implements CollectionShort
     public HashSetShort( int initialSize )
     {
         this( initialSize, DEFAULT_LOAD_FACTOR,
-              ArrayFactoryShort.defaultshortProvider,
-              ArrayFactoryInt.defaultintProvider,
+              ArrayFactoryShort.defaultShortProvider,
+              ArrayFactoryInt.defaultIntProvider,
               HashFunctions.hashFunctionShort,
               GrowthStrategy.doubleGrowth );
     }
@@ -86,7 +86,7 @@ public class HashSetShort implements CollectionShort
         this.intFactory = intFactory;
         bucketList = new MultiLinkedListInt( initialSize, initialSize );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
-        keys = ArrayFactoryShort.defaultshortProvider.alloc( initialSize,
+        keys = ArrayFactoryShort.defaultShortProvider.alloc( initialSize,
                                                                      IntValueConverter.shortFromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
@@ -111,14 +111,15 @@ public class HashSetShort implements CollectionShort
     public boolean contains( short value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value )!=Const.NO_ENTRY;
+        return inBucketList( bucket, value ) != Const.NO_ENTRY;
     }
 
     @Override
     public void clear()
     {
-        Arrays.fill( keys, 0, nextEntry,
-                     DefaultValueProvider.DefaultShort.getValue() );
+        bucketList.clear();
+        size = 0;
+        freeListPtr = nextEntry = 0;
     }
 
     /**
@@ -137,7 +138,6 @@ public class HashSetShort implements CollectionShort
     /**
      * UNCHECKED method to retrieve an item in the set. This should be used with caution, as it may potentially
      * return a value that was removed. See {@link #getEntry(short)}  above for getting a specific value.
-     *
      *
      * @param entry the entry into the set
      * @return the value
@@ -234,7 +234,7 @@ public class HashSetShort implements CollectionShort
         int curLen = freeList.length;
         if( freeListPtr >= curLen )
         {
-            freeList=  intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
+            freeList = intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
         freeList[ freeListPtr++ ] = entry;
     }
@@ -252,7 +252,7 @@ public class HashSetShort implements CollectionShort
             return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        keys = valFactory.ensureArrayCapacity( keys, nextEntry+1, growthStrategy );
+        keys = valFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
         return nextEntry++;
     }
 
@@ -287,9 +287,29 @@ public class HashSetShort implements CollectionShort
             int keyEntry = bucketList.getHead( bucketListEntry );
             if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
             //check equals
-            if (equalityFunction.equals( keys[keyEntry], key )) return keyEntry;
+            if( equalityFunction.equals( keys[ keyEntry ], key ) ) return keyEntry;
             bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
+    }
+
+
+    public HashSetShort copy()
+    {
+
+        HashSetShort target = new HashSetShort( ( int ) ( size / loadFactor ), loadFactor,
+                                                                this.valFactory, this.intFactory, this.hashFunction,
+                                                                this.growthStrategy );
+        int keyLen = keys.length;
+        short[] targetKeys = target.keys;
+        valFactory.ensureArrayCapacity( targetKeys, keyLen, IntValueConverter.shortFromInt( Const.NO_ENTRY ),
+                                        GrowthStrategy.toExactSize );
+        System.arraycopy( keys, 0, targetKeys, 0, keyLen );
+
+
+        intFactory.ensureArrayCapacity( target.freeList, this.freeList.length, GrowthStrategy.toExactSize );
+
+        return target;
+
     }
 }

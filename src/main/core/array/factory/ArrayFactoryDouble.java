@@ -100,7 +100,7 @@ public abstract class ArrayFactoryDouble
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryDouble defaultdoubleProvider = new
+    public static final ArrayFactoryDouble defaultDoubleProvider = new
             ArrayProviderDoubleImpl ();
 
 

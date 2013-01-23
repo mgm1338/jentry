@@ -54,8 +54,8 @@ public class HashSetChar implements CollectionChar
     public HashSetChar( int initialSize )
     {
         this( initialSize, DEFAULT_LOAD_FACTOR,
-              ArrayFactoryChar.defaultcharProvider,
-              ArrayFactoryInt.defaultintProvider,
+              ArrayFactoryChar.defaultCharProvider,
+              ArrayFactoryInt.defaultIntProvider,
               HashFunctions.hashFunctionChar,
               GrowthStrategy.doubleGrowth );
     }
@@ -86,7 +86,7 @@ public class HashSetChar implements CollectionChar
         this.intFactory = intFactory;
         bucketList = new MultiLinkedListInt( initialSize, initialSize );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
-        keys = ArrayFactoryChar.defaultcharProvider.alloc( initialSize,
+        keys = ArrayFactoryChar.defaultCharProvider.alloc( initialSize,
                                                                      IntValueConverter.charFromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
@@ -111,14 +111,15 @@ public class HashSetChar implements CollectionChar
     public boolean contains( char value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value )!=Const.NO_ENTRY;
+        return inBucketList( bucket, value ) != Const.NO_ENTRY;
     }
 
     @Override
     public void clear()
     {
-        Arrays.fill( keys, 0, nextEntry,
-                     DefaultValueProvider.DefaultChar.getValue() );
+        bucketList.clear();
+        size = 0;
+        freeListPtr = nextEntry = 0;
     }
 
     /**
@@ -137,7 +138,6 @@ public class HashSetChar implements CollectionChar
     /**
      * UNCHECKED method to retrieve an item in the set. This should be used with caution, as it may potentially
      * return a value that was removed. See {@link #getEntry(char)}  above for getting a specific value.
-     *
      *
      * @param entry the entry into the set
      * @return the value
@@ -234,7 +234,7 @@ public class HashSetChar implements CollectionChar
         int curLen = freeList.length;
         if( freeListPtr >= curLen )
         {
-            freeList=  intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
+            freeList = intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
         freeList[ freeListPtr++ ] = entry;
     }
@@ -252,7 +252,7 @@ public class HashSetChar implements CollectionChar
             return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        keys = valFactory.ensureArrayCapacity( keys, nextEntry+1, growthStrategy );
+        keys = valFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
         return nextEntry++;
     }
 
@@ -287,9 +287,29 @@ public class HashSetChar implements CollectionChar
             int keyEntry = bucketList.getHead( bucketListEntry );
             if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
             //check equals
-            if (equalityFunction.equals( keys[keyEntry], key )) return keyEntry;
+            if( equalityFunction.equals( keys[ keyEntry ], key ) ) return keyEntry;
             bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
+    }
+
+
+    public HashSetChar copy()
+    {
+
+        HashSetChar target = new HashSetChar( ( int ) ( size / loadFactor ), loadFactor,
+                                                                this.valFactory, this.intFactory, this.hashFunction,
+                                                                this.growthStrategy );
+        int keyLen = keys.length;
+        char[] targetKeys = target.keys;
+        valFactory.ensureArrayCapacity( targetKeys, keyLen, IntValueConverter.charFromInt( Const.NO_ENTRY ),
+                                        GrowthStrategy.toExactSize );
+        System.arraycopy( keys, 0, targetKeys, 0, keyLen );
+
+
+        intFactory.ensureArrayCapacity( target.freeList, this.freeList.length, GrowthStrategy.toExactSize );
+
+        return target;
+
     }
 }

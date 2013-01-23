@@ -79,8 +79,8 @@ public class TestHashSet_KeyTypeName_
         if( template ) return;
 
         //artificially making every item go into the same bucket
-        hashSet = new HashSet_KeyTypeName_( 8, 1.00, ArrayFactory_KeyTypeName_.default_key_Provider,
-                                            ArrayFactoryInt.defaultintProvider, new SameBucketHashFunction_KeyTypeName_(),
+        hashSet = new HashSet_KeyTypeName_( 8, 1.00, ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
+                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunction_KeyTypeName_(),
                                             GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
@@ -241,9 +241,57 @@ public class TestHashSet_KeyTypeName_
     public void clearTest()
     {
         if (template) return;
+        hashSet = new HashSet_KeyTypeName_( TEST_SIZE );
+        //fill
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter._key_FromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i ) ) );
+        }
+
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter._key_FromInt( i ) );
+        }
+        //clear
+        hashSet.clear();
+        //assert size and empty
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+        // fill up again more stuff
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            int j = hashSet.insert( IntValueConverter._key_FromInt( i ) );
+            TestCase.assertEquals( i, j ); //compact
+            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i ) ) );
+        }
+
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertFalse( hashSet.isEmpty() );
+
+        for( int i = 0; i < TEST_SIZE*4; i++ )
+        {
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter._key_FromInt( i ) );
+        }
+        hashSet.clear();
+
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
 
     }
 
+
+    //free list, exactly same with same pointer
+    //keys, same keys
+    //size is same, rehash size is same, load factor same
+    //same growth, factories
     @Test
     public void fullCopyValidSetTest()
     {

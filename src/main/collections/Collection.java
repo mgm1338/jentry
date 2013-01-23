@@ -31,4 +31,11 @@ public interface Collection
      */
     void clear ();
 
+    /**
+     * Get a copy of the collection. This returns a deep copy, not a reference, to the collection.
+     *
+     * @return a copy of the Collection;
+     */
+    Collection copy();
+
 }

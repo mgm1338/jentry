@@ -100,7 +100,7 @@ public abstract class ArrayFactoryBool
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryBool defaultbooleanProvider = new
+    public static final ArrayFactoryBool defaultBoolProvider = new
             ArrayProviderBoolImpl ();
 
 

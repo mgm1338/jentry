@@ -100,7 +100,7 @@ public abstract class ArrayFactoryShort
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryShort defaultshortProvider = new
+    public static final ArrayFactoryShort defaultShortProvider = new
             ArrayProviderShortImpl ();
 
 

@@ -100,7 +100,7 @@ public abstract class ArrayFactoryFloat
      * In some situations, logging array allocations and other metrics
      * can be useful in tuning or customizing array policies.
      */
-    public static final ArrayFactoryFloat defaultfloatProvider = new
+    public static final ArrayFactoryFloat defaultFloatProvider = new
             ArrayProviderFloatImpl ();
 
 

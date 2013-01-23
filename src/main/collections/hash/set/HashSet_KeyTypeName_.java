@@ -54,8 +54,8 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     public HashSet_KeyTypeName_( int initialSize )
     {
         this( initialSize, DEFAULT_LOAD_FACTOR,
-              ArrayFactory_KeyTypeName_.default_key_Provider,
-              ArrayFactoryInt.defaultintProvider,
+              ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
+              ArrayFactoryInt.defaultIntProvider,
               HashFunctions.hashFunction_KeyTypeName_,
               GrowthStrategy.doubleGrowth );
     }
@@ -86,7 +86,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         this.intFactory = intFactory;
         bucketList = new MultiLinkedListInt( initialSize, initialSize );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
-        keys = ArrayFactory_KeyTypeName_.default_key_Provider.alloc( initialSize,
+        keys = ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider.alloc( initialSize,
                                                                      IntValueConverter._key_FromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
@@ -111,14 +111,15 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     public boolean contains( _key_ value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value )!=Const.NO_ENTRY;
+        return inBucketList( bucket, value ) != Const.NO_ENTRY;
     }
 
     @Override
     public void clear()
     {
-        Arrays.fill( keys, 0, nextEntry,
-                     DefaultValueProvider.Default_KeyTypeName_.getValue() );
+        bucketList.clear();
+        size = 0;
+        freeListPtr = nextEntry = 0;
     }
 
     /**
@@ -137,7 +138,6 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     /**
      * UNCHECKED method to retrieve an item in the set. This should be used with caution, as it may potentially
      * return a value that was removed. See {@link #getEntry(_key_)}  above for getting a specific value.
-     *
      *
      * @param entry the entry into the set
      * @return the value
@@ -234,7 +234,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         int curLen = freeList.length;
         if( freeListPtr >= curLen )
         {
-            freeList=  intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
+            freeList = intFactory.grow( freeList, curLen * 2, 0, growthStrategy );
         }
         freeList[ freeListPtr++ ] = entry;
     }
@@ -252,7 +252,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
             return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        keys = valFactory.ensureArrayCapacity( keys, nextEntry+1, growthStrategy );
+        keys = valFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
         return nextEntry++;
     }
 
@@ -287,9 +287,29 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
             int keyEntry = bucketList.getHead( bucketListEntry );
             if( keyEntry == Const.NO_ENTRY ) return Const.NO_ENTRY;
             //check equals
-            if (equalityFunction.equals( keys[keyEntry], key )) return keyEntry;
+            if( equalityFunction.equals( keys[ keyEntry ], key ) ) return keyEntry;
             bucketListEntry = bucketList.getNextIdxForList( bucket, bucketListEntry );
         }
         return Const.NO_ENTRY;
+    }
+
+
+    public HashSet_KeyTypeName_ copy()
+    {
+
+        HashSet_KeyTypeName_ target = new HashSet_KeyTypeName_( ( int ) ( size / loadFactor ), loadFactor,
+                                                                this.valFactory, this.intFactory, this.hashFunction,
+                                                                this.growthStrategy );
+        int keyLen = keys.length;
+        _key_[] targetKeys = target.keys;
+        valFactory.ensureArrayCapacity( targetKeys, keyLen, IntValueConverter._key_FromInt( Const.NO_ENTRY ),
+                                        GrowthStrategy.toExactSize );
+        System.arraycopy( keys, 0, targetKeys, 0, keyLen );
+
+
+        intFactory.ensureArrayCapacity( target.freeList, this.freeList.length, GrowthStrategy.toExactSize );
+
+        return target;
+
     }
 }
