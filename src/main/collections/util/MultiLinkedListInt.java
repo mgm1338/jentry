@@ -63,31 +63,44 @@ public class MultiLinkedListInt implements Collection
     /** Number of elements inserted into the sturcture */
     protected int size;
 
-
-    public MultiLinkedListInt( int initialListSize, int totalSize )
+    /**
+     * Constructor
+     *
+     * @param initialNumLists the initial number of singly linked list this structure will allocate
+     * @param totalSize        the estimated size of all of the lists
+     */
+    public MultiLinkedListInt( int initialNumLists, int totalSize )
     {
-        this( initialListSize, totalSize,
+        this( initialNumLists, totalSize,
               GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultIntProvider );
     }
 
+    /**
+     * Full Constructor
+     *
+     * @param initialListSize the initial number of singly linked list this structure will allocate
+     * @param totalSize        the estimated size of all of the lists
+     * @param growthStrategy  the growth strategy when growing the set of lists
+     * @param intFactory      the factory that will provide the int[] arrays
+     */
     public MultiLinkedListInt( int initialListSize, int totalSize,
                                GrowthStrategy growthStrategy,
                                ArrayFactoryInt intFactory )
     {
         this.growthStrategy = growthStrategy;
         this.intFactory = intFactory;
-        this.heads = intFactory.alloc( initialListSize, Const.NO_ENTRY );
-        this.nexts = intFactory.alloc( totalSize - initialListSize,
-                                       Const.NO_ENTRY );
+        this.heads = intFactory.alloc( totalSize, Const.NO_ENTRY );
+        this.nexts = intFactory.alloc( totalSize, Const.NO_ENTRY );
         maxHead = initialListSize - 1;
         nextUnusedIdx = initialListSize;
     }
 
+
     /**
      * <p>
      * Prepend the value at the beginning of the linked list, so that
-     * <i>val</i> is in the <i>listHead</i> index of the heads list. Update
-     * the next/head so that the old occupant (if any) is not the second
+     * <b>val</b> is in the <b>listHead</b> index of the heads list. Update
+     * the next/head so that the old occupant (if any) is now the second
      * item in the list. Ensure that the second item keeps its same next
      * pointer.
      * </p>
@@ -124,7 +137,7 @@ public class MultiLinkedListInt implements Collection
      * </p>
      *
      * @param listHead the head of the list
-     * @return the entry the next free entry
+     * @param val      the value we are inserting into the list
      */
     public void insert( int listHead, int val )
     {
@@ -146,7 +159,7 @@ public class MultiLinkedListInt implements Collection
         {
             idx = freeListPtr;
             freeListPtr = ( nexts[ idx ] == Const.NO_ENTRY ) ? Const.NO_ENTRY
-                                                               : nexts[ idx ];
+                                                             : nexts[ idx ];
         }
         else
         {
@@ -359,7 +372,7 @@ public class MultiLinkedListInt implements Collection
         {
             targetArray = intFactory.    //check size
                     ensureArrayCapacity( targetArray,
-                                         i+1,
+                                         i + 1,
                                          Const.NO_ENTRY,
                                          GrowthStrategy.doubleGrowth );
 
@@ -374,54 +387,102 @@ public class MultiLinkedListInt implements Collection
         return targetArray;
     }
 
-    public int getNextValue(int listHead, int prevEntry)
+    /**
+     * Using the previous index, get the next index in the heads array
+     * for a value. This, used in conjunction with {@link #getHead(int)}
+     * is used iterate the items in a list. The first prevIdx used
+     * should be Const.NO_ENTRY, and the iteration is over when
+     * it is passed back.
+     *
+     * @param listHead the listHead of the list
+     * @param prevIdx  the previous index into the list
+     * @return the next index of a valid item, or Const.NO_ENTRY
+     */
+    public int getNextIdxForList( int listHead, int prevIdx )
     {
-        int idx = getNextIdxForList( listHead, prevEntry );
-        return heads[idx];
-    }
-
-    public int getNextIdxForList( int listHead, int prevEntry )
-    {
-        if( prevEntry == Const.NO_ENTRY )
-    {
-        return listHead;
-    }
-        if( prevEntry < nexts.length )
+        if( prevIdx == Const.NO_ENTRY )
         {
-            return nexts[ prevEntry ];
+            return listHead;
+        }
+        if( prevIdx < nexts.length )
+        {
+            return nexts[ prevIdx ];
         }
         return Const.NO_ENTRY;
     }
 
+    /**
+     * Get the value for the index passed. This, used with {@link #getNextIdxForList(int, int)} is
+     * used to iterate a particular list.
+     *
+     * @param idx the index
+     * @return the value in the heads array
+     */
     public int getHead( int idx )
     {
         return heads[ idx ];
     }
 
-
+    /**
+     * Returns the size of the set of lists (this is the size of all the items in every list)
+     *
+     * @return the total.
+     */
     public int getSize()
     {
         return size;
     }
 
+    /**
+     * Is the structure empty.
+     *
+     * @return if the entire set of lists is empty
+     */
     @Override
     public boolean isEmpty()
     {
-        return size==0;
+        return size == 0;
     }
 
+    /**
+     * Clear all of the lists in the set.
+     */
     public void clear()
     {
-        Arrays.fill( heads, Const.NO_ENTRY);
-        Arrays.fill( nexts, Const.NO_ENTRY);
+        Arrays.fill( heads, Const.NO_ENTRY );
+        Arrays.fill( nexts, Const.NO_ENTRY );
         freeListPtr = Const.NO_ENTRY;
         size = 0;
-        nextUnusedIdx = maxHead+1;
+        nextUnusedIdx = maxHead + 1;
     }
 
-    @Override
-    public Collection copy()
+    /**
+     * Create a 'deep copy' of this set of lists and return it. This deep copy will copy
+     * all the attributes, instead of a shallow copy, which will simply return a reference to this.
+     *
+     * @return a deep copy of this object
+     */
+    public MultiLinkedListInt getDeepCopy()
     {
-        return null;
+        MultiLinkedListInt target = new MultiLinkedListInt( maxHead, size, growthStrategy, intFactory );
+        //should be close if this list is mostly compact
+        int[] targetHeads = target.heads;
+        int[] targetNexts = target.nexts;
+        int headLen = heads.length;
+        int nextsLen = nexts.length;
+        target.heads = intFactory.ensureArrayCapacity( targetHeads, headLen, Const.NO_ENTRY,
+                                                       GrowthStrategy.toExactSize );
+        target.nexts = intFactory.ensureArrayCapacity( targetNexts, nextsLen, Const.NO_ENTRY,
+                                                       GrowthStrategy.toExactSize );
+        System.arraycopy( heads, 0, targetHeads, 0, headLen );
+        System.arraycopy( nexts, 0, targetNexts, 0, nextsLen );
+
+        target.maxHead = maxHead;
+        target.size = size;
+        target.nextUnusedIdx = nextUnusedIdx;
+        target.freeListPtr = freeListPtr;
+        return target;
     }
+
+
 }

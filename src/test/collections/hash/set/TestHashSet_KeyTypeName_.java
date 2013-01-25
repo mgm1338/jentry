@@ -313,12 +313,17 @@ public class TestHashSet_KeyTypeName_
 
     }
 
+    //tests, copy, make one null, assert old the same
+    //insert 1/2 into one copy, insert rest of 1/2, assert both
+
     @Test
     public void randomInsertionTest()
     {
         if (template) return;
 
     }
+
+
 
 
 

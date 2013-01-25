@@ -397,6 +397,9 @@ public class TestMultiSLList
 
     }
 
+    //tests, copy, make one null, assert old the same
+    //insert 1/2 into one copy, insert rest of 1/2, assert both
+    //plain vanilla, make a copy and assert all sizes, values, etc...
     @Test
     public void deepCopyTest()
     {
