@@ -304,26 +304,22 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     {
         if( target == null ) //creating a new one
         {
-            target = new HashSet_KeyTypeName_( size, loadFactor, valFactory, intFactory, hashFunction,
+            target = new HashSet_KeyTypeName_( keys.length, loadFactor, valFactory, intFactory, hashFunction,
                                                growthStrategy );
         }
-        else //final fields set, align what we can
-        {
-            target.size = size;
-            target.nextEntry = nextEntry;
-            target.loadFactorSize = loadFactorSize;
-            target.loadFactor = loadFactor;
-        }
+        target.nextEntry = nextEntry;
+        target.loadFactor = loadFactor;
+        target.size = size;
+        target.loadFactorSize = loadFactorSize;
+
 
         //grow keys and freelist to the exact size initially and copy them
         int keyLen = keys.length;
         int freeListLen = freeList.length;
-        _key_[] targetKeys = target.keys;
-        int[] targetFreeList = target.freeList;
-        targetKeys = valFactory.ensureArrayCapacity( targetKeys, keyLen, GrowthStrategy.toExactSize );
-        intFactory.ensureArrayCapacity( targetFreeList, freeListLen, GrowthStrategy.toExactSize );
-        System.arraycopy( keys, 0, targetKeys, 0, keyLen );
-        System.arraycopy( freeList, 0, targetFreeList, 0, freeListLen );
+        target.keys = valFactory.ensureArrayCapacity(  target.keys, keyLen, GrowthStrategy.toExactSize );
+        target.freeList = intFactory.ensureArrayCapacity( target.freeList, freeListLen, GrowthStrategy.toExactSize );
+        System.arraycopy( keys, 0, target.keys, 0, keyLen );
+        System.arraycopy( freeList, 0, target.freeList, 0, freeListLen );
 
         //get a deep copy of the bucket list for the target
         target.bucketList = bucketList.getDeepCopy();

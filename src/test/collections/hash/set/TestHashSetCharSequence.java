@@ -9,6 +9,7 @@ import core.stub.IntValueConverter;
 import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
+import util.TestUtilsInt;
 import util.TestUtilsCharSequence;
 
 /**
@@ -295,41 +296,50 @@ public class TestHashSetCharSequence
         if( template ) return;
         loadTest();
         HashSetCharSequence copy = hashSet.copy( null );
-
-
-
-
+        assertEquals( hashSet, copy );
     }
 
+    /**
+     * Copy to a larger HashSet
+     */
     @Test
-    public void fullCopyEmptySet()
+    public void copyToLargerSet()
     {
         if( template ) return;
-
+        loadTest();
+        HashSetCharSequence copy = hashSet.copy( new HashSetCharSequence( 4096 ) );
+        assertEquals( hashSet, copy );
     }
 
+
+    /**
+     * Copy to a smaller set
+     */
     @Test
-    public void fullCopyNullTest()
+    public void copyFromSmaller()
     {
         if( template ) return;
+        loadTest();
+        HashSetCharSequence copy = hashSet.copy( new HashSetCharSequence( 1 ) );
+        assertEquals( hashSet, copy );
 
     }
 
-    //tests, copy, make one null, assert old the same
-    //insert 1/2 into one copy, insert rest of 1/2, assert both
-
-    @Test
-    public void randomInsertionTest()
+    /**
+     * Test the equality of all state of the HashSet. If we are copying to a much larger set,
+     * we will assert up to the expected results. If copying from smaller, we expect it to grow.
+     *
+     * @param expected expected results
+     * @param actual what we actually have
+     */
+    protected void assertEquals(HashSetCharSequence expected, HashSetCharSequence actual)
     {
-        if( template ) return;
-
-    }
-
-
-    protected void assertEquals(HashSetCharSequence a, HashSetCharSequence b)
-    {
-        TestUtilsCharSequence.assertArrayContentsEqual( a.keys, b.keys );
-
+        TestUtilsCharSequence.assertArrayContentsToLen( expected.keys, actual.keys, expected.keys.length );
+        TestUtilsInt.assertArrayContentsEqual( expected.freeList, actual.freeList );
+        TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
+        TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize);
+        TestCase.assertEquals( expected.getSize(), actual.getSize());
+        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry());
 
     }
 

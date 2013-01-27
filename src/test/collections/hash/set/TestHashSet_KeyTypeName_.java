@@ -96,6 +96,10 @@ public class TestHashSet_KeyTypeName_
 
     }
 
+    /**
+     * Similar to test above, assert removing when many in same bucket doesnt trip up when removing first, last
+     * or middle
+     */
     @Test
     public void removeFromSameBucket()
     {
@@ -185,7 +189,9 @@ public class TestHashSet_KeyTypeName_
 
     }
 
-    //When an item isnt in HashSet, should return false
+    /**
+     * Basic test, assert item returns false when not present (duh)
+     */
     @Test
     public void assertRemoveIsNotThereFalse()
     {
@@ -195,6 +201,9 @@ public class TestHashSet_KeyTypeName_
 
     }
 
+    /**
+     * Test that after removing, next insert will use that vacated entry
+     */
     @Test
     public void freeListCompactNessTest()
     {
@@ -208,6 +217,9 @@ public class TestHashSet_KeyTypeName_
 
     }
 
+    /**
+     * Remove enough items to have to grow the free list, and assert its contents
+     */
     @Test
     public void growFreeListTest()
     {
@@ -235,6 +247,9 @@ public class TestHashSet_KeyTypeName_
 
     }
 
+    /**
+     * Test our clear method, that it will result in an empty set
+     */
     @Test
     public void clearTest()
     {
@@ -296,45 +311,52 @@ public class TestHashSet_KeyTypeName_
         if( template ) return;
         loadTest();
         HashSet_KeyTypeName_ copy = hashSet.copy( null );
-
-
-
-
+        assertEquals( hashSet, copy );
     }
 
+    /**
+     * Copy to a larger HashSet
+     */
     @Test
-    public void fullCopyEmptySet()
+    public void copyToLargerSet()
     {
         if( template ) return;
-
+        loadTest();
+        HashSet_KeyTypeName_ copy = hashSet.copy( new HashSet_KeyTypeName_( 4096 ) );
+        assertEquals( hashSet, copy );
     }
 
+
+    /**
+     * Copy to a smaller set
+     */
     @Test
-    public void fullCopyNullTest()
+    public void copyFromSmaller()
     {
         if( template ) return;
-
-    }
-
-    //tests, copy, make one null, assert old the same
-    //insert 1/2 into one copy, insert rest of 1/2, assert both
-
-    @Test
-    public void randomInsertionTest()
-    {
-        if( template ) return;
+        loadTest();
+        HashSet_KeyTypeName_ copy = hashSet.copy( new HashSet_KeyTypeName_( 1 ) );
+        assertEquals( hashSet, copy );
 
     }
 
 
-    protected void assertEquals(HashSet_KeyTypeName_ a, HashSet_KeyTypeName_ b)
+
+    /**
+     * Test the equality of all state of the HashSet. If we are copying to a much larger set,
+     * we will assert up to the expected results. If copying from smaller, we expect it to grow.
+     *
+     * @param expected expected results
+     * @param actual what we actually have
+     */
+    protected void assertEquals(HashSet_KeyTypeName_ expected, HashSet_KeyTypeName_ actual)
     {
-        TestUtils_KeyTypeName_.assertArrayContentsEqual( a.keys, b.keys );
-        TestUtilsInt.assertArrayContentsEqual( a.freeList, b.freeList );
-
-
-
-
+        TestUtils_KeyTypeName_.assertArrayContentsToLen( expected.keys, actual.keys, expected.keys.length );
+        TestUtilsInt.assertArrayContentsEqual( expected.freeList, actual.freeList );
+        TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
+        TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize);
+        TestCase.assertEquals( expected.getSize(), actual.getSize());
+        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry());
 
     }
 

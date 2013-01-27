@@ -31,4 +31,16 @@ public class TestUtils_KeyTypeName_
         }
     }
 
+    public static void assertArrayContentsToLen( _key_[] a, _key_[] b, int len )
+    {
+        if (a.length< len) TestCase.fail("Array a only has length of ["+a.length+"]");
+        if (b.length< len) TestCase.fail("Array b only has length of ["+a.length+"]");
+
+        for( int i = 0; i < len; i++ )
+        {
+            TestCase.assertTrue( "At idx [" + i + "], array a has [" + a[ i ] + "] while arary b has [" + b[ i ] + "]",
+                                 eq.equals( a[ i ], b[ i ] ) );
+        }
+    }
+
 }
