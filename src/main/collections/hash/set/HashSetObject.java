@@ -87,7 +87,7 @@ public class HashSetObject implements CollectionObject
         bucketList = new MultiLinkedListInt( initialSize, initialSize );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
         keys = ArrayFactoryObject.defaultObjectProvider.alloc( initialSize,
-                                                                     IntValueConverter.ObjectFromInt( Const.NO_ENTRY ) );
+                                                                             IntValueConverter.ObjectFromInt( Const.NO_ENTRY ) );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
@@ -293,22 +293,40 @@ public class HashSetObject implements CollectionObject
         return Const.NO_ENTRY;
     }
 
-
-    public HashSetObject copy()
+    /**
+     * Creates a deep copy of this HashSet by copying all of its attributes to the target. If the target is null,
+     * then this method will create a new HashSet to copy all of its attributes to.
+     *
+     * @param target the target HashSet, may be null
+     * @return the deep copy of this
+     */
+    public HashSetObject copy( HashSetObject target )
     {
+        if( target == null ) //creating a new one
+        {
+            target = new HashSetObject( size, loadFactor, valFactory, intFactory, hashFunction,
+                                               growthStrategy );
+        }
+        else //final fields set, align what we can
+        {
+            target.size = size;
+            target.nextEntry = nextEntry;
+            target.loadFactorSize = loadFactorSize;
+            target.loadFactor = loadFactor;
+        }
 
-        HashSetObject target = new HashSetObject( ( int ) ( size / loadFactor ), loadFactor,
-                                                                this.valFactory, this.intFactory, this.hashFunction,
-                                                                this.growthStrategy );
+        //grow keys and freelist to the exact size initially and copy them
         int keyLen = keys.length;
+        int freeListLen = freeList.length;
         Object[] targetKeys = target.keys;
-        valFactory.ensureArrayCapacity( targetKeys, keyLen, IntValueConverter.ObjectFromInt( Const.NO_ENTRY ),
-                                        GrowthStrategy.toExactSize );
+        int[] targetFreeList = target.freeList;
+        targetKeys = valFactory.ensureArrayCapacity( targetKeys, keyLen, GrowthStrategy.toExactSize );
+        intFactory.ensureArrayCapacity( targetFreeList, freeListLen, GrowthStrategy.toExactSize );
         System.arraycopy( keys, 0, targetKeys, 0, keyLen );
+        System.arraycopy( freeList, 0, targetFreeList, 0, freeListLen );
 
-
-        intFactory.ensureArrayCapacity( target.freeList, this.freeList.length, GrowthStrategy.toExactSize );
-
+        //get a deep copy of the bucket list for the target
+        target.bucketList = bucketList.getDeepCopy();
         return target;
 
     }

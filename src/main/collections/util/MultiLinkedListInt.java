@@ -466,16 +466,14 @@ public class MultiLinkedListInt implements Collection
     {
         MultiLinkedListInt target = new MultiLinkedListInt( maxHead, size, growthStrategy, intFactory );
         //should be close if this list is mostly compact
-        int[] targetHeads = target.heads;
-        int[] targetNexts = target.nexts;
         int headLen = heads.length;
         int nextsLen = nexts.length;
-        target.heads = intFactory.ensureArrayCapacity( targetHeads, headLen, Const.NO_ENTRY,
+        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, Const.NO_ENTRY,
                                                        GrowthStrategy.toExactSize );
-        target.nexts = intFactory.ensureArrayCapacity( targetNexts, nextsLen, Const.NO_ENTRY,
+        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, Const.NO_ENTRY,
                                                        GrowthStrategy.toExactSize );
-        System.arraycopy( heads, 0, targetHeads, 0, headLen );
-        System.arraycopy( nexts, 0, targetNexts, 0, nextsLen );
+        System.arraycopy( heads, 0, target.heads, 0, headLen );
+        System.arraycopy( nexts, 0, target.nexts, 0, nextsLen );
 
         target.maxHead = maxHead;
         target.size = size;

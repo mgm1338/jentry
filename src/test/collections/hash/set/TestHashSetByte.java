@@ -1,20 +1,15 @@
 package collections.hash.set;
 
 import collections.hash.HashFunctions;
-import collections.hash.set.HashSetByte;
-import com.sun.org.apache.bcel.internal.classfile.ConstantString;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryByte;
 import core.stub.IntValueConverter;
 import core.stub.*;
-import junit.extensions.TestSetup;
 import junit.framework.TestCase;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Set;
+import util.TestUtilsByte;
 
 /**
  * Copyright 1/14/13
@@ -29,6 +24,8 @@ public class TestHashSetByte
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     public static final int TEST_SIZE = 8;
+    //when adding values around 0,1 can get results that would indicate correct behavior
+    public static final int OFFSET_FROM_ZERO = 10;
 
 
     /**
@@ -46,17 +43,17 @@ public class TestHashSetByte
         //initial fill up
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
         }
 
         //fill up exact same will return the exact same entries
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
         }
 
 
@@ -65,7 +62,7 @@ public class TestHashSetByte
 
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i ) );
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
         }
     }
 
@@ -86,9 +83,9 @@ public class TestHashSetByte
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
 
         }
         TestCase.assertEquals( hashSet.getSize(), TEST_SIZE );
@@ -104,49 +101,50 @@ public class TestHashSetByte
         if( template ) return;
 
         sameBucketTest();
-        hashSet.remove( IntValueConverter.byteFromInt( 0 ) ); //remove first
+        hashSet.remove( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( 0 ) ) == Const.NO_ENTRY );
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( 0 ) ) );
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ) == Const.NO_ENTRY );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
-        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE - 1 ) ); //remove last
+        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ); //remove last
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE - 1 ) ) == Const.NO_ENTRY );
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE - 1  ) ) );
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
+                             == Const.NO_ENTRY );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
-        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE / 2 ) ); //remove middle
+        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ); //remove middle
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE / 2 ) ) == Const.NO_ENTRY );
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE / 2  ) ) );
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
+                             == Const.NO_ENTRY );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest();
         //remove all three
-        hashSet.remove( IntValueConverter.byteFromInt( 0 ) ); //remove first
+        hashSet.remove( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( 0 ) ) == Const.NO_ENTRY );
-        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE - 1 ) ); //remove last
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ) == Const.NO_ENTRY );
+        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ); //remove last
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 2 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE - 1 ) ) == Const.NO_ENTRY );
-        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE / 2 ) ); //remove middle
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
+                             == Const.NO_ENTRY );
+        hashSet.remove( IntValueConverter.byteFromInt( TEST_SIZE / 2+OFFSET_FROM_ZERO ) ); //remove middle
         TestCase.assertEquals( hashSet.size, TEST_SIZE - 3 );
-        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE / 2 ) ) == Const.NO_ENTRY );
+        TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
+                             == Const.NO_ENTRY );
 
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE - 1  ) ) );
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE /2  ) ) );
-        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( 0  ) ) );
-
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ) );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ) );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ) );
 
 
     }
 
-    /**
-     * Remove each item iteratively
-     */
+    /** Remove each item iteratively */
     @Test
     public void fullRemove()
     {
@@ -157,9 +155,10 @@ public class TestHashSetByte
         //remove each item iteratively, asserting it was removed
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertTrue( hashSet.remove( IntValueConverter.byteFromInt( i ) ));
+            TestCase.assertTrue( hashSet.remove( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
             TestCase.assertEquals( hashSet.getSize(), ( TEST_SIZE - i - 1 ) );
-            TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( i ) ) == Const.NO_ENTRY );
+            TestCase.assertTrue( hashSet.getEntry( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) )
+                                 == Const.NO_ENTRY );
         }
         TestCase.assertTrue( hashSet.getSize() == 0 );
         TestCase.assertTrue( hashSet.isEmpty() );
@@ -167,22 +166,20 @@ public class TestHashSetByte
 
     }
 
-    /**
-     * Load more items into the HashSet than its initial capacity can accommodate
-     */
+    /** Load more items into the HashSet than its initial capacity can accommodate */
     @Test
     public void growthTest()
     {
-        if (template) return;
+        if( template ) return;
         hashSet = new HashSetByte( TEST_SIZE );
 
-        for( int i = 0; i < TEST_SIZE*4; i++ )
+        for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
         }
 
-        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );
         TestCase.assertFalse( hashSet.isEmpty() );
 
     }
@@ -191,7 +188,7 @@ public class TestHashSetByte
     @Test
     public void assertRemoveIsNotThereFalse()
     {
-        if (template) return;
+        if( template ) return;
         fullRemove();
         TestCase.assertFalse( hashSet.remove( IntValueConverter.byteFromInt( 1000 ) ) );
 
@@ -200,38 +197,38 @@ public class TestHashSetByte
     @Test
     public void freeListCompactNessTest()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
-        hashSet.remove( IntValueConverter.byteFromInt( 0 ) ); //remove first
+        hashSet.remove( IntValueConverter.byteFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
-        TestCase.assertTrue( hashSet.insert( IntValueConverter.byteFromInt( 1000  ))==0 );
-        TestCase.assertTrue( hashSet.contains(  IntValueConverter.byteFromInt( 1000  ) ));
-        TestCase.assertFalse( hashSet.contains(  IntValueConverter.byteFromInt( 0  ) ));
+        TestCase.assertTrue( hashSet.insert( IntValueConverter.byteFromInt( 1000 ) ) == 0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( 1000 ) ) );
+        TestCase.assertFalse( hashSet.contains( IntValueConverter.byteFromInt( 0 ) ) );
 
     }
 
     @Test
     public void growFreeListTest()
     {
-        if (template) return;
+        if( template ) return;
         growthTest();
 
         //doing a remove of all the items
-        for( int i = 0; i < TEST_SIZE*4; i++ )
+        for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-           TestCase.assertTrue(  hashSet.remove( IntValueConverter.byteFromInt( i ) ));
+            TestCase.assertTrue( hashSet.remove( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
         }
         TestCase.assertTrue( hashSet.isEmpty() );
-        TestCase.assertTrue( hashSet.freeList.length>=TEST_SIZE*4 );
+        TestCase.assertTrue( hashSet.freeList.length >= TEST_SIZE * 4 );
         //insert all
-        for( int i = 0; i < TEST_SIZE*4; i++ )
+        for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
-            TestCase.assertTrue( j<(TEST_SIZE*4) ); //compact (although with massive removes will replace
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
+            TestCase.assertTrue( j < ( TEST_SIZE * 4 ) ); //compact (although with massive removes will replace
             //last item removed first).
         }
 
-        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );
         TestCase.assertFalse( hashSet.isEmpty() );
 
 
@@ -240,14 +237,14 @@ public class TestHashSetByte
     @Test
     public void clearTest()
     {
-        if (template) return;
+        if( template ) return;
         hashSet = new HashSetByte( TEST_SIZE );
         //fill
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
         }
 
 
@@ -256,7 +253,7 @@ public class TestHashSetByte
 
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i ) );
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
         }
         //clear
         hashSet.clear();
@@ -266,19 +263,19 @@ public class TestHashSetByte
         TestCase.assertTrue( hashSet.isEmpty() );
 
         // fill up again more stuff
-        for( int i = 0; i < TEST_SIZE*4; i++ )
+        for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-            int j = hashSet.insert( IntValueConverter.byteFromInt( i ) );
+            int j = hashSet.insert( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i ) ) );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) ) );
         }
 
-        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE*4 );
+        TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );
         TestCase.assertFalse( hashSet.isEmpty() );
 
-        for( int i = 0; i < TEST_SIZE*4; i++ )
+        for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i ) );
+            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.byteFromInt( i + OFFSET_FROM_ZERO ) );
         }
         hashSet.clear();
 
@@ -295,32 +292,46 @@ public class TestHashSetByte
     @Test
     public void fullCopyValidSetTest()
     {
-        if (template) return;
+        if( template ) return;
+        loadTest();
+        HashSetByte copy = hashSet.copy( null );
+
+
+
 
     }
 
     @Test
     public void fullCopyEmptySet()
     {
-        if (template) return;
+        if( template ) return;
 
     }
 
     @Test
     public void fullCopyNullTest()
     {
-        if (template) return;
+        if( template ) return;
 
     }
+
+    //tests, copy, make one null, assert old the same
+    //insert 1/2 into one copy, insert rest of 1/2, assert both
 
     @Test
     public void randomInsertionTest()
     {
-        if (template) return;
+        if( template ) return;
 
     }
 
 
+    protected void assertEquals(HashSetByte a, HashSetByte b)
+    {
+        TestUtilsByte.assertArrayContentsEqual( a.keys, b.keys );
+
+
+    }
 
     protected class SameBucketHashFunctionByte extends HashFunctions.HashFunctionByte
     {

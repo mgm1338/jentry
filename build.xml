@@ -14,8 +14,13 @@
                                package="main\collections"/>
         <generateSpecificTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
+
+        <!--//TESTS-->
         <generateSpecificTypes fileBase="TestHashSet"
                                package="test\collections\hash\set"/>
+        <generateSpecificTypes fileBase="TestUtils"
+                               package="test\util"/>
+
         <!--DELETE BOOLEAN HASH SET-->
         <delete file="main\collections\hash\set\HashSetBool.java" />
         <delete file="test\collections\hash\set\TestHashSetBool.java" />

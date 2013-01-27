@@ -307,7 +307,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
             target = new HashSet_KeyTypeName_( size, loadFactor, valFactory, intFactory, hashFunction,
                                                growthStrategy );
         }
-        else //we have final fields set, just create what we can
+        else //final fields set, align what we can
         {
             target.size = size;
             target.nextEntry = nextEntry;
