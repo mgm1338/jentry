@@ -35,7 +35,7 @@ public interface Collection_KeyTypeName_ extends collections.Collection
      * Const.NO_ENTRY (-1) if the item is not in the collection.
      *
      * @param value the value
-     * @return entry or Const.NO_ENTRY (-1)
+     * @return true if the Collection contains the value, false otherwise
      */
     boolean contains( _key_ value );
 

@@ -23,24 +23,36 @@ public class HashSetShort implements CollectionShort
     protected static final int DEFAULT_FREE_LIST_SIZE = 16;
 
 
-    /** Factory that will provide us with */
+    /** Factory that will provide us with value space */
     protected final ArrayFactoryShort valFactory;
+    /** Int Factory to provide us with freeList and bucket list */
     protected final ArrayFactoryInt intFactory;
+    /** Hash function used to hash our values to an int bucket */
     protected final HashFunctions.HashFunctionShort hashFunction;
+    /** Growth strategy of our set, freelist, and bucket set */
     protected final GrowthStrategy growthStrategy;
+    /** Equality function that test the equality of the different typed values */
     protected final EqualityFunctions.EqualsShort equalityFunction = new
             EqualityFunctions.EqualsShort();
 
     //this list will hold indexes into the set array
     protected MultiLinkedListInt bucketList;
+    /** Array of the values in the set, for example, a HashSetByte will hold the inserted bytes here */
     protected short keys[];
 
+    /** Next empty entry in the <b>keys</b> array */
     protected int nextEntry = 0;
+    /** List of free entries (in the <b>keys</b> array) */
     protected int[] freeList;
+    /** Pointer in the free list (that points to the remaining free entries) */
     protected int freeListPtr = 0;
+    /** Number of buckets in the HashSet */
     protected int numBuckets;
+    /** Number of inserted values */
     protected int size = 0;
+    /** Load factor size, when we hit this size, we shall grow and re-hash items */
     protected int loadFactorSize;
+    /** Load factor (0 to 1), that will indicate when we re-hash */
     protected double loadFactor;
 
     /**
@@ -84,7 +96,7 @@ public class HashSetShort implements CollectionShort
     {
         this.valFactory = valFactory;
         this.intFactory = intFactory;
-        bucketList = new MultiLinkedListInt( initialSize, initialSize );
+        bucketList = new MultiLinkedListInt( initialSize, initialSize, growthStrategy, intFactory );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
         keys = ArrayFactoryShort.defaultShortProvider.alloc( initialSize,
                                                                              IntValueConverter.shortFromInt( Const.NO_ENTRY ) );
@@ -95,18 +107,34 @@ public class HashSetShort implements CollectionShort
         this.loadFactorSize = ( int ) ( initialSize * loadFactor );
     }
 
+    /**
+     * Return the current size of the HashSet, the number of unique values.
+     *
+     * @return the size
+     */
     @Override
     public int getSize()
     {
         return size;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     */
     @Override
     public boolean isEmpty()
     {
         return size == 0;
     }
 
+    /**
+     * Does the Set contain <b>value</b>.
+     *
+     * @param value the value
+     * @return {@inheritDoc}
+     */
     @Override
     public boolean contains( short value )
     {
@@ -114,6 +142,7 @@ public class HashSetShort implements CollectionShort
         return inBucketList( bucket, value ) != Const.NO_ENTRY;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void clear()
     {
@@ -148,7 +177,24 @@ public class HashSetShort implements CollectionShort
         return keys[ entry ];
     }
 
-
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * <p>
+     * Inserting an item into the HashSet guarantees that if the item is already in the collection,
+     * this will not insert the item, and instead return the handle of the already inserted keys. This
+     * will satisfy the nature of a Set to contain only unique keys.
+     * </p>
+     * <p/>
+     * <p>The construct of this method allows for a quick check to see if an item exists in a HashSet. If
+     * one tries to insert an item, and the size does not change, then the item did exist in the Set. This
+     * will only perform the HashFunction once on the item, and heavy users of the HashSet will find this
+     * useful for performance reasons.
+     * </p>
+     *
+     * @param key the key to insert
+     * @return the handle to this key, whether already inserted or not
+     */
     @Override
     public int insert( short key )
     {
@@ -161,7 +207,9 @@ public class HashSetShort implements CollectionShort
         }
         entry = getNextEntry();
         keys[ entry ] = key;
-        bucketList.insert( bucket, entry );
+        bucketList.insert( bucket, entry );   // we insert the entry into the bucket list, this means that when
+        // we iterate over bucket, we get entries that will point to <b>keys</b>
+        // array
         size++;
         if( size == loadFactorSize )
         {
@@ -171,8 +219,10 @@ public class HashSetShort implements CollectionShort
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @param value the value to remove
-     * @return
+     * @return true if we removed the item, false otherwise
      */
     @Override
     public boolean remove( short value )
@@ -316,7 +366,7 @@ public class HashSetShort implements CollectionShort
         //grow keys and freelist to the exact size initially and copy them
         int keyLen = keys.length;
         int freeListLen = freeList.length;
-        target.keys = valFactory.ensureArrayCapacity(  target.keys, keyLen, GrowthStrategy.toExactSize );
+        target.keys = valFactory.ensureArrayCapacity( target.keys, keyLen, GrowthStrategy.toExactSize );
         target.freeList = intFactory.ensureArrayCapacity( target.freeList, freeListLen, GrowthStrategy.toExactSize );
         System.arraycopy( keys, 0, target.keys, 0, keyLen );
         System.arraycopy( freeList, 0, target.freeList, 0, freeListLen );
