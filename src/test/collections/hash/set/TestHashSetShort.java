@@ -96,6 +96,10 @@ public class TestHashSetShort
 
     }
 
+    /**
+     * Similar to test above, assert removing when many in same bucket doesnt trip up when removing first, last
+     * or middle
+     */
     @Test
     public void removeFromSameBucket()
     {
@@ -185,7 +189,9 @@ public class TestHashSetShort
 
     }
 
-    //When an item isnt in HashSet, should return false
+    /**
+     * Basic test, assert item returns false when not present (duh)
+     */
     @Test
     public void assertRemoveIsNotThereFalse()
     {
@@ -195,6 +201,9 @@ public class TestHashSetShort
 
     }
 
+    /**
+     * Test that after removing, next insert will use that vacated entry
+     */
     @Test
     public void freeListCompactNessTest()
     {
@@ -208,6 +217,9 @@ public class TestHashSetShort
 
     }
 
+    /**
+     * Remove enough items to have to grow the free list, and assert its contents
+     */
     @Test
     public void growFreeListTest()
     {
@@ -235,6 +247,9 @@ public class TestHashSetShort
 
     }
 
+    /**
+     * Test our clear method, that it will result in an empty set
+     */
     @Test
     public void clearTest()
     {
@@ -324,6 +339,8 @@ public class TestHashSetShort
         assertEquals( hashSet, copy );
 
     }
+
+
 
     /**
      * Test the equality of all state of the HashSet. If we are copying to a much larger set,

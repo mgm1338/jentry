@@ -2,32 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionBool.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionBool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionByte.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionByte.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionChar.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionChar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionCharSequence.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionCharSequence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionDouble.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionDouble.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionFloat.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionFloat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionInt.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionLong.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionLong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionObject.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/CollectionShort.java" afterPath="$PROJECT_DIR$/src/main/collections/CollectionShort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetByte.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetByte.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetChar.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetChar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetCharSequence.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetCharSequence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetDouble.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetDouble.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetFloat.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetFloat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetInt.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetLong.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetLong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetObject.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetShort.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSetShort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/core/NumberUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/collections/relationship/OneToMany.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/collections/relationship/TestOneToMany.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetByte.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetByte.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetChar.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetChar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetCharSequence.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetCharSequence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetDouble.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetDouble.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetFloat.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetFloat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetLong.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetLong.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetShort.java" afterPath="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetShort.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Jentry.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359324143762" ignored="false" />
+    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359325147999" ignored="false" />
     <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359324546917" ignored="false" />
     <file path="/MultiListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358453996485" ignored="false" />
     <file path="/TestMultiSLList.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359316347616" ignored="false" />
@@ -66,6 +58,11 @@
     <file path="/TestUtils.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359315689134" ignored="false" />
     <file path="/TestUtils_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359323730027" ignored="false" />
     <file path="/TestUtilsByte.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359323675253" ignored="false" />
+    <file path="/OneToMany.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359343984655" ignored="false" />
+    <file path="/TestOneToMany.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359342950261" ignored="false" />
+    <file path="/Numbers.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359345632921" ignored="false" />
+    <file path="/NumberUtil.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359345308573" ignored="false" />
+    <file path="/TestNumberUtil.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359345059603" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,7 @@
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_testDataLoad.coverage" NAME="TestMultiSLList.testDataLoad Coverage Results" MODIFIED="1355608111297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.list.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$All_in_Jentry.coverage" NAME="All in Jentry Coverage Results" MODIFIED="1358454388245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Jentry$All_in_Jentry.coverage" NAME="All in Jentry Coverage Results" MODIFIED="1359325163504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_removeMiddleFromLongList.coverage" NAME="TestMultiSLList.removeMiddleFromLongList Coverage Results" MODIFIED="1356207806028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.list.*</FILTER>
     </SUITE>
@@ -108,7 +105,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java" line="171" class="collections.hash.set.TestHashSetObject" package="collections.hash.set">
+      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java" line="186" class="collections.hash.set.TestHashSetObject" package="collections.hash.set">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -122,7 +119,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetChar.java" line="188" class="collections.hash.set.TestHashSetChar" package="collections.hash.set">
+      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetChar.java" line="203" class="collections.hash.set.TestHashSetChar" package="collections.hash.set">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -136,7 +133,21 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" line="189" class="collections.hash.set.TestHashSetInt" package="collections.hash.set">
+      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" line="204" class="collections.hash.set.TestHashSetInt" package="collections.hash.set">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java" line="28" class="core.array.growth.TestNumberUtil" package="core.array.growth">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -195,95 +206,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestMultiSLList.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/collections/util/TestMultiSLList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestUtils_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/util/TestUtils_KeyTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="77" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="109" selection-start="737" selection-end="737" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestUtilsBool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/util/TestUtilsBool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="48" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1359323747566" expanded="true" signature="141:248" placeholder="/**...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestUtilsByte.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/util/TestUtilsByte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestHashSetByte.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetByte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="322" column="37" selection-start="11793" selection-end="11793" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HashSetByte.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSetByte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="39" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1359325136177" expanded="true" signature="1331:1371" placeholder="/**...*/" />
-                <marker date="1359325136177" expanded="true" signature="7908:8018" placeholder="/**...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestHashSet_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSet_KeyTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="52" selection-start="5651" selection-end="5651" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HashSet_KeyTypeName_.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HashSet_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="222" column="65" selection-start="8071" selection-end="8071" vertical-scroll-proportion="0.171123">
+            <state line="236" column="15" selection-start="8476" selection-end="8476" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hasher.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/Hasher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="17" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HashFunctions.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="77" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OneToMany.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/OneToMany.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="76" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NumberUtil.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/core/NumberUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="48" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.68">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestOneToMany.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/collections/relationship/TestOneToMany.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="36" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestNumberUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReflectiveCallable.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../repo/junit/junit/4.8.1/junit-4.8.1.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="-6.8">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiLinkedListInt.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/collections/util/MultiLinkedListInt.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="267" column="34" selection-start="9309" selection-end="9309" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -292,7 +296,7 @@
       <file leaf-file-name="Collection_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="84" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0">
+            <state line="48" column="10" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -316,11 +320,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSetChar.java" />
-        <option value="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/Collection.java" />
-        <option value="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/util/MultiLinkedListInt.java" />
         <option value="$PROJECT_DIR$/src/test/util/ArrayUtil.java" />
         <option value="$PROJECT_DIR$/src/test/TestUtils.java" />
         <option value="$PROJECT_DIR$/src/test/util/TestUtils.java" />
@@ -332,6 +331,11 @@
         <option value="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSet_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/relationship/OneToMany.java" />
+        <option value="$PROJECT_DIR$/src/main/core/Numbers.java" />
+        <option value="$PROJECT_DIR$/src/test/collections/relationship/TestOneToMany.java" />
+        <option value="$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/core/NumberUtil.java" />
       </list>
     </option>
   </component>
@@ -466,6 +470,80 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="growth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="relationship" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -482,6 +560,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,62 +586,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="collections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="set" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -607,7 +633,7 @@
       <recent name="collections.hash" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.collections.hash.set in Jentry">
+  <component name="RunManager" selected="JUnit.TestNumberUtil.testPackingLongs">
     <configuration default="false" name="collections.hash.set in Jentry" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -640,68 +666,6 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Cover" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestMultiSLList.copyThenNullSource" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="collections.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Jentry" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="collections.util" />
-      <option name="MAIN_CLASS_NAME" value="collections.util.TestMultiSLList" />
-      <option name="METHOD_NAME" value="copyThenNullSource" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestMultiSLList.insertHalfCopy" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="collections.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Jentry" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="collections.util" />
-      <option name="MAIN_CLASS_NAME" value="collections.util.TestMultiSLList" />
-      <option name="METHOD_NAME" value="insertHalfCopy" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -759,6 +723,63 @@
       <envs />
       <patterns />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in Jentry" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <module name="Jentry" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestNumberUtil.testPackingLongs" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="core.array.growth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Jentry" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="core.array.growth" />
+      <option name="MAIN_CLASS_NAME" value="core.array.growth.TestNumberUtil" />
+      <option name="METHOD_NAME" value="testPackingLongs" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -855,18 +876,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.collections.hash.set in Jentry" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestMultiSLList.copyThenNullSource" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestMultiSLList.insertHalfCopy" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestMultiSLList" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestHashSet_KeyTypeName_.copyFromLargeSet" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestMultiSLList" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestHashSet_KeyTypeName_.copyFromLargeSet" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in Jentry" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestNumberUtil.testPackingLongs" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.collections.hash.set in Jentry" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestHashSet_KeyTypeName_.copyFromLargeSet" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestMultiSLList" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestMultiSLList.insertHalfCopy" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestMultiSLList.copyThenNullSource" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestNumberUtil.testPackingLongs" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in Jentry" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.collections.hash.set in Jentry" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestHashSet_KeyTypeName_.copyFromLargeSet" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestMultiSLList" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -940,7 +961,11 @@
       <created>1359324150902</created>
       <updated>1359324150902</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cleanup of commenting in HashSet">
+      <created>1359325153630</created>
+      <updated>1359325153630</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -951,21 +976,21 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14994664" sideWeight="0.30100334" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14994664" sideWeight="0.29654405" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36008918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32218507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14994664" sideWeight="0.3690078" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32218507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14994664" sideWeight="0.6956522" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16488793" sideWeight="0.57063407" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16755603" sideWeight="0.44554454" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16488793" sideWeight="0.67781496" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16488793" sideWeight="0.67558527" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1012,7 +1037,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done testing HashSet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup of commenting in HashSet" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1037,6 +1062,7 @@
     <MESSAGE value="Coded and commented for the copy, wrote out what tests should be, just need implementation." />
     <MESSAGE value="Changing HashSet test to add/remove with an offset away from zero (to verify that we dont get results around 0 that are unintended)&#10;&#10;Started adding Test Utils to complete HashSet tests" />
     <MESSAGE value="Done testing HashSet" />
+    <MESSAGE value="Cleanup of commenting in HashSet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1067,66 +1093,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/collections/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="766" selection-end="766" vertical-scroll-proportion="0.6245695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="62" selection-start="4624" selection-end="4624" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/GrowthStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactoryInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="0" selection-start="5242" selection-end="5242" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/util/MultiLinkedListInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="80" selection-start="4528" selection-end="4528" vertical-scroll-proportion="-5.993111">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/EqualityFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="44" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="109" selection-start="737" selection-end="737" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/util/TestUtilsBool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="48" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1359323747566" expanded="true" signature="141:248" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/util/TestUtils_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="77" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
@@ -1149,24 +1115,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1359323747570" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetByte.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="322" column="37" selection-start="11793" selection-end="11793" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="338" column="37" selection-start="12300" selection-end="12300" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1359325136215" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="136" column="52" selection-start="5651" selection-end="5651" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1174,22 +1141,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="39" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1359325136177" expanded="true" signature="1331:1371" placeholder="/**...*/" />
-            <marker date="1359325136177" expanded="true" signature="7908:8018" placeholder="/**...*/" />
+            <marker date="1359325136177" expanded="true" signature="-1:-1" placeholder="/**...*/" />
+            <marker date="1359325136177" expanded="true" signature="-1:-1" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/collections/Collection_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="84" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0">
+        <state line="48" column="10" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="65" selection-start="8071" selection-end="8071" vertical-scroll-proportion="0.171123">
+        <state line="236" column="15" selection-start="8476" selection-end="8476" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/Hasher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/hash/HashFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="77" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/util/MultiLinkedListInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="267" column="34" selection-start="9309" selection-end="9309" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/OneToMany.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="76" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/collections/relationship/TestOneToMany.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="36" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../repo/junit/junit/4.8.1/junit-4.8.1.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="-6.8">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/core/NumberUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="48" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.68">
           <folding />
         </state>
       </provider>
