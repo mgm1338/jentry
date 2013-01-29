@@ -27,13 +27,13 @@ public class NumberUtil
      */
     public final static long packLong( int left, int right )
     {
-        return  ( (long)left << 32 ) | ((long)right & mask );
+        return ( ( long ) left << 32 ) | ( ( long ) right & mask );
     }
 
     /**
      * In a long, compose an int from the 4 left bytes. Normally used in conjunction with
      * {@link #packLong(int, int)}  and {@link #getRight(long)}. Visually return the 4 Ls
-     * from
+     * from LLLLRRRR where each letter is a byte.
      *
      * @param l the long
      * @return the int making up the first 4 bytes.
@@ -43,6 +43,14 @@ public class NumberUtil
         return ( int ) ( l >> 32 );
     }
 
+    /**
+     * In a long, compose and return an int from the right 4 bytes. Normally used
+     * in conjunction with {@link #packLong(int, int)} and {@link #getRight(long)} .Visually returns the
+     * 4 R bytes from a long or LLLLRRRR where each letter represents a byte.
+     *
+     * @param l the long
+     * @return an int composed of the last 4 bytes.
+     */
     public final static int getRight( long l )
     {
         return ( int ) ( l & mask );
