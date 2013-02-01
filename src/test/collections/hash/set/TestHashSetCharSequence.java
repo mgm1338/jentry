@@ -349,7 +349,7 @@ public class TestHashSetCharSequence
      * @param expected expected results
      * @param actual what we actually have
      */
-    protected void assertEquals(HashSetCharSequence expected, HashSetCharSequence actual)
+    public static  void assertEquals(HashSetCharSequence expected, HashSetCharSequence actual)
     {
         TestUtilsCharSequence.assertArrayContentsToLen( expected.keys, actual.keys, expected.keys.length );
         TestUtilsInt.assertArrayContentsEqual( expected.freeList, actual.freeList );

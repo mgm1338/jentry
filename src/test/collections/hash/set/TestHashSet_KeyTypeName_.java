@@ -349,7 +349,7 @@ public class TestHashSet_KeyTypeName_
      * @param expected expected results
      * @param actual what we actually have
      */
-    protected void assertEquals(HashSet_KeyTypeName_ expected, HashSet_KeyTypeName_ actual)
+    public static  void assertEquals(HashSet_KeyTypeName_ expected, HashSet_KeyTypeName_ actual)
     {
         TestUtils_KeyTypeName_.assertArrayContentsToLen( expected.keys, actual.keys, expected.keys.length );
         TestUtilsInt.assertArrayContentsEqual( expected.freeList, actual.freeList );
