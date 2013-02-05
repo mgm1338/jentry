@@ -22,12 +22,9 @@ public class ByteSlice
 
     protected byte[] array;
     protected int[] startIdx;
-    protected int[] lens;
 
     protected int curPtr = 0;
     protected int size;
-    protected int[] freeList;
-    protected int freeListPtr = 0;
 
 
     public ByteSlice( int numSlices, int bytesLength )
@@ -45,22 +42,25 @@ public class ByteSlice
         this.growthStrategy = growthStrategy;
         array = arrayFactoryByte.alloc( bytesLength );
         startIdx = arrayFactoryInt.alloc( numSlices );
-        lens = arrayFactoryInt.alloc( numSlices );
-        freeList = arrayFactoryInt.alloc( DEFAULT_FREE_LIST_SIZE );
     }
 
-    protected int preInsert()
+    /**
+     * Get the next entry to insert the slice. This will check the size of the array that holds the ptrs
+     * to the starts of the slices.
+     *
+     * @return the next free entry, either a vacated spot or next open slot.
+     */
+    protected int getNextEntry()
     {
-        int entry = getNextEntry();
+        int entry = size;
         int minSize = entry + 1;
         startIdx = arrayFactoryInt.ensureArrayCapacity( startIdx, minSize, growthStrategy );
-        lens = arrayFactoryInt.ensureArrayCapacity( lens, minSize, growthStrategy );
         return entry;
     }
 
     public int insert( CharSequence s )
     {
-        int entry = preInsert();
+        int entry = getNextEntry();
         startIdx[ entry ] = curPtr;
         int len = s.length();
         array = arrayFactoryByte.ensureArrayCapacity( array, curPtr + len, growthStrategy );
@@ -68,42 +68,28 @@ public class ByteSlice
         {
             array[ curPtr++ ] = ( byte ) s.charAt( i );
         }
-        lens[ entry ] = len;
         return entry;
     }
 
-    private int getNextEntry()
-    {
-        if( freeListPtr == 0 )
-        {
-            return size;
-        }
-        else
-        {
-            return freeList[ freeListPtr-- ];
-        }
-    }
 
     public int insert( byte[] bytes )
     {
-        int entry = preInsert();
+        int entry = getNextEntry();
         startIdx[ entry ] = curPtr;
         int len = bytes.length;
         array = arrayFactoryByte.ensureArrayCapacity( array, curPtr + len, growthStrategy );
         System.arraycopy( bytes, 0, array, curPtr, len );
         curPtr += len;
-        lens[ entry ] = len;
         return entry;
     }
 
     public int insert( byte[] bytes, int offset, int len )
     {
-        int entry = preInsert();
+        int entry = getNextEntry();
         startIdx[ entry ] = curPtr;
         array = arrayFactoryByte.ensureArrayCapacity( array, curPtr + len, growthStrategy );
         System.arraycopy( bytes, offset, array, curPtr, len );
         curPtr += len;
-        lens[ entry ] = len;
         return entry;
     }
 
