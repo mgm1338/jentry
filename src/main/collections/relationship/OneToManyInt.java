@@ -8,6 +8,8 @@ import core.NumberUtil;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 
+import java.util.Arrays;
+
 /**
  * Copyright 1/27/13
  * All rights reserved.
@@ -95,6 +97,7 @@ public class OneToManyInt implements Collection
     protected final GrowthStrategy growthStrategy;
     /** Factory used to allocate and grow the int arrays */
     protected final ArrayFactoryInt intFactory;
+    private static final int DEFAULT_REL_SIZE = 2;
 
     /** HashSet of longs that will hold the associations of the OneToMany */
     protected HashSetLong associations;
@@ -144,8 +147,9 @@ public class OneToManyInt implements Collection
         {
             leftCounts = intFactory.alloc( initialLefts );
         }
-        lefts = intFactory.alloc( initialLefts );
-        leftNexts = intFactory.alloc( initialAssociations );
+        lefts = intFactory.alloc( initialLefts, Const.NO_ENTRY );
+        leftNexts = intFactory.alloc( initialAssociations, Const.NO_ENTRY );
+        associations = new HashSetLong( initialAssociations );
 
     }
 
@@ -169,7 +173,13 @@ public class OneToManyInt implements Collection
     public int associate( int left, int right )
     {
         long composed = NumberUtil.packLong( left, right );
+        int preSize = associations.getSize();
         int handle = associations.insert( composed );
+        if (associations.getSize()==preSize) //this checks to see if we inserted without re-hashing, if we did not
+        //insert, simple return the handle
+        {
+            return handle;
+        }
         lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy );
         if( countLefts )
         {
@@ -187,12 +197,22 @@ public class OneToManyInt implements Collection
         }
         else
         {
-            testInsert = leftNexts[ handle ]; //cycle through leftNexts
-            while( leftNexts[ testInsert ] != Const.NO_ENTRY )
+            int prev = testInsert;
+            testInsert = leftNexts[ testInsert ]; //cycle through leftNexts
+            if (testInsert==Const.NO_ENTRY)
             {
-                testInsert = leftNexts[ handle ];
+                leftNexts[ prev ] = handle;
+
             }
-            leftNexts[ testInsert ] = handle;
+            else
+            {
+                while (testInsert!=Const.NO_ENTRY)
+                {
+                    prev = testInsert;
+                    testInsert = leftNexts[testInsert];
+                }
+                leftNexts[prev] = handle;
+            }
         }
         size++;
         return handle;
@@ -217,20 +237,27 @@ public class OneToManyInt implements Collection
     @Override
     public boolean isEmpty()
     {
-        return size==0;
+        return size == 0;
     }
 
     /** Clear the collection, empty out all of its contents. */
     @Override
     public void clear()
     {
-
+        associations.clear();
+        Arrays.fill( lefts, Const.NO_ENTRY );
+        Arrays.fill( leftNexts, Const.NO_ENTRY );
+        size = 0;
+        if( countLefts )
+        {
+            Arrays.fill( leftCounts, 0 );
+        }
     }
 
     /**
      * Check if two numbers are associated. Simple check against HashSetLong.
      *
-     * @param left left to check
+     * @param left  left to check
      * @param right right to check
      * @return true if associated, false otherwise
      */
@@ -245,17 +272,18 @@ public class OneToManyInt implements Collection
      * desired right, requiring the previous entry, as well as the left. If we are just starting to iterate, the
      * <b>prevEntry</b> should be Const.NO_ENTRY.
      * </p>
+     *
      * @param left
      * @param prevEntry
      * @return
      */
     public int getNextRightEntry( int left, int prevEntry )
     {
-       if (prevEntry==Const.NO_ENTRY)
-       {
-           return lefts[left];
-       }
-       return leftNexts[prevEntry];
+        if( prevEntry == Const.NO_ENTRY )
+        {
+            return lefts[ left ];
+        }
+        return leftNexts[ prevEntry ];
     }
 
     /**
@@ -266,7 +294,7 @@ public class OneToManyInt implements Collection
      */
     public int getRight( int entry )
     {
-        return NumberUtil.getRight( associations.get( entry ));
+        return NumberUtil.getRight( associations.get( entry ) );
     }
 
     /**
@@ -277,41 +305,117 @@ public class OneToManyInt implements Collection
      */
     public int getLeft( int entry )
     {
-        return NumberUtil.getLeft( associations.get( entry ));
+        return NumberUtil.getLeft( associations.get( entry ) );
     }
 
-    /**
-     * For a given left, return the values of the right in the target array.
-     *
-     * @param left
-     * @param target
-     * @return
-     */
-    public int[] getAllRightAssociations( int left, int[] target )
-    {
-        return null;
-    }
 
     /**
-     * For a given left, return the values of the right in the target array.
+     * For a given left, return the values of the right in the target array. If the target array
+     * is null, then we will return an array that is completely full of associations. If the array
+     * is larger than the number of associations (or if our growth strategy grows the array past that number),
+     * then we will mark the end of the associations with the <b>mark</b> passed.
      *
-     * @param left
-     * @param target
-     * @return
+     * @param left   the left that we would like to get the associations for
+     * @param target the target array
+     * @return the target array that contains all the associations for a left.
      */
     public int[] getAllRightAssociations( int left, int[] target, int mark )
     {
-        return null;
+        if (countLefts)
+        {
+            int len = leftCounts[left];
+            if (target == null || target.length<len)
+            {
+                target = intFactory.alloc( len );
+            }
+        }
+        if( target == null )
+        {
+            target = intFactory.alloc( DEFAULT_REL_SIZE );
+        }
+        int entry = getNextRightEntry( left, Const.NO_ENTRY );
+        int ct =0;
+        if( countLefts ) //we know we have perfectly sized array
+        {
+            while( entry != Const.NO_ENTRY )
+            {
+                target[ ct++ ] = getRight( entry );
+                entry = getNextRightEntry( left, entry );
+            }
+        }
+        else   //must ensure capacity and add mark
+        {
+            while( entry != Const.NO_ENTRY )
+            {
+                intFactory.ensureArrayCapacity( target, ct + 1, growthStrategy );
+                target[ ct++ ] = getRight( entry );
+                entry = getNextRightEntry( left, entry );
+            }
+        }
+        if( ct < target.length )
+        {
+            target[ ct ] = mark;
+        }
+        return target;
     }
 
     public boolean disassociate( int left, int right )
     {
+        long val = NumberUtil.packLong( left, right );
+        int entry = associations.getEntry( NumberUtil.packLong( left, right ) );
+        //check existence, return false if doesnt
+        if( entry == Const.NO_ENTRY )
+        {
+            return false;
+        }
+        associations.remove( val );
+        size--;
+        if (countLefts)
+        {
+            leftCounts[left]--;
+        }
+
+        //remove from linked list
+        int next;
+        int testEntry = lefts[ left ];
+        if( testEntry == entry ) //removing first
+        {
+            next = leftNexts[testEntry];
+            if (next!=Const.NO_ENTRY)
+            //switch left to the next item, mark the next with Const.NO_ENTRY. The left will
+            //correctly point to the correct next, if any
+            {
+                lefts[left] = next;
+                leftNexts[testEntry] = Const.NO_ENTRY;
+            }
+            return true;
+        }
+        //not first entry, start cycling leftNexts array
+        testEntry = leftNexts[testEntry];
+        while (testEntry!=entry)
+        {
+            testEntry = leftNexts[testEntry];
+        }
+        next = leftNexts[testEntry];
+        leftNexts[testEntry] = next;
+        if (next!=Const.NO_ENTRY)
+        {
+            leftNexts[next] = Const.NO_ENTRY;
+        }
         return true;
     }
 
     public int getCountForLeft( int left )
     {
-        return 0;
+        if( countLefts ) return leftCounts[ left ];
+        int entry = getNextRightEntry( left, Const.NO_ENTRY );
+        int ct = 0;
+        while( entry != Const.NO_ENTRY )
+        {
+            ct++;
+            entry = getNextRightEntry( left, entry );
+        }
+        return ct;
     }
 
     public OneToManyInt copy( OneToManyInt target )
