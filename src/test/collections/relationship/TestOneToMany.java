@@ -47,6 +47,52 @@ public class TestOneToMany
 
         TestCase.assertEquals(  3, oneToManyInt.getCountForLeft( 2 ) );
         TestCase.assertEquals(  3, oneToManyInt.getCountForLeft( 1 ) );
+        TestCase.assertEquals(  0, oneToManyInt.getCountForLeft( 4 ) );
+
+
+
+        //assert all associated
+        TestCase.assertTrue( oneToManyInt.isAssociated( 2, 5 ) );
+        TestCase.assertTrue( oneToManyInt.isAssociated( 2, 8 ) );
+        TestCase.assertTrue( oneToManyInt.isAssociated( 2, 9 ) );
+        TestCase.assertTrue( oneToManyInt.isAssociated( 1, 2 ) );
+        TestCase.assertTrue( oneToManyInt.isAssociated( 1, 3 ) );
+        TestCase.assertTrue( oneToManyInt.isAssociated( 1, 4 ) );
+
+        //a false for each
+        TestCase.assertFalse( oneToManyInt.isAssociated( 2, 2 ) );
+        TestCase.assertFalse( oneToManyInt.isAssociated( 1, 9 ) );
+    }
+
+
+    //same as above EXCEPT constructs new structure that doesnt track
+    @Test
+    public void simpleAssociateNoTracking()
+    {
+
+        oneToManyInt = new OneToManyInt( 8, 16, false );
+        TestCase.assertEquals( 0, oneToManyInt.getSize() );
+        TestCase.assertEquals( 0, oneToManyInt.associate( 2, 5 ) );
+        TestCase.assertFalse( oneToManyInt.isEmpty() );
+        TestCase.assertEquals( 1, oneToManyInt.associate( 2, 8 ) );
+        TestCase.assertEquals( 2, oneToManyInt.associate( 2, 9 ) );
+
+        //repeat
+        TestCase.assertEquals( 0, oneToManyInt.associate( 2, 5 ) );
+        TestCase.assertEquals( 3, oneToManyInt.getSize() );
+
+        TestCase.assertEquals( 3, oneToManyInt.associate( 1, 2 ) );
+        TestCase.assertEquals( 4, oneToManyInt.associate( 1, 3 ) );
+        TestCase.assertEquals( 5, oneToManyInt.associate( 1, 4 ) );
+
+        TestCase.assertEquals( 1, oneToManyInt.getLeft( oneToManyInt.associate( 1, 2 ) ) );
+        TestCase.assertEquals( 1, oneToManyInt.getLeft( oneToManyInt.associate( 1, 3 ) ) );
+        TestCase.assertEquals( 1, oneToManyInt.getLeft( oneToManyInt.associate( 1, 4 ) ) );
+
+        TestCase.assertEquals(  3, oneToManyInt.getCountForLeft( 2 ) );
+        TestCase.assertEquals(  3, oneToManyInt.getCountForLeft( 1 ) );
+        TestCase.assertEquals(  0, oneToManyInt.getCountForLeft( 4 ) );
+
 
 
         //assert all associated
@@ -69,7 +115,7 @@ public class TestOneToMany
     @Test
     public void iterateRightsForLeft()
     {
-        simpleAssociate();
+        simpleAssociateNoTracking();
 
         int entry = Const.NO_ENTRY;
         int[] rights = new int[ 3 ];
@@ -85,8 +131,8 @@ public class TestOneToMany
         TestCase.assertEquals(  8, rights[ 1 ] );
         TestCase.assertEquals(  9, rights[ 2 ] );
 
-        TestUtilsInt.assertArrayContentsEqual( rights, oneToManyInt.getAllRightAssociations( 2, new int[3],
-                                                                                             Const.NO_ENTRY ) );
+        TestUtilsInt.assertArrayContentsToLen( rights, oneToManyInt.getAllRightAssociations( 2, null,
+                                                                                             Const.NO_ENTRY ), 3 );
     }
 
     /** Assert that we will grow an array that is one off holding the set of associations */
@@ -135,11 +181,21 @@ public class TestOneToMany
         //remove 3 (middle item) first
         TestCase.assertTrue( oneToManyInt.disassociate( 1, 3 ) );
         TestCase.assertFalse( oneToManyInt.disassociate( 1, 3 ) );
-        rights = oneToManyInt.getAllRightAssociations( 1, new int[2], Const.NO_ENTRY );
+        rights = oneToManyInt.getAllRightAssociations( 1, null, Const.NO_ENTRY );
         TestCase.assertEquals(  2, rights[ 0 ] );
         TestCase.assertEquals(  4, rights[ 1 ] );
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 2 ), 0 );
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 1 ), 2 );
+
+        oneToManyInt.clear();
+        simpleAssociate();
+        //remove 3 (last item) first
+        TestCase.assertTrue( oneToManyInt.disassociate( 1, 4 ) );
+        TestCase.assertFalse( oneToManyInt.disassociate( 1, 4 ) );
+        rights = oneToManyInt.getAllRightAssociations( 1, null, Const.NO_ENTRY );
+        TestCase.assertEquals(  2, rights[ 0 ] );
+        TestCase.assertEquals(  3, rights[ 1 ] );
+
 
     }
 
@@ -157,7 +213,7 @@ public class TestOneToMany
         TestUtilsInt.assertArrayContentsEqual( newOneToManyInt.getAllRightAssociations( 1, new int[ 4 ], Const.NO_ENTRY ),
                                oneToManyInt.getAllRightAssociations( 1, new int[ 4 ], Const.NO_ENTRY ) );
         TestUtilsInt.assertArrayContentsEqual( newOneToManyInt.getAllRightAssociations( 2, new int[ 4 ], Const.NO_ENTRY ),
-                               oneToManyInt.getAllRightAssociations( 2, new int[ 4 ], Const.NO_ENTRY ) );
+                                               oneToManyInt.getAllRightAssociations( 2, new int[ 4 ], Const.NO_ENTRY ) );
         TestCase.assertTrue( oneToManyInt.getSize() == 0 );
 
     }

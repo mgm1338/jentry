@@ -107,8 +107,8 @@ public class OneToManyInt implements Collection
     protected int[] leftNexts;
     /** An optional parallel array that will track the count of the associations for each left */
     protected int[] leftCounts = null;
-    /** By default, we do not use this array */
-    protected final boolean countLefts;
+    /** Whether we keep track of the counts per left or not, Note: not editable after construction */
+    protected boolean countLefts;
     /** Associations size tracker */
     protected int size = 0;
 
@@ -347,7 +347,7 @@ public class OneToManyInt implements Collection
         {
             while( entry != Const.NO_ENTRY )
             {
-                intFactory.ensureArrayCapacity( target, ct + 1, growthStrategy );
+                target = intFactory.ensureArrayCapacity( target, ct + 1, growthStrategy );
                 target[ ct++ ] = getRight( entry );
                 entry = getNextRightEntry( left, entry );
             }
@@ -420,8 +420,43 @@ public class OneToManyInt implements Collection
         return ct;
     }
 
+    /**
+     * Creates a deep copy of this OneToMany by copying all of its attributes to the target. If the target is null,
+     * then this method will create a new HashSet to copy all of its attributes to. Note that if it is not null,
+     * all final attributes (Growth Strategy and IntFactory) cannot be copied.
+     *
+     * @param target the target HashSet, may be null
+     * @return the deep copy of this
+     */
     public OneToManyInt copy( OneToManyInt target )
     {
-        return null;
+        int leftLen = lefts.length;
+        if (target == null)
+        {
+            target = new OneToManyInt( leftLen, associations.getSize(), this.countLefts, growthStrategy, intFactory );
+        }
+        target.associations = associations.copy( target.associations );
+        if (countLefts )     //cannot change counting
+        {
+            if (!target.countLefts)  //if we didnt count, need to creat array
+            {
+                target.leftCounts = target.intFactory.alloc( leftLen );
+                target.countLefts = true;
+
+            }
+            else  //just make sure same size
+            {
+                target.leftCounts = intFactory.ensureArrayCapacity( target.leftCounts, leftLen, GrowthStrategy.toExactSize );
+            }
+            System.arraycopy( leftCounts, 0, target.leftCounts, 0, leftLen );
+        }
+        target.lefts =  intFactory.ensureArrayCapacity( target.lefts, leftLen, GrowthStrategy.toExactSize );
+        System.arraycopy( lefts, 0, target.lefts, 0, leftLen );
+
+        int nextLen = leftNexts.length;
+        target.leftNexts =  intFactory.ensureArrayCapacity( target.leftNexts, nextLen, GrowthStrategy.toExactSize );
+        System.arraycopy( leftNexts, 0, target.leftNexts, 0, nextLen );
+        target.size = size;
+        return target;
     }
 }
