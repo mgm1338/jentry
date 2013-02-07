@@ -89,7 +89,7 @@ public class TestHashSetInt
             TestCase.assertTrue( hashSet.contains( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) ) );
 
         }
-        TestCase.assertEquals( hashSet.getSize(), TEST_SIZE );
+        TestCase.assertEquals( TEST_SIZE, hashSet.getSize() );
         TestCase.assertEquals( TEST_SIZE, hashSet.bucketList.getSize() );
         TestCase.assertEquals( TEST_SIZE, hashSet.bucketList.getList( 0, null, false ).length );
 
@@ -107,14 +107,14 @@ public class TestHashSetInt
 
         sameBucketTest();
         hashSet.remove( IntValueConverter.intFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
+        TestCase.assertEquals( TEST_SIZE - 1, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( 0 + OFFSET_FROM_ZERO ) ) == Const.NO_ENTRY );
         TestCase.assertFalse( hashSet.contains( IntValueConverter.intFromInt( 0 + OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
         hashSet.remove( IntValueConverter.intFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ); //remove last
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
+        TestCase.assertEquals( TEST_SIZE - 1, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertFalse( hashSet.contains( IntValueConverter.intFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ) );
@@ -122,7 +122,7 @@ public class TestHashSetInt
 
         sameBucketTest(); //reprime
         hashSet.remove( IntValueConverter.intFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ); //remove middle
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
+        TestCase.assertEquals( TEST_SIZE - 1, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertFalse( hashSet.contains( IntValueConverter.intFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ) );
@@ -131,14 +131,14 @@ public class TestHashSetInt
         sameBucketTest();
         //remove all three
         hashSet.remove( IntValueConverter.intFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 1 );
+        TestCase.assertEquals( TEST_SIZE - 1, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( 0 + OFFSET_FROM_ZERO ) ) == Const.NO_ENTRY );
         hashSet.remove( IntValueConverter.intFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) ); //remove last
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 2 );
+        TestCase.assertEquals( TEST_SIZE - 2, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
-        hashSet.remove( IntValueConverter.intFromInt( TEST_SIZE / 2+OFFSET_FROM_ZERO ) ); //remove middle
-        TestCase.assertEquals( hashSet.size, TEST_SIZE - 3 );
+        hashSet.remove( IntValueConverter.intFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) ); //remove middle
+        TestCase.assertEquals( TEST_SIZE - 3, hashSet.size );
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
 
@@ -161,7 +161,7 @@ public class TestHashSetInt
         for( int i = 0; i < TEST_SIZE; i++ )
         {
             TestCase.assertTrue( hashSet.remove( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) ) );
-            TestCase.assertEquals( hashSet.getSize(), ( TEST_SIZE - i - 1 ) );
+            TestCase.assertEquals( ( TEST_SIZE - i - 1 ), hashSet.getSize() );
             TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) )
                                  == Const.NO_ENTRY );
         }
@@ -189,9 +189,7 @@ public class TestHashSetInt
 
     }
 
-    /**
-     * Basic test, assert item returns false when not present (duh)
-     */
+    /** Basic test, assert item returns false when not present (duh) */
     @Test
     public void assertRemoveIsNotThereFalse()
     {
@@ -201,9 +199,7 @@ public class TestHashSetInt
 
     }
 
-    /**
-     * Test that after removing, next insert will use that vacated entry
-     */
+    /** Test that after removing, next insert will use that vacated entry */
     @Test
     public void freeListCompactNessTest()
     {
@@ -217,9 +213,7 @@ public class TestHashSetInt
 
     }
 
-    /**
-     * Remove enough items to have to grow the free list, and assert its contents
-     */
+    /** Remove enough items to have to grow the free list, and assert its contents */
     @Test
     public void growFreeListTest()
     {
@@ -247,9 +241,7 @@ public class TestHashSetInt
 
     }
 
-    /**
-     * Test our clear method, that it will result in an empty set
-     */
+    /** Test our clear method, that it will result in an empty set */
     @Test
     public void clearTest()
     {
@@ -269,7 +261,7 @@ public class TestHashSetInt
 
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals( hashSet.get( i ), IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) );
+            TestCase.assertEquals( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ), hashSet.get( i ) );
         }
         //clear
         hashSet.clear();
@@ -314,9 +306,7 @@ public class TestHashSetInt
         assertEquals( hashSet, copy );
     }
 
-    /**
-     * Copy to a larger HashSet
-     */
+    /** Copy to a larger HashSet */
     @Test
     public void copyToLargerSet()
     {
@@ -327,9 +317,7 @@ public class TestHashSetInt
     }
 
 
-    /**
-     * Copy to a smaller set
-     */
+    /** Copy to a smaller set */
     @Test
     public void copyFromSmaller()
     {
@@ -341,22 +329,21 @@ public class TestHashSetInt
     }
 
 
-
     /**
      * Test the equality of all state of the HashSet. If we are copying to a much larger set,
      * we will assert up to the expected results. If copying from smaller, we expect it to grow.
      *
      * @param expected expected results
-     * @param actual what we actually have
+     * @param actual   what we actually have
      */
-    public static  void assertEquals(HashSetInt expected, HashSetInt actual)
+    public static void assertEquals( HashSetInt expected, HashSetInt actual )
     {
         TestUtilsInt.assertArrayContentsToLen( expected.keys, actual.keys, expected.keys.length );
         TestUtilsInt.assertArrayContentsEqual( expected.freeList, actual.freeList );
         TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
-        TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize);
-        TestCase.assertEquals( expected.getSize(), actual.getSize());
-        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry());
+        TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize );
+        TestCase.assertEquals( expected.getSize(), actual.getSize() );
+        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry() );
 
     }
 

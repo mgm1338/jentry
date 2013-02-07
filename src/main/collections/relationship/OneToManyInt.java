@@ -388,20 +388,22 @@ public class OneToManyInt implements Collection
                 lefts[left] = next;
                 leftNexts[testEntry] = Const.NO_ENTRY;
             }
+            else
+            {
+                lefts[left] = Const.NO_ENTRY;
+            }
             return true;
         }
         //not first entry, start cycling leftNexts array
+        int prev = testEntry;
         testEntry = leftNexts[testEntry];
         while (testEntry!=entry)
         {
+            prev = testEntry;
             testEntry = leftNexts[testEntry];
         }
         next = leftNexts[testEntry];
-        leftNexts[testEntry] = next;
-        if (next!=Const.NO_ENTRY)
-        {
-            leftNexts[next] = Const.NO_ENTRY;
-        }
+        leftNexts[prev] = next;
         return true;
     }
 

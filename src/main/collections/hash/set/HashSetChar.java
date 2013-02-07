@@ -239,6 +239,7 @@ public class HashSetChar implements CollectionChar
         return true;
     }
 
+
     /**
      * <p>When we hit the load factor, we double our bucket size and
      * rehash the items in the collection. Notice that this does

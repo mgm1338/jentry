@@ -286,6 +286,7 @@ public class MultiLinkedListInt implements Collection
                 if( nextOfNext != Const.NO_ENTRY )
                 {
                     nexts[ testIdx ] = nextOfNext;
+                    nexts[next] = Const.NO_ENTRY;
                 }
                 else
                 {

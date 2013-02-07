@@ -447,4 +447,28 @@ public class TestMultiSLList
     }
 
 
+    //This is where we keep inserting (which prepends), and then immediately remove it.
+    //Found a bug where 2 items later, the chain was leaving stuff around
+    @Test
+    public void removeFromHeadOverAndOver()
+    {
+        MultiLinkedListInt newDataLoadedList = new MultiLinkedListInt( 3, 6 );
+        for (int i=0; i<600; i++)
+        {
+            newDataLoadedList.insert( 0, i );
+            newDataLoadedList.remove( 0, i );
+            newDataLoadedList.insert( 0, i );
+        }
+
+        TestCase.assertEquals( 600, newDataLoadedList.getSize() );
+
+        int[] list = newDataLoadedList.getList( 0, null, false );
+        //with the prepending, we assume that the items are added backwards, so that iterating will get 599-0
+        for (int i=0; i<600; i++)
+        {
+            TestCase.assertEquals( 599-i, list[i] );
+        }
+    }
+
+
 }
