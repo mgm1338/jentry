@@ -14,7 +14,7 @@ import util.TestUtilsInt;
  * User: Max Miller
  * Created: 1/27/13
  */
-public class TestOneToMany
+public class TestOneToManyInt
 {
 
     OneToManyInt oneToManyInt;
