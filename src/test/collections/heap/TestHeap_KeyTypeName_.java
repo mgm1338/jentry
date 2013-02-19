@@ -1,7 +1,7 @@
 package collections.heap;
 
 import core.stub.IntValueConverter;
-import core.stub._key_;
+import core.stub.*;
 import core.util.comparator.Comparator_KeyTypeName_;
 import core.util.comparator.Comparators;
 import junit.framework.TestCase;
@@ -21,6 +21,7 @@ public class TestHeap_KeyTypeName_
 
     private static final int TEST_SIZE = 5;
     Heap_KeyTypeName_ heap;
+    boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     @Before
     public void setup ()
@@ -31,6 +32,7 @@ public class TestHeap_KeyTypeName_
     @Test
     public void testInsertCompact ()
     {
+        if (template) return;
         TestCase.assertTrue (heap.isEmpty ());
         TestCase.assertEquals (0, heap.getSize ());
 
@@ -52,6 +54,7 @@ public class TestHeap_KeyTypeName_
     @Test
     public void testReverseInsertionCorrectOrder ()
     {
+        if (template) return;
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
@@ -63,6 +66,7 @@ public class TestHeap_KeyTypeName_
     @Test
     public void testRandomInsertionCorrectOrder ()
     {
+        if (template) return;
         Random random = new Random (42);
         for (int i = 0; i < TEST_SIZE; i++)
         {
@@ -74,10 +78,11 @@ public class TestHeap_KeyTypeName_
     @Test
     public void testBackwardsWithDoubleGrowth ()
     {
+        if (template) return;
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (TEST_SIZE - i)));
+                                   heap.insert (IntValueConverter._key_FromInt (24 - i)));
         }
         TestCase.assertEquals (heap.keys.length, 32);
         TestCase.assertEquals (heap.tree.length, 32);
@@ -89,6 +94,7 @@ public class TestHeap_KeyTypeName_
     @Test
     public void testRandomWithDoubleGrowth ()
     {
+        if (template) return;
         Random random = new Random (42);
         for (int i = 0; i < 24; i++)
         {
@@ -105,6 +111,7 @@ public class TestHeap_KeyTypeName_
     @Test
     public void manyWithSameOneHigher ()
     {
+        if (template) return;
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
@@ -112,32 +119,32 @@ public class TestHeap_KeyTypeName_
         }
 
         heap.insert (IntValueConverter._key_FromInt (5));
-        TestCase.assertEquals (IntValueConverter._key_FromInt (5), heap.peek ());
+        TestCase.assertEquals (IntValueConverter._key_FromInt (4), heap.peek ());
         TestCase.assertEquals (25, heap.getSize ());
+        for (int i = 0; i < 24; i++)
+        {
+            heap.removeTop ();
+        }
+        TestCase.assertEquals (IntValueConverter._key_FromInt (5), heap.peek ());
     }
 
     @Test
     public void manyWithSameOneLower ()
     {
+        if (template) return;
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
                                    heap.insert (IntValueConverter._key_FromInt (4)));
         }
-
         heap.insert (IntValueConverter._key_FromInt (3));
-
-        for (int i = 0; i < 24; i++)
-        {
-            heap.removeTop ();
-        }
         TestCase.assertEquals (IntValueConverter._key_FromInt (3), heap.peek ());
-        TestCase.assertEquals (1, heap.getSize ());
     }
 
     @Test
     public void fullRemoval ()
     {
+        if (template) return;
         testRandomWithDoubleGrowth ();
         while (!heap.isEmpty ())
         {
@@ -153,6 +160,7 @@ public class TestHeap_KeyTypeName_
 
     protected void assertInAscOrder (Heap_KeyTypeName_ heap)
     {
+        if (template) return;
         _key_[] collected = new _key_[heap.getSize ()];
         int ct = 0;
         while (!heap.isEmpty ())

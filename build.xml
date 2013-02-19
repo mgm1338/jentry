@@ -24,12 +24,16 @@
                                package="test\collections\hash\set"/>
         <generateSpecificTypes fileBase="TestUtils"
                                package="test\util"/>
+        <generateSpecificTypes fileBase="TestHeap"
+                               package="test\collections\heap"/>
 
          <!--KEY VALS-->
         <!--<generateKeyValTypes fileBase="Heap" package="main\collections\heap" />-->
 
         <!--DELETE BOOLEAN HASH SET-->
         <delete file="main\collections\hash\set\HashSetBool.java"/>
+        <delete file="main\collections\heap\HeapBool.java"/>
+        <delete file="test\collections\heap\TestHeapBool.java"/>
         <delete file="test\collections\hash\set\TestHashSetBool.java"/>
 
     </target>

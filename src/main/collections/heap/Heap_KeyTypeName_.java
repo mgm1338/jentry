@@ -4,8 +4,7 @@ import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
-import core.stub._key_;
-import core.util.comparator.Comparator;
+import core.stub.*;
 import core.util.comparator.Comparator_KeyTypeName_;
 
 /**
@@ -27,6 +26,8 @@ public class Heap_KeyTypeName_
     protected int entryPtr = 0;
     protected int[] freeList;
     int freeListCt = 0;
+    int treePtr = 1;
+
 
     public Heap_KeyTypeName_ (int initialCapacity, Comparator_KeyTypeName_ cmp)
     {
@@ -74,6 +75,7 @@ public class Heap_KeyTypeName_
         int entry = getNextEntry ();
         keys[entry] = key;
         int treeSpot = getNextFreeTreeSpot ();
+        tree[treeSpot] = entry;
         inverse[entry] = treeSpot;
         shiftUp (key, treeSpot);
         size++;
@@ -82,15 +84,22 @@ public class Heap_KeyTypeName_
 
     public boolean remove (int entry)
     {
-        int spot = inverse[entry];
+        int treePtrRemoval = inverse[entry];
         if (entry == Const.NO_ENTRY)
         {
             return false;
         }
-        else
-        {
-            shiftDown (spot);
-        }
+        int lastElPtr = --treePtr;
+        flip (treePtrRemoval, lastElPtr);
+        shiftDown (treePtrRemoval);
+        //now remove the treePtrRemoval
+        int removalEntry = tree[lastElPtr];
+        inverse[removalEntry] = Const.NO_ENTRY;
+        tree[lastElPtr] = Const.NO_ENTRY;
+        freeList = intFactory.ensureArrayCapacity (freeList, freeListCt + 1,
+                                                   growthStrategy, Const.NO_ENTRY
+        );
+        freeList[freeListCt++] = removalEntry;
         size--;
         return true;
     }
@@ -99,37 +108,75 @@ public class Heap_KeyTypeName_
     {
         int left = leftChild (curSpot);
         int right = rightChild (curSpot);
+        if (left >= treePtr) left = Const.NO_ENTRY;
+        if (right >= treePtr) right = Const.NO_ENTRY;
+
         while (left != Const.NO_ENTRY && right != Const.NO_ENTRY)
         {
-            if (left == Const.NO_ENTRY)
+            //both valid, compare to the 'greater one'
+            if (left != Const.NO_ENTRY && right != Const.NO_ENTRY)
             {
-                flip (curSpot, left);
-            }
-            else if (right == Const.NO_ENTRY)
-            {
-                flip (curSpot, right);
-            }
-            else
-            {
-                int cmpResult = cmp.compare (keys[left], keys[right]);
-                if (cmpResult <= 0)
+                int cmpResult = cmp.compare (keys[tree[left]], keys[tree[right]]);
+                if (cmpResult <= 0) //left is the 'greater' one
                 {
-                    flip (curSpot, left);
+                    if (cmp.compare (keys[tree[curSpot]], keys[tree[left]]) > 0)
+                    {
+                        flip (curSpot, left);
+                        curSpot = left;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
+                    if (cmp.compare (keys[tree[curSpot]], keys[tree[right]]) > 0)
+                    {
+                        flip (curSpot, right);
+                        curSpot = right;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+            else if (left != Const.NO_ENTRY)
+            {
+                if (cmp.compare (keys[tree[curSpot]], keys[tree[left]]) > 0)
+                {
+                    flip (curSpot, left);
+                    curSpot = left;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else // right!=Const.Entry
+            {
+                if (cmp.compare (keys[tree[curSpot]], keys[tree[right]]) > 0)
+                {
                     flip (curSpot, right);
+                    curSpot = right;
+                }
+                else
+                {
+                    return;
                 }
             }
             left = leftChild (curSpot);
             right = rightChild (curSpot);
+            if (left >= treePtr) left = Const.NO_ENTRY;
+            if (right >= treePtr) right = Const.NO_ENTRY;
         }
     }
 
     protected void shiftUp (_key_ key, int curSpot)
     {
         int parent = parent (curSpot);
-        while (cmp.compare (key, keys[tree[parent]]) <= 0 && curSpot != 1)
+        while (curSpot != 1 && cmp.compare (key, keys[tree[parent]]) <= 0)
         {
             flip (curSpot, parent);
             curSpot = parent;
@@ -139,19 +186,9 @@ public class Heap_KeyTypeName_
 
     protected int getNextFreeTreeSpot ()
     {
-        int spot = 1;
-        while ((spot * 2 < size))
-        {
-            spot *= 2;
-        }
-        //add another level
-        tree = intFactory.ensureArrayCapacity
-                (tree, spot * 2, Const.NO_ENTRY, growthStrategy);
-        inverse = intFactory.ensureArrayCapacity (inverse, spot * 2, growthStrategy);
-        while (tree[spot++] != Const.NO_ENTRY)
-        {
-        }
-        return spot;
+        tree = intFactory.ensureArrayCapacity (tree, treePtr + 2, growthStrategy, Const.NO_ENTRY);
+        inverse = intFactory.ensureArrayCapacity (inverse, treePtr + 2, growthStrategy, Const.NO_ENTRY);
+        return treePtr++;
     }
 
     protected int getNextEntry ()
@@ -168,12 +205,12 @@ public class Heap_KeyTypeName_
 
     protected void flip (int a, int b)
     {
-        int temp = tree[b];
-        tree[b] = tree[a];
-        tree[a] = temp;
-        temp = inverse[b];
-        inverse[a] = inverse[b];
-        inverse[b] = temp;
+        int entryA = tree[a];
+        int entryB = tree[b];
+        inverse[entryA] = b;
+        inverse[entryB] = a;
+        tree[a] = entryB;
+        tree[b] = entryA;
     }
 
     protected int leftChild (int parent)

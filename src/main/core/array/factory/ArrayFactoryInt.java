@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -34,18 +33,18 @@ public abstract class ArrayFactoryInt
      * override the natural default values (0 for numeric, null for Object,
      * etc...)
      *
+     *
      * @param array          the array to check
      * @param minSize        the minimum number of elements this array should be able
      *                       to hold.
+     * @param growthStrategy see {@link core.array.GrowthStrategy }
      * @param defaultValue   the default value to fill new array elements with
-     * @param growthStrategy see {@link GrowthStrategy }
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
     public abstract int[] ensureArrayCapacity (int[] array,
-                                                 int minSize,
-                                                 int defaultValue,
-                                                 GrowthStrategy growthStrategy);
+                                               int minSize,
+                                               GrowthStrategy growthStrategy, int defaultValue);
 
     /**
      * Overloaded method:
@@ -68,8 +67,7 @@ public abstract class ArrayFactoryInt
     /**
      * <p>
      * When we are not checking to make sure that an array is large enough
-     * (see {@link #ensureArrayCapacity(int[],
-     * int, int, GrowthStrategy)}  }, and we would like
+     * (see {@link #ensureArrayCapacity(int[], int, core.array.GrowthStrategy, int)}  }, and we would like
      * to grow the array, we use this method. This will use the
      * {@link GrowthStrategy } to grow the <i>array</i> passed.
      * </p>
@@ -112,9 +110,8 @@ public abstract class ArrayFactoryInt
     {
 
         public int[] ensureArrayCapacity (int[] array,
-                                            int minSize,
-                                            int defaultValue,
-                                            GrowthStrategy growthStrategy)
+                                          int minSize,
+                                          GrowthStrategy growthStrategy, int defaultValue)
         {
             int len = array.length;
             if (minSize > len)
