@@ -10,9 +10,128 @@ import core.util.comparator.Comparator_KeyTypeName_;
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
+ *
+ * <p>A Binary heap of keys</p>
+ *
+ * <p>The Heap will take a {@link Comparator_KeyTypeName_} ordering it
+ * so that the parent item will always evalute to 'less' than the children.
+ * For instance, the {@link core.util.comparator.Comparators._KeyTypeName_Asc}
+ * will ensure that the parent item will be less than the children items
+ * .<p>
+ * <p>The following heaps (using int as type) are both valid for an IntAsc
+ * Comparator.
+ * <pre>
+ *            1
+ *          /  \
+ *         3    2
+ *        / \
+ *      10  11
+ * </pre>
+ * and also,
+ * <pre>
+ *         1
+ *       /  \
+ *      10   2
+ *          / \
+ *         3  11
+ * </pre>
+ *
+ * Note that the same elements can take different orders in a Heap (differing
+ * from a Binary tree, the Heap is not used for searching). The Heap's primary
+ * purpose is collecting the 'greatest' item as its top element. Another typical
+ * use is that removing items from a heap results in a sorted collection, with a
+ * small memory footprint.
+ * </p>
+ *
+ * <p>The singly-typed heap is simply a collection of keys, that are guaranteed
+ * to be sorted as described above. The Heap follows the general convention
+ * of other Jentry structures, that insertion will yield a handle to that item.
+ * The Heap guarantees that retrieval using that entry will remain consistent,
+ * and that upon removal, the next entry will re-use the vacated spot.</p>
+ *
+ * <p>Despite the ability to map items using the entries, we also have
+ * doubly-typed Heaps, that will sort based on the keys, and store typed
+ * values in a parallel array.  (HeapIntLong) is an example,
+ * where the heap will sort based on the Integer value, and the Long values
+ * will simply remain associated with the int.,</p>
+ *
+ * <p>The Heap has the typical insertion and removal conventions, such that
+ * the insertion and removal is done in log(n), while searching must be
+ * done iteratively (or essentially iteratively). To insert, we insert
+ * into the next natural leaf position and flip the item with its parents
+ * until it is in the correct position. When removing, we flip the removed
+ * item with the heap position, and switch the item with its children
+ * until it is in the correct position.</p>
+ *
+ *
+ * <p><strong>Structure</strong></p>
+ *
+ * Internally the Heap will store its items in a binary tree formed as an array.
+ * The array will start at index 1 for the sole reason that doing parent
+ * and child math is quicker than starting from 0, and it doesn't use much
+ * extra space. When visualizing a tree from an array, the indexes are as follows:
+ *
+ * <pre>
+ *          1
+ *        /   \
+ *       2    3
+ *      / \  / \
+ *     4  5  6  7
+ * </pre>
+ * and so on.
+ * </p>
+ * <p>
+ * The tree elements will actually store the entries of the collection that
+ * are inserted. Therefore the actual key elements do not move once they
+ * are inserted, only the 'pointers' to the key array (example following).
+ * There is one more array, that will store the 'inverse' tree array. For
+ * a given entry, upon removal it is necessary to know where in the tree
+ * the entry is currently located. The extra state in the inverse array
+ * allows us to remove without having to search through the heap.
+ * </p>
+ *
+ * <p>Example: Simple Insertion and Removal</p>
+ *
+ * Assume HeapInt and Comparator IntAsc.
+ *
+ * Insert 7, 3, 10, 2. Remove 2, then 10.
+ *
+ * Insert 7:
+ * <pre>
+ *  tree:
+ *          7
+ *
+ *  arrays:
+ *      keys    tree    inverse
+ * 0     7       -1        1      <- denotes entry 0 is at spot 1 in tree array
+ * 1              0
+ * 2
+ * 3
+ * 4
+ * 5
+ * </pre>
+ *
+ * Insert 3:
+ * <pre>
+ *  tree:
+ *          3
+ *         /
+ *        7
+ *
+ *  arrays:
+ *      keys    tree    inverse
+ * 0     7       -1        1      <- denotes entry 0 is at spot 1 in tree array
+ * 1              0
+ * 2
+ * 3
+ * 4
+ * 5
+ * </pre>
  */
 public class Heap_KeyTypeName_
 {
+    /** Factory providing the int arrays that will make up the tree
+     * and inverse arrays.*/
     protected final ArrayFactoryInt intFactory;
     protected final Comparator_KeyTypeName_ cmp;
     protected final ArrayFactory_KeyTypeName_ keyFactory;
@@ -111,7 +230,7 @@ public class Heap_KeyTypeName_
         if (left >= treePtr) left = Const.NO_ENTRY;
         if (right >= treePtr) right = Const.NO_ENTRY;
 
-        while (left != Const.NO_ENTRY && right != Const.NO_ENTRY)
+        while (left != Const.NO_ENTRY || right != Const.NO_ENTRY)
         {
             //both valid, compare to the 'greater one'
             if (left != Const.NO_ENTRY && right != Const.NO_ENTRY)
