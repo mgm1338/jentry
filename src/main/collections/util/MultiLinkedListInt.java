@@ -166,8 +166,8 @@ public class MultiLinkedListInt implements Collection
             idx = nextUnusedIdx++;
             nexts = intFactory.ensureArrayCapacity( nexts,
                                                     nextUnusedIdx,
-                                                    Const.NO_ENTRY,
-                                                    growthStrategy );
+                                                    growthStrategy, Const.NO_ENTRY
+            );
         }
         //Prepend the entry to the linked list
         if( heads.length <= idx )
@@ -232,11 +232,11 @@ public class MultiLinkedListInt implements Collection
         int oldLen = heads.length;
         int copyLen = oldLen - maxHead - 1;
         heads = intFactory.ensureArrayCapacity( heads, minNewSize,
-                                                Const.NO_ENTRY,
-                                                growthStrategy );
+                                                growthStrategy, Const.NO_ENTRY
+        );
         nexts = intFactory.ensureArrayCapacity( nexts, minNewSize,
-                                                Const.NO_ENTRY,
-                                                growthStrategy );
+                                                growthStrategy, Const.NO_ENTRY
+        );
         for( int i = 0; i < oldLen; i++ )
         {
             if( nexts[ i ] != Const.NO_ENTRY )
@@ -374,8 +374,8 @@ public class MultiLinkedListInt implements Collection
             targetArray = intFactory.    //check size
                     ensureArrayCapacity( targetArray,
                                          i + 1,
-                                         Const.NO_ENTRY,
-                                         GrowthStrategy.doubleGrowth );
+                                         GrowthStrategy.doubleGrowth, Const.NO_ENTRY
+            );
 
             targetArray[ i++ ] = heads[ idx ];
             prevIdx = idx;
@@ -469,10 +469,10 @@ public class MultiLinkedListInt implements Collection
         //should be close if this list is mostly compact
         int headLen = heads.length;
         int nextsLen = nexts.length;
-        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, Const.NO_ENTRY,
-                                                       GrowthStrategy.toExactSize );
-        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, Const.NO_ENTRY,
-                                                       GrowthStrategy.toExactSize );
+        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, GrowthStrategy.toExactSize, Const.NO_ENTRY
+        );
+        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, GrowthStrategy.toExactSize, Const.NO_ENTRY
+        );
         System.arraycopy( heads, 0, target.heads, 0, headLen );
         System.arraycopy( nexts, 0, target.nexts, 0, nextsLen );
 
