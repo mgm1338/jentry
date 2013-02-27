@@ -8,6 +8,8 @@
         <delete dir="${gen}"/>
     </target>
     <target name="generate" depends="initialize">
+
+        <!--KEYS-->
         <generateSpecificTypes fileBase="ArrayFactory"
                                package="main\core\array\factory"/>
         <generateSpecificTypes fileBase="Comparator"
@@ -27,14 +29,31 @@
         <generateSpecificTypes fileBase="TestHeap"
                                package="test\collections\heap"/>
 
-         <!--KEY VALS-->
-        <!--<generateKeyValTypes fileBase="Heap" package="main\collections\heap" />-->
+         <!--KEY && VALS-->
+        <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
 
-        <!--DELETE BOOLEAN HASH SET-->
+
+
+        <!--                                                            -->
+                            <!--DELETIONS-->
+        <!--                                                            -->
+
+
+        <!--    DELETE KEYS -->
         <delete file="main\collections\hash\set\HashSetBool.java"/>
         <delete file="main\collections\heap\HeapBool.java"/>
         <delete file="test\collections\heap\TestHeapBool.java"/>
+        <delete file="test\collections\heap\TestHeapObject.java"/>
         <delete file="test\collections\hash\set\TestHashSetBool.java"/>
+
+
+        <!--    DELETE KEYS && VALS -->
+
+       <delete>
+        <fileset dir="main\collections\hash\map\">
+            <include name="HashMapBool*" />
+        </fileset>
+       </delete>
 
     </target>
 
@@ -187,8 +206,8 @@
         <attribute name="fileBase"/>
         <attribute name="package"/>
         <sequential>
-            <copy file="${src}/@{package}/@{fileBase}_KeyTypeName_.java"
-                  tofile="@{package}/@{fileBase}@{keyTypeName}{valueTypeName}.java">
+            <copy file="${src}/@{package}/@{fileBase}_KeyTypeName__ValueTypeName_.java"
+                  tofile="@{package}/@{fileBase}@{keyTypeName}@{valueTypeName}.java">
                 <filterset begintoken="_" endtoken="_">
                     <filter token="KeyTypeName" value="@{keyTypeName}"/>
                     <filter token="key" value="@{keyType}"/>

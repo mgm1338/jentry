@@ -7,11 +7,8 @@ import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryChar;
-import core.stub.DefaultValueProvider;
 import core.stub.*;
 import core.util.comparator.EqualityFunctions;
-
-import java.util.Arrays;
 
 /**
  * Copyright © 2012 Max Miller
@@ -24,7 +21,7 @@ public class HashSetChar implements CollectionChar
 
 
     /** Factory that will provide us with value space */
-    protected final ArrayFactoryChar valFactory;
+    protected final ArrayFactoryChar keyFactory;
     /** Int Factory to provide us with freeList and bucket list */
     protected final ArrayFactoryInt intFactory;
     /** Hash function used to hash our values to an int bucket */
@@ -83,23 +80,22 @@ public class HashSetChar implements CollectionChar
      *                       items before re-hashing to new buckets. If the initial
      *                       size is 10 and the load factor is .5, then we
      *                       re-hash after 5 items.
-     * @param valFactory     the factory that allocates the char arrays
+     * @param keyFactory     the factory that allocates the char arrays
      * @param intFactory     the factory allocating the int arrays
      * @param hashFunction   hash function to use for the hash set
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetChar( int initialSize, double loadFactor,
-                                 ArrayFactoryChar valFactory,
+                                 ArrayFactoryChar keyFactory,
                                  ArrayFactoryInt intFactory,
                                  HashFunctions.HashFunctionChar hashFunction,
                                  GrowthStrategy growthStrategy )
     {
-        this.valFactory = valFactory;
+        this.keyFactory = keyFactory;
         this.intFactory = intFactory;
         bucketList = new MultiLinkedListInt( initialSize, initialSize, growthStrategy, intFactory );
         freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
-        keys = ArrayFactoryChar.defaultCharProvider.alloc( initialSize,
-                                                                             IntValueConverter.charFromInt( Const.NO_ENTRY ) );
+        keys = ArrayFactoryChar.defaultCharProvider.alloc( initialSize );
         this.numBuckets = initialSize;
         this.hashFunction = hashFunction;
         this.growthStrategy = growthStrategy;
@@ -303,7 +299,7 @@ public class HashSetChar implements CollectionChar
             return freeList[ --freeListPtr ];
         }
         //not on freelist, need growth check
-        keys = valFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
+        keys = keyFactory.ensureArrayCapacity( keys, nextEntry + 1, growthStrategy );
         return nextEntry++;
     }
 
@@ -355,7 +351,7 @@ public class HashSetChar implements CollectionChar
     {
         if( target == null ) //creating a new one
         {
-            target = new HashSetChar( keys.length, loadFactor, valFactory, intFactory, hashFunction,
+            target = new HashSetChar( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
                                                growthStrategy );
         }
         target.nextEntry = nextEntry;
@@ -367,7 +363,7 @@ public class HashSetChar implements CollectionChar
         //grow keys and freelist to the exact size initially and copy them
         int keyLen = keys.length;
         int freeListLen = freeList.length;
-        target.keys = valFactory.ensureArrayCapacity( target.keys, keyLen, GrowthStrategy.toExactSize );
+        target.keys = keyFactory.ensureArrayCapacity( target.keys, keyLen, GrowthStrategy.toExactSize );
         target.freeList = intFactory.ensureArrayCapacity( target.freeList, freeListLen, GrowthStrategy.toExactSize );
         System.arraycopy( keys, 0, target.keys, 0, keyLen );
         System.arraycopy( freeList, 0, target.freeList, 0, freeListLen );

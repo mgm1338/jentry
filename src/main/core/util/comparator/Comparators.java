@@ -3,6 +3,7 @@ package core.util.comparator;
 import core.stub._key_;
 
 import java.util.*;
+import java.util.Comparator;
 
 /**
  * Copyright © 2012 Max Miller
@@ -268,5 +269,8 @@ public class Comparators
             return 0;
         }
     }
+
+
+
 
 }

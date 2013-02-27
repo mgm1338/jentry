@@ -25,6 +25,14 @@ public class EqualityFunctions
         }
     }
 
+    public static final class Equals_ValueTypeName_
+    {
+        public boolean equals (_key_ a, _key_ b)
+        {
+            return false;
+        }
+    }
+
     public static final class EqualsBool
     {
         public static final boolean equals (boolean a, boolean b)

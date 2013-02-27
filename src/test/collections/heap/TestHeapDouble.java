@@ -6,7 +6,7 @@ import core.util.comparator.*;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import util.TestUtils_KeyTypeName_;
+import util.TestUtilsDouble;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -15,17 +15,17 @@ import java.util.Random;
  * Copyright © 2012 Max Miller
  * All rights reserved.
  */
-public class TestHeap_KeyTypeName_
+public class TestHeapDouble
 {
 
     private static final int TEST_SIZE = 5;
-    Heap_KeyTypeName_ heap;
+    HeapDouble heap;
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     @Before
     public void setup ()
     {
-        heap = new Heap_KeyTypeName_ (8, new Comparators._KeyTypeName_Asc());
+        heap = new HeapDouble (8, new Comparators.DoubleAsc());
     }
 
     @Test
@@ -38,14 +38,14 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (i)));
+                                   heap.insert (IntValueConverter.doubleFromInt (i)));
         }
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
 
         heap.remove (3);
         TestCase.assertEquals (3,
-                               heap.insert (IntValueConverter._key_FromInt (3)));
+                               heap.insert (IntValueConverter.doubleFromInt (3)));
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
     }
@@ -57,7 +57,7 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (TEST_SIZE - i)));
+                                   heap.insert (IntValueConverter.doubleFromInt (TEST_SIZE - i)));
         }
         assertInAscOrder (heap);
     }
@@ -70,7 +70,7 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter.doubleFromInt (random.nextInt (16))));
         }
     }
 
@@ -81,7 +81,7 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (24 - i)));
+                                   heap.insert (IntValueConverter.doubleFromInt (24 - i)));
         }
         TestCase.assertEquals (heap.keys.length, 32);
         TestCase.assertEquals (heap.tree.length, 32);
@@ -98,7 +98,7 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter.doubleFromInt (random.nextInt (16))));
         }
         TestCase.assertEquals (heap.keys.length, 32);
         TestCase.assertEquals (heap.tree.length, 32);
@@ -114,17 +114,17 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (4)));
+                                   heap.insert (IntValueConverter.doubleFromInt (4)));
         }
 
-        heap.insert (IntValueConverter._key_FromInt (5));
-        TestCase.assertEquals (IntValueConverter._key_FromInt (4), heap.peek ());
+        heap.insert (IntValueConverter.doubleFromInt (5));
+        TestCase.assertEquals (IntValueConverter.doubleFromInt (4), heap.peek ());
         TestCase.assertEquals (25, heap.getSize ());
         for (int i = 0; i < 24; i++)
         {
             heap.removeTop ();
         }
-        TestCase.assertEquals (IntValueConverter._key_FromInt (5), heap.peek ());
+        TestCase.assertEquals (IntValueConverter.doubleFromInt (5), heap.peek ());
     }
 
     @Test
@@ -134,10 +134,10 @@ public class TestHeap_KeyTypeName_
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter._key_FromInt (4)));
+                                   heap.insert (IntValueConverter.doubleFromInt (4)));
         }
-        heap.insert (IntValueConverter._key_FromInt (3));
-        TestCase.assertEquals (IntValueConverter._key_FromInt (3), heap.peek ());
+        heap.insert (IntValueConverter.doubleFromInt (3));
+        TestCase.assertEquals (IntValueConverter.doubleFromInt (3), heap.peek ());
     }
 
     @Test
@@ -157,20 +157,20 @@ public class TestHeap_KeyTypeName_
     //test free list, and internal equals with copy methods
 
 
-    protected void assertInAscOrder (Heap_KeyTypeName_ heap)
+    protected void assertInAscOrder (HeapDouble heap)
     {
         if (template) return;
-        _key_[] collected = new _key_[heap.getSize ()];
+        double[] collected = new double[heap.getSize ()];
         int ct = 0;
         while (!heap.isEmpty ())
         {
             collected[ct++] = heap.peek ();
             heap.removeTop ();
         }
-        _key_[] copy = new _key_[collected.length];
+        double[] copy = new double[collected.length];
         System.arraycopy (collected, 0, copy, 0, collected.length);
         Arrays.sort (copy);
-        TestUtils_KeyTypeName_.assertArrayContentsEqual (collected, copy);
+        TestUtilsDouble.assertArrayContentsEqual (collected, copy);
     }
 
 }

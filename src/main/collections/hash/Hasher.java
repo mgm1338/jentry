@@ -6,7 +6,7 @@ package collections.hash;
  */
 public class Hasher
 {
-    //TODO: compare what happens when we make this actually hash the value
+    //TODO: Perf vs. actually hashing
     public static final int getHashCode(int i)
     {
         return i;
