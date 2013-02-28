@@ -1,7 +1,7 @@
 package collections.relationship;
 
 
-import collections.Collection;
+import collections.generic.Collection;
 import collections.hash.set.HashSetLong;
 import core.Const;
 import core.NumberUtil;
@@ -180,7 +180,7 @@ public class OneToManyInt implements Collection
         {
             return handle;
         }
-        lefts = intFactory.ensureArrayCapacity( lefts, left + 1, growthStrategy, Const.NO_ENTRY);
+        lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy);
         if( countLefts )
         {
             leftCounts = intFactory.ensureArrayCapacity( leftCounts, left + 1, growthStrategy );
@@ -188,7 +188,7 @@ public class OneToManyInt implements Collection
         }
         //we will never grow the leftNexts past the handle +1 (we use the handle to determine where we are
         //inserting into the array)
-        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, growthStrategy, Const.NO_ENTRY);
+        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, Const.NO_ENTRY, growthStrategy);
 
         int testInsert = lefts[ left ];
         if( testInsert == Const.NO_ENTRY ) //first item, insert into the left array

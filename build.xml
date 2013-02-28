@@ -10,12 +10,12 @@
     <target name="generate" depends="initialize">
 
         <!--KEYS-->
+        <generateSpecificTypes fileBase="Collection"
+                               package="main\collections\generic"/>
         <generateSpecificTypes fileBase="ArrayFactory"
                                package="main\core\array\factory"/>
         <generateSpecificTypes fileBase="Comparator"
                                package="main\core\util\comparator"/>
-        <generateSpecificTypes fileBase="Collection"
-                               package="main\collections"/>
         <generateSpecificTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
         <generateSpecificTypes fileBase="Heap"
@@ -30,6 +30,7 @@
                                package="test\collections\heap"/>
 
          <!--KEY && VALS-->
+        <generateKeyValTypes fileBase="Map" package="main\collections\generic" />
         <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
 
 

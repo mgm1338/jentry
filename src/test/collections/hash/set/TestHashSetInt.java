@@ -160,7 +160,7 @@ public class TestHashSetInt
         //remove each item iteratively, asserting it was removed
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertTrue( hashSet.remove( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) ) );
+            TestCase.assertNotSame( hashSet.remove( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) ), Const.NO_ENTRY );
             TestCase.assertEquals( ( TEST_SIZE - i - 1 ), hashSet.getSize() );
             TestCase.assertTrue( hashSet.getEntry( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) )
                                  == Const.NO_ENTRY );
@@ -195,7 +195,7 @@ public class TestHashSetInt
     {
         if( template ) return;
         fullRemove();
-        TestCase.assertFalse( hashSet.remove( IntValueConverter.intFromInt( 1000 ) ) );
+        TestCase.assertEquals( Const.NO_ENTRY, hashSet.remove( IntValueConverter.intFromInt( 1000 ) ) );
 
     }
 
@@ -223,7 +223,8 @@ public class TestHashSetInt
         //doing a remove of all the items
         for( int i = 0; i < TEST_SIZE * 4; i++ )
         {
-            TestCase.assertTrue( hashSet.remove( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO ) ) );
+            TestCase.assertNotSame( Const.NO_ENTRY, hashSet.remove( IntValueConverter.intFromInt( i + OFFSET_FROM_ZERO
+            ) ) );
         }
         TestCase.assertTrue( hashSet.isEmpty() );
         TestCase.assertTrue( hashSet.freeList.length >= TEST_SIZE * 4 );

@@ -1,6 +1,6 @@
 package collections.util;
 
-import collections.Collection;
+import collections.generic.Collection;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
@@ -67,7 +67,7 @@ public class MultiLinkedListInt implements Collection
      * Constructor
      *
      * @param initialNumLists the initial number of singly linked list this structure will allocate
-     * @param totalSize        the estimated size of all of the lists
+     * @param totalSize       the estimated size of all of the lists
      */
     public MultiLinkedListInt( int initialNumLists, int totalSize )
     {
@@ -79,7 +79,7 @@ public class MultiLinkedListInt implements Collection
      * Full Constructor
      *
      * @param initialListSize the initial number of singly linked list this structure will allocate
-     * @param totalSize        the estimated size of all of the lists
+     * @param totalSize       the estimated size of all of the lists
      * @param growthStrategy  the growth strategy when growing the set of lists
      * @param intFactory      the factory that will provide the int[] arrays
      */
@@ -166,7 +166,8 @@ public class MultiLinkedListInt implements Collection
             idx = nextUnusedIdx++;
             nexts = intFactory.ensureArrayCapacity( nexts,
                                                     nextUnusedIdx,
-                                                    growthStrategy, Const.NO_ENTRY
+                                                    Const.NO_ENTRY,
+                                                    growthStrategy
             );
         }
         //Prepend the entry to the linked list
@@ -231,11 +232,11 @@ public class MultiLinkedListInt implements Collection
         // but necessary for size 0
         int oldLen = heads.length;
         int copyLen = oldLen - maxHead - 1;
-        heads = intFactory.ensureArrayCapacity( heads, minNewSize,
-                                                growthStrategy, Const.NO_ENTRY
+        heads = intFactory.ensureArrayCapacity( heads, minNewSize, Const.NO_ENTRY,
+                                                growthStrategy
         );
-        nexts = intFactory.ensureArrayCapacity( nexts, minNewSize,
-                                                growthStrategy, Const.NO_ENTRY
+        nexts = intFactory.ensureArrayCapacity( nexts, minNewSize, Const.NO_ENTRY,
+                                                growthStrategy
         );
         for( int i = 0; i < oldLen; i++ )
         {
@@ -286,7 +287,7 @@ public class MultiLinkedListInt implements Collection
                 if( nextOfNext != Const.NO_ENTRY )
                 {
                     nexts[ testIdx ] = nextOfNext;
-                    nexts[next] = Const.NO_ENTRY;
+                    nexts[ next ] = Const.NO_ENTRY;
                 }
                 else
                 {
@@ -373,8 +374,8 @@ public class MultiLinkedListInt implements Collection
         {
             targetArray = intFactory.    //check size
                     ensureArrayCapacity( targetArray,
-                                         i + 1,
-                                         GrowthStrategy.doubleGrowth, Const.NO_ENTRY
+                                         i + 1, Const.NO_ENTRY,
+                                         GrowthStrategy.doubleGrowth
             );
 
             targetArray[ i++ ] = heads[ idx ];
@@ -445,9 +446,7 @@ public class MultiLinkedListInt implements Collection
         return size == 0;
     }
 
-    /**
-     * Clear all of the lists in the set.
-     */
+    /** Clear all of the lists in the set. */
     public void clear()
     {
         Arrays.fill( heads, Const.NO_ENTRY );
@@ -469,9 +468,10 @@ public class MultiLinkedListInt implements Collection
         //should be close if this list is mostly compact
         int headLen = heads.length;
         int nextsLen = nexts.length;
-        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, GrowthStrategy.toExactSize, Const.NO_ENTRY
+        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, Const.NO_ENTRY,
+                                                       GrowthStrategy.toExactSize
         );
-        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, GrowthStrategy.toExactSize, Const.NO_ENTRY
+        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, Const.NO_ENTRY, GrowthStrategy.toExactSize
         );
         System.arraycopy( heads, 0, target.heads, 0, headLen );
         System.arraycopy( nexts, 0, target.nexts, 0, nextsLen );

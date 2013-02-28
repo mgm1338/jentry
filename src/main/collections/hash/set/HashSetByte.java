@@ -1,6 +1,6 @@
 package collections.hash.set;
 
-import collections.CollectionByte;
+import collections.generic.CollectionByte;
 import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
@@ -151,13 +151,13 @@ public class HashSetByte implements CollectionByte
      * Method for checking to see if an item is in the HashSet. This will retrieve the entry
      * for the item, or return Const.NO_ENTRY if the item is not in the set.
      *
-     * @param val the value
+     * @param key the value
      * @return the entry of the item (handle), or Const.NO_ENTRY
      */
-    public int getEntry( byte val )
+    public int getEntry( byte key )
     {
-        int bucket = getBucket( val );
-        return inBucketList( bucket, val );
+        int bucket = getBucket( key );
+        return inBucketList( bucket, key );
     }
 
     /**
@@ -221,18 +221,18 @@ public class HashSetByte implements CollectionByte
      * @return true if we removed the item, false otherwise
      */
     @Override
-    public boolean remove( byte value )
+    public int remove( byte value )
     {
         int bucket = getBucket( value );
         int entry = inBucketList( bucket, value );
         if( entry == Const.NO_ENTRY )
         {
-            return false;
+            return entry;
         }
         bucketList.remove( bucket, entry );
         size--;
         addEntryToFreeList( entry );
-        return true;
+        return entry;
     }
 
 

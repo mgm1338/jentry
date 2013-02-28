@@ -1,7 +1,9 @@
 package collections.hash.map;
 
+import collections.generic.Map_KeyTypeName__ValueTypeName_;
 import collections.hash.HashFunctions;
 import collections.hash.set.HashSet_KeyTypeName_;
+import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.*;
@@ -16,8 +18,11 @@ import core.util.comparator.EqualityFunctions;
  * User: Max Miller
  * Created: 2/26/13
  */
-public class HashMap_KeyTypeName__ValueTypeName_ extends HashSet_KeyTypeName_
+public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__ValueTypeName_
 {
+
+    protected  static final double DEFAULT_LOAD_FACTOR = .75;
+
 
     /** Factory that will provide us with value space */
     protected final ArrayFactory_ValueTypeName_ valueFactory;
@@ -25,7 +30,11 @@ public class HashMap_KeyTypeName__ValueTypeName_ extends HashSet_KeyTypeName_
     protected final EqualityFunctions.Equals_ValueTypeName_ equalityFunction = new
             EqualityFunctions.Equals_ValueTypeName_();
 
+
     protected _val_ values[];
+
+    protected HashSet_KeyTypeName_ set;
+
 
     /**
      * Basic constructor
@@ -64,63 +73,94 @@ public class HashMap_KeyTypeName__ValueTypeName_ extends HashSet_KeyTypeName_
                                                 ArrayFactoryInt intFactory, HashFunctions.HashFunction_KeyTypeName_ hashFunction,
                                                 GrowthStrategy growthStrategy, ArrayFactory_ValueTypeName_ valueFactory )
     {
-        super( initialSize, loadFactor, keyFactory, intFactory, hashFunction, growthStrategy );
+        set = new HashSet_KeyTypeName_( initialSize, loadFactor, keyFactory, intFactory, hashFunction,
+                                        growthStrategy );
         this.valueFactory = valueFactory;
         values = valueFactory.alloc( initialSize );
     }
 
 
+    @Override
+    public boolean containsKey( _key_ key )
+    {
+        return set.contains( key );
+    }
+
     public int insert( _key_ key, _val_ value )
     {
-        int entry = super.insert( key );
-        values[entry] = value;
+        int entry = set.insert( key );
+        values[ entry ] = value;
         return entry;
     }
 
-    /**
-     * Return the next available entry. If one is on the freelist, this should be returned first. Otherwise,
-     * get the next entry, which will be compact (the next un-used entry iteratively).
-     *
-     * @return the next available entry
-     */
     @Override
-    protected int getNextEntry()
+    public int remove( _key_ key )
     {
-        int entry = super.getNextEntry();
-        values = valueFactory.ensureArrayCapacity( values, nextEntry + 1, growthStrategy  );
-        return entry;
+        return 1;
     }
+
+
+    @Override
+    public _val_ get( _key_ key, _val_ nullValue )
+    {
+        int entry = set.getEntry( key );
+        if( entry == Const.NO_ENTRY )
+        {
+            return nullValue;
+        }
+        return values[ entry ];
+    }
+
 
     public _val_ getValue( int entry )
     {
-        return values[entry];
+        return values[ entry ];
     }
 
 
     public HashMap_KeyTypeName__ValueTypeName_ copy( HashMap_KeyTypeName__ValueTypeName_ target )
     {
+        int size = set.getSize();
         if( target == null ) //creating a new one
         {
-            target = new HashMap_KeyTypeName__ValueTypeName_( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                               growthStrategy, valueFactory );
+            target = new HashMap_KeyTypeName__ValueTypeName_(size);
         }
-        target.nextEntry = nextEntry;
-        target.loadFactor = loadFactor;
-        target.size = size;
-        target.loadFactorSize = loadFactorSize;
-
-
-        //grow keys and freelist to the exact size initially and copy them
-        int keyLen = keys.length;
-        int freeListLen = freeList.length;
-        target.keys = keyFactory.ensureArrayCapacity( target.keys, keyLen, GrowthStrategy.toExactSize );
-        target.freeList = intFactory.ensureArrayCapacity( target.freeList, freeListLen, GrowthStrategy.toExactSize );
-        System.arraycopy( keys, 0, target.keys, 0, keyLen );
-        System.arraycopy( values, 0, target.values, 0, keyLen );
-        System.arraycopy( freeList, 0, target.freeList, 0, freeListLen );
-
-        //get a deep copy of the bucket list for the target
-        target.bucketList = bucketList.getDeepCopy();
+        target.set = set.copy( new HashSet_KeyTypeName_( size ) );
+        System.arraycopy( values, 0, target.values, 0, values.length );
         return target;
+    }
+
+    /**
+     * Get the current size of the collection.
+     *
+     * @return the size
+     */
+    @Override
+    public int getSize()
+    {
+        return set.getSize();
+    }
+
+    /**
+     * Is the current collection empty.
+     *
+     * @return true if collection is empty, false otherwise
+     */
+    @Override
+    public boolean isEmpty()
+    {
+        return set.isEmpty();
+    }
+
+    /** Clear the collection, empty out all of its contents. */
+    @Override
+    public void clear()
+    {
+        set.clear();
+    }
+
+    public void copy( Map_KeyTypeName__ValueTypeName_ target )
+    {
+
     }
 }
