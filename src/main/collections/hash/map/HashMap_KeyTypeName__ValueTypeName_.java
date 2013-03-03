@@ -90,7 +90,7 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
     /**
      * {@inheritDoc}
      *
-     * @param key the key whos existence we are checking in the map
+     * @param key the key who's existence we are checking in the map
      * @return the location of the key, -1 otherwise
      */
     @Override
@@ -132,7 +132,13 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         return set.remove( key );
     }
 
-
+    /**
+     * {@inheritDoc}
+     *
+     * @param key       the key to retrieve the value for
+     * @param nullValue the null value to return if they key does not exist
+     * @return the value, or <i>nullValue</i>
+     */
     @Override
     public _val_ get( _key_ key, _val_ nullValue )
     {
@@ -144,13 +150,14 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         return values[ entry ];
     }
 
-
-    public _val_ getValue( int entry )
-    {
-        return values[ entry ];
-    }
-
-
+    /**
+     * <p>
+     * Create and return a deep-copy of the HashMap. If the target passed is null, will create a new HashMap.
+     * </p>
+     *
+     * @param target the target HashMap, may be null
+     * @return a deep copy of <i>this</i>
+     */
     public HashMap_KeyTypeName__ValueTypeName_ copy( HashMap_KeyTypeName__ValueTypeName_ target )
     {
         int size = set.getSize();
@@ -158,7 +165,7 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         {
             target = new HashMap_KeyTypeName__ValueTypeName_( size );
         }
-        target.set = set.copy( new HashSet_KeyTypeName_( size ) );
+        target.set = this.set.copy( target.set );
         System.arraycopy( values, 0, target.values, 0, values.length );
         return target;
     }
@@ -192,8 +199,4 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         set.clear();
     }
 
-    public void copy( Map_KeyTypeName__ValueTypeName_ target )
-    {
-
-    }
 }

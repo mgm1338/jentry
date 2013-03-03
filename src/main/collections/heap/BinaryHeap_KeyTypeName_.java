@@ -15,9 +15,9 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * <p>A Binary heap of keys</p>
  * <p/>
  * <p>The Heap will take a {@link Comparator_KeyTypeName_} ordering it
- * so that the parent item will always evalute to 'less' than the children.
+ * so that the parent item will always evalute to be greater than the children.
  * For instance, the {@link core.util.comparator.Comparators._KeyTypeName_Asc}
- * will ensure that the parent item will be less than the children items
+ * will ensure that the parent item will be less (in value) than the children items
  * .<p>
  * <p>The following heaps (using int as type) are both valid for an IntAsc
  * Comparator.
@@ -38,10 +38,10 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * </pre>
  * <p/>
  * Note that the same elements can take different orders in a Heap (differing
- * from a Binary tree, the Heap is not used for searching). The Heap's primary
+ * from a Binary tree), so the Heap should used for searching. The Heap's
  * purpose is collecting the 'greatest' item as its top element. Another typical
  * use is that removing items from a heap results in a sorted collection, with a
- * small memory footprint.
+ * relatively small memory footprint.
  * </p>
  * <p/>
  * <p>The singly-typed heap is simply a collection of keys, that are guaranteed
@@ -50,18 +50,12 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * The Heap guarantees that retrieval using that entry will remain consistent,
  * and that upon removal, the next entry will re-use the vacated spot.</p>
  * <p/>
- * <p>Despite the ability to map items using the entries, we also have
- * doubly-typed Heaps, that will sort based on the keys, and store typed
- * values in a parallel array.  (HeapIntLong) is an example,
- * where the heap will sort based on the Integer value, and the Long values
- * will simply remain associated with the int.,</p>
  * <p/>
  * <p>The Heap has the typical insertion and removal conventions, such that
- * the insertion and removal is done in log(n), while searching must be
- * done iteratively (or essentially iteratively). To insert, we insert
+ * the insertion and removal is done in log(n). To insert, we insert
  * into the next natural leaf position and flip the item with its parents
  * until it is in the correct position. When removing, we flip the removed
- * item with the heap position, and switch the item with its children
+ * item with the top position, and switch the item with its children
  * until it is in the correct position.</p>
  * <p/>
  * <p/>
@@ -91,11 +85,11 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * allows us to remove without having to search through the heap.
  * </p>
  * <p/>
- * <p>Example: Simple Insertion and Removal</p>
+ * <p><b>Example: Simple Insertion</b></p>
  * <p/>
  * Assume HeapInt and Comparator IntAsc.
  * <p/>
- * Insert 7, 3, 10, 2. Remove 2, then 10.
+ * Insert 7, 3, 10, 2.
  * <p/>
  * Insert 7:
  * <pre>
@@ -121,11 +115,47 @@ import core.util.comparator.Comparator_KeyTypeName_;
  *
  *  arrays:
  *      keys    tree    inverse
- * 0     7       -1        1      <- denotes entry 0 is at spot 1 in tree array
- * 1              0
- * 2
+ * 0     7       -1        0
+ * 1     3        1        1
+ * 2              0
  * 3
  * 4
+ * 5
+ * </pre>
+ *
+ * Insert 10:
+ * <pre>
+ *  tree:
+ *          3
+ *         / \
+ *        7  10
+ *
+ *  arrays:
+ *      keys    tree    inverse
+ * 0     7       -1        0
+ * 1     3        1        1
+ * 2     10       0        2
+ * 3              2
+ * 4
+ * 5
+ * </pre>
+ *
+ * Insert 2:
+ * <pre>
+ *  tree:
+ *          2
+ *         / \
+ *        3  10
+ *       /
+ *      7
+ *
+ *  arrays:
+ *      keys    tree    inverse
+ * 0     7       -1        4
+ * 1     3        3        2
+ * 2     10       1        3
+ * 3     2        2        1
+ * 4              0
  * 5
  * </pre>
  */
@@ -136,6 +166,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * and inverse arrays.
      */
     protected final ArrayFactoryInt intFactory;
+    /**
+     * {@link Comparator_KeyTypeName_} that will order the keys from greatest to least
+     */
     protected final Comparator_KeyTypeName_ cmp;
     protected final ArrayFactory_KeyTypeName_ keyFactory;
     protected final GrowthStrategy growthStrategy;
@@ -193,7 +226,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
     @Override
     public void removeGreatest()
     {
-        if (size==0) return;
+        if( size == 0 ) return;
         remove( tree[ 1 ] );
     }
 
@@ -229,7 +262,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      */
     public _key_ get( int entry )
     {
-        return keys[entry];
+        return keys[ entry ];
     }
 
     @Override
@@ -268,9 +301,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             if( left != Const.NO_ENTRY && right != Const.NO_ENTRY )
             {
                 int cmpResult = cmp.compare( keys[ tree[ left ] ], keys[ tree[ right ] ] );
-                if( cmpResult <= 0 ) //left is the 'greater' one
+                if( cmpResult > 0 ) //compare with left
                 {
-                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) > 0 )
+                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) < 0 )
                     {
                         flip( curSpot, left );
                         curSpot = left;
@@ -280,9 +313,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
                         return;
                     }
                 }
-                else
+                else //compare with right
                 {
-                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) > 0 )
+                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) < 0 )
                     {
                         flip( curSpot, right );
                         curSpot = right;
@@ -295,7 +328,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             }
             else if( left != Const.NO_ENTRY )
             {
-                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) > 0 )
+                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) < 0 )
                 {
                     flip( curSpot, left );
                     curSpot = left;
@@ -307,7 +340,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             }
             else // right!=Const.Entry
             {
-                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) > 0 )
+                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) < 0 )
                 {
                     flip( curSpot, right );
                     curSpot = right;
@@ -327,7 +360,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
     protected void shiftUp( _key_ key, int curSpot )
     {
         int parent = parent( curSpot );
-        while( curSpot != 1 && cmp.compare( key, keys[ tree[ parent ] ] ) <= 0 )
+        while( curSpot != 1 && cmp.compare( key, keys[ tree[ parent ] ] ) > 0 )
         {
             flip( curSpot, parent );
             curSpot = parent;

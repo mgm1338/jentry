@@ -184,7 +184,7 @@ public class TestBinaryHeapObject
         @Override
         public int compare( Object a, Object b )
         {
-            return IntValueConverter.toInt( a ) - IntValueConverter.toInt( b );
+            return IntValueConverter.toInt( b ) - IntValueConverter.toInt( a );
         }
     }
 

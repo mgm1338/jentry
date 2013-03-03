@@ -13,6 +13,8 @@ import core.util.comparator.EqualityFunctions;
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
+ *
+ * TODO: doc
  */
 public class HashSetFloat implements CollectionFloat
 {
