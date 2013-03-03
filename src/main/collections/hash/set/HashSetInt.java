@@ -132,10 +132,10 @@ public class HashSetInt implements CollectionInt
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( int value )
+    public int contains( int value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

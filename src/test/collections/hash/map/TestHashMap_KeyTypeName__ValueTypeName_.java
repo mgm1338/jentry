@@ -1,13 +1,11 @@
 package collections.hash.map;
 
 import collections.hash.HashFunctions;
-import collections.heap.Heap_KeyTypeName_;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.stub.ArrayFactory_ValueTypeName_;
 import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Copyright 2/27/13

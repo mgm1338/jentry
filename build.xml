@@ -19,6 +19,8 @@
         <generateSpecificTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
         <generateSpecificTypes fileBase="Heap"
+                               package="main\collections\generic\heap"/>
+        <generateSpecificTypes fileBase="BinaryHeap"
                                package="main\collections\heap"/>
 
         <!--//TESTS-->
@@ -26,11 +28,11 @@
                                package="test\collections\hash\set"/>
         <generateSpecificTypes fileBase="TestUtils"
                                package="test\util"/>
-        <generateSpecificTypes fileBase="TestHeap"
+        <generateSpecificTypes fileBase="TestBinaryHeap"
                                package="test\collections\heap"/>
 
          <!--KEY && VALS-->
-        <generateKeyValTypes fileBase="Map" package="main\collections\generic" />
+        <generateKeyValTypes fileBase="Map" package="main\collections\generic\map" />
         <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
 
 
@@ -43,8 +45,8 @@
         <!--    DELETE KEYS -->
         <delete file="main\collections\hash\set\HashSetBool.java"/>
         <delete file="main\collections\heap\HeapBool.java"/>
-        <delete file="test\collections\heap\TestHeapBool.java"/>
-        <delete file="test\collections\heap\TestHeapObject.java"/>
+        <delete file="test\collections\heap\TestBinaryHeapBool.java"/>
+        <delete file="test\collections\heap\TestBinaryHeapObject.java"/>
         <delete file="test\collections\hash\set\TestHashSetBool.java"/>
 
 

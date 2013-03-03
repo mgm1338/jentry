@@ -132,10 +132,10 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( _key_ value )
+    public int contains( _key_ value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

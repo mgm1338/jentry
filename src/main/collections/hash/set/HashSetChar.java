@@ -132,10 +132,10 @@ public class HashSetChar implements CollectionChar
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( char value )
+    public int contains( char value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

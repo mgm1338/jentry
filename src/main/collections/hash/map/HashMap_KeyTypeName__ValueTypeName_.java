@@ -1,6 +1,6 @@
 package collections.hash.map;
 
-import collections.generic.Map_KeyTypeName__ValueTypeName_;
+import collections.generic.map.Map_KeyTypeName__ValueTypeName_;
 import collections.hash.HashFunctions;
 import collections.hash.set.HashSet_KeyTypeName_;
 import core.Const;
@@ -17,11 +17,19 @@ import core.util.comparator.EqualityFunctions;
  * <p/>
  * User: Max Miller
  * Created: 2/26/13
+ * <p/>
+ * <p>
+ * The HashMap is similar to the JDK HashMap, where one key is related to a value. The values
+ * may be repeating, and inserting a new value for the same key will replace the old associated value.
+ * The Jentry HashMap is built upon the HashSet, with a parallel array composed on the keys.
+ * See {@link HashSet_KeyTypeName_}
+ * </p>
  */
 public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__ValueTypeName_
 {
 
-    protected  static final double DEFAULT_LOAD_FACTOR = .75;
+    /** Default load factor before re-hashing the keys */
+    protected static final double DEFAULT_LOAD_FACTOR = .75;
 
 
     /** Factory that will provide us with value space */
@@ -30,9 +38,9 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
     protected final EqualityFunctions.Equals_ValueTypeName_ equalityFunction = new
             EqualityFunctions.Equals_ValueTypeName_();
 
-
+    /** The parallel array to keys, each valid key will have a parallel value at the same index */
     protected _val_ values[];
-
+    /** The HashSet that we use to deal with the hashed keys */
     protected HashSet_KeyTypeName_ set;
 
 
@@ -79,13 +87,27 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         values = valueFactory.alloc( initialSize );
     }
 
-
+    /**
+     * {@inheritDoc}
+     *
+     * @param key the key whos existence we are checking in the map
+     * @return the location of the key, -1 otherwise
+     */
     @Override
-    public boolean containsKey( _key_ key )
+    public int containsKey( _key_ key )
     {
         return set.contains( key );
     }
 
+    /**
+     * Insert the key and value pair into the HashMap. Will insert the key into the HashSet, and
+     * use the entry returned to store the value. This will replace any previous existing values
+     * for the key passed.
+     *
+     * @param key   the key we will hash to use for key,value lookup
+     * @param value value associated with the key
+     * @return the entry we are inserting the key and the value
+     */
     public int insert( _key_ key, _val_ value )
     {
         int entry = set.insert( key );
@@ -93,10 +115,21 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         return entry;
     }
 
+    /**
+     * Remove the key/value pair from the set.
+     * <p/>
+     * <p>
+     * Note: this does not remove the values from the key/value array. For this reason, the get
+     * method may return old values and must always be used with valid entries.
+     * </p>
+     *
+     * @param key the key of the key/value pair we want to remove
+     * @return the entry removing, or -1 if the key does not exist
+     */
     @Override
     public int remove( _key_ key )
     {
-        return 1;
+        return set.remove( key );
     }
 
 
@@ -123,7 +156,7 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
         int size = set.getSize();
         if( target == null ) //creating a new one
         {
-            target = new HashMap_KeyTypeName__ValueTypeName_(size);
+            target = new HashMap_KeyTypeName__ValueTypeName_( size );
         }
         target.set = set.copy( new HashSet_KeyTypeName_( size ) );
         System.arraycopy( values, 0, target.values, 0, values.length );

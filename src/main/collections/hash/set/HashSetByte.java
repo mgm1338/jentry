@@ -132,10 +132,10 @@ public class HashSetByte implements CollectionByte
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( byte value )
+    public int contains( byte value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

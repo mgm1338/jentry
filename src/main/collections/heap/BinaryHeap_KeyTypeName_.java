@@ -1,7 +1,6 @@
 package collections.heap;
 
-import collections.generic.Collection;
-import collections.generic.Collection_KeyTypeName_;
+import collections.generic.heap.Heap_KeyTypeName_;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
@@ -130,7 +129,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * 5
  * </pre>
  */
-public class Heap_KeyTypeName_ implements Collection
+public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
 {
     /**
      * Factory providing the int arrays that will make up the tree
@@ -152,14 +151,14 @@ public class Heap_KeyTypeName_ implements Collection
     int treePtr = 1;
 
 
-    public Heap_KeyTypeName_( int initialCapacity, Comparator_KeyTypeName_ cmp )
+    public BinaryHeap_KeyTypeName_( int initialCapacity, Comparator_KeyTypeName_ cmp )
     {
         this( initialCapacity, cmp, ArrayFactoryInt.defaultIntProvider,
               ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
               GrowthStrategy.doubleGrowth );
     }
 
-    public Heap_KeyTypeName_(
+    public BinaryHeap_KeyTypeName_(
             int initialCapacity, Comparator_KeyTypeName_ cmp, ArrayFactoryInt intFactory,
             ArrayFactory_KeyTypeName_ keyFactory, GrowthStrategy growthStrategy )
     {
@@ -173,33 +172,39 @@ public class Heap_KeyTypeName_ implements Collection
         freeList = intFactory.alloc( 4 );
     }
 
+    @Override
     public int getSize()
     {
         return size;
     }
 
+    @Override
     public boolean isEmpty()
     {
         return size == 0;
     }
 
-
+    @Override
     public void clear()
     {
 
     }
 
-    public void removeTop()
+    @Override
+    public void removeGreatest()
     {
+        if (size==0) return;
         remove( tree[ 1 ] );
     }
 
+    @Override
     public _key_ peek()
     {
         return keys[ tree[ 1 ] ];
     }
 
 
+    @Override
     public int insert( _key_ key )
     {
         int entry = getNextEntry();
@@ -224,9 +229,10 @@ public class Heap_KeyTypeName_ implements Collection
      */
     public _key_ get( int entry )
     {
-        return null;
+        return keys[entry];
     }
 
+    @Override
     public int remove( int entry )
     {
         int treePtrRemoval = inverse[ entry ];
@@ -373,5 +379,8 @@ public class Heap_KeyTypeName_ implements Collection
         return ( child / 2 );
     }
 
-
+    public Comparator_KeyTypeName_ getCmp()
+    {
+        return cmp;
+    }
 }

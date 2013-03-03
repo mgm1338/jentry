@@ -132,10 +132,10 @@ public class HashSetShort implements CollectionShort
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( short value )
+    public int contains( short value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

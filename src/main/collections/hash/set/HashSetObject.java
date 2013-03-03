@@ -132,10 +132,10 @@ public class HashSetObject implements CollectionObject
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( Object value )
+    public int contains( Object value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

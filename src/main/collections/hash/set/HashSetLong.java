@@ -132,10 +132,10 @@ public class HashSetLong implements CollectionLong
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( long value )
+    public int contains( long value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

@@ -263,7 +263,7 @@ public class OneToManyInt implements Collection
      */
     public boolean isAssociated( int left, int right )
     {
-        return associations.contains( NumberUtil.packLong( left, right ) );
+        return associations.contains( NumberUtil.packLong( left, right ))!=Const.NO_ENTRY ;
     }
 
     /**

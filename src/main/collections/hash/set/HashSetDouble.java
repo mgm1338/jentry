@@ -132,10 +132,10 @@ public class HashSetDouble implements CollectionDouble
      * @return {@inheritDoc}
      */
     @Override
-    public boolean contains( double value )
+    public int contains( double value )
     {
         int bucket = getBucket( value );
-        return inBucketList( bucket, value ) != Const.NO_ENTRY;
+        return inBucketList( bucket, value );
     }
 
     /** {@inheritDoc} */

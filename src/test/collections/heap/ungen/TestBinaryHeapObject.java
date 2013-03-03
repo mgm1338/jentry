@@ -1,12 +1,12 @@
-package collections.heap;
+package collections.heap.ungen;
 
+import collections.heap.BinaryHeapObject;
 import core.stub.IntValueConverter;
-import core.stub.*;
 import core.util.comparator.*;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import util.TestUtilsLong;
+import util.TestUtilsObject;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -15,17 +15,17 @@ import java.util.Random;
  * Copyright © 2012 Max Miller
  * All rights reserved.
  */
-public class TestHeapLong
+public class TestBinaryHeapObject
 {
 
     private static final int TEST_SIZE = 5;
-    HeapLong heap;
+    BinaryHeapObject heap;
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     @Before
     public void setup ()
     {
-        heap = new HeapLong (8, new Comparators.LongAsc());
+        heap = new BinaryHeapObject (8, new ObjectAsc());
     }
 
     @Test
@@ -38,14 +38,14 @@ public class TestHeapLong
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (i)));
+                                   heap.insert (IntValueConverter.ObjectFromInt (i)));
         }
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
 
         heap.remove (3);
         TestCase.assertEquals (3,
-                               heap.insert (IntValueConverter.longFromInt (3)));
+                               heap.insert (IntValueConverter.ObjectFromInt (3)));
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
     }
@@ -57,7 +57,7 @@ public class TestHeapLong
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (TEST_SIZE - i)));
+                                   heap.insert (IntValueConverter.ObjectFromInt (TEST_SIZE - i)));
         }
         assertInAscOrder (heap);
     }
@@ -70,7 +70,7 @@ public class TestHeapLong
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter.ObjectFromInt (random.nextInt (16))));
         }
     }
 
@@ -81,11 +81,8 @@ public class TestHeapLong
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (24 - i)));
+                                   heap.insert (IntValueConverter.ObjectFromInt (24 - i)));
         }
-        TestCase.assertEquals (heap.keys.length, 32);
-        TestCase.assertEquals (heap.tree.length, 32);
-        TestCase.assertEquals (heap.inverse.length, 32);
         TestCase.assertEquals (24, heap.getSize ());
         assertInAscOrder (heap);
     }
@@ -98,11 +95,8 @@ public class TestHeapLong
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter.ObjectFromInt (random.nextInt (16))));
         }
-        TestCase.assertEquals (heap.keys.length, 32);
-        TestCase.assertEquals (heap.tree.length, 32);
-        TestCase.assertEquals (heap.inverse.length, 32);
         TestCase.assertEquals (24, heap.getSize ());
         assertInAscOrder (heap);
     }
@@ -114,17 +108,17 @@ public class TestHeapLong
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (4)));
+                                   heap.insert (IntValueConverter.ObjectFromInt (4)));
         }
 
-        heap.insert (IntValueConverter.longFromInt (5));
-        TestCase.assertEquals (IntValueConverter.longFromInt (4), heap.peek ());
+        heap.insert (IntValueConverter.ObjectFromInt (5));
+        TestCase.assertEquals (IntValueConverter.ObjectFromInt (4), heap.peek ());
         TestCase.assertEquals (25, heap.getSize ());
         for (int i = 0; i < 24; i++)
         {
-            heap.removeTop ();
+            heap.removeGreatest ();
         }
-        TestCase.assertEquals (IntValueConverter.longFromInt (5), heap.peek ());
+        TestCase.assertEquals (IntValueConverter.ObjectFromInt (5), heap.peek ());
     }
 
     @Test
@@ -134,10 +128,10 @@ public class TestHeapLong
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.longFromInt (4)));
+                                   heap.insert (IntValueConverter.ObjectFromInt (4)));
         }
-        heap.insert (IntValueConverter.longFromInt (3));
-        TestCase.assertEquals (IntValueConverter.longFromInt (3), heap.peek ());
+        heap.insert (IntValueConverter.ObjectFromInt (3));
+        TestCase.assertEquals (IntValueConverter.ObjectFromInt (3), heap.peek ());
     }
 
     @Test
@@ -147,7 +141,7 @@ public class TestHeapLong
         testRandomWithDoubleGrowth ();
         while (!heap.isEmpty ())
         {
-            heap.removeTop ();
+            heap.removeGreatest ();
             assertInAscOrder (heap);
         }
         TestCase.assertTrue (heap.isEmpty ());
@@ -157,20 +151,41 @@ public class TestHeapLong
     //test free list, and internal equals with copy methods
 
 
-    protected void assertInAscOrder (HeapLong heap)
+    protected void assertInAscOrder (BinaryHeapObject heap)
     {
         if (template) return;
-        long[] collected = new long[heap.getSize ()];
+        Object[] collected = new Object[heap.getSize ()];
         int ct = 0;
         while (!heap.isEmpty ())
         {
             collected[ct++] = heap.peek ();
-            heap.removeTop ();
+            heap.removeGreatest ();
         }
-        long[] copy = new long[collected.length];
+        Object[] copy = new Object[collected.length];
         System.arraycopy (collected, 0, copy, 0, collected.length);
         Arrays.sort (copy);
-        TestUtilsLong.assertArrayContentsEqual (collected, copy);
+        TestUtilsObject.assertArrayContentsEqual (collected, copy);
+    }
+
+    private final static class ObjectAsc implements ComparatorObject
+    {
+
+        /**
+         * Type specific comparator for the primitive types.
+         * Conforms to the same convention as {@link Comparable }, returns a
+         * negative number if a is less than b, a positive number if a is greater
+         * than b, and 0 if the two are equal.
+         *
+         * @param a first item
+         * @param b second item
+         * @return negative if a less than b, positive if b less than a, zero
+         *         if equal
+         */
+        @Override
+        public int compare( Object a, Object b )
+        {
+            return IntValueConverter.toInt( a ) - IntValueConverter.toInt( b );
+        }
     }
 
 }

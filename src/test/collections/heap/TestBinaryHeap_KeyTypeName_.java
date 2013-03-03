@@ -6,7 +6,7 @@ import core.util.comparator.*;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import util.TestUtilsChar;
+import util.TestUtils_KeyTypeName_;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -15,17 +15,17 @@ import java.util.Random;
  * Copyright © 2012 Max Miller
  * All rights reserved.
  */
-public class TestHeapChar
+public class TestBinaryHeap_KeyTypeName_
 {
 
     private static final int TEST_SIZE = 5;
-    HeapChar heap;
+    BinaryHeap_KeyTypeName_ heap;
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     @Before
     public void setup ()
     {
-        heap = new HeapChar (8, new Comparators.CharAsc());
+        heap = new BinaryHeap_KeyTypeName_(8, new Comparators._KeyTypeName_Asc());
     }
 
     @Test
@@ -38,14 +38,14 @@ public class TestHeapChar
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (i)));
+                                   heap.insert (IntValueConverter._key_FromInt (i)));
         }
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
 
         heap.remove (3);
         TestCase.assertEquals (3,
-                               heap.insert (IntValueConverter.charFromInt (3)));
+                               heap.insert (IntValueConverter._key_FromInt (3)));
         TestCase.assertEquals (TEST_SIZE, heap.getSize ());
 
     }
@@ -57,7 +57,7 @@ public class TestHeapChar
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (TEST_SIZE - i)));
+                                   heap.insert (IntValueConverter._key_FromInt (TEST_SIZE - i)));
         }
         assertInAscOrder (heap);
     }
@@ -70,7 +70,7 @@ public class TestHeapChar
         for (int i = 0; i < TEST_SIZE; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter._key_FromInt (random.nextInt (16))));
         }
     }
 
@@ -81,7 +81,7 @@ public class TestHeapChar
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (24 - i)));
+                                   heap.insert (IntValueConverter._key_FromInt (24 - i)));
         }
         TestCase.assertEquals (heap.keys.length, 32);
         TestCase.assertEquals (heap.tree.length, 32);
@@ -98,7 +98,7 @@ public class TestHeapChar
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (random.nextInt (16))));
+                                   heap.insert (IntValueConverter._key_FromInt (random.nextInt (16))));
         }
         TestCase.assertEquals (heap.keys.length, 32);
         TestCase.assertEquals (heap.tree.length, 32);
@@ -114,17 +114,17 @@ public class TestHeapChar
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (4)));
+                                   heap.insert (IntValueConverter._key_FromInt (4)));
         }
 
-        heap.insert (IntValueConverter.charFromInt (5));
-        TestCase.assertEquals (IntValueConverter.charFromInt (4), heap.peek ());
+        heap.insert (IntValueConverter._key_FromInt (5));
+        TestCase.assertEquals (IntValueConverter._key_FromInt (4), heap.peek ());
         TestCase.assertEquals (25, heap.getSize ());
         for (int i = 0; i < 24; i++)
         {
-            heap.removeTop ();
+            heap.removeGreatest();
         }
-        TestCase.assertEquals (IntValueConverter.charFromInt (5), heap.peek ());
+        TestCase.assertEquals (IntValueConverter._key_FromInt (5), heap.peek ());
     }
 
     @Test
@@ -134,10 +134,10 @@ public class TestHeapChar
         for (int i = 0; i < 24; i++)
         {
             TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.charFromInt (4)));
+                                   heap.insert (IntValueConverter._key_FromInt (4)));
         }
-        heap.insert (IntValueConverter.charFromInt (3));
-        TestCase.assertEquals (IntValueConverter.charFromInt (3), heap.peek ());
+        heap.insert (IntValueConverter._key_FromInt (3));
+        TestCase.assertEquals (IntValueConverter._key_FromInt (3), heap.peek ());
     }
 
     @Test
@@ -147,7 +147,7 @@ public class TestHeapChar
         testRandomWithDoubleGrowth ();
         while (!heap.isEmpty ())
         {
-            heap.removeTop ();
+            heap.removeGreatest();
             assertInAscOrder (heap);
         }
         TestCase.assertTrue (heap.isEmpty ());
@@ -157,20 +157,20 @@ public class TestHeapChar
     //test free list, and internal equals with copy methods
 
 
-    protected void assertInAscOrder (HeapChar heap)
+    protected void assertInAscOrder (BinaryHeap_KeyTypeName_ heap)
     {
         if (template) return;
-        char[] collected = new char[heap.getSize ()];
+        _key_[] collected = new _key_[heap.getSize ()];
         int ct = 0;
         while (!heap.isEmpty ())
         {
             collected[ct++] = heap.peek ();
-            heap.removeTop ();
+            heap.removeGreatest();
         }
-        char[] copy = new char[collected.length];
+        _key_[] copy = new _key_[collected.length];
         System.arraycopy (collected, 0, copy, 0, collected.length);
         Arrays.sort (copy);
-        TestUtilsChar.assertArrayContentsEqual (collected, copy);
+        TestUtils_KeyTypeName_.assertArrayContentsEqual (collected, copy);
     }
 
 }
