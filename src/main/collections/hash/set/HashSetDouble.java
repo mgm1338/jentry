@@ -375,4 +375,9 @@ public class HashSetDouble implements CollectionDouble
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

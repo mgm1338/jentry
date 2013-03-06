@@ -375,4 +375,9 @@ public class HashSetInt implements CollectionInt
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

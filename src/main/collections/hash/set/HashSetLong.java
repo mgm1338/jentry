@@ -375,4 +375,9 @@ public class HashSetLong implements CollectionLong
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

@@ -47,6 +47,14 @@ public class DefaultValueProvider
         }
     }
 
+    public static class Default_ValueTypeName_
+    {
+        public static final _val_ getValue()
+        {
+            return null;
+        }
+    }
+
     public static class DefaultBool
     {
         public static final boolean getValue()

@@ -375,4 +375,9 @@ public class HashSetByte implements CollectionByte
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

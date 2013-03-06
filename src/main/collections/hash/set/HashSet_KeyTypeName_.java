@@ -375,4 +375,9 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

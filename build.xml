@@ -36,6 +36,9 @@
         <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
 
 
+        <!--KEY && VALS TESTS-->
+        <generateKeyValTypes fileBase="TestHashMap" package="test\collections\hash\map" />
+
 
         <!--                                                            -->
                             <!--DELETIONS-->
@@ -52,11 +55,14 @@
 
         <!--    DELETE KEYS && VALS -->
 
-       <delete>
-        <fileset dir="main\collections\hash\map\">
-            <include name="HashMapBool*" />
-        </fileset>
-       </delete>
+        <delete>
+            <fileset dir="main\collections\hash\map\">
+                <include name="HashMapBool*"/>
+            </fileset>
+            <fileset dir="test\collections\hash\map\">
+                <include name="TestHashMapBool*"/>
+            </fileset>
+        </delete>
 
     </target>
 
@@ -130,6 +136,93 @@
                                         package="@{package}"
                                         valueTypeName="Object"
                                         valueType="Object"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="generateKeyValNoBool"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Char" valueType="char"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Byte" valueType="byte"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Short"
+                                        valueType="short"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Int" valueType="int"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Float"
+                                        valueType="float"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Double"
+                                        valueType="double"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Long" valueType="long"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="CharSequence"
+                                        valueType="CharSequence"/>
+            <generateSpecificValueTypesNoBool fileBase="@{fileBase}"
+                                        package="@{package}"
+                                        valueTypeName="Object"
+                                        valueType="Object"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="generateSpecificValueTypesNoBool"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <attribute name="valueTypeName"/>
+        <attribute name="valueType"/>
+        <sequential>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Char" keyType="char"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Byte" keyType="byte"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Short" keyType="short"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Int" keyType="int"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Float" keyType="float"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Double" keyType="double"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Long" keyType="long"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="CharSequence"
+                                keyType="CharSequence"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Object" keyType="Object"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
         </sequential>
     </macrodef>
 

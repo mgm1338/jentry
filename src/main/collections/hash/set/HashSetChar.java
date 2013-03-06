@@ -375,4 +375,9 @@ public class HashSetChar implements CollectionChar
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

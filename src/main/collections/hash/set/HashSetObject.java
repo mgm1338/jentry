@@ -375,4 +375,9 @@ public class HashSetObject implements CollectionObject
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

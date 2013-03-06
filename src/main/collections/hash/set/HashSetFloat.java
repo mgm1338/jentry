@@ -375,4 +375,9 @@ public class HashSetFloat implements CollectionFloat
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

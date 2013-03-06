@@ -1,11 +1,18 @@
 package collections.hash.map;
 
 import collections.hash.HashFunctions;
+import collections.hash.set.TestHashSet_KeyTypeName_;
+import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
-import core.stub.ArrayFactory_ValueTypeName_;
+import core.array.factory.ArrayFactory_ValueTypeName_;
+
+
+import core.stub.*;
+import junit.framework.TestCase;
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Copyright 2/27/13
@@ -14,15 +21,17 @@ import org.junit.Before;
  * User: Max Miller
  * Created: 2/27/13
  */
-public class TestHashMap_KeyTypeName__ValueTypeName_
+public class TestHashMap_KeyTypeName__ValueTypeName_ 
 {
-
-    private static final int LARGE_TEST_SIZE = 100000   ;
+    boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
+    public static final int TEST_SIZE = 8;
+    private static final int LARGE_TEST_SIZE = 128   ;
     private HashMap_KeyTypeName__ValueTypeName_ map;
 
     @Before
     public void setup()
     {
+        if (template) return;
         HashMap_KeyTypeName__ValueTypeName_ shortCon = new HashMap_KeyTypeName__ValueTypeName_( 8 );
         map =   new HashMap_KeyTypeName__ValueTypeName_( 8, .75,
                                                          ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
@@ -34,6 +43,130 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
 
     }
 
+    /**
+     * Initially load with TEST_SIZE items, where the initial capacity is set to that size
+     * Assert the sizes, and that entries are returned in compact manner
+     */
+    @Test
+    public void loadTest()
+    {
+        if (template) return;
+        TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( 5 ), IntValueConverter._val_FromInt( -1 )),
+                              IntValueConverter._val_FromInt(  -1 ) );
+
+        TestCase.assertEquals( map.getSize(), 0 );
+        TestCase.assertTrue( map.isEmpty() );
+
+        for (int i=0; i<TEST_SIZE; i++)
+        {
+            int entry  = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i+100 ));
+            TestCase.assertEquals( i, entry ); //test compact
+            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 )),
+                                   IntValueConverter._val_FromInt(  i+100 ) );
+        }
+        TestCase.assertEquals( map.getSize(), TEST_SIZE );
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            TestCase.assertTrue( map.containsKey( IntValueConverter._key_FromInt( i ) )==i );
+        }
+        TestCase.assertFalse( map.isEmpty() );
+
+    }
+
+    /** Remove each item iteratively */
+    @Test
+    public void fullRemove()
+    {
+        if (template) return;
+        TestCase.assertEquals( map.getSize(), 0 );
+        loadTest();
+        TestCase.assertEquals( map.getSize(), TEST_SIZE );
+        for (int i=0; i<TEST_SIZE; i++)
+        {
+            int entry  = map.remove( IntValueConverter._key_FromInt( i ));
+            TestCase.assertEquals( i, entry ); //test compact
+        }
+        TestCase.assertEquals( map.getSize(), 0 );
+
+        //assert all gone
+        for (int i=0; i<TEST_SIZE; i++)
+        {
+            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1
+            )),
+                                   IntValueConverter._val_FromInt(  -1 ) );
+        }
+
+    }
+
+    /** Load more items into the HashSet than its initial capacity can accommodate */
+    @Test
+    public void growthTest()
+    {
+        if (template) return;
+        for (int i=0; i<LARGE_TEST_SIZE; i++)
+        {
+            int entry  = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i+100 ));
+            TestCase.assertEquals( i, entry ); //test compact
+            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 )),
+                                   IntValueConverter._val_FromInt(  i+100 ) );
+        }
+
+        TestCase.assertEquals( LARGE_TEST_SIZE, map.getSize() );
+    }
+
+    /** Basic test, assert item returns false when not present (duh) */
+    @Test
+    public void assertRemoveIsNotThereFalse()
+    {
+        if (template) return;
+        for (int i=0; i<TEST_SIZE; i++)
+        {
+            int entry  = map.remove( IntValueConverter._key_FromInt( i ));
+            TestCase.assertEquals( entry, -1 ); //test compact
+        }
+    }
 
 
+    /** Test our clear method, that it will result in an empty set */
+    @Test
+    public void clearTest()
+    {
+        if (template) return;
+        loadTest();
+        map.clear();
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            TestCase.assertEquals( IntValueConverter._val_FromInt( -1),
+                                   map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1) )
+            );
+        }
+        TestCase.assertTrue( map.isEmpty() );
+        TestCase.assertEquals( 0, map.getSize() );
+        loadTest();
+
+
+    }
+
+    @Test
+    public void fullCopyValidSetTest()
+    {
+        if (template) return;
+
+    }
+
+    /** Copy to a larger HashSet */
+    @Test
+    public void copyToLargerSet()
+    {
+        if (template) return;
+
+    }
+
+    /** Copy to a smaller set */
+    @Test
+    public void copyFromSmaller()
+    {
+        if (template) return;
+
+    }
 }

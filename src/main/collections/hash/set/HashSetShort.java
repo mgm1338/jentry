@@ -375,4 +375,9 @@ public class HashSetShort implements CollectionShort
         return target;
 
     }
+
+    public GrowthStrategy getGrowthStrategy()
+    {
+        return growthStrategy;
+    }
 }

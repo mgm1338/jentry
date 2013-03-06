@@ -65,6 +65,11 @@ public class IntValueConverter
         return null;
     }
 
+    public static final _val_ _val_FromInt( int i )
+    {
+        return null;
+    }
+
 
     public static final boolean booleanFromInt( int i )
     {
