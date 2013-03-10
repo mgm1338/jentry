@@ -13,6 +13,8 @@ import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtils_KeyTypeName_;
+import util.TestUtils_ValueTypeName_;
 
 /**
  * Copyright 2/27/13
@@ -148,10 +150,23 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     }
 
     @Test
+    public void copyFromNull()
+    {
+        if (template) return;
+        loadTest();
+        HashMap_KeyTypeName__ValueTypeName_ copy = map.copy( null );
+        assertEquals( map, copy );
+
+    }
+
+    @Test
     public void fullCopyValidSetTest()
     {
         if (template) return;
-
+        loadTest();
+        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize() );
+        map.copy( copy );
+        assertEquals( map, copy );
     }
 
     /** Copy to a larger HashSet */
@@ -159,6 +174,9 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     public void copyToLargerSet()
     {
         if (template) return;
+        loadTest();
+        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize()*100 );
+        map.copy( copy );
 
     }
 
@@ -167,6 +185,18 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     public void copyFromSmaller()
     {
         if (template) return;
+        loadTest();
+        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize()/4 );
+        map.copy( copy );
+
+    }
+
+    protected void assertEquals(HashMap_KeyTypeName__ValueTypeName_ orig, HashMap_KeyTypeName__ValueTypeName_ copy)
+    {
+        //little messy to be asserting equality with another test
+        TestHashSet_KeyTypeName_.assertEquals( orig.set, copy.set );
+        //values equal up to original length
+        TestUtils_ValueTypeName_.assertArrayContentsToLen( orig.values, copy.values, orig.values.length );
 
     }
 }

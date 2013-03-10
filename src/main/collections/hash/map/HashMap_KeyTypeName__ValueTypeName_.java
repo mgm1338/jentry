@@ -171,6 +171,7 @@ public class HashMap_KeyTypeName__ValueTypeName_ implements Map_KeyTypeName__Val
             target = new HashMap_KeyTypeName__ValueTypeName_( size );
         }
         target.set = this.set.copy( target.set );
+        target.values = valueFactory.ensureArrayCapacity( target.values, values.length, growthStrategy );
         System.arraycopy( values, 0, target.values, 0, values.length );
         return target;
     }

@@ -2,6 +2,7 @@ package core.util.comparator;
 
 import core.Const;
 import core.stub._key_;
+import core.stub._val_;
 
 /**
  * Copyright 1/21/13
@@ -27,7 +28,7 @@ public class EqualityFunctions
 
     public static final class Equals_ValueTypeName_
     {
-        public boolean equals (_key_ a, _key_ b)
+        public boolean equals (_val_ a, _val_ b)
         {
             return false;
         }

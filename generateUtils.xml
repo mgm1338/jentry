@@ -1,0 +1,235 @@
+<project name="Jentry"  basedir="src">
+    <property name="src" location="."/>
+
+
+    <!--START GENERATING TYPE-SPECIFIC CLASSES FOR CLASSES WITH ONLY _KeyTypeName_-->
+
+    <!--Common, No Boolean or _ValueTypeName_-->
+    <macrodef name="generateKeyTypes"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+        </sequential>
+    </macrodef>
+
+    <!--Common including Bool-->
+    <macrodef name="generateKeyTypesBool"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Bool" keyType="boolean"/>
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+        </sequential>
+    </macrodef>
+
+    <!--Common including stub for _ValueTypeName_-->
+    <macrodef name="generateKeyTypesVal"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="_ValueTypeName_" keyType="_val_"/>
+        </sequential>
+    </macrodef>
+
+    <!--Common, Bool, and _ValueTypeName_ (All)-->
+    <macrodef name="generateKeyTypesBoolVal"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Bool" keyType="boolean"/>
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="_ValueTypeName_" keyType="_val_"/>
+        </sequential>
+    </macrodef>
+
+    <!--Standard Keys that are always Generated-->
+    <macrodef name="generateKeyCommon"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Char" keyType="char"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Byte" keyType="byte"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Short" keyType="short"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Int" keyType="int"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Float" keyType="float"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Double" keyType="double"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Long" keyType="long"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="CharSequence" keyType="CharSequence"/>
+            <generateKeys fileBase="@{fileBase}" package="@{package}"
+                          keyTypeName="Object" keyType="Object"/>
+        </sequential>
+    </macrodef>
+
+    <!--END GENERATING TYPE-SPECIFIC CLASSES FOR CLASSES WITH ONLY _KeyTypeName_-->
+
+
+    <!--START GENERATING TYPE-SPECIFIC CLASSES FOR CLASSES WITH _KeyTypeName__ValueTypeName-->
+    <macrodef name="generateKeyValTypes"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateKeyValCommon fileBase="@{fileBase}"
+                                package="@{package}" />
+
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="generateKeyValCommon"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Bool"
+                                valueType="boolean"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Char" valueType="char"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Byte" valueType="byte"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Short"
+                                valueType="short"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Int" valueType="int"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Float"
+                                valueType="float"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Double"
+                                valueType="double"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Long" valueType="long"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="CharSequence"
+                                valueType="CharSequence"/>
+            <generateValueTypes fileBase="@{fileBase}"
+                                package="@{package}"
+                                valueTypeName="Object"
+                                valueType="Object"/>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="generateValueTypes"
+              description="Generate Each Type of Key">
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <attribute name="valueTypeName"/>
+        <attribute name="valueType"/>
+        <sequential>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Bool" keyType="boolean"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Char" keyType="char"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Byte" keyType="byte"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Short" keyType="short"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Int" keyType="int"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Float" keyType="float"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Double" keyType="double"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Long" keyType="long"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="CharSequence"
+                                keyType="CharSequence"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
+                                keyTypeName="Object" keyType="Object"
+                                valueType="@{valueType}"
+                                valueTypeName="@{valueTypeName}"/>
+        </sequential>
+    </macrodef>
+
+    <!--END GENERATING TYPE-SPECIFIC CLASSES FOR CLASSES WITH _KeyTypeName__ValueTypeName-->
+
+
+    <!--START UTIL GENERATION CLASSES-->
+    <macrodef name="generateKeys">
+        <attribute name="keyTypeName"/>
+        <attribute name="keyType"/>
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <copy file="${src}/@{package}/@{fileBase}_KeyTypeName_.java"
+                  tofile="@{package}/@{fileBase}@{keyTypeName}.java">
+                <filterset begintoken="_" endtoken="_">
+                    <filter token="KeyTypeName" value="@{keyTypeName}"/>
+                    <filter token="key" value="@{keyType}"/>
+                </filterset>
+            </copy>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="generateKeysValues">
+        <attribute name="keyTypeName"/>
+        <attribute name="keyType"/>
+        <attribute name="valueTypeName"/>
+        <attribute name="valueType"/>
+        <attribute name="fileBase"/>
+        <attribute name="package"/>
+        <sequential>
+            <copy file="${src}/@{package}/@{fileBase}_KeyTypeName__ValueTypeName_.java"
+                  tofile="@{package}/@{fileBase}@{keyTypeName}@{valueTypeName}.java">
+                <filterset begintoken="_" endtoken="_">
+                    <filter token="KeyTypeName" value="@{keyTypeName}"/>
+                    <filter token="key" value="@{keyType}"/>
+                    <filter token="ValueTypeName" value="@{valueTypeName}"/>
+                    <filter token="val" value="@{valueType}"/>
+                </filterset>
+            </copy>
+        </sequential>
+    </macrodef>
+    <!--END UTIL GENERATION CLASSES-->
+
+</project>
