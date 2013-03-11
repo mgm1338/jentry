@@ -69,7 +69,7 @@ public class ManyToManyInt extends OneToManyInt
 
     public int getCountForRight( int right )
     {
-        return 0;  //To change body of created methods use File | Settings | File Templates.
+        return 0;
     }
 
     public int getNextLeftEntry( int right, int prevEntry)
@@ -79,6 +79,6 @@ public class ManyToManyInt extends OneToManyInt
 
     public int[] getAllLeftAssociations( int right, int[] target, int mark )
     {
-        return new int[ 0 ];  //To change body of created methods use File | Settings | File Templates.
+        return new int[ 0 ];
     }
 }

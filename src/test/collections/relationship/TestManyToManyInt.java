@@ -13,7 +13,7 @@ import util.TestUtilsInt;
  * User: Max Miller
  * Created: 2/9/13
  */
-public class TestManyToManyInt
+public class TestManyToManyInt 
 {
     ManyToManyInt manyToManyNoCounts;
     ManyToManyInt manyToManyCounts;
@@ -27,7 +27,23 @@ public class TestManyToManyInt
 
         TestCase.assertEquals( 0, manyToManyCounts.getSize() );
         TestCase.assertEquals( 0, manyToManyNoCounts.getSize() );
+    }
 
+
+    /** Do some simple associations with both ManyToManyInts, shown below
+     *
+     *  L                      R
+     *  0   ->1                1   ->0,2,3,4
+     *  2   ->1                6   ->25,26,27
+     *  3   ->1,19,20,21       19  ->3
+     *  4   ->1                20  ->3
+     *  25  ->6                21  ->3
+     *  26  ->6
+     *  27  ->6
+     * */
+    
+    public void simpleAssociate()
+    {
         manyToManyCounts.associate( 0, 1 );
         manyToManyCounts.associate( 2, 1 );
         manyToManyCounts.associate( 3, 1 );
@@ -64,45 +80,82 @@ public class TestManyToManyInt
     }
 
 
-    @Test
-    public void iterateLeftsForRight()
+
+    /**
+     * Do a manual iteration, and make sure it is insert order and assert size
+     * Compare with getting all rights with a null target (should be exact size and same contents)
+     */
+    
+    public void iterateRightsForLeft()
     {
 
-        int entry = Const.NO_ENTRY;
-        int[] rights = new int[ 4 ];
-        int rtCt = 0;
-        while( ( entry = manyToManyNoCounts.getNextLeftEntry( 1, entry ) ) != Const.NO_ENTRY )
-        {
-            int right = manyToManyNoCounts.getRight( entry );
-            rights[ rtCt++ ] = right;
-        }
-        TestCase.assertEquals( rtCt, 4 );
-        //insert order
-        TestCase.assertEquals(  0, rights[ 0 ] );
-        TestCase.assertEquals(  2, rights[ 1 ] );
-        TestCase.assertEquals(  3, rights[ 2 ] );
-        TestCase.assertEquals(  4, rights[ 2 ] );
-
-
-        TestUtilsInt.assertArrayContentsToLen( rights, manyToManyNoCounts.getAllLeftAssociations( 2, null,
-                                                                                             Const.NO_ENTRY ), 3 );
     }
-
 
     /** Assert that we will grow an array that is one off holding the set of associations */
-    @Test
+    
     public void getIterationsWithDifferentTargets()
     {
-        int[] ofByOne = new int[ 3 ];
-        //assert that we will grow the ofByOne array, we already know null will get correct array from test above
-        TestUtilsInt.assertArrayContentsToLen( manyToManyNoCounts.getAllLeftAssociations( 1, null, Const.NO_ENTRY ),
-                                               manyToManyNoCounts.getAllLeftAssociations( 1, ofByOne,
-                                                                                          Const.NO_ENTRY ), 4 );
+
+    }
+
+    
+    public void disassociateTest()
+    {
+
+    }
+
+    /** Assert clear will result in a empty structure */
+    
+    public void clearTest()
+    {
+
+    }
+
+    /** Grow Lefts and Associations Test */
+    
+    public void growthTest()
+    {
+
+    }
+
+    /** Assert Compact Associations that are immediatelyRe-used */
+    
+    public void testCompactness()
+    {
+
+    }
+
+    /** Copy a loaded one to many from a null target */
+    
+    public void copyFromNull()
+    {
+
+    }
+
+    /** Copy a loaded one to many from a larger one */
+    
+    public void copyFromLarger()
+    {
+
+    }
+
+    /** Copy a loaded one to many from a smaller one */
+    
+    public void copyFromSmaller()
+    {
+
+    }
+
+    /** Copy an empty one */
+    
+    public void copyEmpty()
+    {
 
     }
 
 
+    protected void assertEquals( OneToManyInt expected, OneToManyInt actual )
+    {
 
-
-
+    }
 }

@@ -155,8 +155,6 @@ public class TestBinaryHeap_KeyTypeName_
     }
 
     //test free list, and internal equals with copy methods
-
-
     protected void assertInAscOrder (BinaryHeap_KeyTypeName_ heap)
     {
         if (template) return;

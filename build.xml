@@ -18,52 +18,31 @@
                                package="main\core\util\comparator" />
         <generateKeyTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
-        <generateKeyTypesBool fileBase="Heap"
+        <generateKeyTypes fileBase="Heap"
                                package="main\collections\generic\heap" />
-        <generateKeyTypesBool fileBase="BinaryHeap"
+        <generateKeyTypes fileBase="BinaryHeap"
                                package="main\collections\heap"/>
 
         <!--//TESTS-->
         <generateKeyTypes fileBase="TestHashSet"
                                package="test\collections\hash\set" />
-        <generateKeyTypesBoolVal fileBase="TestUtils"
+        <generateKeyTypesVal fileBase="TestUtils"
                                package="test\util"/>
-        <generateKeyTypesBool fileBase="TestBinaryHeap"
+        <generateKeyTypes fileBase="TestBinaryHeap"
                                package="test\collections\heap"/>
 
          <!--KEY && VALS-->
-        <generateKeyValCommon fileBase="Map" package="main\collections\generic\map" />
-        <generateKeyValCommon fileBase="HashMap" package="main\collections\hash\map" />
+        <generateKeyValTypes fileBase="Map" package="main\collections\generic\map" />
+        <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
 
 
         <!--KEY && VALS TESTS-->
-        <generateKeyValCommon fileBase="TestHashMap" package="test\collections\hash\map" />
+        <generateKeyValTypes fileBase="TestHashMap" package="test\collections\hash\map" />
 
 
-        <!--                                                            -->
-                            <!--DELETIONS-->
-        <!--                                                            -->
 
-
-        <!--    DELETE KEYS -->
-        <delete file="main\collections\hash\set\HashSetBool.java"/>
-        <delete file="main\collections\heap\HeapBool.java"/>
-        <delete file="test\collections\heap\TestBinaryHeapBool.java"/>
+        <!--DELETIONS-->
         <delete file="test\collections\heap\TestBinaryHeapObject.java"/>
-        <delete file="test\collections\hash\set\TestHashSetBool.java"/>
-
-
-        <!--    DELETE KEYS && VALS -->
-
-        <delete>
-            <fileset dir="main\collections\hash\map\">
-                <include name="HashMapBool*"/>
-            </fileset>
-            <fileset dir="test\collections\hash\map\">
-                <include name="TestHashMapBool*"/>
-            </fileset>
-        </delete>
-
     </target>
 
 

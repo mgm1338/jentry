@@ -122,7 +122,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * 4
  * 5
  * </pre>
- *
+ * <p/>
  * Insert 10:
  * <pre>
  *  tree:
@@ -139,7 +139,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * 4
  * 5
  * </pre>
- *
+ * <p/>
  * Insert 2:
  * <pre>
  *  tree:
@@ -166,24 +166,40 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * and inverse arrays.
      */
     protected final ArrayFactoryInt intFactory;
-    /**
-     * {@link Comparator_KeyTypeName_} that will order the keys from greatest to least
-     */
+    /** {@link Comparator_KeyTypeName_} that will order the keys from greatest to least */
     protected final Comparator_KeyTypeName_ cmp;
+    /** Key factory that will allocate new typed keys */
     protected final ArrayFactory_KeyTypeName_ keyFactory;
+    /** Growth strategy for growing the arrays in the heap */
     protected final GrowthStrategy growthStrategy;
 
 
+    /** current size of the heap (in elements) */
     private int size = 0;
+    /** Entry to the key values (not sorted array) */
     protected _key_[] keys;
+    /** The binary tree node to the entry it stores */
     protected int[] tree;
+    /** For each entry (as index), the node it occupies in the tree */
     protected int[] inverse;
+    /** Pointer to the next entry that is unoccupied */
     protected int entryPtr = 0;
+    /** List of vacated entries, that will be used first upon insertions */
     protected int[] freeList;
+    /** Pointer to the next free entry to use in the free list */
     int freeListCt = 0;
+    /**
+     * Pointer to the next free item in the tree (we start with 1 to simplify parent/child operations).
+     * The tree will always be vacant in index 0
+     */
     int treePtr = 1;
 
-
+    /**
+     * Constructor
+     *
+     * @param initialCapacity the initial capacity of the heap
+     * @param cmp             {@link Comparator_KeyTypeName_} that will order the elements from greatest to least
+     */
     public BinaryHeap_KeyTypeName_( int initialCapacity, Comparator_KeyTypeName_ cmp )
     {
         this( initialCapacity, cmp, ArrayFactoryInt.defaultIntProvider,
@@ -191,6 +207,15 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
               GrowthStrategy.doubleGrowth );
     }
 
+    /**
+     * Full Constructor
+     *
+     * @param initialCapacity the initial capacity of the heap
+     * @param cmp             {@link Comparator_KeyTypeName_} that will order the elements from greatest to least
+     * @param intFactory      factory that will allocate arrays for the tree, inverse, and freelist
+     * @param keyFactory      the factory that allocates the keys for the Heap
+     * @param growthStrategy  strategy for growing the arrays in this Heap
+     */
     public BinaryHeap_KeyTypeName_(
             int initialCapacity, Comparator_KeyTypeName_ cmp, ArrayFactoryInt intFactory,
             ArrayFactory_KeyTypeName_ keyFactory, GrowthStrategy growthStrategy )
@@ -205,12 +230,22 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
         freeList = intFactory.alloc( 4 );
     }
 
+    /**
+     * Get the current size (in elements) of the heap.
+     *
+     * @return the number of keys in the heap
+     */
     @Override
     public int getSize()
     {
         return size;
     }
 
+    /**
+     * Returns true if the Heap is empty, false otherwise.
+     *
+     * @return true if the Heap is empty, false otherwise.
+     */
     @Override
     public boolean isEmpty()
     {

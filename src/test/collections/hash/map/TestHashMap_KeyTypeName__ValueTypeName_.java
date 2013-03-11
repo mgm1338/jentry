@@ -34,7 +34,7 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     public void setup()
     {
         if (template) return;
-        HashMap_KeyTypeName__ValueTypeName_ shortCon = new HashMap_KeyTypeName__ValueTypeName_( 8 );
+        HashMap_KeyTypeName__ValueTypeName_ shortConstructor = new HashMap_KeyTypeName__ValueTypeName_( 8 );
         map =   new HashMap_KeyTypeName__ValueTypeName_( 8, .75,
                                                          ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
                                                          ArrayFactoryInt.defaultIntProvider,
@@ -149,6 +149,9 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
 
     }
 
+    /**
+     * Copy with a null target, assert the copy is functionally the same as the original.
+     */
     @Test
     public void copyFromNull()
     {
@@ -159,6 +162,9 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
 
     }
 
+    /**
+     * Standard copy from one map to another.
+     */
     @Test
     public void fullCopyValidSetTest()
     {

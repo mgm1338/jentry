@@ -102,10 +102,6 @@
         <sequential>
             <generateValueTypes fileBase="@{fileBase}"
                                 package="@{package}"
-                                valueTypeName="Bool"
-                                valueType="boolean"/>
-            <generateValueTypes fileBase="@{fileBase}"
-                                package="@{package}"
                                 valueTypeName="Char" valueType="char"/>
             <generateValueTypes fileBase="@{fileBase}"
                                 package="@{package}"
@@ -147,10 +143,6 @@
         <attribute name="valueTypeName"/>
         <attribute name="valueType"/>
         <sequential>
-            <generateKeysValues fileBase="@{fileBase}" package="@{package}"
-                                keyTypeName="Bool" keyType="boolean"
-                                valueType="@{valueType}"
-                                valueTypeName="@{valueTypeName}"/>
             <generateKeysValues fileBase="@{fileBase}" package="@{package}"
                                 keyTypeName="Char" keyType="char"
                                 valueType="@{valueType}"
