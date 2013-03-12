@@ -137,7 +137,7 @@ public class TestOneToManyInt
 
     /** Assert that we will grow an array that is one off holding the set of associations */
     @Test
-    public void getIterationsWithDifferentTargets()
+    public void getAllRightsToSmallArray()
     {
         simpleAssociate();
         int[] ofByOne = new int[ 2 ];

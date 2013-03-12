@@ -1,5 +1,7 @@
 package core.charsequence;
 
+import java.util.Arrays;
+
 /**
  * Copyright 3/10/13
  * All rights reserved.
@@ -95,4 +97,30 @@ public class ByteSliceASCII implements CharSequence
     {
         return new ByteSliceASCII( this.bytes, offSet+start, end-start );
     }
+
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if( o != null )
+        {
+            if( ( o instanceof CharSequence ) )
+            {
+                if( ( ( CharSequence ) o ).length() != this.len )
+                {
+                    int len = this.len;
+                    for( int i = 0; i < len; i++ )
+                    {
+                        if( charAt( i ) != ( ( CharSequence ) o ).charAt( 0 ) )
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
