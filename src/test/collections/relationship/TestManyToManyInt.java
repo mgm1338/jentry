@@ -42,7 +42,6 @@ public class TestManyToManyInt
      * 26  ->6
      * 27  ->6
      */
-
     public void simpleAssociate()
     {
         manyToManyCounts.associate( 0, 1 );
@@ -154,9 +153,110 @@ public class TestManyToManyInt
     }
 
 
+    /**
+     * FOR REFERENCE:
+     *
+     * L                      R
+     * 0   ->1                1   ->0,2,3,4
+     * 2   ->1                6   ->25,26,27
+     * 3   ->1,19,20,21       19  ->3
+     * 4   ->1                20  ->3
+     * 25  ->6                21  ->3
+     * 26  ->6
+     * 27  ->6
+     *
+     * Disassociate many pairs and make assertions about the remaining relationships
+     */
     public void disassociateTest()
     {
+        simpleAssociate();
 
+
+        TestCase.assertEquals( 10, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 10, manyToManyNoCounts.getSize() );
+
+        TestCase.assertTrue( manyToManyCounts.disassociate( 0, 1 ));
+        TestCase.assertTrue( manyToManyNoCounts.disassociate( 0, 1 ));
+        TestCase.assertFalse( manyToManyCounts.disassociate( 0, 1 ));
+        TestCase.assertFalse( manyToManyNoCounts.disassociate( 0, 1 ));
+        //removed one
+        TestCase.assertEquals( 9, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
+        //not valid associations
+        TestCase.assertFalse( manyToManyCounts.disassociate( 0,0 ) );
+        TestCase.assertFalse( manyToManyCounts.disassociate( 0,0 ) );
+        //still same size
+        TestCase.assertEquals( 9, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
+        //no remaining rights for left 0
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextRightEntry( 0, Const.NO_ENTRY ));
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextRightEntry( 0, Const.NO_ENTRY ));
+
+        int[] remainingLefts = manyToManyCounts.getAllLeftAssociations( 1, null, -1 );
+        int[] remainingLeftsCt = manyToManyNoCounts.getAllLeftAssociations( 1, null, -1 );
+
+        //both are same up to 3
+        TestUtilsInt.assertArrayContentsToLen( remainingLefts, remainingLeftsCt, 3 );
+        int[] expected = new int[]{2,3,4};
+        //same as expected (and therefore both are equal to expected)
+        TestUtilsInt.assertArrayContentsToLen( expected, remainingLeftsCt, 3 );
+
+        TestCase.assertEquals( 9, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
+        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 19 ));
+        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 19 ));
+        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 19 ));
+        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 19 ));
+        TestCase.assertEquals( 8, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 8, manyToManyNoCounts.getSize() );
+        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 20 ));
+        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 20 ));
+        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 20 ));
+        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 20 ));
+        TestCase.assertEquals( 7, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 7, manyToManyNoCounts.getSize() );
+        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 21 ));
+        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 21 ));
+        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 21 ));
+        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 21 ));
+        TestCase.assertEquals( 6, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 6, manyToManyNoCounts.getSize() );
+
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextLeftEntry( 19, Const.NO_ENTRY ));
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextLeftEntry( 19, Const.NO_ENTRY ));
+
+        TestCase.assertEquals( 1, manyToManyCounts.getNextRightEntry( 3, Const.NO_ENTRY ));
+        TestCase.assertEquals( 1, manyToManyNoCounts.getNextRightEntry( 3, Const.NO_ENTRY ));
+
+        //adding to previously almost all removed left of 3,
+        manyToManyCounts.associate( 3, 40 );
+        manyToManyNoCounts.associate( 3, 40 );
+        manyToManyCounts.associate( 3, 41 );
+        manyToManyNoCounts.associate( 3, 41 ); //expect 1,40,41
+
+
+        int[] remainingRights = manyToManyCounts.getAllLeftAssociations( 3, null, -1 );
+        int[] remainingRightsCt = manyToManyNoCounts.getAllLeftAssociations( 3, null, -1 );
+        //both are same up to 3
+        TestUtilsInt.assertArrayContentsToLen( remainingRights, remainingRightsCt, 3 );
+        expected = new int[]{1,40,41};
+        //same as expected (and therefore both are equal to expected)
+        TestUtilsInt.assertArrayContentsToLen( expected, remainingLeftsCt, 3 );
+
+
+        TestCase.assertEquals( 8, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 8, manyToManyNoCounts.getSize() );
+
+        //EXPECTED AT END
+        /*
+         * L                      R
+         * 2   ->1                1   ->2,3,4
+         * 3   ->1,40,41          6   ->25,26,27
+         * 4   ->1                40  ->3
+         * 25  ->6                41  ->3
+         * 26  ->6
+         * 27  ->6
+         */
     }
 
     /** Assert clear will result in a empty structure */
