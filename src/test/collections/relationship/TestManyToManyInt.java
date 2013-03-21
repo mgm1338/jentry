@@ -42,6 +42,7 @@ public class TestManyToManyInt
      * 26  ->6
      * 27  ->6
      */
+    @Test
     public void simpleAssociate()
     {
         manyToManyCounts.associate( 0, 1 );
@@ -83,7 +84,7 @@ public class TestManyToManyInt
      * Do a manual iteration, and make sure it is insert order and assert size
      * Compare with getting all rights with a null target (should be exact size and same contents)
      */
-
+    @Test
     public void iterateRightsForLeftandLeftsForRight()
     {
         //iterate rights for 3,
@@ -126,7 +127,7 @@ public class TestManyToManyInt
     }
 
     /** Assert that we will grow an array that is one off holding the set of associations */
-
+    @Test
     public void getAllLeftRightSmallArrays()
     {
         int[] oneToSmall = new int[ 3 ];
@@ -167,6 +168,7 @@ public class TestManyToManyInt
      *
      * Disassociate many pairs and make assertions about the remaining relationships
      */
+    @Test
     public void disassociateTest()
     {
         simpleAssociate();
@@ -260,14 +262,47 @@ public class TestManyToManyInt
     }
 
     /** Assert clear will result in a empty structure */
-
+    @Test
     public void clearTest()
     {
+        ManyToManyInt newClearMap = new ManyToManyInt( 8, 16, 8, false, false );
+        simpleAssociate();
+        manyToManyCounts.clear();
+        manyToManyNoCounts.clear();
+
+        TestCase.assertEquals( newClearMap.getSize(), manyToManyCounts.getSize() );
+        TestCase.assertEquals( manyToManyNoCounts.getSize(), manyToManyCounts.getSize() );
+
+        //all of the associations are nothing
+        for (int i=0; i<32; i++)
+        {
+            TestCase.assertEquals( newClearMap.getAllRightAssociations( i, null, -1 ),
+                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ));
+            TestCase.assertEquals( manyToManyNoCounts.getAllRightAssociations( i, null, -1 ),
+                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ));
+            TestCase.assertEquals( newClearMap.getAllLeftAssociations( i, null, -1 ),
+                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ));
+            TestCase.assertEquals( manyToManyNoCounts.getAllLeftAssociations( i, null, -1 ),
+                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ));
+        }
+
+        //all the nexts are nothing
+        for (int i=0; i<32; i++)
+        {
+            TestCase.assertEquals( Const.NO_ENTRY, newClearMap.getNextLeftEntry( i, Const.NO_ENTRY ) );
+            TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextLeftEntry( i, Const.NO_ENTRY ) );
+            TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextLeftEntry( i, Const.NO_ENTRY ) );
+
+            TestCase.assertEquals( Const.NO_ENTRY, newClearMap.getNextRightEntry( i, Const.NO_ENTRY ) );
+            TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextRightEntry( i, Const.NO_ENTRY ) );
+            TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextRightEntry( i, Const.NO_ENTRY ) );
+
+        }
 
     }
 
     /** Grow Lefts and Associations Test */
-
+    @Test
     public void growthTest()
     {
 
@@ -281,28 +316,28 @@ public class TestManyToManyInt
     }
 
     /** Copy a loaded one to many from a null target */
-
+    @Test
     public void copyFromNull()
     {
 
     }
 
     /** Copy a loaded one to many from a larger one */
-
+    @Test
     public void copyFromLarger()
     {
 
     }
 
     /** Copy a loaded one to many from a smaller one */
-
+    @Test
     public void copyFromSmaller()
     {
 
     }
 
     /** Copy an empty one */
-
+    @Test
     public void copyEmpty()
     {
 

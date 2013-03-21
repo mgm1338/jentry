@@ -263,7 +263,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
                 entry = bucketList.getHead( idx );
                 if( entry == Const.NO_ENTRY ) break;
                 bucket = getBucket( keys[ entry ] );
-                newBucketList.insert( bucket, entry );
+                newBucketList.insert( bucket, entry );     //TODO: optimize insert
                 prevIdx = idx;
             }
         }
