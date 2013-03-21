@@ -196,7 +196,7 @@ public class HashSetInt implements CollectionInt
     @Override
     public int insert( int key )
     {
-        if( size == loadFactorSize ) //re-hash if our buckets are getting full
+        if( size == loadFactorSize )
         {
             reHash();
         }
@@ -246,10 +246,9 @@ public class HashSetInt implements CollectionInt
      */
     private void reHash()
     {
-        int newSize = GrowthStrategy.doubleGrowth.growthRequest( size, size + 1 );
-        //doubling the number of buckets, size = double the new entries plus size for the new buckets
+        int newSize = growthStrategy.growthRequest( size, size + 1 );
         MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets );
+                                                                   newSize+numBuckets);
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
@@ -264,7 +263,7 @@ public class HashSetInt implements CollectionInt
                 entry = bucketList.getHead( idx );
                 if( entry == Const.NO_ENTRY ) break;
                 bucket = getBucket( keys[ entry ] );
-                newBucketList.uncheckedInsert( bucket, entry ); //we know a new list set that is large enough
+                newBucketList.uncheckedInsert( bucket, entry );
                 prevIdx = idx;
             }
         }
@@ -377,11 +376,6 @@ public class HashSetInt implements CollectionInt
 
     }
 
-    /**
-     * Get the {@link GrowthStrategy }for this HashSet
-     *
-     * @return the {@link GrowthStrategy}.
-     */
     public GrowthStrategy getGrowthStrategy()
     {
         return growthStrategy;

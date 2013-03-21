@@ -338,49 +338,6 @@ public class TestMultiSLList
         TestCase.assertEquals( list[ 2 ], Const.NO_ENTRY );
     }
 
-
-    @Test
-    public void growHeadsTest()
-    {
-        dataLoadedLists.growHeads( GrowthStrategy.doubleGrowth, 6 );
-
-        assertListContents( dataLoadedLists, 0, 9, 8 );
-        assertListContents( dataLoadedLists, 1, 17, 16, 15 );
-        assertListContents( dataLoadedLists, 2, 6 );
-
-        TestCase.assertTrue( dataLoadedLists.maxHead == 6 );
-        //must be old size + size (this can overgrow, but necessary for 0)
-        TestCase.assertTrue( dataLoadedLists.heads.length >= 12 );
-        TestCase.assertTrue( dataLoadedLists.nexts.length >= 12 );
-    }
-
-    @Test
-    public void growNewList()
-    {
-        MultiLinkedListInt list = new MultiLinkedListInt( 1, 1 );
-        list.growHeads( GrowthStrategy.doubleGrowth, 8 );
-        TestCase.assertTrue( list.heads.length >= 8 );
-        TestCase.assertTrue( list.nexts.length >= 8 );
-
-    }
-
-    @Test
-    public void growHeadsByInsert()
-    {
-        dataLoadedLists.insert( 6, 0 );
-
-        assertListContents( dataLoadedLists, 0, 9, 8 );
-        assertListContents( dataLoadedLists, 1, 17, 16, 15 );
-        assertListContents( dataLoadedLists, 2, 6 );
-        assertListContents( dataLoadedLists, 6, 0 );
-
-
-        TestCase.assertTrue( dataLoadedLists.maxHead == 6 );
-        //must be old size + size (this can overgrow, but necessary for 0)
-        TestCase.assertTrue( dataLoadedLists.heads.length >= 12 );
-        TestCase.assertTrue( dataLoadedLists.nexts.length >= 12 );
-    }
-
     @Test
     public void clearTest()
     {

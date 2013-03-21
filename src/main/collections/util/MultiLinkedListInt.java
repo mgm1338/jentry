@@ -157,10 +157,6 @@ public class MultiLinkedListInt implements Collection
      */
     public void insert (int listHead, int val)
     {
-        if (listHead > maxHead) //growth check
-        {
-            growHeads (GrowthStrategy.doubleGrowth, listHead);
-        }
         //first item, takes head spot
         if (heads[listHead] == Const.NO_ENTRY)
         {
@@ -180,11 +176,6 @@ public class MultiLinkedListInt implements Collection
         else
         {
             idx = nextUnusedIdx++;
-            nexts = intFactory.ensureArrayCapacity (nexts,
-                                                    nextUnusedIdx,
-                                                    Const.NO_ENTRY,
-                                                    growthStrategy
-            );
         }
         //Prepend the entry to the linked list
         if (heads.length <= idx)
@@ -225,73 +216,6 @@ public class MultiLinkedListInt implements Collection
         heads[listHead] = val;
         size++;
     }
-
-    /**
-     * <p>The method will grow the set of available heads. This will consist of
-     * first and foremost moving the heads and nexts.</p>
-     * <p/>
-     * For example, if the lists are as follows (see TestMultiSList):
-     * <pre>
-     * idx  heads   nexts
-     * 0    8       3
-     * 1    15      4
-     * 2    6       -1
-     * 3    9       -1
-     * 4    16      5
-     * 5    17      -1
-     *
-     * and we would like to grow the available heads from the set of {0,1,2}
-     * to double the heads to {0,1,2,3,4,5}, then the resulting array
-     * will have to be of the form:
-     *
-     * 0    8       6
-     * 1    15      7
-     * 2    6      -1
-     * 3    x      -1
-     * 4    x      -1
-     * 5    x      -1       (x denotes doesn't matter, will disregard)
-     * 6    9      -1
-     * 7    15      8
-     * 8    17     -1
-     * </pre>
-     * <p/>
-     * <p>This example should show that in the resulting list,
-     * the heads are simply shifted down by the increase in heads (3),
-     * while the nexts are the original next value + the increase in heads
-     * (3)</p>
-     *
-     * @param growthStrategy the strategy for growing the list heads (the
-     *                       default is double.
-     * @param newMaxHead     the minSize that is forcing us to grow
-     */
-    public void growHeads (GrowthStrategy growthStrategy,
-                           int newMaxHead)
-    {
-        int shift = newMaxHead - maxHead;
-        int minNewSize = size + newMaxHead + 1; //may overgrow if heads full,
-        // but necessary for size 0
-        int oldLen = heads.length;
-        int copyLen = oldLen - maxHead - 1;
-        heads = intFactory.ensureArrayCapacity (heads, minNewSize, Const.NO_ENTRY,
-                                                growthStrategy
-        );
-        nexts = intFactory.ensureArrayCapacity (nexts, minNewSize, Const.NO_ENTRY,
-                                                growthStrategy
-        );
-        for (int i = 0; i < oldLen; i++)
-        {
-            if (nexts[i] != Const.NO_ENTRY)
-            {
-                nexts[i] += shift;
-            }
-        }
-        System.arraycopy (heads, maxHead + 1, heads, newMaxHead + 1, copyLen);
-        System.arraycopy (nexts, maxHead + 1, nexts, newMaxHead + 1, copyLen);
-
-        Arrays.fill (heads, maxHead + 1, newMaxHead, Const.NO_ENTRY);
-        maxHead = newMaxHead;
-    }
-
 
     /**
      * Remove an item the structure. If the item exists in the listHead

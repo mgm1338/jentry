@@ -1,5 +1,6 @@
 package collections.hash.set;
 
+import java.util.HashSet;
 import java.util.Random;
 
 /**
@@ -9,11 +10,13 @@ import java.util.Random;
 public class HashSetInsertTest
 {
     public static final int ONE_MILLION = 1000000;
+    public static final int TWENTY_MILLION = 20000000;
+
     protected static Random random = new Random (42);
     protected static int[] randomLoads;
 
     /**
-     * TEST BASELINE ~ 2610-2630 milliseconds.
+     * TEST BASELINE ~ 2610-2630 milliseconds. Note that growth here takes most of time
      *
      */
     public static void main (String[] args)
@@ -25,6 +28,8 @@ public class HashSetInsertTest
             randomLoads[i] = random.nextInt (10000);
         }
 
+
+
         //insert as quickly as possible into small HashSet
         HashSetInt set = new HashSetInt (8);
         long startTime = System.nanoTime ();
@@ -33,6 +38,6 @@ public class HashSetInsertTest
             set.insert (randomLoads[i]);
         }
         long endTime = System.nanoTime ();
-        System.out.println("Insertion with growth took ["+(endTime-startTime)/1000000+"] millis");
+        System.out.println( "Insertion with growth took [" + ( endTime - startTime ) / 1000000 + "] millis" );
     }
 }

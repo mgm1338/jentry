@@ -246,9 +246,9 @@ public class HashSetLong implements CollectionLong
      */
     private void reHash()
     {
-        int newSize = GrowthStrategy.doubleGrowth.growthRequest( size, size + 1 );
+        int newSize = growthStrategy.growthRequest( size, size + 1 );
         MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize );
+                                                                   newSize+numBuckets);
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
