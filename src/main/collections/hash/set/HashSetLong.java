@@ -196,6 +196,10 @@ public class HashSetLong implements CollectionLong
     @Override
     public int insert( long key )
     {
+        if( size == loadFactorSize )
+        {
+            reHash();
+        }
         int bucket = getBucket( key );
         int entry;
         //if our key exists in linked list, return its entry
@@ -209,10 +213,6 @@ public class HashSetLong implements CollectionLong
         // we iterate over bucket, we get entries that will point to <b>keys</b>
         // array
         size++;
-        if( size == loadFactorSize )
-        {
-            reHash();
-        }
         return entry;
     }
 
@@ -247,7 +247,7 @@ public class HashSetLong implements CollectionLong
     private void reHash()
     {
         int newSize = GrowthStrategy.doubleGrowth.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( newSize,
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
                                                                    newSize );
         for( int i = 0; i < numBuckets; i++ )
         {
@@ -263,7 +263,7 @@ public class HashSetLong implements CollectionLong
                 entry = bucketList.getHead( idx );
                 if( entry == Const.NO_ENTRY ) break;
                 bucket = getBucket( keys[ entry ] );
-                newBucketList.insert( bucket, entry );
+                newBucketList.uncheckedInsert( bucket, entry );
                 prevIdx = idx;
             }
         }

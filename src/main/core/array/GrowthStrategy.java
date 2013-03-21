@@ -5,7 +5,9 @@ import java.util.logging.Logger;
 /**
  * millemax
  * <p/>
- * A strategy for growing collections.
+ * A strategy for allocation. Will not perform the allocation, simply provide a number of items
+ * that a collection should use when growing. Can be used to strictly control memory allocation
+ * (or closely monitor growth requests when desired).
  */
 public abstract class GrowthStrategy
 {

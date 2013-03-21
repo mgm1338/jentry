@@ -8,31 +8,31 @@ import java.util.Random;
  */
 public class HashSetInsertTest
 {
-    public static final int INSERTION_SIZE = 1000000;
+    public static final int ONE_MILLION = 1000000;
     protected static Random random = new Random (42);
     protected static int[] randomLoads;
 
     /**
-     * [2616-2630]
+     * TEST BASELINE ~ 2610-2630 milliseconds.
      *
-     * @param args
      */
     public static void main (String[] args)
     {
-        HashSetInt set = new HashSetInt (8);
-        randomLoads = new int[INSERTION_SIZE];
-        for (int i = 0; i < INSERTION_SIZE; i++)
+        //the cost of random is significant in comparison, determine inserts before timing
+        randomLoads = new int[ ONE_MILLION ];
+        for (int i = 0; i < ONE_MILLION; i++)
         {
             randomLoads[i] = random.nextInt (10000);
         }
 
+        //insert as quickly as possible into small HashSet
+        HashSetInt set = new HashSetInt (8);
         long startTime = System.nanoTime ();
-        for (int i = 0; i < INSERTION_SIZE; i++)
+        for (int i = 0; i < ONE_MILLION; i++)
         {
             set.insert (randomLoads[i]);
         }
         long endTime = System.nanoTime ();
-        System.out.print ("["+(endTime-startTime)/1000000+"] millis");
-
+        System.out.println("Insertion with growth took ["+(endTime-startTime)/1000000+"] millis");
     }
 }

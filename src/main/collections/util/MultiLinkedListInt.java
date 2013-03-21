@@ -202,9 +202,9 @@ public class MultiLinkedListInt implements Collection
     }
 
     /**
-     * Unchecked insert to be used on a clear set. Does not
-     * check the heads, next arrays for size or if the free list
-     * has entries. Convenience method for bulk insertion.
+     * Unchecked insert to be used on a clear set. Does not check the heads, next arrays for size or if the free list
+     * has entries. Convenience method for bulk insertion on a new list (see {@link collections.hash.set.HashSetInt#reHash()}
+     * for example.
      *
      * @param listHead the list we would like into insert to
      * @param val      the value to insert
@@ -225,19 +225,6 @@ public class MultiLinkedListInt implements Collection
         heads[listHead] = val;
         size++;
     }
-
-    public boolean ensureCapacity (int len)
-    {
-        int preSize = heads.length;
-        intFactory.ensureArrayCapacity (heads,
-                                        len, Const.NO_ENTRY, growthStrategy);
-        intFactory.ensureArrayCapacity (nexts, len, Const.NO_ENTRY,
-                                        growthStrategy);
-        return heads.length > preSize;
-    }
-
-
-
 
     /**
      * <p>The method will grow the set of available heads. This will consist of
@@ -512,6 +499,13 @@ public class MultiLinkedListInt implements Collection
         nextUnusedIdx = maxHead + 1;
     }
 
+    /**
+     * Convenience overloaded method.
+     * Clear with the added purpose of increasing the number of lists,
+     * see {@link collections.hash.set.HashSetInt#reHash()}
+     *
+     * @param newMaxHead the new number of lists in this collection
+     */
     public void clear (int newMaxHead)
     {
         Arrays.fill (heads, Const.NO_ENTRY);

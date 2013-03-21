@@ -301,7 +301,7 @@ public class TestManyToManyInt
 
     }
 
-    /** Grow Lefts and Associations Test */
+
     @Test
     public void growthTest()
     {
@@ -309,10 +309,36 @@ public class TestManyToManyInt
     }
 
     /** Assert Compact Associations that are immediatelyRe-used */
-
+    @Test
     public void testCompactness()
     {
 
+        TestCase.assertEquals( 0, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 0, manyToManyNoCounts.getSize() );
+
+        for (int i=0; i<100; i++)
+        {
+            manyToManyCounts.associate( i, i%10 );
+            manyToManyCounts.associate( i%10, i );
+
+            manyToManyNoCounts.associate( i, i%10 );
+            manyToManyNoCounts.associate( i%10, i );
+
+            TestCase.assertEquals( (i+1)*2, manyToManyCounts.getSize() );
+            TestCase.assertEquals( (i+1)*2, manyToManyNoCounts.getSize() );
+        }
+
+        TestCase.assertEquals( 200, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 200, manyToManyNoCounts.getSize() );
+
+        for (int i=0; i<10; i++)
+        {
+            TestCase.assertEquals( 10, manyToManyCounts.getCountForLeft( i ) );
+            TestCase.assertEquals( 10, manyToManyCounts.getCountForRight( i ) );
+            //not optimized, but still should be able to return
+            TestCase.assertEquals( 10, manyToManyNoCounts.getCountForLeft( i ) );
+            TestCase.assertEquals( 10, manyToManyNoCounts.getCountForRight( i ) );
+        }
     }
 
     /** Copy a loaded one to many from a null target */
