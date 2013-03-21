@@ -6,7 +6,7 @@ import java.util.Random;
  * Copyright © 2012 Max Miller
  * All rights reserved.
  */
-public class HashSetRehashPerf
+public class HashSetInsertTest
 {
     public static final int INSERTION_SIZE = 1000000;
     protected static Random random = new Random (42);
