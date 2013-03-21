@@ -359,14 +359,22 @@ public class OneToManyInt implements Collection
         return target;
     }
 
-    public boolean disassociate( int left, int right )
+    /**
+     * Disassociate the two integers and return the entry that holds their association.
+     * If the two numbers are not associated, return -1.
+     *
+     * @param left the left int
+     * @param right the right int
+     * @return the entry of the association, or -1 if not assocaited
+     */
+    public int disassociate( int left, int right )
     {
         long val = NumberUtil.packLong( left, right );
         int entry = associations.getEntry( NumberUtil.packLong( left, right ) );
         //check existence, return false if doesnt
         if( entry == Const.NO_ENTRY )
         {
-            return false;
+            return -1;
         }
         associations.remove( val );
         size--;
@@ -392,7 +400,7 @@ public class OneToManyInt implements Collection
             {
                 lefts[left] = Const.NO_ENTRY;
             }
-            return true;
+            return testEntry;
         }
         //not first entry, start cycling leftNexts array
         int prev = testEntry;
@@ -404,7 +412,7 @@ public class OneToManyInt implements Collection
         }
         next = leftNexts[testEntry];
         leftNexts[prev] = next;
-        return true;
+        return testEntry;
     }
 
     public int getCountForLeft( int left )

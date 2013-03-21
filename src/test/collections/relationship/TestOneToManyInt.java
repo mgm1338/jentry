@@ -150,11 +150,11 @@ public class TestOneToManyInt
     @Test
     public void disassociateTest()
     {
-        TestCase.assertFalse( oneToManyInt.disassociate( 0, 0 ) );
+        TestCase.assertEquals(Const.NO_ENTRY,  oneToManyInt.disassociate( 0, 0 ) );
         simpleAssociate();
         //remove 5 (first association)
-        TestCase.assertTrue( oneToManyInt.disassociate( 2, 5 ) );
-        TestCase.assertFalse( oneToManyInt.disassociate( 2, 5 ) );
+        TestCase.assertEquals( 0, oneToManyInt.disassociate( 2, 5 ) );
+        TestCase.assertEquals( Const.NO_ENTRY,oneToManyInt.disassociate( 2, 5 ) );
         int[] rights = oneToManyInt.getAllRightAssociations( 2, new int[2], Const.NO_ENTRY );
         TestCase.assertEquals(  8 ,rights[ 0 ]);
         TestCase.assertEquals(  9, rights[ 1 ] );
@@ -162,8 +162,8 @@ public class TestOneToManyInt
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 1 ), 3 );
 
         //remove 9 (last association)
-        TestCase.assertTrue( oneToManyInt.disassociate( 2, 9 ) );
-        TestCase.assertFalse( oneToManyInt.disassociate( 2, 9 ) );
+        TestCase.assertEquals(2,  oneToManyInt.disassociate( 2, 9 ) );
+        TestCase.assertEquals(Const.NO_ENTRY, oneToManyInt.disassociate( 2, 9 ) );
         rights = oneToManyInt.getAllRightAssociations( 2, new int[2], Const.NO_ENTRY );
         TestCase.assertEquals(  8, rights[0] );
         TestCase.assertEquals( Const.NO_ENTRY, rights[ 1 ] ); //make sure we null full
@@ -171,16 +171,16 @@ public class TestOneToManyInt
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 1 ), 3 );
 
         //remove 8 (sole association left)
-        TestCase.assertTrue( oneToManyInt.disassociate( 2, 8 ) );
-        TestCase.assertFalse( oneToManyInt.disassociate( 2, 8 ) );
+        TestCase.assertEquals( 1, oneToManyInt.disassociate( 2, 8 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, oneToManyInt.disassociate( 2, 8 ) );
         rights = oneToManyInt.getAllRightAssociations( 2, new int[2], Integer.MAX_VALUE );
         TestCase.assertEquals(  Integer.MAX_VALUE, rights[ 0 ] );  //end of array with max val
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 2 ), 0 );
         TestCase.assertEquals( oneToManyInt.getCountForLeft( 1 ), 3 );
 
         //remove 3 (middle item) first
-        TestCase.assertTrue( oneToManyInt.disassociate( 1, 3 ) );
-        TestCase.assertFalse( oneToManyInt.disassociate( 1, 3 ) );
+        TestCase.assertEquals( 4, oneToManyInt.disassociate( 1, 3 ) );
+        TestCase.assertEquals(Const.NO_ENTRY,  oneToManyInt.disassociate( 1, 3 ) );
         rights = oneToManyInt.getAllRightAssociations( 1, null, Const.NO_ENTRY );
         TestCase.assertEquals(  2, rights[ 0 ] );
         TestCase.assertEquals(  4, rights[ 1 ] );
@@ -190,8 +190,8 @@ public class TestOneToManyInt
         oneToManyInt.clear();
         simpleAssociate();
         //remove 3 (last item) first
-        TestCase.assertTrue( oneToManyInt.disassociate( 1, 4 ) );
-        TestCase.assertFalse( oneToManyInt.disassociate( 1, 4 ) );
+        TestCase.assertEquals(5,  oneToManyInt.disassociate( 1, 4 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, oneToManyInt.disassociate( 1, 4 ) );
         rights = oneToManyInt.getAllRightAssociations( 1, null, Const.NO_ENTRY );
         TestCase.assertEquals(  2, rights[ 0 ] );
         TestCase.assertEquals(  3, rights[ 1 ] );

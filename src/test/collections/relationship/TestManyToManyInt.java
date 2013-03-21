@@ -45,33 +45,37 @@ public class TestManyToManyInt
     @Test
     public void simpleAssociate()
     {
-        manyToManyCounts.associate( 0, 1 );
-        manyToManyCounts.associate( 2, 1 );
-        manyToManyCounts.associate( 3, 1 );
-        manyToManyCounts.associate( 4, 1 );
+        TestCase.assertEquals( 0, manyToManyCounts.associate( 0, 1 ) );
+        TestCase.assertEquals( 1, manyToManyCounts.associate( 2, 1 ) );
+        TestCase.assertEquals( 2, manyToManyCounts.associate( 3, 1 ) );
+        TestCase.assertEquals( 3, manyToManyCounts.associate( 4, 1 ) );
         TestCase.assertEquals( 4, manyToManyCounts.getCountForRight( 1 ) );
-        manyToManyCounts.associate( 3, 19 );
-        manyToManyCounts.associate( 3, 20 );
+
+        TestCase.assertEquals( 5, manyToManyCounts.associate( 3, 19 ) );
+        TestCase.assertEquals( 6, manyToManyCounts.associate( 3, 20 ) );
         TestCase.assertEquals( 1, manyToManyCounts.getCountForRight( 20 ) );
-        manyToManyCounts.associate( 3, 21 );
-        manyToManyCounts.associate( 25, 6 );
-        manyToManyCounts.associate( 26, 6 );
-        manyToManyCounts.associate( 27, 6 );
+
+        TestCase.assertEquals( 7, manyToManyCounts.associate( 3, 21 ) );
+        TestCase.assertEquals( 8, manyToManyCounts.associate( 25, 6 ) );
+        TestCase.assertEquals( 9, manyToManyCounts.associate( 26, 6 ) );
+        TestCase.assertEquals( 10, manyToManyCounts.associate( 27, 6 ) );
         TestCase.assertEquals( 3, manyToManyCounts.getCountForRight( 3 ) );
 
 
-        manyToManyNoCounts.associate( 0, 1 );
-        manyToManyNoCounts.associate( 2, 1 );
-        manyToManyNoCounts.associate( 3, 1 );
-        manyToManyNoCounts.associate( 4, 1 );
+        TestCase.assertEquals( 0, manyToManyNoCounts.associate( 0, 1 ) );
+        TestCase.assertEquals( 1, manyToManyNoCounts.associate( 2, 1 ) );
+        TestCase.assertEquals( 2, manyToManyNoCounts.associate( 3, 1 ) );
+        TestCase.assertEquals( 3, manyToManyNoCounts.associate( 4, 1 ) );
         TestCase.assertEquals( 4, manyToManyNoCounts.getCountForRight( 1 ) );
-        manyToManyNoCounts.associate( 3, 19 );
-        manyToManyNoCounts.associate( 3, 20 );
+
+        TestCase.assertEquals( 5, manyToManyNoCounts.associate( 3, 19 ) );
+        TestCase.assertEquals( 6, manyToManyNoCounts.associate( 3, 20 ) );
         TestCase.assertEquals( 1, manyToManyNoCounts.getCountForRight( 20 ) );
-        manyToManyNoCounts.associate( 3, 21 );
-        manyToManyNoCounts.associate( 25, 6 );
-        manyToManyNoCounts.associate( 26, 6 );
-        manyToManyNoCounts.associate( 27, 6 );
+
+        TestCase.assertEquals( 7, manyToManyNoCounts.associate( 3, 21 ) );
+        TestCase.assertEquals( 8, manyToManyNoCounts.associate( 25, 6 ) );
+        TestCase.assertEquals( 9, manyToManyNoCounts.associate( 26, 6 ) );
+        TestCase.assertEquals( 10, manyToManyNoCounts.associate( 27, 6 ) );
         TestCase.assertEquals( 3, manyToManyNoCounts.getCountForRight( 3 ) );
 
 
@@ -156,7 +160,7 @@ public class TestManyToManyInt
 
     /**
      * FOR REFERENCE:
-     *
+     * <p/>
      * L                      R
      * 0   ->1                1   ->0,2,3,4
      * 2   ->1                6   ->25,26,27
@@ -165,7 +169,7 @@ public class TestManyToManyInt
      * 25  ->6                21  ->3
      * 26  ->6
      * 27  ->6
-     *
+     * <p/>
      * Disassociate many pairs and make assertions about the remaining relationships
      */
     @Test
@@ -177,58 +181,58 @@ public class TestManyToManyInt
         TestCase.assertEquals( 10, manyToManyCounts.getSize() );
         TestCase.assertEquals( 10, manyToManyNoCounts.getSize() );
 
-        TestCase.assertTrue( manyToManyCounts.disassociate( 0, 1 ));
-        TestCase.assertTrue( manyToManyNoCounts.disassociate( 0, 1 ));
-        TestCase.assertFalse( manyToManyCounts.disassociate( 0, 1 ));
-        TestCase.assertFalse( manyToManyNoCounts.disassociate( 0, 1 ));
+        TestCase.assertEquals( 0, manyToManyCounts.disassociate( 0, 1 ) );
+        TestCase.assertEquals( 0, manyToManyNoCounts.disassociate( 0, 1 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 0, 1 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.disassociate( 0, 1 ) );
         //removed one
         TestCase.assertEquals( 9, manyToManyCounts.getSize() );
         TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
         //not valid associations
-        TestCase.assertFalse( manyToManyCounts.disassociate( 0,0 ) );
-        TestCase.assertFalse( manyToManyCounts.disassociate( 0,0 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 0, 0 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 0, 0 ) );
         //still same size
         TestCase.assertEquals( 9, manyToManyCounts.getSize() );
         TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
         //no remaining rights for left 0
-        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextRightEntry( 0, Const.NO_ENTRY ));
-        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextRightEntry( 0, Const.NO_ENTRY ));
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextRightEntry( 0, Const.NO_ENTRY ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextRightEntry( 0, Const.NO_ENTRY ) );
 
         int[] remainingLefts = manyToManyCounts.getAllLeftAssociations( 1, null, -1 );
         int[] remainingLeftsCt = manyToManyNoCounts.getAllLeftAssociations( 1, null, -1 );
 
         //both are same up to 3
         TestUtilsInt.assertArrayContentsToLen( remainingLefts, remainingLeftsCt, 3 );
-        int[] expected = new int[]{2,3,4};
+        int[] expected = new int[]{ 2, 3, 4 };
         //same as expected (and therefore both are equal to expected)
         TestUtilsInt.assertArrayContentsToLen( expected, remainingLeftsCt, 3 );
 
         TestCase.assertEquals( 9, manyToManyCounts.getSize() );
         TestCase.assertEquals( 9, manyToManyNoCounts.getSize() );
-        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 19 ));
-        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 19 ));
-        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 19 ));
-        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 19 ));
+        TestCase.assertEquals( 5, manyToManyCounts.disassociate( 3, 19 ) );
+        TestCase.assertEquals( 5, manyToManyNoCounts.disassociate( 3, 19 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 3, 19 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.disassociate( 3, 19 ) );
         TestCase.assertEquals( 8, manyToManyCounts.getSize() );
         TestCase.assertEquals( 8, manyToManyNoCounts.getSize() );
-        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 20 ));
-        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 20 ));
-        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 20 ));
-        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 20 ));
+        TestCase.assertEquals( 6, manyToManyCounts.disassociate( 3, 20 ) );
+        TestCase.assertEquals( 6, manyToManyNoCounts.disassociate( 3, 20 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 3, 20 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.disassociate( 3, 20 ) );
         TestCase.assertEquals( 7, manyToManyCounts.getSize() );
         TestCase.assertEquals( 7, manyToManyNoCounts.getSize() );
-        TestCase.assertTrue( manyToManyCounts.disassociate( 3, 21 ));
-        TestCase.assertTrue( manyToManyNoCounts.disassociate( 3, 21 ));
-        TestCase.assertFalse( manyToManyCounts.disassociate( 3, 21 ));
-        TestCase.assertFalse( manyToManyNoCounts.disassociate( 3, 21 ));
+        TestCase.assertEquals( 7, manyToManyCounts.disassociate( 3, 21 ) );
+        TestCase.assertEquals( 7, manyToManyNoCounts.disassociate( 3, 21 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.disassociate( 3, 21 ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.disassociate( 3, 21 ) );
         TestCase.assertEquals( 6, manyToManyCounts.getSize() );
         TestCase.assertEquals( 6, manyToManyNoCounts.getSize() );
 
-        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextLeftEntry( 19, Const.NO_ENTRY ));
-        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextLeftEntry( 19, Const.NO_ENTRY ));
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyCounts.getNextLeftEntry( 19, Const.NO_ENTRY ) );
+        TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextLeftEntry( 19, Const.NO_ENTRY ) );
 
-        TestCase.assertEquals( 1, manyToManyCounts.getNextRightEntry( 3, Const.NO_ENTRY ));
-        TestCase.assertEquals( 1, manyToManyNoCounts.getNextRightEntry( 3, Const.NO_ENTRY ));
+        TestCase.assertEquals( 1, manyToManyCounts.getNextRightEntry( 3, Const.NO_ENTRY ) );
+        TestCase.assertEquals( 1, manyToManyNoCounts.getNextRightEntry( 3, Const.NO_ENTRY ) );
 
         //adding to previously almost all removed left of 3,
         manyToManyCounts.associate( 3, 40 );
@@ -241,7 +245,7 @@ public class TestManyToManyInt
         int[] remainingRightsCt = manyToManyNoCounts.getAllLeftAssociations( 3, null, -1 );
         //both are same up to 3
         TestUtilsInt.assertArrayContentsToLen( remainingRights, remainingRightsCt, 3 );
-        expected = new int[]{1,40,41};
+        expected = new int[]{ 1, 40, 41 };
         //same as expected (and therefore both are equal to expected)
         TestUtilsInt.assertArrayContentsToLen( expected, remainingLeftsCt, 3 );
 
@@ -274,20 +278,20 @@ public class TestManyToManyInt
         TestCase.assertEquals( manyToManyNoCounts.getSize(), manyToManyCounts.getSize() );
 
         //all of the associations are nothing
-        for (int i=0; i<32; i++)
+        for( int i = 0; i < 32; i++ )
         {
             TestCase.assertEquals( newClearMap.getAllRightAssociations( i, null, -1 ),
-                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ));
+                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ) );
             TestCase.assertEquals( manyToManyNoCounts.getAllRightAssociations( i, null, -1 ),
-                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ));
+                                   manyToManyCounts.getAllRightAssociations( i, null, -1 ) );
             TestCase.assertEquals( newClearMap.getAllLeftAssociations( i, null, -1 ),
-                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ));
+                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ) );
             TestCase.assertEquals( manyToManyNoCounts.getAllLeftAssociations( i, null, -1 ),
-                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ));
+                                   manyToManyCounts.getAllLeftAssociations( i, null, -1 ) );
         }
 
         //all the nexts are nothing
-        for (int i=0; i<32; i++)
+        for( int i = 0; i < 32; i++ )
         {
             TestCase.assertEquals( Const.NO_ENTRY, newClearMap.getNextLeftEntry( i, Const.NO_ENTRY ) );
             TestCase.assertEquals( Const.NO_ENTRY, manyToManyNoCounts.getNextLeftEntry( i, Const.NO_ENTRY ) );
@@ -305,33 +309,25 @@ public class TestManyToManyInt
     @Test
     public void growthTest()
     {
-
-    }
-
-    /** Assert Compact Associations that are immediatelyRe-used */
-    @Test
-    public void testCompactness()
-    {
-
         TestCase.assertEquals( 0, manyToManyCounts.getSize() );
         TestCase.assertEquals( 0, manyToManyNoCounts.getSize() );
 
-        for (int i=0; i<100; i++)
+        for( int i = 0; i < 100; i++ )
         {
-            manyToManyCounts.associate( i, i%10 );
-            manyToManyCounts.associate( i%10, i );
+            manyToManyCounts.associate( i, i % 10 );
+            manyToManyCounts.associate( i % 10, i );
 
-            manyToManyNoCounts.associate( i, i%10 );
-            manyToManyNoCounts.associate( i%10, i );
+            manyToManyNoCounts.associate( i, i % 10 );
+            manyToManyNoCounts.associate( i % 10, i );
 
-            TestCase.assertEquals( (i+1)*2, manyToManyCounts.getSize() );
-            TestCase.assertEquals( (i+1)*2, manyToManyNoCounts.getSize() );
+            TestCase.assertEquals( ( i + 1 ) * 2, manyToManyCounts.getSize() );
+            TestCase.assertEquals( ( i + 1 ) * 2, manyToManyNoCounts.getSize() );
         }
 
         TestCase.assertEquals( 200, manyToManyCounts.getSize() );
         TestCase.assertEquals( 200, manyToManyNoCounts.getSize() );
 
-        for (int i=0; i<10; i++)
+        for( int i = 0; i < 10; i++ )
         {
             TestCase.assertEquals( 10, manyToManyCounts.getCountForLeft( i ) );
             TestCase.assertEquals( 10, manyToManyCounts.getCountForRight( i ) );
@@ -339,6 +335,31 @@ public class TestManyToManyInt
             TestCase.assertEquals( 10, manyToManyNoCounts.getCountForLeft( i ) );
             TestCase.assertEquals( 10, manyToManyNoCounts.getCountForRight( i ) );
         }
+    }
+
+    /** Assert Compact Associations that are immediatelyRe-used */
+    @Test
+    public void testCompactness()
+    {
+        TestCase.assertEquals( 0, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 0, manyToManyNoCounts.getSize() );
+
+        for( int i = 0; i < 100; i++ )
+        {
+            TestCase.assertEquals( i, manyToManyCounts.associate( i, i + 2 ) );
+            TestCase.assertEquals( i, manyToManyNoCounts.associate( i, i + 2 ) );
+
+            TestCase.assertEquals( i + 1, manyToManyCounts.associate( i, i + 4 ) );
+            TestCase.assertEquals( i + 1, manyToManyNoCounts.associate( i, i + 4 ) );
+
+            TestCase.assertEquals( i + 1, manyToManyCounts.disassociate( i, i + 4 ) );
+            TestCase.assertEquals( i + 1, manyToManyNoCounts.disassociate( i, i + 4 ) );
+        }
+
+        TestCase.assertEquals( 100, manyToManyCounts.getSize() );
+        TestCase.assertEquals( 100, manyToManyNoCounts.getSize() );
+
+
     }
 
     /** Copy a loaded one to many from a null target */
