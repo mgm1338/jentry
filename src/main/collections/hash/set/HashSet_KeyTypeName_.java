@@ -196,6 +196,10 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     @Override
     public int insert( _key_ key )
     {
+        if( size == loadFactorSize )
+        {
+            reHash();
+        }
         int bucket = getBucket( key );
         int entry;
         //if our key exists in linked list, return its entry
@@ -209,10 +213,6 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         // we iterate over bucket, we get entries that will point to <b>keys</b>
         // array
         size++;
-        if( size == loadFactorSize )
-        {
-            reHash();
-        }
         return entry;
     }
 
@@ -247,7 +247,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     private void reHash()
     {
         int newSize = GrowthStrategy.doubleGrowth.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( newSize,
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
                                                                    newSize );
         for( int i = 0; i < numBuckets; i++ )
         {

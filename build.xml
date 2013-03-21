@@ -5,7 +5,7 @@
     <property name="dist" location="dist"/>
 
 
-    <include file="./generateUtils.xml"/>
+    <include file="generateUtils.xml"/>
 
     <target name="generate">
 
@@ -14,7 +14,7 @@
                                package="main\collections\generic" />
         <generateKeyTypesBoolVal fileBase="ArrayFactory"
                                package="main\core\array\factory" />
-        <generateKeyTypesVal fileBase="Comparator"
+        <generateKeyTypesBoolVal fileBase="Comparator"
                                package="main\core\util\comparator" />
         <generateKeyTypes fileBase="HashSet"
                                package="main\collections\hash\set"/>
