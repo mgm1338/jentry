@@ -1,7 +1,5 @@
 package core.array;
 
-import java.util.logging.Logger;
-
 /**
  * millemax
  * <p/>
@@ -44,10 +42,9 @@ public abstract class GrowthStrategy
         @Override
         public int growthRequest( int currentSize, int minimumAcceptable )
         {
-           return minimumAcceptable;
+            return minimumAcceptable;
         }
     }
-    
-   
-    
+
+
 }

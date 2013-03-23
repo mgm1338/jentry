@@ -4,7 +4,7 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
+import core.stub._key_;
 
 import java.util.Arrays;
 
@@ -42,10 +42,10 @@ public abstract class ArrayFactory_KeyTypeName_
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract _key_[] ensureArrayCapacity (_key_[] array,
+    public abstract _key_[] ensureArrayCapacity( _key_[] array,
                                                  int minSize,
                                                  _key_ defaultValue,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +61,9 @@ public abstract class ArrayFactory_KeyTypeName_
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract _key_[] ensureArrayCapacity (_key_[] array,
+    public abstract _key_[] ensureArrayCapacity( _key_[] array,
                                                  int minSize,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +87,9 @@ public abstract class ArrayFactory_KeyTypeName_
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract _key_[] grow (_key_[] array, int minSize,
+    public abstract _key_[] grow( _key_[] array, int minSize,
                                   _key_ defaultValue,
-                                  GrowthStrategy growthStrategy);
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +101,73 @@ public abstract class ArrayFactory_KeyTypeName_
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactory_KeyTypeName_ default_KeyTypeName_Provider = new
-            ArrayProvider_KeyTypeName_Impl ();
+            ArrayProvider_KeyTypeName_Impl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProvider_KeyTypeName_Impl extends
                                                                 ArrayFactory_KeyTypeName_
     {
 
-        public _key_[] ensureArrayCapacity (_key_[] array,
+        public _key_[] ensureArrayCapacity( _key_[] array,
                                             int minSize,
                                             _key_ defaultValue,
-                                            GrowthStrategy growthStrategy)
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactory_KeyTypeName_.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactory_KeyTypeName_.class, len,
+                                                    minSize, Types.Int );
                 }
-                _key_[] temp = new _key_[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                _key_[] temp = new _key_[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public _key_[] ensureArrayCapacity (_key_[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public _key_[] ensureArrayCapacity( _key_[] array, int minSize,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactory_KeyTypeName_.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactory_KeyTypeName_.class, len,
+                                                    minSize, Types.Int );
                 }
-                _key_[] temp = new _key_[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                _key_[] temp = new _key_[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public _key_[] grow (_key_[] array, int minSize,
+        public _key_[] grow( _key_[] array, int minSize,
                              _key_ defaultValue,
-                             GrowthStrategy growthStrategy)
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactory_KeyTypeName_.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactory_KeyTypeName_.class, len,
+                                                minSize, Types.Int );
             }
-            _key_[] temp = new _key_[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.Default_KeyTypeName_.getValue ())
+            _key_[] temp = new _key_[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.Default_KeyTypeName_.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +180,15 @@ public abstract class ArrayFactory_KeyTypeName_
      * @param size size of array
      * @return the array
      */
-    public _key_[] alloc (int size)
+    public _key_[] alloc( int size )
     {
-        return new _key_[size];
+        return new _key_[ size ];
     }
 
-    public _key_[] alloc (int size, _key_ fillValue)
+    public _key_[] alloc( int size, _key_ fillValue )
     {
-        _key_[] t = new _key_[size];
-        Arrays.fill (t, fillValue);
+        _key_[] t = new _key_[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

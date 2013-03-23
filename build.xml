@@ -1,4 +1,4 @@
-<project name="Jentry"  basedir="src">
+<project name="Jentry" basedir="src">
     <property name="src" location="."/>
     <property name="gen" location="main/generated"/>
     <property name="build" location="build"/>
@@ -11,41 +11,38 @@
 
         <!--KEYS-->
         <generateKeyTypesBool fileBase="Collection"
-                               package="main\collections\generic" />
+                              package="main\collections\generic"/>
         <generateKeyTypesBoolVal fileBase="ArrayFactory"
-                               package="main\core\array\factory" />
+                                 package="main\core\array\factory"/>
         <generateKeyTypesBoolVal fileBase="Comparator"
-                               package="main\core\util\comparator" />
+                                 package="main\core\util\comparator"/>
         <generateKeyTypes fileBase="HashSet"
-                               package="main\collections\hash\set"/>
+                          package="main\collections\hash\set"/>
         <generateKeyTypes fileBase="Heap"
-                               package="main\collections\generic\heap" />
+                          package="main\collections\generic\heap"/>
         <generateKeyTypes fileBase="BinaryHeap"
-                               package="main\collections\heap"/>
+                          package="main\collections\heap"/>
 
         <!--//TESTS-->
         <generateKeyTypes fileBase="TestHashSet"
-                               package="test\collections\hash\set" />
+                          package="test\collections\hash\set"/>
         <generateKeyTypesVal fileBase="TestUtils"
-                               package="test\util"/>
+                             package="test\util"/>
         <generateKeyTypes fileBase="TestBinaryHeap"
-                               package="test\collections\heap"/>
+                          package="test\collections\heap"/>
 
-         <!--KEY && VALS-->
-        <generateKeyValTypes fileBase="Map" package="main\collections\generic\map" />
-        <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map" />
+        <!--KEY && VALS-->
+        <generateKeyValTypes fileBase="Map" package="main\collections\generic\map"/>
+        <generateKeyValTypes fileBase="HashMap" package="main\collections\hash\map"/>
 
 
         <!--KEY && VALS TESTS-->
-        <generateKeyValTypes fileBase="TestHashMap" package="test\collections\hash\map" />
-
+        <generateKeyValTypes fileBase="TestHashMap" package="test\collections\hash\map"/>
 
 
         <!--DELETIONS-->
         <delete file="test\collections\heap\TestBinaryHeapObject.java"/>
     </target>
-
-
 
 
 </project>

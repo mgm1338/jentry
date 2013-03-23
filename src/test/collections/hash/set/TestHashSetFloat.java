@@ -3,14 +3,13 @@ package collections.hash.set;
 import collections.hash.HashFunctions;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryFloat;
+import core.array.factory.ArrayFactoryInt;
 import core.stub.IntValueConverter;
-import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
-import util.TestUtilsInt;
 import util.TestUtilsFloat;
+import util.TestUtilsInt;
 
 /**
  * Copyright 1/14/13
@@ -78,8 +77,8 @@ public class TestHashSetFloat
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetFloat( 8, 1.00, ArrayFactoryFloat.defaultFloatProvider,
-                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionFloat(),
-                                            GrowthStrategy.doubleGrowth );
+                                    ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionFloat(),
+                                    GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -215,7 +214,7 @@ public class TestHashSetFloat
         hashSet.remove( IntValueConverter.floatFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
         TestCase.assertTrue( hashSet.insert( IntValueConverter.floatFromInt( 1000 ) ) == 0 );
-        TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( 1000 ) )==0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( 1000 ) ) == 0 );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.floatFromInt( 0 ) ) );
 
     }
@@ -260,7 +259,7 @@ public class TestHashSetFloat
         {
             int j = hashSet.insert( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
 
@@ -283,7 +282,7 @@ public class TestHashSetFloat
         {
             int j = hashSet.insert( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.floatFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
         TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );

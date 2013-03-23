@@ -111,6 +111,8 @@ public class OneToManyInt implements Collection
     protected boolean countLefts;
     /** Associations size tracker */
     protected int size = 0;
+    /** High water mark for the largest left that has been associated */
+    protected int leftHighWaterMark = Const.NO_ENTRY;
 
     /**
      * Constructor
@@ -175,20 +177,27 @@ public class OneToManyInt implements Collection
         long composed = NumberUtil.packLong( left, right );
         int preSize = associations.getSize();
         int handle = associations.insert( composed );
-        if (associations.getSize()==preSize) //this checks to see if we inserted without re-hashing, if we did not
-        //insert, simple return the handle
+        if( associations.getSize() == preSize ) //does insertion check without re-hashing long
         {
             return handle;
         }
-        lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy);
+        if( left > leftHighWaterMark ) //guarding growth checks
+        {
+            lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy );
+            leftHighWaterMark = left;
+            if( countLefts )
+            {
+                leftCounts = intFactory.ensureArrayCapacity( leftCounts, left + 1, growthStrategy );
+            }
+        }
         if( countLefts )
         {
-            leftCounts = intFactory.ensureArrayCapacity( leftCounts, left + 1, growthStrategy );
             leftCounts[ left ]++;
         }
+
         //we will never grow the leftNexts past the handle +1 (we use the handle to determine where we are
         //inserting into the array)
-        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, Const.NO_ENTRY, growthStrategy);
+        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, Const.NO_ENTRY, growthStrategy );
 
         int testInsert = lefts[ left ];
         if( testInsert == Const.NO_ENTRY ) //first item, insert into the left array
@@ -199,19 +208,19 @@ public class OneToManyInt implements Collection
         {
             int prev = testInsert;
             testInsert = leftNexts[ testInsert ]; //cycle through leftNexts
-            if (testInsert==Const.NO_ENTRY)
+            if( testInsert == Const.NO_ENTRY )
             {
                 leftNexts[ prev ] = handle;
 
             }
             else
             {
-                while (testInsert!=Const.NO_ENTRY)
+                while( testInsert != Const.NO_ENTRY )
                 {
                     prev = testInsert;
-                    testInsert = leftNexts[testInsert];
+                    testInsert = leftNexts[ testInsert ];
                 }
-                leftNexts[prev] = handle;
+                leftNexts[ prev ] = handle;
             }
         }
         size++;
@@ -245,13 +254,15 @@ public class OneToManyInt implements Collection
     public void clear()
     {
         associations.clear();
-        Arrays.fill( lefts, Const.NO_ENTRY );
+        leftHighWaterMark++; //need extra size for Arrays.fill (last idx is exclusive)
+        Arrays.fill( lefts, 0, leftHighWaterMark, Const.NO_ENTRY );
         Arrays.fill( leftNexts, Const.NO_ENTRY );
         size = 0;
         if( countLefts )
         {
-            Arrays.fill( leftCounts, 0 );
+            Arrays.fill( leftCounts, 0, leftHighWaterMark, 0 );
         }
+        leftHighWaterMark = Const.NO_ENTRY;
     }
 
     /**
@@ -263,7 +274,7 @@ public class OneToManyInt implements Collection
      */
     public boolean isAssociated( int left, int right )
     {
-        return associations.contains( NumberUtil.packLong( left, right ))!=Const.NO_ENTRY ;
+        return associations.contains( NumberUtil.packLong( left, right ) ) != Const.NO_ENTRY;
     }
 
     /**
@@ -321,10 +332,10 @@ public class OneToManyInt implements Collection
      */
     public int[] getAllRightAssociations( int left, int[] target, int mark )
     {
-        if (countLefts)
+        if( countLefts )
         {
-            int len = leftCounts[left];
-            if (target == null || target.length<len)
+            int len = leftCounts[ left ];
+            if( target == null || target.length < len )
             {
                 target = intFactory.alloc( len );
             }
@@ -334,7 +345,7 @@ public class OneToManyInt implements Collection
             target = intFactory.alloc( DEFAULT_REL_SIZE );
         }
         int entry = getNextRightEntry( left, Const.NO_ENTRY );
-        int ct =0;
+        int ct = 0;
         if( countLefts ) //we know we have perfectly sized array
         {
             while( entry != Const.NO_ENTRY )
@@ -363,7 +374,7 @@ public class OneToManyInt implements Collection
      * Disassociate the two integers and return the entry that holds their association.
      * If the two numbers are not associated, return -1.
      *
-     * @param left the left int
+     * @param left  the left int
      * @param right the right int
      * @return the entry of the association, or -1 if not assocaited
      */
@@ -378,9 +389,9 @@ public class OneToManyInt implements Collection
         }
         associations.remove( val );
         size--;
-        if (countLefts)
+        if( countLefts )
         {
-            leftCounts[left]--;
+            leftCounts[ left ]--;
         }
 
         //remove from linked list
@@ -388,30 +399,30 @@ public class OneToManyInt implements Collection
         int testEntry = lefts[ left ];
         if( testEntry == entry ) //removing first
         {
-            next = leftNexts[testEntry];
-            if (next!=Const.NO_ENTRY)
+            next = leftNexts[ testEntry ];
+            if( next != Const.NO_ENTRY )
             //switch left to the next item, mark the next with Const.NO_ENTRY. The left will
             //correctly point to the correct next, if any
             {
-                lefts[left] = next;
-                leftNexts[testEntry] = Const.NO_ENTRY;
+                lefts[ left ] = next;
+                leftNexts[ testEntry ] = Const.NO_ENTRY;
             }
             else
             {
-                lefts[left] = Const.NO_ENTRY;
+                lefts[ left ] = Const.NO_ENTRY;
             }
             return testEntry;
         }
         //not first entry, start cycling leftNexts array
         int prev = testEntry;
-        testEntry = leftNexts[testEntry];
-        while (testEntry!=entry)
+        testEntry = leftNexts[ testEntry ];
+        while( testEntry != entry )
         {
             prev = testEntry;
-            testEntry = leftNexts[testEntry];
+            testEntry = leftNexts[ testEntry ];
         }
-        next = leftNexts[testEntry];
-        leftNexts[prev] = next;
+        next = leftNexts[ testEntry ];
+        leftNexts[ prev ] = next;
         return testEntry;
     }
 
@@ -439,14 +450,14 @@ public class OneToManyInt implements Collection
     public OneToManyInt copy( OneToManyInt target )
     {
         int leftLen = lefts.length;
-        if (target == null)
+        if( target == null )
         {
             target = new OneToManyInt( leftLen, associations.getSize(), this.countLefts, growthStrategy, intFactory );
         }
         target.associations = associations.copy( target.associations );
-        if (countLefts )     //cannot change counting
+        if( countLefts )     //cannot change counting
         {
-            if (!target.countLefts)  //if we didnt count, need to creat array
+            if( !target.countLefts )  //if we didnt count, need to create array
             {
                 target.leftCounts = target.intFactory.alloc( leftLen );
                 target.countLefts = true;
@@ -458,11 +469,11 @@ public class OneToManyInt implements Collection
             }
             System.arraycopy( leftCounts, 0, target.leftCounts, 0, leftLen );
         }
-        target.lefts =  intFactory.ensureArrayCapacity( target.lefts, leftLen, GrowthStrategy.toExactSize );
+        target.lefts = intFactory.ensureArrayCapacity( target.lefts, leftLen, GrowthStrategy.toExactSize );
         System.arraycopy( lefts, 0, target.lefts, 0, leftLen );
 
         int nextLen = leftNexts.length;
-        target.leftNexts =  intFactory.ensureArrayCapacity( target.leftNexts, nextLen, GrowthStrategy.toExactSize );
+        target.leftNexts = intFactory.ensureArrayCapacity( target.leftNexts, nextLen, GrowthStrategy.toExactSize );
         System.arraycopy( leftNexts, 0, target.leftNexts, 0, nextLen );
         target.size = size;
         return target;

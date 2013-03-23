@@ -1,12 +1,10 @@
 package collections.util;
 
 import core.Const;
-import core.array.GrowthStrategy;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import util.TestUtilsInt;
-import util.TestUtils_KeyTypeName_;
 
 import java.util.ArrayList;
 
@@ -63,6 +61,34 @@ public class TestMultiSLList
         TestCase.assertFalse( dataLoadedLists.isEmpty() );
 
     }
+
+
+    @Test
+    public void testUncheckedDataLoad()
+    {
+        lists = new MultiLinkedListInt( 8, 16 );
+        //we know the set of lists/data, this is example of what constructor
+        // parameters mean, note that in this case, 0,1,
+        // 2 must be the head values
+        TestCase.assertTrue( lists.isEmpty() );
+        dataLoadedLists = new MultiLinkedListInt( 3, 6 );
+        TestCase.assertEquals( dataLoadedLists.getSize(), 0 );
+        dataLoadedLists.uncheckedInsert( 0, 9 );
+        dataLoadedLists.uncheckedInsert( 1, 17 );
+        dataLoadedLists.uncheckedInsert( 2, 6 );
+        dataLoadedLists.uncheckedInsert( 0, 8 );
+        dataLoadedLists.uncheckedInsert( 1, 16 );
+        dataLoadedLists.uncheckedInsert( 1, 15 );
+        TestCase.assertEquals( dataLoadedLists.getSize(), 6 );
+
+
+        assertListContents( dataLoadedLists, 0, 9, 8 );
+        assertListContents( dataLoadedLists, 1, 17, 16, 15 );
+        assertListContents( dataLoadedLists, 2, 6 );
+        TestCase.assertFalse( dataLoadedLists.isEmpty() );
+
+    }
+
 
     /**
      * Assert the contents of the list, not the order. This will
@@ -356,6 +382,22 @@ public class TestMultiSLList
         assertListContents( dataLoadedLists, 1, 17, 16, 15 );
         assertListContents( dataLoadedLists, 2, 6 );
 
+        dataLoadedLists.clear( 100 );
+        TestCase.assertEquals( 100, dataLoadedLists.maxHead );
+
+        TestCase.assertEquals( dataLoadedLists.getSize(), 0 );
+        dataLoadedLists.insert( 0, 9 );
+        dataLoadedLists.insert( 1, 17 );
+        dataLoadedLists.insert( 2, 6 );
+        dataLoadedLists.insert( 0, 8 );
+        dataLoadedLists.insert( 1, 16 );
+        dataLoadedLists.insert( 1, 15 );
+        TestCase.assertEquals( dataLoadedLists.getSize(), 6 );
+
+        assertListContents( dataLoadedLists, 0, 9, 8 );
+        assertListContents( dataLoadedLists, 1, 17, 16, 15 );
+        assertListContents( dataLoadedLists, 2, 6 );
+
     }
 
     /**
@@ -410,7 +452,7 @@ public class TestMultiSLList
     public void removeFromHeadOverAndOver()
     {
         MultiLinkedListInt newDataLoadedList = new MultiLinkedListInt( 3, 6 );
-        for (int i=0; i<600; i++)
+        for( int i = 0; i < 600; i++ )
         {
             newDataLoadedList.insert( 0, i );
             newDataLoadedList.remove( 0, i );
@@ -421,9 +463,9 @@ public class TestMultiSLList
 
         int[] list = newDataLoadedList.getList( 0, null, false );
         //with the prepending, we assume that the items are added backwards, so that iterating will get 599-0
-        for (int i=0; i<600; i++)
+        for( int i = 0; i < 600; i++ )
         {
-            TestCase.assertEquals( 599-i, list[i] );
+            TestCase.assertEquals( 599 - i, list[ i ] );
         }
     }
 

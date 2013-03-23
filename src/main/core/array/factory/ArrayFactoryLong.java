@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryLong
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract long[] ensureArrayCapacity (long[] array,
-                                                 int minSize,
-                                                 long defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract long[] ensureArrayCapacity( long[] array,
+                                                int minSize,
+                                                long defaultValue,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryLong
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract long[] ensureArrayCapacity (long[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract long[] ensureArrayCapacity( long[] array,
+                                                int minSize,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryLong
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract long[] grow (long[] array, int minSize,
-                                  long defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract long[] grow( long[] array, int minSize,
+                                 long defaultValue,
+                                 GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryLong
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryLong defaultLongProvider = new
-            ArrayProviderLongImpl ();
+            ArrayProviderLongImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderLongImpl extends
-                                                                ArrayFactoryLong
+                                                       ArrayFactoryLong
     {
 
-        public long[] ensureArrayCapacity (long[] array,
-                                            int minSize,
-                                            long defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public long[] ensureArrayCapacity( long[] array,
+                                           int minSize,
+                                           long defaultValue,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryLong.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryLong.class, len,
+                                                    minSize, Types.Int );
                 }
-                long[] temp = new long[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                long[] temp = new long[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public long[] ensureArrayCapacity (long[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public long[] ensureArrayCapacity( long[] array, int minSize,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryLong.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryLong.class, len,
+                                                    minSize, Types.Int );
                 }
-                long[] temp = new long[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                long[] temp = new long[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public long[] grow (long[] array, int minSize,
-                             long defaultValue,
-                             GrowthStrategy growthStrategy)
+        public long[] grow( long[] array, int minSize,
+                            long defaultValue,
+                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryLong.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryLong.class, len,
+                                                minSize, Types.Int );
             }
-            long[] temp = new long[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultLong.getValue ())
+            long[] temp = new long[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultLong.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryLong
      * @param size size of array
      * @return the array
      */
-    public long[] alloc (int size)
+    public long[] alloc( int size )
     {
-        return new long[size];
+        return new long[ size ];
     }
 
-    public long[] alloc (int size, long fillValue)
+    public long[] alloc( int size, long fillValue )
     {
-        long[] t = new long[size];
-        Arrays.fill (t, fillValue);
+        long[] t = new long[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

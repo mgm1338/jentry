@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryByte
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract byte[] ensureArrayCapacity (byte[] array,
-                                                 int minSize,
-                                                 byte defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract byte[] ensureArrayCapacity( byte[] array,
+                                                int minSize,
+                                                byte defaultValue,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryByte
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract byte[] ensureArrayCapacity (byte[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract byte[] ensureArrayCapacity( byte[] array,
+                                                int minSize,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryByte
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract byte[] grow (byte[] array, int minSize,
-                                  byte defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract byte[] grow( byte[] array, int minSize,
+                                 byte defaultValue,
+                                 GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryByte
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryByte defaultByteProvider = new
-            ArrayProviderByteImpl ();
+            ArrayProviderByteImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderByteImpl extends
-                                                                ArrayFactoryByte
+                                                       ArrayFactoryByte
     {
 
-        public byte[] ensureArrayCapacity (byte[] array,
-                                            int minSize,
-                                            byte defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public byte[] ensureArrayCapacity( byte[] array,
+                                           int minSize,
+                                           byte defaultValue,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryByte.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryByte.class, len,
+                                                    minSize, Types.Int );
                 }
-                byte[] temp = new byte[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                byte[] temp = new byte[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public byte[] ensureArrayCapacity (byte[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public byte[] ensureArrayCapacity( byte[] array, int minSize,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryByte.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryByte.class, len,
+                                                    minSize, Types.Int );
                 }
-                byte[] temp = new byte[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                byte[] temp = new byte[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public byte[] grow (byte[] array, int minSize,
-                             byte defaultValue,
-                             GrowthStrategy growthStrategy)
+        public byte[] grow( byte[] array, int minSize,
+                            byte defaultValue,
+                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryByte.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryByte.class, len,
+                                                minSize, Types.Int );
             }
-            byte[] temp = new byte[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultByte.getValue ())
+            byte[] temp = new byte[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultByte.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryByte
      * @param size size of array
      * @return the array
      */
-    public byte[] alloc (int size)
+    public byte[] alloc( int size )
     {
-        return new byte[size];
+        return new byte[ size ];
     }
 
-    public byte[] alloc (int size, byte fillValue)
+    public byte[] alloc( int size, byte fillValue )
     {
-        byte[] t = new byte[size];
-        Arrays.fill (t, fillValue);
+        byte[] t = new byte[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

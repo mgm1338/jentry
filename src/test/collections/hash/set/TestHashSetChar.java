@@ -3,14 +3,13 @@ package collections.hash.set;
 import collections.hash.HashFunctions;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryChar;
+import core.array.factory.ArrayFactoryInt;
 import core.stub.IntValueConverter;
-import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
-import util.TestUtilsInt;
 import util.TestUtilsChar;
+import util.TestUtilsInt;
 
 /**
  * Copyright 1/14/13
@@ -78,8 +77,8 @@ public class TestHashSetChar
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetChar( 8, 1.00, ArrayFactoryChar.defaultCharProvider,
-                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionChar(),
-                                            GrowthStrategy.doubleGrowth );
+                                   ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionChar(),
+                                   GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -119,7 +118,7 @@ public class TestHashSetChar
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.charFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( TEST_SIZE - 1 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
@@ -128,7 +127,7 @@ public class TestHashSetChar
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.charFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( TEST_SIZE / 2 +
-                                                                                                 OFFSET_FROM_ZERO
+                                                                                                OFFSET_FROM_ZERO
         ) ) );
 
 
@@ -147,9 +146,9 @@ public class TestHashSetChar
                              == Const.NO_ENTRY );
 
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( TEST_SIZE - 1 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( TEST_SIZE / 2 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( 0 + OFFSET_FROM_ZERO
         ) ) );
 
@@ -215,7 +214,7 @@ public class TestHashSetChar
         hashSet.remove( IntValueConverter.charFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
         TestCase.assertTrue( hashSet.insert( IntValueConverter.charFromInt( 1000 ) ) == 0 );
-        TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( 1000 ) )==0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( 1000 ) ) == 0 );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.charFromInt( 0 ) ) );
 
     }
@@ -260,7 +259,7 @@ public class TestHashSetChar
         {
             int j = hashSet.insert( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
 
@@ -283,7 +282,7 @@ public class TestHashSetChar
         {
             int j = hashSet.insert( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.charFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
         TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );

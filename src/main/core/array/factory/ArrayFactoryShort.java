@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryShort
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract short[] ensureArrayCapacity (short[] array,
+    public abstract short[] ensureArrayCapacity( short[] array,
                                                  int minSize,
                                                  short defaultValue,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryShort
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract short[] ensureArrayCapacity (short[] array,
+    public abstract short[] ensureArrayCapacity( short[] array,
                                                  int minSize,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryShort
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract short[] grow (short[] array, int minSize,
+    public abstract short[] grow( short[] array, int minSize,
                                   short defaultValue,
-                                  GrowthStrategy growthStrategy);
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryShort
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryShort defaultShortProvider = new
-            ArrayProviderShortImpl ();
+            ArrayProviderShortImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderShortImpl extends
-                                                                ArrayFactoryShort
+                                                        ArrayFactoryShort
     {
 
-        public short[] ensureArrayCapacity (short[] array,
+        public short[] ensureArrayCapacity( short[] array,
                                             int minSize,
                                             short defaultValue,
-                                            GrowthStrategy growthStrategy)
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryShort.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryShort.class, len,
+                                                    minSize, Types.Int );
                 }
-                short[] temp = new short[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                short[] temp = new short[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public short[] ensureArrayCapacity (short[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public short[] ensureArrayCapacity( short[] array, int minSize,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryShort.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryShort.class, len,
+                                                    minSize, Types.Int );
                 }
-                short[] temp = new short[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                short[] temp = new short[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public short[] grow (short[] array, int minSize,
+        public short[] grow( short[] array, int minSize,
                              short defaultValue,
-                             GrowthStrategy growthStrategy)
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryShort.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryShort.class, len,
+                                                minSize, Types.Int );
             }
-            short[] temp = new short[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultShort.getValue ())
+            short[] temp = new short[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultShort.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryShort
      * @param size size of array
      * @return the array
      */
-    public short[] alloc (int size)
+    public short[] alloc( int size )
     {
-        return new short[size];
+        return new short[ size ];
     }
 
-    public short[] alloc (int size, short fillValue)
+    public short[] alloc( int size, short fillValue )
     {
-        short[] t = new short[size];
-        Arrays.fill (t, fillValue);
+        short[] t = new short[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

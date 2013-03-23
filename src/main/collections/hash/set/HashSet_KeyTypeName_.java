@@ -7,13 +7,13 @@ import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
-import core.stub.*;
+import core.stub._key_;
 import core.util.comparator.EqualityFunctions;
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
- *
+ * <p/>
  * TODO: doc
  */
 public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
@@ -247,8 +247,8 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     private void reHash()
     {
         int newSize = growthStrategy.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets);
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets * 2,
+                                                                   newSize + numBuckets );
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;

@@ -6,14 +6,12 @@ import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
-import core.array.factory.ArrayFactoryInt;
-import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
- *
+ * <p/>
  * TODO: doc
  */
 public class HashSetInt implements CollectionInt
@@ -88,10 +86,10 @@ public class HashSetInt implements CollectionInt
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetInt( int initialSize, double loadFactor,
-                                 ArrayFactoryInt keyFactory,
-                                 ArrayFactoryInt intFactory,
-                                 HashFunctions.HashFunctionInt hashFunction,
-                                 GrowthStrategy growthStrategy )
+                       ArrayFactoryInt keyFactory,
+                       ArrayFactoryInt intFactory,
+                       HashFunctions.HashFunctionInt hashFunction,
+                       GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -247,8 +245,8 @@ public class HashSetInt implements CollectionInt
     private void reHash()
     {
         int newSize = growthStrategy.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets);
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets * 2,
+                                                                   newSize + numBuckets );
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
@@ -354,7 +352,7 @@ public class HashSetInt implements CollectionInt
         if( target == null ) //creating a new one
         {
             target = new HashSetInt( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                               growthStrategy );
+                                     growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

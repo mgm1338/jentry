@@ -45,38 +45,22 @@ import java.util.Arrays;
  */
 public class MultiLinkedListInt implements Collection
 {
-    /**
-     * Strategy for growing the MultiList, see {@link GrowthStrategy }
-     */
+    /** Strategy for growing the MultiList, see {@link GrowthStrategy } */
     private final GrowthStrategy growthStrategy;
-    /**
-     * Factory for creating new int[] arrays
-     */
+    /** Factory for creating new int[] arrays */
     private final ArrayFactoryInt intFactory;
 
-    /**
-     * The heads array, will store the actual values
-     */
+    /** The heads array, will store the actual values */
     protected int[] heads;
-    /**
-     * Pointer to the next value, or Const.NO_ENTRY if none exists
-     */
+    /** Pointer to the next value, or Const.NO_ENTRY if none exists */
     protected int[] nexts;
-    /**
-     * Pointer to the start of the free list
-     */
+    /** Pointer to the start of the free list */
     protected int freeListPtr = Const.NO_ENTRY;
-    /**
-     * The  next (non-head) item to store a value.
-     */
+    /** The  next (non-head) item to store a value. */
     protected int nextUnusedIdx;
-    /**
-     * Current max-head item
-     */
+    /** Current max-head item */
     protected int maxHead = -1;
-    /**
-     * Number of elements inserted into the sturcture
-     */
+    /** Number of elements inserted into the structure */
     protected int size;
 
     /**
@@ -85,10 +69,10 @@ public class MultiLinkedListInt implements Collection
      * @param initialNumLists the initial number of singly linked list this structure will allocate
      * @param totalSize       the estimated size of all of the lists
      */
-    public MultiLinkedListInt (int initialNumLists, int totalSize)
+    public MultiLinkedListInt( int initialNumLists, int totalSize )
     {
-        this (initialNumLists, totalSize,
-              GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultIntProvider);
+        this( initialNumLists, totalSize,
+              GrowthStrategy.doubleGrowth, ArrayFactoryInt.defaultIntProvider );
     }
 
     /**
@@ -99,14 +83,14 @@ public class MultiLinkedListInt implements Collection
      * @param growthStrategy  the growth strategy when growing the set of lists
      * @param intFactory      the factory that will provide the int[] arrays
      */
-    public MultiLinkedListInt (int initialListSize, int totalSize,
+    public MultiLinkedListInt( int initialListSize, int totalSize,
                                GrowthStrategy growthStrategy,
-                               ArrayFactoryInt intFactory)
+                               ArrayFactoryInt intFactory )
     {
         this.growthStrategy = growthStrategy;
         this.intFactory = intFactory;
-        this.heads = intFactory.alloc (totalSize, Const.NO_ENTRY);
-        this.nexts = intFactory.alloc (totalSize, Const.NO_ENTRY);
+        this.heads = intFactory.alloc( totalSize, Const.NO_ENTRY );
+        this.nexts = intFactory.alloc( totalSize, Const.NO_ENTRY );
         maxHead = initialListSize - 1;
         nextUnusedIdx = initialListSize;
     }
@@ -155,40 +139,40 @@ public class MultiLinkedListInt implements Collection
      * @param listHead the head of the list
      * @param val      the value we are inserting into the list
      */
-    public void insert (int listHead, int val)
+    public void insert( int listHead, int val )
     {
         //first item, takes head spot
-        if (heads[listHead] == Const.NO_ENTRY)
+        if( heads[ listHead ] == Const.NO_ENTRY )
         {
-            heads[listHead] = val;
+            heads[ listHead ] = val;
             size++;
             return;
         }
 
         //index to insert value
         int idx;
-        if (freeListPtr != Const.NO_ENTRY) //try free list
+        if( freeListPtr != Const.NO_ENTRY ) //try free list
         {
             idx = freeListPtr;
-            freeListPtr = (nexts[idx] == Const.NO_ENTRY) ? Const.NO_ENTRY
-                                                         : nexts[idx];
+            freeListPtr = ( nexts[ idx ] == Const.NO_ENTRY ) ? Const.NO_ENTRY
+                                                             : nexts[ idx ];
         }
         else
         {
             idx = nextUnusedIdx++;
         }
         //Prepend the entry to the linked list
-        if (heads.length <= idx)
+        if( heads.length <= idx )
         {
-            heads = intFactory.grow (heads, idx + 1, Const.NO_ENTRY,
-                                     growthStrategy);
-            nexts = intFactory.grow (nexts, idx + 1, Const.NO_ENTRY,
-                                     growthStrategy);
+            heads = intFactory.grow( heads, idx + 1, Const.NO_ENTRY,
+                                     growthStrategy );
+            nexts = intFactory.grow( nexts, idx + 1, Const.NO_ENTRY,
+                                     growthStrategy );
         }
-        heads[idx] = heads[listHead];
-        nexts[idx] = nexts[listHead];
-        nexts[listHead] = idx;
-        heads[listHead] = val;
+        heads[ idx ] = heads[ listHead ];
+        nexts[ idx ] = nexts[ listHead ];
+        nexts[ listHead ] = idx;
+        heads[ listHead ] = val;
         size++;
     }
 
@@ -200,20 +184,20 @@ public class MultiLinkedListInt implements Collection
      * @param listHead the list we would like into insert to
      * @param val      the value to insert
      */
-    public void uncheckedInsert (int listHead, int val)
+    public void uncheckedInsert( int listHead, int val )
     {
-        if (heads[listHead] == Const.NO_ENTRY)
+        if( heads[ listHead ] == Const.NO_ENTRY )
         {
-            heads[listHead] = val;
+            heads[ listHead ] = val;
             size++;
             return;
         }
         //index to insert value
         int idx = nextUnusedIdx++;
-        heads[idx] = heads[listHead];
-        nexts[idx] = nexts[listHead];
-        nexts[listHead] = idx;
-        heads[listHead] = val;
+        heads[ idx ] = heads[ listHead ];
+        nexts[ idx ] = nexts[ listHead ];
+        nexts[ listHead ] = idx;
+        heads[ listHead ] = val;
         size++;
     }
 
@@ -226,58 +210,58 @@ public class MultiLinkedListInt implements Collection
      * @param value    the value to remove
      * @return true if removed, false otherwise
      */
-    public boolean remove (int listHead, int value)
+    public boolean remove( int listHead, int value )
     {
         //when searching, keep the previous entry, to update its next ptr
         int testIdx = listHead;
         int prev = Const.NO_ENTRY;
-        while (heads[testIdx] != value)
+        while( heads[ testIdx ] != value )
         {
-            if (nexts[testIdx] == Const.NO_ENTRY) return false;
+            if( nexts[ testIdx ] == Const.NO_ENTRY ) return false;
 
             prev = testIdx;
-            testIdx = nexts[testIdx];
+            testIdx = nexts[ testIdx ];
 
         }
-        if (prev == Const.NO_ENTRY) //removing first item
+        if( prev == Const.NO_ENTRY ) //removing first item
         {
             int next =
-                    (nexts.length > testIdx) ? nexts[testIdx] : Const.NO_ENTRY;
-            if (next != Const.NO_ENTRY) //more items in list, move to head
+                    ( nexts.length > testIdx ) ? nexts[ testIdx ] : Const.NO_ENTRY;
+            if( next != Const.NO_ENTRY ) //more items in list, move to head
             {
-                heads[testIdx] = heads[next];
-                heads[next] = Const.NO_ENTRY;
-                int nextOfNext = nexts[next];
+                heads[ testIdx ] = heads[ next ];
+                heads[ next ] = Const.NO_ENTRY;
+                int nextOfNext = nexts[ next ];
                 //now that we have new head, we update next if necessary
-                if (nextOfNext != Const.NO_ENTRY)
+                if( nextOfNext != Const.NO_ENTRY )
                 {
-                    nexts[testIdx] = nextOfNext;
-                    nexts[next] = Const.NO_ENTRY;
+                    nexts[ testIdx ] = nextOfNext;
+                    nexts[ next ] = Const.NO_ENTRY;
                 }
                 else
                 {
-                    nexts[testIdx] = Const.NO_ENTRY;
+                    nexts[ testIdx ] = Const.NO_ENTRY;
                 }
-                updateFreePointer (next);
+                updateFreePointer( next );
             }
             else //just head entry, easy clean up, no next
             {
-                heads[testIdx] = Const.NO_ENTRY;
+                heads[ testIdx ] = Const.NO_ENTRY;
             }
         }
         //prev is a valid entry, however we are not at end of list
-        else if (nexts[testIdx] != Const.NO_ENTRY)
+        else if( nexts[ testIdx ] != Const.NO_ENTRY )
         {
-            nexts[prev] = nexts[testIdx];
-            heads[testIdx] = Const.NO_ENTRY;
-            nexts[testIdx] = Const.NO_ENTRY;
-            updateFreePointer (testIdx);
+            nexts[ prev ] = nexts[ testIdx ];
+            heads[ testIdx ] = Const.NO_ENTRY;
+            nexts[ testIdx ] = Const.NO_ENTRY;
+            updateFreePointer( testIdx );
         }
         else //easy case,end of list
         {
-            heads[testIdx] = Const.NO_ENTRY;
-            nexts[prev] = Const.NO_ENTRY;
-            updateFreePointer (testIdx);
+            heads[ testIdx ] = Const.NO_ENTRY;
+            nexts[ prev ] = Const.NO_ENTRY;
+            updateFreePointer( testIdx );
         }
         size--;
         return true;
@@ -289,19 +273,19 @@ public class MultiLinkedListInt implements Collection
      *
      * @param idx the removed index
      */
-    private void updateFreePointer (int idx)
+    private void updateFreePointer( int idx )
     {
         //must be past the maxHead, the head items are reserved
-        if (idx > maxHead)
+        if( idx > maxHead )
         {
-            if (freeListPtr == Const.NO_ENTRY) //start list
+            if( freeListPtr == Const.NO_ENTRY ) //start list
             {
                 freeListPtr = idx;
             }
             else //creates a linked list using the un-used nexts
             {
-                nexts[freeListPtr] = Const.NO_ENTRY;
-                nexts[idx] = freeListPtr;
+                nexts[ freeListPtr ] = Const.NO_ENTRY;
+                nexts[ idx ] = freeListPtr;
                 freeListPtr = idx;
             }
         }
@@ -320,36 +304,36 @@ public class MultiLinkedListInt implements Collection
      *                    will grow
      * @return the int[] representation of the list
      */
-    public int[] getList (int listHead, int[] targetArray, boolean flagEnd)
+    public int[] getList( int listHead, int[] targetArray, boolean flagEnd )
     {
-        if (listHead > maxHead)
+        if( listHead > maxHead )
         {
-            throw new IllegalArgumentException ("No list for " + listHead);
+            throw new IllegalArgumentException( "No list for " + listHead );
         }
-        if (targetArray == null)    //allocate
+        if( targetArray == null )    //allocate
         {
-            targetArray = intFactory.alloc (size /
-                                                    maxHead);
+            targetArray = intFactory.alloc( size /
+                                            maxHead );
         }
 
         int i = 0;
         int prevIdx = Const.NO_ENTRY;
-        int idx = getNextIdxForList (listHead, prevIdx);
-        while (idx != Const.NO_ENTRY)
+        int idx = getNextIdxForList( listHead, prevIdx );
+        while( idx != Const.NO_ENTRY )
         {
             targetArray = intFactory.    //check size
-                    ensureArrayCapacity (targetArray,
+                    ensureArrayCapacity( targetArray,
                                          i + 1, Const.NO_ENTRY,
                                          GrowthStrategy.doubleGrowth
             );
 
-            targetArray[i++] = heads[idx];
+            targetArray[ i++ ] = heads[ idx ];
             prevIdx = idx;
-            idx = getNextIdxForList (listHead, prevIdx);
+            idx = getNextIdxForList( listHead, prevIdx );
         }
-        if (flagEnd && targetArray.length >= i)
+        if( flagEnd && targetArray.length >= i )
         {
-            targetArray[i] = Const.NO_ENTRY;
+            targetArray[ i ] = Const.NO_ENTRY;
         }
         return targetArray;
     }
@@ -365,15 +349,15 @@ public class MultiLinkedListInt implements Collection
      * @param prevIdx  the previous index into the list
      * @return the next index of a valid item, or Const.NO_ENTRY
      */
-    public int getNextIdxForList (int listHead, int prevIdx)
+    public int getNextIdxForList( int listHead, int prevIdx )
     {
-        if (prevIdx == Const.NO_ENTRY)
+        if( prevIdx == Const.NO_ENTRY )
         {
             return listHead;
         }
-        if (prevIdx < nexts.length)
+        if( prevIdx < nexts.length )
         {
-            return nexts[prevIdx];
+            return nexts[ prevIdx ];
         }
         return Const.NO_ENTRY;
     }
@@ -385,9 +369,9 @@ public class MultiLinkedListInt implements Collection
      * @param idx the index
      * @return the value in the heads array
      */
-    public int getHead (int idx)
+    public int getHead( int idx )
     {
-        return heads[idx];
+        return heads[ idx ];
     }
 
     /**
@@ -395,7 +379,7 @@ public class MultiLinkedListInt implements Collection
      *
      * @return the total.
      */
-    public int getSize ()
+    public int getSize()
     {
         return size;
     }
@@ -406,18 +390,16 @@ public class MultiLinkedListInt implements Collection
      * @return if the entire set of lists is empty
      */
     @Override
-    public boolean isEmpty ()
+    public boolean isEmpty()
     {
         return size == 0;
     }
 
-    /**
-     * Clear all of the lists in the set.
-     */
-    public void clear ()
+    /** Clear all of the lists in the set. */
+    public void clear()
     {
-        Arrays.fill (heads, Const.NO_ENTRY);
-        Arrays.fill (nexts, Const.NO_ENTRY);
+        Arrays.fill( heads, Const.NO_ENTRY );
+        Arrays.fill( nexts, Const.NO_ENTRY );
         freeListPtr = Const.NO_ENTRY;
         size = 0;
         nextUnusedIdx = maxHead + 1;
@@ -430,13 +412,13 @@ public class MultiLinkedListInt implements Collection
      *
      * @param newMaxHead the new number of lists in this collection
      */
-    public void clear (int newMaxHead)
+    public void clear( int newMaxHead )
     {
-        Arrays.fill (heads, Const.NO_ENTRY);
-        Arrays.fill (nexts, Const.NO_ENTRY);
+        Arrays.fill( heads, Const.NO_ENTRY );
+        Arrays.fill( nexts, Const.NO_ENTRY );
         freeListPtr = Const.NO_ENTRY;
         size = 0;
-        maxHead= newMaxHead;
+        maxHead = newMaxHead;
         nextUnusedIdx = maxHead + 1;
     }
 
@@ -446,19 +428,19 @@ public class MultiLinkedListInt implements Collection
      *
      * @return a deep copy of this object
      */
-    public MultiLinkedListInt getDeepCopy ()
+    public MultiLinkedListInt getDeepCopy()
     {
-        MultiLinkedListInt target = new MultiLinkedListInt (maxHead, size, growthStrategy, intFactory);
+        MultiLinkedListInt target = new MultiLinkedListInt( maxHead, size, growthStrategy, intFactory );
         //should be close if this list is mostly compact
         int headLen = heads.length;
         int nextsLen = nexts.length;
-        target.heads = intFactory.ensureArrayCapacity (target.heads, headLen, Const.NO_ENTRY,
+        target.heads = intFactory.ensureArrayCapacity( target.heads, headLen, Const.NO_ENTRY,
                                                        GrowthStrategy.toExactSize
         );
-        target.nexts = intFactory.ensureArrayCapacity (target.nexts, nextsLen, Const.NO_ENTRY, GrowthStrategy.toExactSize
+        target.nexts = intFactory.ensureArrayCapacity( target.nexts, nextsLen, Const.NO_ENTRY, GrowthStrategy.toExactSize
         );
-        System.arraycopy (heads, 0, target.heads, 0, headLen);
-        System.arraycopy (nexts, 0, target.nexts, 0, nextsLen);
+        System.arraycopy( heads, 0, target.heads, 0, headLen );
+        System.arraycopy( nexts, 0, target.nexts, 0, nextsLen );
 
         target.maxHead = maxHead;
         target.size = size;

@@ -2,7 +2,7 @@ package collections.heap.ungen;
 
 import collections.heap.BinaryHeapObject;
 import core.stub.IntValueConverter;
-import core.util.comparator.*;
+import core.util.comparator.ComparatorObject;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,148 +23,148 @@ public class TestBinaryHeapObject
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
     @Before
-    public void setup ()
+    public void setup()
     {
-        heap = new BinaryHeapObject (8, new ObjectAsc());
+        heap = new BinaryHeapObject( 8, new ObjectAsc() );
     }
 
     @Test
-    public void testInsertCompact ()
+    public void testInsertCompact()
     {
-        if (template) return;
-        TestCase.assertTrue (heap.isEmpty ());
-        TestCase.assertEquals (0, heap.getSize ());
+        if( template ) return;
+        TestCase.assertTrue( heap.isEmpty() );
+        TestCase.assertEquals( 0, heap.getSize() );
 
-        for (int i = 0; i < TEST_SIZE; i++)
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (i)));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( i ) ) );
         }
-        TestCase.assertEquals (TEST_SIZE, heap.getSize ());
+        TestCase.assertEquals( TEST_SIZE, heap.getSize() );
 
 
-        heap.remove (3);
-        TestCase.assertEquals (3,
-                               heap.insert (IntValueConverter.ObjectFromInt (3)));
-        TestCase.assertEquals (TEST_SIZE, heap.getSize ());
+        heap.remove( 3 );
+        TestCase.assertEquals( 3,
+                               heap.insert( IntValueConverter.ObjectFromInt( 3 ) ) );
+        TestCase.assertEquals( TEST_SIZE, heap.getSize() );
 
     }
 
     @Test
-    public void testReverseInsertionCorrectOrder ()
+    public void testReverseInsertionCorrectOrder()
     {
-        if (template) return;
-        for (int i = 0; i < TEST_SIZE; i++)
+        if( template ) return;
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (TEST_SIZE - i)));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( TEST_SIZE - i ) ) );
         }
-        assertInAscOrder (heap);
+        assertInAscOrder( heap );
     }
 
     @Test
-    public void testRandomInsertionCorrectOrder ()
+    public void testRandomInsertionCorrectOrder()
     {
-        if (template) return;
-        Random random = new Random (42);
-        for (int i = 0; i < TEST_SIZE; i++)
+        if( template ) return;
+        Random random = new Random( 42 );
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (random.nextInt (16))));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( random.nextInt( 16 ) ) ) );
         }
     }
 
     @Test
-    public void testBackwardsWithDoubleGrowth ()
+    public void testBackwardsWithDoubleGrowth()
     {
-        if (template) return;
-        for (int i = 0; i < 24; i++)
+        if( template ) return;
+        for( int i = 0; i < 24; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (24 - i)));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( 24 - i ) ) );
         }
-        TestCase.assertEquals (24, heap.getSize ());
-        assertInAscOrder (heap);
+        TestCase.assertEquals( 24, heap.getSize() );
+        assertInAscOrder( heap );
     }
 
     @Test
-    public void testRandomWithDoubleGrowth ()
+    public void testRandomWithDoubleGrowth()
     {
-        if (template) return;
-        Random random = new Random (42);
-        for (int i = 0; i < 24; i++)
+        if( template ) return;
+        Random random = new Random( 42 );
+        for( int i = 0; i < 24; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (random.nextInt (16))));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( random.nextInt( 16 ) ) ) );
         }
-        TestCase.assertEquals (24, heap.getSize ());
-        assertInAscOrder (heap);
+        TestCase.assertEquals( 24, heap.getSize() );
+        assertInAscOrder( heap );
     }
 
     @Test
-    public void manyWithSameOneHigher ()
+    public void manyWithSameOneHigher()
     {
-        if (template) return;
-        for (int i = 0; i < 24; i++)
+        if( template ) return;
+        for( int i = 0; i < 24; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (4)));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( 4 ) ) );
         }
 
-        heap.insert (IntValueConverter.ObjectFromInt (5));
-        TestCase.assertEquals (IntValueConverter.ObjectFromInt (4), heap.peek ());
-        TestCase.assertEquals (25, heap.getSize ());
-        for (int i = 0; i < 24; i++)
+        heap.insert( IntValueConverter.ObjectFromInt( 5 ) );
+        TestCase.assertEquals( IntValueConverter.ObjectFromInt( 4 ), heap.peek() );
+        TestCase.assertEquals( 25, heap.getSize() );
+        for( int i = 0; i < 24; i++ )
         {
-            heap.removeGreatest ();
+            heap.removeGreatest();
         }
-        TestCase.assertEquals (IntValueConverter.ObjectFromInt (5), heap.peek ());
+        TestCase.assertEquals( IntValueConverter.ObjectFromInt( 5 ), heap.peek() );
     }
 
     @Test
-    public void manyWithSameOneLower ()
+    public void manyWithSameOneLower()
     {
-        if (template) return;
-        for (int i = 0; i < 24; i++)
+        if( template ) return;
+        for( int i = 0; i < 24; i++ )
         {
-            TestCase.assertEquals (i,
-                                   heap.insert (IntValueConverter.ObjectFromInt (4)));
+            TestCase.assertEquals( i,
+                                   heap.insert( IntValueConverter.ObjectFromInt( 4 ) ) );
         }
-        heap.insert (IntValueConverter.ObjectFromInt (3));
-        TestCase.assertEquals (IntValueConverter.ObjectFromInt (3), heap.peek ());
+        heap.insert( IntValueConverter.ObjectFromInt( 3 ) );
+        TestCase.assertEquals( IntValueConverter.ObjectFromInt( 3 ), heap.peek() );
     }
 
     @Test
-    public void fullRemoval ()
+    public void fullRemoval()
     {
-        if (template) return;
-        testRandomWithDoubleGrowth ();
-        while (!heap.isEmpty ())
+        if( template ) return;
+        testRandomWithDoubleGrowth();
+        while( !heap.isEmpty() )
         {
-            heap.removeGreatest ();
-            assertInAscOrder (heap);
+            heap.removeGreatest();
+            assertInAscOrder( heap );
         }
-        TestCase.assertTrue (heap.isEmpty ());
-        TestCase.assertEquals (0, heap.getSize ());
+        TestCase.assertTrue( heap.isEmpty() );
+        TestCase.assertEquals( 0, heap.getSize() );
     }
 
     //test free list, and internal equals with copy methods
 
 
-    protected void assertInAscOrder (BinaryHeapObject heap)
+    protected void assertInAscOrder( BinaryHeapObject heap )
     {
-        if (template) return;
-        Object[] collected = new Object[heap.getSize ()];
+        if( template ) return;
+        Object[] collected = new Object[ heap.getSize() ];
         int ct = 0;
-        while (!heap.isEmpty ())
+        while( !heap.isEmpty() )
         {
-            collected[ct++] = heap.peek ();
-            heap.removeGreatest ();
+            collected[ ct++ ] = heap.peek();
+            heap.removeGreatest();
         }
-        Object[] copy = new Object[collected.length];
-        System.arraycopy (collected, 0, copy, 0, collected.length);
-        Arrays.sort (copy);
-        TestUtilsObject.assertArrayContentsEqual (collected, copy);
+        Object[] copy = new Object[ collected.length ];
+        System.arraycopy( collected, 0, copy, 0, collected.length );
+        Arrays.sort( copy );
+        TestUtilsObject.assertArrayContentsEqual( collected, copy );
     }
 
     private final static class ObjectAsc implements ComparatorObject

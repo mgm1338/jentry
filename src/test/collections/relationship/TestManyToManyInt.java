@@ -1,5 +1,6 @@
 package collections.relationship;
 
+import collections.hash.set.TestHashSetLong;
 import core.Const;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -391,8 +392,13 @@ public class TestManyToManyInt
     }
 
 
-    protected void assertEquals( OneToManyInt expected, OneToManyInt actual )
+    protected void assertEquals( ManyToManyInt expected, ManyToManyInt actual )
     {
-
+        TestCase.assertEquals( expected.getSize(), actual.getSize() );
+        TestUtilsInt.assertArrayContentsToLen( expected.lefts, actual.lefts, expected.leftHighWaterMark );
+        TestUtilsInt.assertArrayContentsToLen( expected.leftNexts, actual.leftNexts, expected.getSize() );
+        TestUtilsInt.assertArrayContentsToLen( expected.rights, actual.rights, expected.rightHighWaterMark );
+        TestUtilsInt.assertArrayContentsToLen( expected.leftNexts, actual.leftNexts, expected.getSize() );
+        TestHashSetLong.assertEquals( expected.associations, actual.associations );
     }
 }

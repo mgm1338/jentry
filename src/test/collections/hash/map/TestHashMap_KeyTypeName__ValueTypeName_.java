@@ -2,18 +2,14 @@ package collections.hash.map;
 
 import collections.hash.HashFunctions;
 import collections.hash.set.TestHashSet_KeyTypeName_;
-import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.array.factory.ArrayFactory_ValueTypeName_;
-
-
-import core.stub.*;
+import core.stub.IntValueConverter;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import util.TestUtils_KeyTypeName_;
 import util.TestUtils_ValueTypeName_;
 
 /**
@@ -23,24 +19,24 @@ import util.TestUtils_ValueTypeName_;
  * User: Max Miller
  * Created: 2/27/13
  */
-public class TestHashMap_KeyTypeName__ValueTypeName_ 
+public class TestHashMap_KeyTypeName__ValueTypeName_
 {
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
     public static final int TEST_SIZE = 8;
-    private static final int LARGE_TEST_SIZE = 128   ;
+    private static final int LARGE_TEST_SIZE = 128;
     private HashMap_KeyTypeName__ValueTypeName_ map;
 
     @Before
     public void setup()
     {
-        if (template) return;
+        if( template ) return;
         HashMap_KeyTypeName__ValueTypeName_ shortConstructor = new HashMap_KeyTypeName__ValueTypeName_( 8 );
-        map =   new HashMap_KeyTypeName__ValueTypeName_( 8, .75,
-                                                         ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
-                                                         ArrayFactoryInt.defaultIntProvider,
-                                                         HashFunctions.hashFunction_KeyTypeName_,
-                                                         GrowthStrategy.doubleGrowth,
-                                                         ArrayFactory_ValueTypeName_.default_ValueTypeName_Provider );
+        map = new HashMap_KeyTypeName__ValueTypeName_( 8, .75,
+                                                       ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
+                                                       ArrayFactoryInt.defaultIntProvider,
+                                                       HashFunctions.hashFunction_KeyTypeName_,
+                                                       GrowthStrategy.doubleGrowth,
+                                                       ArrayFactory_ValueTypeName_.default_ValueTypeName_Provider );
 
 
     }
@@ -52,24 +48,24 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void loadTest()
     {
-        if (template) return;
-        TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( 5 ), IntValueConverter._val_FromInt( -1 )),
-                              IntValueConverter._val_FromInt(  -1 ) );
+        if( template ) return;
+        TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( 5 ), IntValueConverter._val_FromInt( -1 ) ),
+                               IntValueConverter._val_FromInt( -1 ) );
 
         TestCase.assertEquals( map.getSize(), 0 );
         TestCase.assertTrue( map.isEmpty() );
 
-        for (int i=0; i<TEST_SIZE; i++)
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int entry  = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i+100 ));
+            int entry = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i + 100 ) );
             TestCase.assertEquals( i, entry ); //test compact
-            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 )),
-                                   IntValueConverter._val_FromInt(  i+100 ) );
+            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 ) ),
+                                   IntValueConverter._val_FromInt( i + 100 ) );
         }
         TestCase.assertEquals( map.getSize(), TEST_SIZE );
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertTrue( map.containsKey( IntValueConverter._key_FromInt( i ) )==i );
+            TestCase.assertTrue( map.containsKey( IntValueConverter._key_FromInt( i ) ) == i );
         }
         TestCase.assertFalse( map.isEmpty() );
 
@@ -79,23 +75,23 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void fullRemove()
     {
-        if (template) return;
+        if( template ) return;
         TestCase.assertEquals( map.getSize(), 0 );
         loadTest();
         TestCase.assertEquals( map.getSize(), TEST_SIZE );
-        for (int i=0; i<TEST_SIZE; i++)
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int entry  = map.remove( IntValueConverter._key_FromInt( i ));
+            int entry = map.remove( IntValueConverter._key_FromInt( i ) );
             TestCase.assertEquals( i, entry ); //test compact
         }
         TestCase.assertEquals( map.getSize(), 0 );
 
         //assert all gone
-        for (int i=0; i<TEST_SIZE; i++)
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
             TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1
-            )),
-                                   IntValueConverter._val_FromInt(  -1 ) );
+            ) ),
+                                   IntValueConverter._val_FromInt( -1 ) );
         }
 
     }
@@ -104,13 +100,13 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void growthTest()
     {
-        if (template) return;
-        for (int i=0; i<LARGE_TEST_SIZE; i++)
+        if( template ) return;
+        for( int i = 0; i < LARGE_TEST_SIZE; i++ )
         {
-            int entry  = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i+100 ));
+            int entry = map.insert( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( i + 100 ) );
             TestCase.assertEquals( i, entry ); //test compact
-            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 )),
-                                   IntValueConverter._val_FromInt(  i+100 ) );
+            TestCase.assertEquals( map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 ) ),
+                                   IntValueConverter._val_FromInt( i + 100 ) );
         }
 
         TestCase.assertEquals( LARGE_TEST_SIZE, map.getSize() );
@@ -120,10 +116,10 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void assertRemoveIsNotThereFalse()
     {
-        if (template) return;
-        for (int i=0; i<TEST_SIZE; i++)
+        if( template ) return;
+        for( int i = 0; i < TEST_SIZE; i++ )
         {
-            int entry  = map.remove( IntValueConverter._key_FromInt( i ));
+            int entry = map.remove( IntValueConverter._key_FromInt( i ) );
             TestCase.assertEquals( entry, -1 ); //test compact
         }
     }
@@ -133,13 +129,13 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void clearTest()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
         map.clear();
         for( int i = 0; i < TEST_SIZE; i++ )
         {
-            TestCase.assertEquals( IntValueConverter._val_FromInt( -1),
-                                   map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1) )
+            TestCase.assertEquals( IntValueConverter._val_FromInt( -1 ),
+                                   map.get( IntValueConverter._key_FromInt( i ), IntValueConverter._val_FromInt( -1 ) )
             );
         }
         TestCase.assertTrue( map.isEmpty() );
@@ -149,26 +145,22 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
 
     }
 
-    /**
-     * Copy with a null target, assert the copy is functionally the same as the original.
-     */
+    /** Copy with a null target, assert the copy is functionally the same as the original. */
     @Test
     public void copyFromNull()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
         HashMap_KeyTypeName__ValueTypeName_ copy = map.copy( null );
         assertEquals( map, copy );
 
     }
 
-    /**
-     * Standard copy from one map to another.
-     */
+    /** Standard copy from one map to another. */
     @Test
     public void fullCopyValidSetTest()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
         HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize() );
         map.copy( copy );
@@ -179,9 +171,9 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void copyToLargerSet()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
-        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize()*100 );
+        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize() * 100 );
         map.copy( copy );
 
     }
@@ -190,14 +182,14 @@ public class TestHashMap_KeyTypeName__ValueTypeName_
     @Test
     public void copyFromSmaller()
     {
-        if (template) return;
+        if( template ) return;
         loadTest();
-        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize()/4 );
+        HashMap_KeyTypeName__ValueTypeName_ copy = new HashMap_KeyTypeName__ValueTypeName_( map.getSize() / 4 );
         map.copy( copy );
 
     }
 
-    protected void assertEquals(HashMap_KeyTypeName__ValueTypeName_ orig, HashMap_KeyTypeName__ValueTypeName_ copy)
+    protected void assertEquals( HashMap_KeyTypeName__ValueTypeName_ orig, HashMap_KeyTypeName__ValueTypeName_ copy )
     {
         //little messy to be asserting equality with another test
         TestHashSet_KeyTypeName_.assertEquals( orig.set, copy.set );

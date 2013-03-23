@@ -10,6 +10,10 @@ import core.array.factory.ArrayFactoryInt;
  * <p/>
  * User: Max Miller
  * Created: 2/8/13
+ * <p/>
+ * Extension of the {@link OneToManyInt}, however one may cycle through the associations from either side. Specifically
+ * one may get all the left associations for a given right. For structure, see {@link OneToManyInt}, which
+ * explains the storage mechanism of the associations.
  */
 public class ManyToManyInt extends OneToManyInt
 {
@@ -21,6 +25,8 @@ public class ManyToManyInt extends OneToManyInt
     protected int[] rights;
     /** The next pointer that will fill the index of the current entry to the next handle (see class docs) */
     protected int[] rightNexts;
+    /** High water mark for the largest right that has been associated */
+    protected int rightHighWaterMark = Const.NO_ENTRY;
 
 
     /**
@@ -72,7 +78,7 @@ public class ManyToManyInt extends OneToManyInt
         return 0;
     }
 
-    public int getNextLeftEntry( int right, int prevEntry)
+    public int getNextLeftEntry( int right, int prevEntry )
     {
         return 0;
     }

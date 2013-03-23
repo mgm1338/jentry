@@ -6,7 +6,7 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.stub.IntValueConverter;
-import core.stub.*;
+import core.stub._key_;
 import junit.framework.TestCase;
 import org.junit.Test;
 import util.TestUtilsInt;
@@ -215,7 +215,7 @@ public class TestHashSet_KeyTypeName_
         hashSet.remove( IntValueConverter._key_FromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
         TestCase.assertTrue( hashSet.insert( IntValueConverter._key_FromInt( 1000 ) ) == 0 );
-        TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( 1000 ) )==0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( 1000 ) ) == 0 );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter._key_FromInt( 0 ) ) );
 
     }
@@ -260,7 +260,7 @@ public class TestHashSet_KeyTypeName_
         {
             int j = hashSet.insert( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
 
@@ -283,7 +283,7 @@ public class TestHashSet_KeyTypeName_
         {
             int j = hashSet.insert( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
         TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );

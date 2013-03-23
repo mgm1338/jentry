@@ -1,6 +1,6 @@
 package collections.generic;
 
-import core.stub.*;
+import core.stub._key_;
 
 /**
  * Copyright © 2012 Max Miller
@@ -62,7 +62,7 @@ public interface Collection_KeyTypeName_ extends collections.generic.Collection
      *
      * @param value the value to remove
      * @return the entry of the item removed, or NO_ENTRY (-1) if
-     * not in the collection
+     *         not in the collection
      */
     int remove( _key_ value );
 

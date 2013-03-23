@@ -1,7 +1,7 @@
 package collections.generic.heap;
 
 import collections.generic.Collection;
-import core.stub.*;
+import core.stub._key_;
 import core.util.comparator.Comparator_KeyTypeName_;
 
 /**
@@ -10,19 +10,17 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * <p/>
  * User: Max Miller
  * Created: 3/2/13
- *
+ * <p/>
  * <p>Interface describing the limited methods for a Heap. The methods are limited to constrain the heap
  * for its intended purpose of maintaining a sorted order of keys.</p>
- *
+ * <p/>
  * <p>Finding an item in a heap has been removed to differentiate the Heap from a basic tree, where searching
  * is an efficient operation. Although the heap has a similar structure, the loose constraint of the parent/child
  * relationship causes all search operations to be linear (O(n)), and not O(log(n)), as one may expect.
  * </p>
- *
+ * <p/>
  * <p>Searching for items should be done through Hashing the item and using either a HashSet or Map. A Jentry-style
  * AVL binary tree has been designed in the past, however was not used enough to warrant it. TODO: still true?</p>
- *
- *
  */
 public interface Heap_KeyTypeName_ extends Collection
 {

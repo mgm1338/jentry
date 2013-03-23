@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryBool
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract boolean[] ensureArrayCapacity (boolean[] array,
-                                                 int minSize,
-                                                 boolean defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract boolean[] ensureArrayCapacity( boolean[] array,
+                                                   int minSize,
+                                                   boolean defaultValue,
+                                                   GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryBool
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract boolean[] ensureArrayCapacity (boolean[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract boolean[] ensureArrayCapacity( boolean[] array,
+                                                   int minSize,
+                                                   GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryBool
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract boolean[] grow (boolean[] array, int minSize,
-                                  boolean defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract boolean[] grow( boolean[] array, int minSize,
+                                    boolean defaultValue,
+                                    GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryBool
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryBool defaultBoolProvider = new
-            ArrayProviderBoolImpl ();
+            ArrayProviderBoolImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderBoolImpl extends
-                                                                ArrayFactoryBool
+                                                       ArrayFactoryBool
     {
 
-        public boolean[] ensureArrayCapacity (boolean[] array,
-                                            int minSize,
-                                            boolean defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public boolean[] ensureArrayCapacity( boolean[] array,
+                                              int minSize,
+                                              boolean defaultValue,
+                                              GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryBool.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryBool.class, len,
+                                                    minSize, Types.Int );
                 }
-                boolean[] temp = new boolean[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                boolean[] temp = new boolean[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public boolean[] ensureArrayCapacity (boolean[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public boolean[] ensureArrayCapacity( boolean[] array, int minSize,
+                                              GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryBool.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryBool.class, len,
+                                                    minSize, Types.Int );
                 }
-                boolean[] temp = new boolean[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                boolean[] temp = new boolean[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public boolean[] grow (boolean[] array, int minSize,
-                             boolean defaultValue,
-                             GrowthStrategy growthStrategy)
+        public boolean[] grow( boolean[] array, int minSize,
+                               boolean defaultValue,
+                               GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryBool.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryBool.class, len,
+                                                minSize, Types.Int );
             }
-            boolean[] temp = new boolean[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultBool.getValue ())
+            boolean[] temp = new boolean[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultBool.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryBool
      * @param size size of array
      * @return the array
      */
-    public boolean[] alloc (int size)
+    public boolean[] alloc( int size )
     {
-        return new boolean[size];
+        return new boolean[ size ];
     }
 
-    public boolean[] alloc (int size, boolean fillValue)
+    public boolean[] alloc( int size, boolean fillValue )
     {
-        boolean[] t = new boolean[size];
-        Arrays.fill (t, fillValue);
+        boolean[] t = new boolean[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

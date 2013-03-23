@@ -1,6 +1,6 @@
 package core;
 
-import static core.util.comparator.EqualityFunctions.*;
+import static core.util.comparator.EqualityFunctions.EqualsCharSequenceCaseInSensitive;
 
 /**
  * millemax
@@ -37,54 +37,54 @@ public class Types
     public static final byte Unknown = 11;
 
 
-    public static byte getType (CharSequence name)
+    public static byte getType( CharSequence name )
     {
-        if (EqualsCharSequenceCaseInSensitive.equals ("Bool", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Bool", name ) )
         {
             return Types.Bool;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Char", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Char", name ) )
         {
             return Types.Char;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Byte", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Byte", name ) )
         {
             return Types.Byte;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Short", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Short", name ) )
         {
             return Types.Short;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Int", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Int", name ) )
         {
             return Types.Int;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Float", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Float", name ) )
         {
             return Types.Float;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Double", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Double", name ) )
         {
             return Types.Double;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Long", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Long", name ) )
         {
             return Types.Long;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("CharSequence", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "CharSequence", name ) )
         {
             return Types.CharSequence;
         }
-        if (EqualsCharSequenceCaseInSensitive.equals ("Object", name))
+        if( EqualsCharSequenceCaseInSensitive.equals( "Object", name ) )
         {
             return Types.Object;
         }
         return Types.Unknown;
     }
 
-    public static CharSequence getName (byte type)
+    public static CharSequence getName( byte type )
     {
-        switch (type)
+        switch( type )
         {
             case Types.Bool:
                 return "Boolean";
@@ -107,7 +107,7 @@ public class Types
             case Types.Object:
                 return "Object";
             default:
-                throw new IllegalArgumentException ("Not a valid type");
+                throw new IllegalArgumentException( "Not a valid type" );
         }
     }
 

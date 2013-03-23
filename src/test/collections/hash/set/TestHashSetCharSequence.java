@@ -3,14 +3,13 @@ package collections.hash.set;
 import collections.hash.HashFunctions;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryCharSequence;
+import core.array.factory.ArrayFactoryInt;
 import core.stub.IntValueConverter;
-import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
-import util.TestUtilsInt;
 import util.TestUtilsCharSequence;
+import util.TestUtilsInt;
 
 /**
  * Copyright 1/14/13
@@ -78,8 +77,8 @@ public class TestHashSetCharSequence
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetCharSequence( 8, 1.00, ArrayFactoryCharSequence.defaultCharSequenceProvider,
-                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionCharSequence(),
-                                            GrowthStrategy.doubleGrowth );
+                                           ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionCharSequence(),
+                                           GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -119,7 +118,7 @@ public class TestHashSetCharSequence
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.CharSequenceFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( TEST_SIZE - 1 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                        OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
@@ -128,7 +127,7 @@ public class TestHashSetCharSequence
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.CharSequenceFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( TEST_SIZE / 2 +
-                                                                                                 OFFSET_FROM_ZERO
+                                                                                                        OFFSET_FROM_ZERO
         ) ) );
 
 
@@ -147,9 +146,9 @@ public class TestHashSetCharSequence
                              == Const.NO_ENTRY );
 
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( TEST_SIZE - 1 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                        OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( TEST_SIZE / 2 +
-                                                                                                 OFFSET_FROM_ZERO ) ) );
+                                                                                                        OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( 0 + OFFSET_FROM_ZERO
         ) ) );
 
@@ -215,7 +214,7 @@ public class TestHashSetCharSequence
         hashSet.remove( IntValueConverter.CharSequenceFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
         TestCase.assertTrue( hashSet.insert( IntValueConverter.CharSequenceFromInt( 1000 ) ) == 0 );
-        TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( 1000 ) )==0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( 1000 ) ) == 0 );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.CharSequenceFromInt( 0 ) ) );
 
     }
@@ -260,7 +259,7 @@ public class TestHashSetCharSequence
         {
             int j = hashSet.insert( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
 
@@ -283,7 +282,7 @@ public class TestHashSetCharSequence
         {
             int j = hashSet.insert( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.CharSequenceFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
         TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );

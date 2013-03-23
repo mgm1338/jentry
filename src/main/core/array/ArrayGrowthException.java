@@ -11,11 +11,10 @@ public class ArrayGrowthException extends RuntimeException
     private final static StringBuilder builder = new StringBuilder( 1024 );
 
     /**
-     *
-     * @param aClass class requesting growth
-     * @param originalSize original array size
+     * @param aClass            class requesting growth
+     * @param originalSize      original array size
      * @param minAcceptableSize minimum size that array must grow to
-     * @param type type of array (int, byte, etc...)
+     * @param type              type of array (int, byte, etc...)
      */
     public ArrayGrowthException( Class aClass, int originalSize, int minAcceptableSize,
                                  byte type )

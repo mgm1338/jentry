@@ -5,15 +5,14 @@ import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryByte;
-import core.stub.*;
+import core.array.factory.ArrayFactoryInt;
 import core.util.comparator.EqualityFunctions;
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
- *
+ * <p/>
  * TODO: doc
  */
 public class HashSetByte implements CollectionByte
@@ -88,10 +87,10 @@ public class HashSetByte implements CollectionByte
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetByte( int initialSize, double loadFactor,
-                                 ArrayFactoryByte keyFactory,
-                                 ArrayFactoryInt intFactory,
-                                 HashFunctions.HashFunctionByte hashFunction,
-                                 GrowthStrategy growthStrategy )
+                        ArrayFactoryByte keyFactory,
+                        ArrayFactoryInt intFactory,
+                        HashFunctions.HashFunctionByte hashFunction,
+                        GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -247,8 +246,8 @@ public class HashSetByte implements CollectionByte
     private void reHash()
     {
         int newSize = growthStrategy.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets);
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets * 2,
+                                                                   newSize + numBuckets );
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
@@ -354,7 +353,7 @@ public class HashSetByte implements CollectionByte
         if( target == null ) //creating a new one
         {
             target = new HashSetByte( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                               growthStrategy );
+                                      growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

@@ -7,13 +7,12 @@ import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryShort;
-import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
- *
+ * <p/>
  * TODO: doc
  */
 public class HashSetShort implements CollectionShort
@@ -88,10 +87,10 @@ public class HashSetShort implements CollectionShort
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetShort( int initialSize, double loadFactor,
-                                 ArrayFactoryShort keyFactory,
-                                 ArrayFactoryInt intFactory,
-                                 HashFunctions.HashFunctionShort hashFunction,
-                                 GrowthStrategy growthStrategy )
+                         ArrayFactoryShort keyFactory,
+                         ArrayFactoryInt intFactory,
+                         HashFunctions.HashFunctionShort hashFunction,
+                         GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -247,8 +246,8 @@ public class HashSetShort implements CollectionShort
     private void reHash()
     {
         int newSize = growthStrategy.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets);
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets * 2,
+                                                                   newSize + numBuckets );
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
@@ -354,7 +353,7 @@ public class HashSetShort implements CollectionShort
         if( target == null ) //creating a new one
         {
             target = new HashSetShort( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                               growthStrategy );
+                                       growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

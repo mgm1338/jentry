@@ -6,7 +6,6 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryShort;
 import core.stub.IntValueConverter;
-import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
 import util.TestUtilsInt;
@@ -78,8 +77,8 @@ public class TestHashSetShort
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetShort( 8, 1.00, ArrayFactoryShort.defaultShortProvider,
-                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionShort(),
-                                            GrowthStrategy.doubleGrowth );
+                                    ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionShort(),
+                                    GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -215,7 +214,7 @@ public class TestHashSetShort
         hashSet.remove( IntValueConverter.shortFromInt( 0 + OFFSET_FROM_ZERO ) ); //remove first
         //should take first spot
         TestCase.assertTrue( hashSet.insert( IntValueConverter.shortFromInt( 1000 ) ) == 0 );
-        TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( 1000 ) )==0 );
+        TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( 1000 ) ) == 0 );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.shortFromInt( 0 ) ) );
 
     }
@@ -260,7 +259,7 @@ public class TestHashSetShort
         {
             int j = hashSet.insert( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
 
@@ -283,7 +282,7 @@ public class TestHashSetShort
         {
             int j = hashSet.insert( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) );
             TestCase.assertEquals( i, j ); //compact
-            TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) )==i );
+            TestCase.assertTrue( hashSet.contains( IntValueConverter.shortFromInt( i + OFFSET_FROM_ZERO ) ) == i );
         }
 
         TestCase.assertTrue( hashSet.getSize() == TEST_SIZE * 4 );

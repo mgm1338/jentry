@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryDouble
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract double[] ensureArrayCapacity (double[] array,
-                                                 int minSize,
-                                                 double defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract double[] ensureArrayCapacity( double[] array,
+                                                  int minSize,
+                                                  double defaultValue,
+                                                  GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryDouble
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract double[] ensureArrayCapacity (double[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract double[] ensureArrayCapacity( double[] array,
+                                                  int minSize,
+                                                  GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryDouble
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract double[] grow (double[] array, int minSize,
-                                  double defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract double[] grow( double[] array, int minSize,
+                                   double defaultValue,
+                                   GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryDouble
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryDouble defaultDoubleProvider = new
-            ArrayProviderDoubleImpl ();
+            ArrayProviderDoubleImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderDoubleImpl extends
-                                                                ArrayFactoryDouble
+                                                         ArrayFactoryDouble
     {
 
-        public double[] ensureArrayCapacity (double[] array,
-                                            int minSize,
-                                            double defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public double[] ensureArrayCapacity( double[] array,
+                                             int minSize,
+                                             double defaultValue,
+                                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryDouble.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryDouble.class, len,
+                                                    minSize, Types.Int );
                 }
-                double[] temp = new double[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                double[] temp = new double[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public double[] ensureArrayCapacity (double[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public double[] ensureArrayCapacity( double[] array, int minSize,
+                                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryDouble.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryDouble.class, len,
+                                                    minSize, Types.Int );
                 }
-                double[] temp = new double[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                double[] temp = new double[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public double[] grow (double[] array, int minSize,
-                             double defaultValue,
-                             GrowthStrategy growthStrategy)
+        public double[] grow( double[] array, int minSize,
+                              double defaultValue,
+                              GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryDouble.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryDouble.class, len,
+                                                minSize, Types.Int );
             }
-            double[] temp = new double[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultDouble.getValue ())
+            double[] temp = new double[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultDouble.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryDouble
      * @param size size of array
      * @return the array
      */
-    public double[] alloc (int size)
+    public double[] alloc( int size )
     {
-        return new double[size];
+        return new double[ size ];
     }
 
-    public double[] alloc (int size, double fillValue)
+    public double[] alloc( int size, double fillValue )
     {
-        double[] t = new double[size];
-        Arrays.fill (t, fillValue);
+        double[] t = new double[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

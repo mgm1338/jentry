@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryChar
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract char[] ensureArrayCapacity (char[] array,
-                                                 int minSize,
-                                                 char defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract char[] ensureArrayCapacity( char[] array,
+                                                int minSize,
+                                                char defaultValue,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryChar
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract char[] ensureArrayCapacity (char[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract char[] ensureArrayCapacity( char[] array,
+                                                int minSize,
+                                                GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryChar
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract char[] grow (char[] array, int minSize,
-                                  char defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract char[] grow( char[] array, int minSize,
+                                 char defaultValue,
+                                 GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryChar
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryChar defaultCharProvider = new
-            ArrayProviderCharImpl ();
+            ArrayProviderCharImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderCharImpl extends
-                                                                ArrayFactoryChar
+                                                       ArrayFactoryChar
     {
 
-        public char[] ensureArrayCapacity (char[] array,
-                                            int minSize,
-                                            char defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public char[] ensureArrayCapacity( char[] array,
+                                           int minSize,
+                                           char defaultValue,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryChar.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryChar.class, len,
+                                                    minSize, Types.Int );
                 }
-                char[] temp = new char[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                char[] temp = new char[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public char[] ensureArrayCapacity (char[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public char[] ensureArrayCapacity( char[] array, int minSize,
+                                           GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryChar.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryChar.class, len,
+                                                    minSize, Types.Int );
                 }
-                char[] temp = new char[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                char[] temp = new char[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public char[] grow (char[] array, int minSize,
-                             char defaultValue,
-                             GrowthStrategy growthStrategy)
+        public char[] grow( char[] array, int minSize,
+                            char defaultValue,
+                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryChar.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryChar.class, len,
+                                                minSize, Types.Int );
             }
-            char[] temp = new char[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultChar.getValue ())
+            char[] temp = new char[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultChar.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryChar
      * @param size size of array
      * @return the array
      */
-    public char[] alloc (int size)
+    public char[] alloc( int size )
     {
-        return new char[size];
+        return new char[ size ];
     }
 
-    public char[] alloc (int size, char fillValue)
+    public char[] alloc( int size, char fillValue )
     {
-        char[] t = new char[size];
-        Arrays.fill (t, fillValue);
+        char[] t = new char[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

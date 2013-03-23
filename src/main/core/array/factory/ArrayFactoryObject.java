@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryObject
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract Object[] ensureArrayCapacity (Object[] array,
-                                                 int minSize,
-                                                 Object defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract Object[] ensureArrayCapacity( Object[] array,
+                                                  int minSize,
+                                                  Object defaultValue,
+                                                  GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryObject
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract Object[] ensureArrayCapacity (Object[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract Object[] ensureArrayCapacity( Object[] array,
+                                                  int minSize,
+                                                  GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryObject
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract Object[] grow (Object[] array, int minSize,
-                                  Object defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract Object[] grow( Object[] array, int minSize,
+                                   Object defaultValue,
+                                   GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryObject
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryObject defaultObjectProvider = new
-            ArrayProviderObjectImpl ();
+            ArrayProviderObjectImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderObjectImpl extends
-                                                                ArrayFactoryObject
+                                                         ArrayFactoryObject
     {
 
-        public Object[] ensureArrayCapacity (Object[] array,
-                                            int minSize,
-                                            Object defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public Object[] ensureArrayCapacity( Object[] array,
+                                             int minSize,
+                                             Object defaultValue,
+                                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryObject.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryObject.class, len,
+                                                    minSize, Types.Int );
                 }
-                Object[] temp = new Object[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Object[] temp = new Object[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public Object[] ensureArrayCapacity (Object[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public Object[] ensureArrayCapacity( Object[] array, int minSize,
+                                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryObject.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryObject.class, len,
+                                                    minSize, Types.Int );
                 }
-                Object[] temp = new Object[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                Object[] temp = new Object[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public Object[] grow (Object[] array, int minSize,
-                             Object defaultValue,
-                             GrowthStrategy growthStrategy)
+        public Object[] grow( Object[] array, int minSize,
+                              Object defaultValue,
+                              GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryObject.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryObject.class, len,
+                                                minSize, Types.Int );
             }
-            Object[] temp = new Object[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultObject.getValue ())
+            Object[] temp = new Object[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultObject.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryObject
      * @param size size of array
      * @return the array
      */
-    public Object[] alloc (int size)
+    public Object[] alloc( int size )
     {
-        return new Object[size];
+        return new Object[ size ];
     }
 
-    public Object[] alloc (int size, Object fillValue)
+    public Object[] alloc( int size, Object fillValue )
     {
-        Object[] t = new Object[size];
-        Arrays.fill (t, fillValue);
+        Object[] t = new Object[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

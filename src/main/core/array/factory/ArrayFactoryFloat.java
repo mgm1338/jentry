@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryFloat
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract float[] ensureArrayCapacity (float[] array,
+    public abstract float[] ensureArrayCapacity( float[] array,
                                                  int minSize,
                                                  float defaultValue,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryFloat
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract float[] ensureArrayCapacity (float[] array,
+    public abstract float[] ensureArrayCapacity( float[] array,
                                                  int minSize,
-                                                 GrowthStrategy growthStrategy);
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryFloat
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract float[] grow (float[] array, int minSize,
+    public abstract float[] grow( float[] array, int minSize,
                                   float defaultValue,
-                                  GrowthStrategy growthStrategy);
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryFloat
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryFloat defaultFloatProvider = new
-            ArrayProviderFloatImpl ();
+            ArrayProviderFloatImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderFloatImpl extends
-                                                                ArrayFactoryFloat
+                                                        ArrayFactoryFloat
     {
 
-        public float[] ensureArrayCapacity (float[] array,
+        public float[] ensureArrayCapacity( float[] array,
                                             int minSize,
                                             float defaultValue,
-                                            GrowthStrategy growthStrategy)
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryFloat.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryFloat.class, len,
+                                                    minSize, Types.Int );
                 }
-                float[] temp = new float[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                float[] temp = new float[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public float[] ensureArrayCapacity (float[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public float[] ensureArrayCapacity( float[] array, int minSize,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryFloat.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryFloat.class, len,
+                                                    minSize, Types.Int );
                 }
-                float[] temp = new float[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                float[] temp = new float[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public float[] grow (float[] array, int minSize,
+        public float[] grow( float[] array, int minSize,
                              float defaultValue,
-                             GrowthStrategy growthStrategy)
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryFloat.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryFloat.class, len,
+                                                minSize, Types.Int );
             }
-            float[] temp = new float[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultFloat.getValue ())
+            float[] temp = new float[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultFloat.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryFloat
      * @param size size of array
      * @return the array
      */
-    public float[] alloc (int size)
+    public float[] alloc( int size )
     {
-        return new float[size];
+        return new float[ size ];
     }
 
-    public float[] alloc (int size, float fillValue)
+    public float[] alloc( int size, float fillValue )
     {
-        float[] t = new float[size];
-        Arrays.fill (t, fillValue);
+        float[] t = new float[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

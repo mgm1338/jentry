@@ -7,7 +7,7 @@ package collections.hash;
 public class Hasher
 {
     //TODO: Perf vs. actually hashing
-    public static final int getHashCode(int i)
+    public static final int getHashCode( int i )
     {
         return i;
     }

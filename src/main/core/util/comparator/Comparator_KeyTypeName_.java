@@ -1,6 +1,6 @@
 package core.util.comparator;
 
-import core.stub.*;
+import core.stub._key_;
 
 /**
  * Copyright © 2012 Max Miller
@@ -17,7 +17,7 @@ public interface Comparator_KeyTypeName_ extends Comparator
      * @param a first item
      * @param b second item
      * @return negative if a less than b, positive if b less than a, zero
-     * if equal
+     *         if equal
      */
-    public int compare(_key_ a,_key_ b);
+    public int compare( _key_ a, _key_ b );
 }

@@ -1,6 +1,5 @@
 package collections.hash;
 
-import collections.hash.Hasher;
 import core.Const;
 import core.stub.IntValueConverter;
 import core.stub._key_;
@@ -13,31 +12,31 @@ public class HashFunctions
 {
 
     public static final HashFunctionChar hashFunctionChar =
-            new HashFunctionChar ();
+            new HashFunctionChar();
     public static final HashFunctionByte hashFunctionByte =
-            new HashFunctionByte ();
+            new HashFunctionByte();
     public static final HashFunctionShort hashFunctionShort =
-            new HashFunctionShort ();
+            new HashFunctionShort();
     public static final HashFunctionInt hashFunctionInt =
-            new HashFunctionInt ();
+            new HashFunctionInt();
     public static final HashFunctionFloat hashFunctionFloat =
-            new HashFunctionFloat ();
+            new HashFunctionFloat();
     public static final HashFunctionLong hashFunctionLong =
-            new HashFunctionLong ();
+            new HashFunctionLong();
     public static final HashFunctionDouble hashFunctionDouble =
-            new HashFunctionDouble ();
+            new HashFunctionDouble();
     public static final HashFunctionCharSequence hashFunctionCharSequence =
-            new HashFunctionCharSequence ();
+            new HashFunctionCharSequence();
     public static final HashFunctionObject hashFunctionObject =
-            new HashFunctionObject ();
+            new HashFunctionObject();
 
     public static final HashFunction_KeyTypeName_ hashFunction_KeyTypeName_ =
-            new HashFunction_KeyTypeName_ ();
+            new HashFunction_KeyTypeName_();
 
 
     public static class HashFunction_KeyTypeName_
     {
-        public int getHashCode (_key_ k)
+        public int getHashCode( _key_ k )
         {
             return Const.NO_ENTRY;
         }
@@ -46,73 +45,73 @@ public class HashFunctions
 
     public static class HashFunctionChar
     {
-        public int getHashCode (char c)
+        public int getHashCode( char c )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (c));
+            return Hasher.getHashCode( IntValueConverter.toInt( c ) );
         }
     }
 
     public static class HashFunctionByte
     {
-        public int getHashCode (byte b)
+        public int getHashCode( byte b )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (b));
+            return Hasher.getHashCode( IntValueConverter.toInt( b ) );
         }
     }
 
     public static class HashFunctionShort
     {
-        public int getHashCode (short s)
+        public int getHashCode( short s )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (s));
+            return Hasher.getHashCode( IntValueConverter.toInt( s ) );
         }
     }
 
     public static class HashFunctionInt
     {
-        public int getHashCode (int i)
+        public int getHashCode( int i )
         {
-            return Hasher.getHashCode (i);
+            return Hasher.getHashCode( i );
         }
     }
 
     public static class HashFunctionFloat
     {
-        public int getHashCode (float f)
+        public int getHashCode( float f )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (f));
+            return Hasher.getHashCode( IntValueConverter.toInt( f ) );
         }
     }
 
     public static class HashFunctionDouble
     {
-        public int getHashCode (double d)
+        public int getHashCode( double d )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (d));
+            return Hasher.getHashCode( IntValueConverter.toInt( d ) );
         }
     }
 
     public static class HashFunctionLong
     {
-        public int getHashCode (long l)
+        public int getHashCode( long l )
         {
-            return Hasher.getHashCode (IntValueConverter.toInt (l));
+            return Hasher.getHashCode( IntValueConverter.toInt( l ) );
         }
     }
 
     public static class HashFunctionCharSequence
     {
-        public int getHashCode (CharSequence cs)
+        public int getHashCode( CharSequence cs )
         {
-            return cs.hashCode ();
+            return cs.hashCode();
         }
     }
 
     public static class HashFunctionObject
     {
-        public int getHashCode (Object o)
+        public int getHashCode( Object o )
         {
-            return o.hashCode ();
+            return o.hashCode();
         }
     }
 

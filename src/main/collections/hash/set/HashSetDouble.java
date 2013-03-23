@@ -5,15 +5,14 @@ import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryDouble;
-import core.stub.*;
+import core.array.factory.ArrayFactoryInt;
 import core.util.comparator.EqualityFunctions;
 
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
- *
+ * <p/>
  * TODO: doc
  */
 public class HashSetDouble implements CollectionDouble
@@ -88,10 +87,10 @@ public class HashSetDouble implements CollectionDouble
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetDouble( int initialSize, double loadFactor,
-                                 ArrayFactoryDouble keyFactory,
-                                 ArrayFactoryInt intFactory,
-                                 HashFunctions.HashFunctionDouble hashFunction,
-                                 GrowthStrategy growthStrategy )
+                          ArrayFactoryDouble keyFactory,
+                          ArrayFactoryInt intFactory,
+                          HashFunctions.HashFunctionDouble hashFunction,
+                          GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -247,8 +246,8 @@ public class HashSetDouble implements CollectionDouble
     private void reHash()
     {
         int newSize = growthStrategy.growthRequest( size, size + 1 );
-        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets*2,
-                                                                   newSize+numBuckets);
+        MultiLinkedListInt newBucketList = new MultiLinkedListInt( numBuckets * 2,
+                                                                   newSize + numBuckets );
         for( int i = 0; i < numBuckets; i++ )
         {
             int prevIdx = Const.NO_ENTRY;
@@ -354,7 +353,7 @@ public class HashSetDouble implements CollectionDouble
         if( target == null ) //creating a new one
         {
             target = new HashSetDouble( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                               growthStrategy );
+                                        growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

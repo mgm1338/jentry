@@ -4,7 +4,6 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
-import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,10 +41,10 @@ public abstract class ArrayFactoryCharSequence
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract CharSequence[] ensureArrayCapacity (CharSequence[] array,
-                                                 int minSize,
-                                                 CharSequence defaultValue,
-                                                 GrowthStrategy growthStrategy);
+    public abstract CharSequence[] ensureArrayCapacity( CharSequence[] array,
+                                                        int minSize,
+                                                        CharSequence defaultValue,
+                                                        GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,9 +60,9 @@ public abstract class ArrayFactoryCharSequence
      * @return the array, either the same structure, or the newly allocated
      *         array
      */
-    public abstract CharSequence[] ensureArrayCapacity (CharSequence[] array,
-                                                 int minSize,
-                                                 GrowthStrategy growthStrategy);
+    public abstract CharSequence[] ensureArrayCapacity( CharSequence[] array,
+                                                        int minSize,
+                                                        GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,9 +86,9 @@ public abstract class ArrayFactoryCharSequence
      * @param growthStrategy see {@link GrowthStrategy }
      * @return the grown array
      */
-    public abstract CharSequence[] grow (CharSequence[] array, int minSize,
-                                  CharSequence defaultValue,
-                                  GrowthStrategy growthStrategy);
+    public abstract CharSequence[] grow( CharSequence[] array, int minSize,
+                                         CharSequence defaultValue,
+                                         GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -101,75 +100,73 @@ public abstract class ArrayFactoryCharSequence
      * can be useful in tuning or customizing array policies.
      */
     public static final ArrayFactoryCharSequence defaultCharSequenceProvider = new
-            ArrayProviderCharSequenceImpl ();
+            ArrayProviderCharSequenceImpl();
 
 
-    /**
-     * Implementation of basic methods above.
-     */
+    /** Implementation of basic methods above. */
     protected static final class ArrayProviderCharSequenceImpl extends
-                                                                ArrayFactoryCharSequence
+                                                               ArrayFactoryCharSequence
     {
 
-        public CharSequence[] ensureArrayCapacity (CharSequence[] array,
-                                            int minSize,
-                                            CharSequence defaultValue,
-                                            GrowthStrategy growthStrategy)
+        public CharSequence[] ensureArrayCapacity( CharSequence[] array,
+                                                   int minSize,
+                                                   CharSequence defaultValue,
+                                                   GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryCharSequence.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryCharSequence.class, len,
+                                                    minSize, Types.Int );
                 }
-                CharSequence[] temp = new CharSequence[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
-                Arrays.fill (temp, len, newSize, defaultValue);
+                CharSequence[] temp = new CharSequence[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
+                Arrays.fill( temp, len, newSize, defaultValue );
                 return temp;
             }
             return array;
         }
 
         @Override
-        public CharSequence[] ensureArrayCapacity (CharSequence[] array, int minSize,
-                                            GrowthStrategy growthStrategy)
+        public CharSequence[] ensureArrayCapacity( CharSequence[] array, int minSize,
+                                                   GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            if (minSize > len)
+            if( minSize > len )
             {
-                int newSize = growthStrategy.growthRequest (len, minSize);
-                if (newSize < minSize)
+                int newSize = growthStrategy.growthRequest( len, minSize );
+                if( newSize < minSize )
                 {
-                    throw new ArrayGrowthException (ArrayFactoryCharSequence.class, len,
-                                                    minSize, Types.Int);
+                    throw new ArrayGrowthException( ArrayFactoryCharSequence.class, len,
+                                                    minSize, Types.Int );
                 }
-                CharSequence[] temp = new CharSequence[newSize];
-                System.arraycopy (array, 0, temp, 0, len);
+                CharSequence[] temp = new CharSequence[ newSize ];
+                System.arraycopy( array, 0, temp, 0, len );
                 return temp;
             }
             return array;
         }
 
 
-        public CharSequence[] grow (CharSequence[] array, int minSize,
-                             CharSequence defaultValue,
-                             GrowthStrategy growthStrategy)
+        public CharSequence[] grow( CharSequence[] array, int minSize,
+                                    CharSequence defaultValue,
+                                    GrowthStrategy growthStrategy )
         {
             int len = array.length;
-            int newSize = growthStrategy.growthRequest (len, minSize);
-            if (newSize < minSize)
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
             {
-                throw new ArrayGrowthException (ArrayFactoryCharSequence.class, len,
-                                                minSize, Types.Int);
+                throw new ArrayGrowthException( ArrayFactoryCharSequence.class, len,
+                                                minSize, Types.Int );
             }
-            CharSequence[] temp = new CharSequence[newSize];
-            System.arraycopy (array, 0, temp, 0, len);
-            if (defaultValue != DefaultValueProvider.DefaultCharSequence.getValue ())
+            CharSequence[] temp = new CharSequence[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
+            if( defaultValue != DefaultValueProvider.DefaultCharSequence.getValue() )
             {
-                Arrays.fill (temp, len, newSize, defaultValue);
+                Arrays.fill( temp, len, newSize, defaultValue );
             }
             return temp;
         }
@@ -182,15 +179,15 @@ public abstract class ArrayFactoryCharSequence
      * @param size size of array
      * @return the array
      */
-    public CharSequence[] alloc (int size)
+    public CharSequence[] alloc( int size )
     {
-        return new CharSequence[size];
+        return new CharSequence[ size ];
     }
 
-    public CharSequence[] alloc (int size, CharSequence fillValue)
+    public CharSequence[] alloc( int size, CharSequence fillValue )
     {
-        CharSequence[] t = new CharSequence[size];
-        Arrays.fill (t, fillValue);
+        CharSequence[] t = new CharSequence[ size ];
+        Arrays.fill( t, fillValue );
         return t;
 
     }

@@ -11,9 +11,7 @@ import core.util.comparator.ComparatorObject;
  */
 public class TestComparators
 {
-    /**
-     * Stubbed class for comparing Objects
-     */
+    /** Stubbed class for comparing Objects */
     public static final class ObjectAsc implements ComparatorObject
     {
 
@@ -31,13 +29,11 @@ public class TestComparators
         @Override
         public int compare( Object a, Object b )
         {
-           return a.hashCode()-b.hashCode();
+            return a.hashCode() - b.hashCode();
         }
     }
 
-    /**
-     * Stubbed class, not very useful, if comparing Objects
-     */
+    /** Stubbed class, not very useful, if comparing Objects */
     public static final class ObjectDesc implements ComparatorObject
     {
 
@@ -55,7 +51,7 @@ public class TestComparators
         @Override
         public int compare( Object a, Object b )
         {
-            return b.hashCode()-a.hashCode();
+            return b.hashCode() - a.hashCode();
         }
     }
 }

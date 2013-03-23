@@ -1,14 +1,12 @@
 package core.charsequence;
 
-import java.util.Arrays;
-
 /**
  * Copyright 3/10/13
  * All rights reserved.
  * <p/>
  * User: Max Miller
  * Created: 3/10/13
- *
+ * <p/>
  * <p>
  * A Utility collection that acts as a facade over a byte[] to represent a sequence of
  * ASCII characters. Used in collections, ByteSlices are very efficient ways to represent
@@ -16,20 +14,21 @@ import java.util.Arrays;
  * by the standard ASCII codes that overlap with a Java byte (0-127). This means that the standard
  * English alphabet, numeric characters, and punctuation are included.
  * </p>
- *
+ * <p/>
  * <p>A ByteSlice does NOT OWN ITS UNDERLYING BYTE ARRAY. This is a very important, as modification
  * of this byte array from a ByteSlice may have unintended consequences to other items that are
  * referencing it. In this way, ByteSlices and Strings are somewhat similar in mutability. </p>
- *
+ * <p/>
  * <p>For the purpose of Jentry, ByteSlice collections will be commonly used when dealing with
  * CharSequence typed Collections. This limits the ability of Unicode, which may be extended
  * in the future, but will not be supported in early releases </p>
- *
  */
 public class ByteSliceASCII implements CharSequence
 {
-    /** Reference to the array of bytes. The CharSequence only holds a reference to this array, and
-     * does not own the array itself*/
+    /**
+     * Reference to the array of bytes. The CharSequence only holds a reference to this array, and
+     * does not own the array itself
+     */
     byte[] bytes;
     /** Offset in the bytes array where this 'slice' starts. */
     int offSet;
@@ -69,7 +68,7 @@ public class ByteSliceASCII implements CharSequence
     @Override
     public char charAt( int index )
     {
-        return (char)bytes[offSet+index];
+        return ( char ) bytes[ offSet + index ];
     }
 
     public byte byteAt( int index )
@@ -95,7 +94,7 @@ public class ByteSliceASCII implements CharSequence
     @Override
     public CharSequence subSequence( int start, int end )
     {
-        return new ByteSliceASCII( this.bytes, offSet+start, end-start );
+        return new ByteSliceASCII( this.bytes, offSet + start, end - start );
     }
 
 

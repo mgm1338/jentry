@@ -1,4 +1,4 @@
-<project name="Jentry"  basedir="src">
+<project name="Jentry" basedir="src">
     <property name="src" location="."/>
 
 
@@ -10,7 +10,7 @@
         <attribute name="fileBase"/>
         <attribute name="package"/>
         <sequential>
-            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}"/>
         </sequential>
     </macrodef>
 
@@ -22,7 +22,7 @@
         <sequential>
             <generateKeys fileBase="@{fileBase}" package="@{package}"
                           keyTypeName="Bool" keyType="boolean"/>
-            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}"/>
         </sequential>
     </macrodef>
 
@@ -32,7 +32,7 @@
         <attribute name="fileBase"/>
         <attribute name="package"/>
         <sequential>
-            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}"/>
             <generateKeys fileBase="@{fileBase}" package="@{package}"
                           keyTypeName="_ValueTypeName_" keyType="_val_"/>
         </sequential>
@@ -46,7 +46,7 @@
         <sequential>
             <generateKeys fileBase="@{fileBase}" package="@{package}"
                           keyTypeName="Bool" keyType="boolean"/>
-            <generateKeyCommon fileBase="@{fileBase}" package="@{package}" />
+            <generateKeyCommon fileBase="@{fileBase}" package="@{package}"/>
             <generateKeys fileBase="@{fileBase}" package="@{package}"
                           keyTypeName="_ValueTypeName_" keyType="_val_"/>
         </sequential>
@@ -89,7 +89,7 @@
         <attribute name="package"/>
         <sequential>
             <generateKeyValCommon fileBase="@{fileBase}"
-                                package="@{package}" />
+                                  package="@{package}"/>
 
         </sequential>
     </macrodef>

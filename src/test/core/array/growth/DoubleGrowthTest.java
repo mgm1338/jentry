@@ -57,13 +57,10 @@ public class DoubleGrowthTest
         TestCase.assertEquals( 1, dG.growthRequest( 1, 1 ) );
         TestCase.assertEquals( 0, dG.growthRequest( 0, 0 ) );
         TestCase.assertEquals( 50, dG.growthRequest( 50, 49 ) );
-        TestCase.assertEquals( 50, dG.growthRequest( 50, 2) );
-
-
+        TestCase.assertEquals( 50, dG.growthRequest( 50, 2 ) );
 
 
     }
-
 
 
 }
