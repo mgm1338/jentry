@@ -367,6 +367,13 @@ public class TestManyToManyInt
     @Test
     public void copyFromNull()
     {
+        simpleAssociate();
+        ManyToManyInt copy = manyToManyCounts.copy( null );
+        ManyToManyInt copy1 = manyToManyNoCounts.copy( null );
+        //transitive property
+        assertEquals(copy, copy1);
+        assertEquals(manyToManyCounts, copy1);
+
 
     }
 
@@ -374,6 +381,12 @@ public class TestManyToManyInt
     @Test
     public void copyFromLarger()
     {
+        simpleAssociate();
+        ManyToManyInt copy = manyToManyCounts.copy( new ManyToManyInt( 64,64,128,false, false ) );
+        ManyToManyInt copy1 = manyToManyNoCounts.copy( new ManyToManyInt( 64,64,128,true, true) );
+        //transitive property
+        assertEquals(copy, copy1);
+        assertEquals(manyToManyCounts, copy1);
 
     }
 
@@ -381,14 +394,23 @@ public class TestManyToManyInt
     @Test
     public void copyFromSmaller()
     {
-
+        simpleAssociate();
+        ManyToManyInt copy = manyToManyCounts.copy( new ManyToManyInt( 1,1,2,false, false ) );
+        ManyToManyInt copy1 = manyToManyNoCounts.copy( new ManyToManyInt( 1,1,2,true, true) );
+        //transitive property
+        assertEquals(copy, copy1);
+        assertEquals(manyToManyCounts, copy1);
     }
 
     /** Copy an empty one */
     @Test
     public void copyEmpty()
     {
-
+        ManyToManyInt copy = manyToManyCounts.copy( null );
+        ManyToManyInt copy1 = manyToManyNoCounts.copy( null );
+        //transitive property
+        assertEquals(copy, copy1);
+        assertEquals(manyToManyCounts, copy1);
     }
 
 
