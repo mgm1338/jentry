@@ -4,6 +4,7 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
+import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,9 +43,9 @@ public abstract class ArrayFactoryChar
      *         array
      */
     public abstract char[] ensureArrayCapacity( char[] array,
-                                                int minSize,
-                                                char defaultValue,
-                                                GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 char defaultValue,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,8 +62,8 @@ public abstract class ArrayFactoryChar
      *         array
      */
     public abstract char[] ensureArrayCapacity( char[] array,
-                                                int minSize,
-                                                GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,8 +88,8 @@ public abstract class ArrayFactoryChar
      * @return the grown array
      */
     public abstract char[] grow( char[] array, int minSize,
-                                 char defaultValue,
-                                 GrowthStrategy growthStrategy );
+                                  char defaultValue,
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -105,13 +106,13 @@ public abstract class ArrayFactoryChar
 
     /** Implementation of basic methods above. */
     protected static final class ArrayProviderCharImpl extends
-                                                       ArrayFactoryChar
+                                                                ArrayFactoryChar
     {
 
         public char[] ensureArrayCapacity( char[] array,
-                                           int minSize,
-                                           char defaultValue,
-                                           GrowthStrategy growthStrategy )
+                                            int minSize,
+                                            char defaultValue,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -132,7 +133,7 @@ public abstract class ArrayFactoryChar
 
         @Override
         public char[] ensureArrayCapacity( char[] array, int minSize,
-                                           GrowthStrategy growthStrategy )
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -152,8 +153,8 @@ public abstract class ArrayFactoryChar
 
 
         public char[] grow( char[] array, int minSize,
-                            char defaultValue,
-                            GrowthStrategy growthStrategy )
+                             char defaultValue,
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
             int newSize = growthStrategy.growthRequest( len, minSize );

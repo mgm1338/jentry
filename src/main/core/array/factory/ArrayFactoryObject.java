@@ -4,6 +4,7 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
+import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,9 +43,9 @@ public abstract class ArrayFactoryObject
      *         array
      */
     public abstract Object[] ensureArrayCapacity( Object[] array,
-                                                  int minSize,
-                                                  Object defaultValue,
-                                                  GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 Object defaultValue,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,8 +62,8 @@ public abstract class ArrayFactoryObject
      *         array
      */
     public abstract Object[] ensureArrayCapacity( Object[] array,
-                                                  int minSize,
-                                                  GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,8 +88,8 @@ public abstract class ArrayFactoryObject
      * @return the grown array
      */
     public abstract Object[] grow( Object[] array, int minSize,
-                                   Object defaultValue,
-                                   GrowthStrategy growthStrategy );
+                                  Object defaultValue,
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -105,13 +106,13 @@ public abstract class ArrayFactoryObject
 
     /** Implementation of basic methods above. */
     protected static final class ArrayProviderObjectImpl extends
-                                                         ArrayFactoryObject
+                                                                ArrayFactoryObject
     {
 
         public Object[] ensureArrayCapacity( Object[] array,
-                                             int minSize,
-                                             Object defaultValue,
-                                             GrowthStrategy growthStrategy )
+                                            int minSize,
+                                            Object defaultValue,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -132,7 +133,7 @@ public abstract class ArrayFactoryObject
 
         @Override
         public Object[] ensureArrayCapacity( Object[] array, int minSize,
-                                             GrowthStrategy growthStrategy )
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -152,8 +153,8 @@ public abstract class ArrayFactoryObject
 
 
         public Object[] grow( Object[] array, int minSize,
-                              Object defaultValue,
-                              GrowthStrategy growthStrategy )
+                             Object defaultValue,
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
             int newSize = growthStrategy.growthRequest( len, minSize );

@@ -1,6 +1,6 @@
 package collections.generic;
 
-import core.stub._key_;
+import core.stub.*;
 
 /**
  * Copyright © 2012 Max Miller

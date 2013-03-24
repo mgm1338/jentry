@@ -4,6 +4,7 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
+import core.stub.*;
 
 import java.util.Arrays;
 
@@ -105,7 +106,7 @@ public abstract class ArrayFactoryFloat
 
     /** Implementation of basic methods above. */
     protected static final class ArrayProviderFloatImpl extends
-                                                        ArrayFactoryFloat
+                                                                ArrayFactoryFloat
     {
 
         public float[] ensureArrayCapacity( float[] array,

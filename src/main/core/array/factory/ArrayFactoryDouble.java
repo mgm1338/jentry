@@ -4,6 +4,7 @@ import core.Types;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.DefaultValueProvider;
+import core.stub.*;
 
 import java.util.Arrays;
 
@@ -42,9 +43,9 @@ public abstract class ArrayFactoryDouble
      *         array
      */
     public abstract double[] ensureArrayCapacity( double[] array,
-                                                  int minSize,
-                                                  double defaultValue,
-                                                  GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 double defaultValue,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * Overloaded method:
@@ -61,8 +62,8 @@ public abstract class ArrayFactoryDouble
      *         array
      */
     public abstract double[] ensureArrayCapacity( double[] array,
-                                                  int minSize,
-                                                  GrowthStrategy growthStrategy );
+                                                 int minSize,
+                                                 GrowthStrategy growthStrategy );
 
     /**
      * <p>
@@ -87,8 +88,8 @@ public abstract class ArrayFactoryDouble
      * @return the grown array
      */
     public abstract double[] grow( double[] array, int minSize,
-                                   double defaultValue,
-                                   GrowthStrategy growthStrategy );
+                                  double defaultValue,
+                                  GrowthStrategy growthStrategy );
 
 
     //STATIC IMPLEMENTATION BELOW
@@ -105,13 +106,13 @@ public abstract class ArrayFactoryDouble
 
     /** Implementation of basic methods above. */
     protected static final class ArrayProviderDoubleImpl extends
-                                                         ArrayFactoryDouble
+                                                                ArrayFactoryDouble
     {
 
         public double[] ensureArrayCapacity( double[] array,
-                                             int minSize,
-                                             double defaultValue,
-                                             GrowthStrategy growthStrategy )
+                                            int minSize,
+                                            double defaultValue,
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -132,7 +133,7 @@ public abstract class ArrayFactoryDouble
 
         @Override
         public double[] ensureArrayCapacity( double[] array, int minSize,
-                                             GrowthStrategy growthStrategy )
+                                            GrowthStrategy growthStrategy )
         {
             int len = array.length;
             if( minSize > len )
@@ -152,8 +153,8 @@ public abstract class ArrayFactoryDouble
 
 
         public double[] grow( double[] array, int minSize,
-                              double defaultValue,
-                              GrowthStrategy growthStrategy )
+                             double defaultValue,
+                             GrowthStrategy growthStrategy )
         {
             int len = array.length;
             int newSize = growthStrategy.growthRequest( len, minSize );

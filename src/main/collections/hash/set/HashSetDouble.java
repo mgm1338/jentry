@@ -5,8 +5,9 @@ import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryDouble;
 import core.array.factory.ArrayFactoryInt;
+import core.array.factory.ArrayFactoryDouble;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
@@ -87,10 +88,10 @@ public class HashSetDouble implements CollectionDouble
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetDouble( int initialSize, double loadFactor,
-                          ArrayFactoryDouble keyFactory,
-                          ArrayFactoryInt intFactory,
-                          HashFunctions.HashFunctionDouble hashFunction,
-                          GrowthStrategy growthStrategy )
+                                 ArrayFactoryDouble keyFactory,
+                                 ArrayFactoryInt intFactory,
+                                 HashFunctions.HashFunctionDouble hashFunction,
+                                 GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -353,7 +354,7 @@ public class HashSetDouble implements CollectionDouble
         if( target == null ) //creating a new one
         {
             target = new HashSetDouble( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                        growthStrategy );
+                                               growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

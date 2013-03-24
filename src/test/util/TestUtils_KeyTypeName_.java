@@ -1,6 +1,6 @@
 package util;
 
-import core.stub._key_;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 import junit.framework.TestCase;
 

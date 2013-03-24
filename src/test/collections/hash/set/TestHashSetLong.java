@@ -6,6 +6,7 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryLong;
 import core.stub.IntValueConverter;
+import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
 import util.TestUtilsInt;
@@ -77,8 +78,8 @@ public class TestHashSetLong
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetLong( 8, 1.00, ArrayFactoryLong.defaultLongProvider,
-                                   ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionLong(),
-                                   GrowthStrategy.doubleGrowth );
+                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionLong(),
+                                            GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -118,7 +119,7 @@ public class TestHashSetLong
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.longFromInt( TEST_SIZE - 1 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.longFromInt( TEST_SIZE - 1 +
-                                                                                                OFFSET_FROM_ZERO ) ) );
+                                                                                                 OFFSET_FROM_ZERO ) ) );
 
 
         sameBucketTest(); //reprime
@@ -127,7 +128,7 @@ public class TestHashSetLong
         TestCase.assertTrue( hashSet.getEntry( IntValueConverter.longFromInt( TEST_SIZE / 2 + OFFSET_FROM_ZERO ) )
                              == Const.NO_ENTRY );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.longFromInt( TEST_SIZE / 2 +
-                                                                                                OFFSET_FROM_ZERO
+                                                                                                 OFFSET_FROM_ZERO
         ) ) );
 
 
@@ -146,9 +147,9 @@ public class TestHashSetLong
                              == Const.NO_ENTRY );
 
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.longFromInt( TEST_SIZE - 1 +
-                                                                                                OFFSET_FROM_ZERO ) ) );
+                                                                                                 OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.longFromInt( TEST_SIZE / 2 +
-                                                                                                OFFSET_FROM_ZERO ) ) );
+                                                                                                 OFFSET_FROM_ZERO ) ) );
         TestCase.assertEquals( Const.NO_ENTRY, hashSet.contains( IntValueConverter.longFromInt( 0 + OFFSET_FROM_ZERO
         ) ) );
 
@@ -350,7 +351,7 @@ public class TestHashSetLong
         TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
         TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize );
         TestCase.assertEquals( expected.getSize(), actual.getSize() );
-        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry() );
+        TestCase.assertEquals( expected.nextEntry, actual.nextEntry );
 
     }
 

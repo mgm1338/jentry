@@ -8,8 +8,7 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.array.factory.ArrayFactory_ValueTypeName_;
-import core.stub._key_;
-import core.stub._val_;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**

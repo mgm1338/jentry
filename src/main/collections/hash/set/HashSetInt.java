@@ -6,6 +6,8 @@ import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
+import core.array.factory.ArrayFactoryInt;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
@@ -86,10 +88,10 @@ public class HashSetInt implements CollectionInt
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetInt( int initialSize, double loadFactor,
-                       ArrayFactoryInt keyFactory,
-                       ArrayFactoryInt intFactory,
-                       HashFunctions.HashFunctionInt hashFunction,
-                       GrowthStrategy growthStrategy )
+                                 ArrayFactoryInt keyFactory,
+                                 ArrayFactoryInt intFactory,
+                                 HashFunctions.HashFunctionInt hashFunction,
+                                 GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -352,7 +354,7 @@ public class HashSetInt implements CollectionInt
         if( target == null ) //creating a new one
         {
             target = new HashSetInt( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                     growthStrategy );
+                                               growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

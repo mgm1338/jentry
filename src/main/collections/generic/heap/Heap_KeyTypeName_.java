@@ -1,7 +1,7 @@
 package collections.generic.heap;
 
 import collections.generic.Collection;
-import core.stub._key_;
+import core.stub.*;
 import core.util.comparator.Comparator_KeyTypeName_;
 
 /**

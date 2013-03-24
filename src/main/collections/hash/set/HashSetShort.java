@@ -7,6 +7,7 @@ import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactoryShort;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
@@ -87,10 +88,10 @@ public class HashSetShort implements CollectionShort
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetShort( int initialSize, double loadFactor,
-                         ArrayFactoryShort keyFactory,
-                         ArrayFactoryInt intFactory,
-                         HashFunctions.HashFunctionShort hashFunction,
-                         GrowthStrategy growthStrategy )
+                                 ArrayFactoryShort keyFactory,
+                                 ArrayFactoryInt intFactory,
+                                 HashFunctions.HashFunctionShort hashFunction,
+                                 GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -353,7 +354,7 @@ public class HashSetShort implements CollectionShort
         if( target == null ) //creating a new one
         {
             target = new HashSetShort( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                       growthStrategy );
+                                               growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

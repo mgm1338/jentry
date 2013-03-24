@@ -16,32 +16,28 @@ import java.util.Arrays;
  * <p/>
  * User: Max Miller
  * Created: 1/27/13
- * <p/>
- * <p/>
- * <p>IMPORTANT! THIS STRUCTURE ASSUME THAT THE LEFTS INSERTED ARE (Mostly) COMPACT. IF THEY ARE NOT, INSERT
+
+ * <p>IMPORTANT! THIS STRUCTURE ASSUME THAT THE LEFTS INSERTED ARE ALREADY COMPACTED. IF THEY ARE NOT, INSERT
  * INTO A JENTRY COLLECTION AND INSERT THE HANDLES.</p>
  * <p>
- * A collection of One (left) to Many (right) ints. This is used in conjunction
- * with the Jentry collections, associating the int handles together. The One to Many allows
- * for iteration over the associations from a left, going in order, as well as checking to see if a left
- * and right are associated.
+ * A collection of One (left) to Many (right) ints. The One to Many allows for iteration over the associations from a
+ * left, going in order, as well as checking to see if a left and right are associated.
  * </p>
- * <p/>
  * <p>The actual associations are held in a HashSetLong, using {@link core.NumberUtil#packLong(int, int)}, where
  * the right and left compose a long, which helps ensure that the same association is not added twice. The entries
  * in the HashSet become the key components to our collection. </p>
- * <p/>
- * <p>The internal structure of the OneToManyInt will take in two ints, compose them into a Long. The entries
- * into this HashSet will be stored in a unique way. The first inserted entry will take the index in lefts for
+ *
+ * <p> The entries
+ * into this HashSetLong will be stored in a linked list. The first inserted entry will take the index in lefts for
  * the actual left value (for instance, if we are associating (0,2), then index 0 will hold the HashSet entry
- * for the long composed of 0 and 2 (2). This fact is why the important note of usage, that we do not want to
- * associate only lefts that are sparse, for it will quickly allocate the lefts array.</p>
+ * for the long composed of 0 and 2 (2). This is the reason for the note at the top,
+ * if one inserted a relationship of (1,000,000, 5), the lefts array will allocate a million slots.</p>
  * <p/>
  * <p>
- * Simple diagram inserting {1,3}, {1,4},{1,5},{0,1}. Followed by removal of {1,4}. Lastly re-use this index by
- * inserting {0,6}.
+ * Simple diagram inserting (1,3), (1,4),(1,5),(0,1). Followed by removal of (1,4). Lastly re-use this index by
+ * inserting (0,6).
  * <p/>
- * Inserting {1-3}, gets handle of 0 from <b>associations</b>.
+ * Inserting (1-3), gets handle of 0 from <b>associations</b>.
  * Insert 0 into lefts[1].
  * <pre>
  *      lefts   leftNexts
@@ -49,7 +45,7 @@ import java.util.Arrays;
  * 1     0
  * 2
  * </pre>
- * Inserting {1-4}, gets handle of 1 from <b>associations</b>
+ * Inserting (1-4), gets handle of 1 from <b>associations</b>
  * Follow the index of lefts[1], insertLeft 1 into leftNexts[0]
  * <pre>
  *      lefts   leftNexts
@@ -57,7 +53,7 @@ import java.util.Arrays;
  * 1     0
  * 2
  * </pre>
- * Inserting {1-5}, gets handle of 2 from <b>associations</b>.We follow the list, and insertLeft leftNexts into
+ * Inserting(1-5), gets handle of 2 from <b>associations</b>.We follow the list, and insertLeft leftNexts into
  * index 2.
  * <pre>
  *      lefts   leftNexts
@@ -65,7 +61,7 @@ import java.util.Arrays;
  * 1     0         2
  * 2
  * </pre>
- * Inserting {0-1}, gets handle of 3 from <b>associations</b>. This is another simple entry of 3 into lefts[0].
+ * Inserting (0-1), gets handle of 3 from <b>associations</b>. This is another simple entry of 3 into lefts[0].
  * <pre>
  *      lefts   leftNexts
  * 0     3         1
@@ -81,7 +77,7 @@ import java.util.Arrays;
  * </pre>
  * <p/>
  * Note that an insertion now will result in index 1. We can continue to insertLeft as normal,
- * and it will re-use the index.  We insertLeft {0,6}, which gets handle 1.
+ * and it will re-use the index.  We insertLeft (0,6), which gets handle 1.
  * <pre>
  *      lefts   leftNexts
  * 0     3         2
@@ -90,6 +86,7 @@ import java.util.Arrays;
  * 3               1
  * </pre>
  * </p>
+ *
  */
 public class OneToManyInt implements Collection
 {

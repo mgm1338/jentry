@@ -6,7 +6,7 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.stub.IntValueConverter;
-import core.stub._key_;
+import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
 import util.TestUtilsInt;
@@ -351,7 +351,7 @@ public class TestHashSet_KeyTypeName_
         TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
         TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize );
         TestCase.assertEquals( expected.getSize(), actual.getSize() );
-        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry() );
+        TestCase.assertEquals( expected.nextEntry, actual.nextEntry );
 
     }
 

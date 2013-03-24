@@ -1,8 +1,7 @@
 package collections.generic.map;
 
 import collections.generic.Collection;
-import core.stub._key_;
-import core.stub._val_;
+import core.stub.*;
 
 /**
  * Copyright 2/27/13

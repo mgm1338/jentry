@@ -5,8 +5,9 @@ import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryChar;
 import core.array.factory.ArrayFactoryInt;
+import core.array.factory.ArrayFactoryChar;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
@@ -87,10 +88,10 @@ public class HashSetChar implements CollectionChar
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetChar( int initialSize, double loadFactor,
-                        ArrayFactoryChar keyFactory,
-                        ArrayFactoryInt intFactory,
-                        HashFunctions.HashFunctionChar hashFunction,
-                        GrowthStrategy growthStrategy )
+                                 ArrayFactoryChar keyFactory,
+                                 ArrayFactoryInt intFactory,
+                                 HashFunctions.HashFunctionChar hashFunction,
+                                 GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -353,7 +354,7 @@ public class HashSetChar implements CollectionChar
         if( target == null ) //creating a new one
         {
             target = new HashSetChar( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                      growthStrategy );
+                                               growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;

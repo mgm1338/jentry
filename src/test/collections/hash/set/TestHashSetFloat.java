@@ -3,13 +3,14 @@ package collections.hash.set;
 import collections.hash.HashFunctions;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryFloat;
 import core.array.factory.ArrayFactoryInt;
+import core.array.factory.ArrayFactoryFloat;
 import core.stub.IntValueConverter;
+import core.stub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
-import util.TestUtilsFloat;
 import util.TestUtilsInt;
+import util.TestUtilsFloat;
 
 /**
  * Copyright 1/14/13
@@ -77,8 +78,8 @@ public class TestHashSetFloat
 
         //artificially making every item go into the same bucket
         hashSet = new HashSetFloat( 8, 1.00, ArrayFactoryFloat.defaultFloatProvider,
-                                    ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionFloat(),
-                                    GrowthStrategy.doubleGrowth );
+                                            ArrayFactoryInt.defaultIntProvider, new SameBucketHashFunctionFloat(),
+                                            GrowthStrategy.doubleGrowth );
 
         TestCase.assertEquals( hashSet.getSize(), 0 );
         for( int i = 0; i < TEST_SIZE; i++ )
@@ -350,7 +351,7 @@ public class TestHashSetFloat
         TestCase.assertEquals( expected.loadFactor, actual.loadFactor );
         TestCase.assertEquals( expected.loadFactorSize, actual.loadFactorSize );
         TestCase.assertEquals( expected.getSize(), actual.getSize() );
-        TestCase.assertEquals( expected.getNextEntry(), actual.getNextEntry() );
+        TestCase.assertEquals( expected.nextEntry, actual.nextEntry );
 
     }
 

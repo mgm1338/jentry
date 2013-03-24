@@ -5,8 +5,9 @@ import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
+import core.array.factory.ArrayFactoryByte;
+import core.stub.*;
 import core.util.comparator.EqualityFunctions;
 
 /**
@@ -87,10 +88,10 @@ public class HashSetByte implements CollectionByte
      * @param growthStrategy strategy for growing the structures
      */
     public HashSetByte( int initialSize, double loadFactor,
-                        ArrayFactoryByte keyFactory,
-                        ArrayFactoryInt intFactory,
-                        HashFunctions.HashFunctionByte hashFunction,
-                        GrowthStrategy growthStrategy )
+                                 ArrayFactoryByte keyFactory,
+                                 ArrayFactoryInt intFactory,
+                                 HashFunctions.HashFunctionByte hashFunction,
+                                 GrowthStrategy growthStrategy )
     {
         this.keyFactory = keyFactory;
         this.intFactory = intFactory;
@@ -353,7 +354,7 @@ public class HashSetByte implements CollectionByte
         if( target == null ) //creating a new one
         {
             target = new HashSetByte( keys.length, loadFactor, keyFactory, intFactory, hashFunction,
-                                      growthStrategy );
+                                               growthStrategy );
         }
         target.nextEntry = nextEntry;
         target.loadFactor = loadFactor;
