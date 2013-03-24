@@ -5,6 +5,8 @@ import core.NumberUtil;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryInt;
 
+import java.util.Arrays;
+
 /**
  * Copyright 2/8/13
  * All rights reserved.
@@ -123,14 +125,14 @@ public class ManyToManyInt extends OneToManyInt
         {
             target = intFactory.alloc( DEFAULT_REL_SIZE );
         }
-        int entry = getNextRightEntry( right, Const.NO_ENTRY );
+        int entry = getNextLeftEntry( right, Const.NO_ENTRY );
         int ct = 0;
         if( countRights ) //we know we have perfectly sized array
         {
             while( entry != Const.NO_ENTRY )
             {
-                target[ ct++ ] = getRight( entry );
-                entry = getNextRightEntry( right, entry );
+                target[ ct++ ] = getLeft( entry );
+                entry = getNextLeftEntry( right, entry );
             }
         }
         else   //must ensure capacity and add mark
@@ -138,8 +140,8 @@ public class ManyToManyInt extends OneToManyInt
             while( entry != Const.NO_ENTRY )
             {
                 target = intFactory.ensureArrayCapacity( target, ct + 1, growthStrategy );
-                target[ ct++ ] = getRight( entry );
-                entry = getNextRightEntry( right, entry );
+                target[ ct++ ] = getLeft( entry );
+                entry = getNextLeftEntry( right, entry );
             }
         }
         if( ct < target.length )
@@ -171,7 +173,7 @@ public class ManyToManyInt extends OneToManyInt
         if( right > rightHighWaterMark ) //guarding growth checks
         {
             rights = intFactory.ensureArrayCapacity( rights, right + 1, Const.NO_ENTRY, growthStrategy );
-            rightHighWaterMark = left;
+            rightHighWaterMark = right;
             if( countRights )
             {
                 rightCounts = intFactory.ensureArrayCapacity( rightCounts, right + 1, growthStrategy );
@@ -239,6 +241,54 @@ public class ManyToManyInt extends OneToManyInt
     }
 
 
+    /**
+     * Remove an item from the linked list formed from the <i>rights</i> and <i>rightNexts</i>
+     * arrays.
+     *
+     * @param right int for the left association
+     * @param entry entry in the list
+     * @return the entry, or -1 if we could not find the item
+     */
+    protected int removeRight(int right, int entry)
+    {
+        return removeFromLinkedList( right, entry, rights, rightNexts );
+    }
+
+    /**
+     * Disassociate the two integers and return the entry that holds their association.
+     * If the two numbers are not associated, return -1.
+     *
+     * @param left  the left int
+     * @param right the right int
+     * @return the entry of the association, or -1 if not assocaited
+     */
+    @Override
+    public int disassociate( int left, int right )
+    {
+        long val = NumberUtil.packLong( left, right );
+        int entry = associations.getEntry( NumberUtil.packLong( left, right ) );
+        //check existence, return false if doesn't
+        if( entry == Const.NO_ENTRY )
+        {
+            return -1;
+        }
+        associations.remove( val );
+        size--;
+        if( countLefts )
+        {
+            leftCounts[ left ]--;
+        }
+        if( countRights )
+        {
+            rightCounts[ right ]--;
+        }
+        int removedLeft = removeLeft( left, entry );
+        if( removeRight( right, entry ) != removedLeft )
+        {
+            throw new IllegalStateException( "Many to Many found different entries for same removal." );
+        }
+        return removedLeft;
+    }
 
     /**
      * Creates a deep copy of this ManyToManyInt by copying all of its attributes to the target. If the target is null,
@@ -280,5 +330,22 @@ public class ManyToManyInt extends OneToManyInt
         target.rightNexts = intFactory.ensureArrayCapacity( target.rightNexts, nextLen, GrowthStrategy.toExactSize );
         System.arraycopy( rightNexts, 0, target.rightNexts, 0, nextLen );
         return target;
+    }
+
+
+    /** Clear the collection, empty out all of its contents. */
+    @Override
+    public void clear()
+    {
+        super.clear();
+        rightHighWaterMark++; //need extra size for Arrays.fill (last idx is exclusive)
+        Arrays.fill( rights, 0, rightHighWaterMark, Const.NO_ENTRY );
+        Arrays.fill( rightNexts, Const.NO_ENTRY );
+        size = 0;
+        if( countLefts )
+        {
+            Arrays.fill( rightCounts, 0, rightHighWaterMark, 0 );
+        }
+        rightHighWaterMark = Const.NO_ENTRY;
     }
 }

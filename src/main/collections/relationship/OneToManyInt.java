@@ -414,6 +414,69 @@ public class OneToManyInt implements Collection
 
 
     /**
+     * <p>
+     * Remove an item from the linked list (structure described in the top of this class).
+     * </p>
+     *
+     * <p>This will start with the headArray, if the entry is found in the first slot, will
+     * try and move the next entry to the headArray if there is one, otherwise it will
+     * simply remove it. If we need to cycle to find the entry, we hold a reference to
+     * the item before it, so that we may update its pointer to exclude it from the linked list.
+     * We update the pointers and remove the item from the chain</p>
+     *
+     * @param listHead the head of the linked list (left or right)
+     * @param entry the entry we would like to remove
+     * @param headArray the head array, where headArray[listHead] is the first item
+     * @param nextArray the next array, that holds the rest of the entries in the chain
+     * @return the entry that we removed, or -1 if we did not remove any
+     */
+    protected int removeFromLinkedList(int listHead, int entry, int[] headArray, int[] nextArray )
+    {
+        int next;
+        int testEntry = headArray[ listHead ];
+        if( testEntry == entry ) //removing first
+        {
+            next = nextArray[ testEntry ];
+            if( next != Const.NO_ENTRY )
+            //switch left to the next item, mark the next with Const.NO_ENTRY. The left will
+            //correctly point to the correct next, if any
+            {
+                headArray[ listHead ] = next;
+                nextArray[ testEntry ] = Const.NO_ENTRY;
+            }
+            else
+            {
+                headArray[ listHead ] = Const.NO_ENTRY;
+            }
+            return testEntry;
+        }
+        //not first entry, start cycling next array
+        int prev = testEntry;
+        testEntry = nextArray[ testEntry ];
+        while( testEntry != entry )
+        {
+            prev = testEntry;
+            testEntry = nextArray[ testEntry ];
+        }
+        next = nextArray[ testEntry ];
+        nextArray[ prev ] = next;
+        return testEntry;
+    }
+
+    /**
+     * Remove an item from the linked list formed from the <i>lefts</i> and <i>leftNexts</i>
+     * arrays.
+     *
+     * @param left int for the left association
+     * @param entry entry in the list
+     * @return the entry, or -1 if we could not find the item
+     */
+    protected int removeLeft(int left, int entry)
+    {
+        return removeFromLinkedList( left, entry, lefts, leftNexts );
+    }
+
+    /**
      * Disassociate the two integers and return the entry that holds their association.
      * If the two numbers are not associated, return -1.
      *
@@ -425,7 +488,7 @@ public class OneToManyInt implements Collection
     {
         long val = NumberUtil.packLong( left, right );
         int entry = associations.getEntry( NumberUtil.packLong( left, right ) );
-        //check existence, return false if doesnt
+        //check existence, return false if doesn't
         if( entry == Const.NO_ENTRY )
         {
             return -1;
@@ -436,37 +499,7 @@ public class OneToManyInt implements Collection
         {
             leftCounts[ left ]--;
         }
-
-        //remove from linked list
-        int next;
-        int testEntry = lefts[ left ];
-        if( testEntry == entry ) //removing first
-        {
-            next = leftNexts[ testEntry ];
-            if( next != Const.NO_ENTRY )
-            //switch left to the next item, mark the next with Const.NO_ENTRY. The left will
-            //correctly point to the correct next, if any
-            {
-                lefts[ left ] = next;
-                leftNexts[ testEntry ] = Const.NO_ENTRY;
-            }
-            else
-            {
-                lefts[ left ] = Const.NO_ENTRY;
-            }
-            return testEntry;
-        }
-        //not first entry, start cycling leftNexts array
-        int prev = testEntry;
-        testEntry = leftNexts[ testEntry ];
-        while( testEntry != entry )
-        {
-            prev = testEntry;
-            testEntry = leftNexts[ testEntry ];
-        }
-        next = leftNexts[ testEntry ];
-        leftNexts[ prev ] = next;
-        return testEntry;
+        return removeLeft( left, entry );
     }
 
     public int getCountForLeft( int left )
