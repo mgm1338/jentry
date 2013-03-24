@@ -52,15 +52,15 @@ public class TestManyToManyInt
         TestCase.assertEquals( 3, manyToManyCounts.associate( 4, 1 ) );
         TestCase.assertEquals( 4, manyToManyCounts.getCountForRight( 1 ) );
 
-        TestCase.assertEquals( 5, manyToManyCounts.associate( 3, 19 ) );
-        TestCase.assertEquals( 6, manyToManyCounts.associate( 3, 20 ) );
+        TestCase.assertEquals( 4, manyToManyCounts.associate( 3, 19 ) );
+        TestCase.assertEquals( 5, manyToManyCounts.associate( 3, 20 ) );
         TestCase.assertEquals( 1, manyToManyCounts.getCountForRight( 20 ) );
 
-        TestCase.assertEquals( 7, manyToManyCounts.associate( 3, 21 ) );
-        TestCase.assertEquals( 8, manyToManyCounts.associate( 25, 6 ) );
-        TestCase.assertEquals( 9, manyToManyCounts.associate( 26, 6 ) );
-        TestCase.assertEquals( 10, manyToManyCounts.associate( 27, 6 ) );
-        TestCase.assertEquals( 3, manyToManyCounts.getCountForRight( 3 ) );
+        TestCase.assertEquals( 6, manyToManyCounts.associate( 3, 21 ) );
+        TestCase.assertEquals( 7, manyToManyCounts.associate( 25, 6 ) );
+        TestCase.assertEquals( 8, manyToManyCounts.associate( 26, 6 ) );
+        TestCase.assertEquals( 9, manyToManyCounts.associate( 27, 6 ) );
+        TestCase.assertEquals( 3, manyToManyCounts.getCountForRight( 6) );
 
 
         TestCase.assertEquals( 0, manyToManyNoCounts.associate( 0, 1 ) );
@@ -69,15 +69,15 @@ public class TestManyToManyInt
         TestCase.assertEquals( 3, manyToManyNoCounts.associate( 4, 1 ) );
         TestCase.assertEquals( 4, manyToManyNoCounts.getCountForRight( 1 ) );
 
-        TestCase.assertEquals( 5, manyToManyNoCounts.associate( 3, 19 ) );
-        TestCase.assertEquals( 6, manyToManyNoCounts.associate( 3, 20 ) );
+        TestCase.assertEquals( 4, manyToManyNoCounts.associate( 3, 19 ) );
+        TestCase.assertEquals( 5, manyToManyNoCounts.associate( 3, 20 ) );
         TestCase.assertEquals( 1, manyToManyNoCounts.getCountForRight( 20 ) );
 
-        TestCase.assertEquals( 7, manyToManyNoCounts.associate( 3, 21 ) );
-        TestCase.assertEquals( 8, manyToManyNoCounts.associate( 25, 6 ) );
-        TestCase.assertEquals( 9, manyToManyNoCounts.associate( 26, 6 ) );
-        TestCase.assertEquals( 10, manyToManyNoCounts.associate( 27, 6 ) );
-        TestCase.assertEquals( 3, manyToManyNoCounts.getCountForRight( 3 ) );
+        TestCase.assertEquals( 6, manyToManyNoCounts.associate( 3, 21 ) );
+        TestCase.assertEquals( 7, manyToManyNoCounts.associate( 25, 6 ) );
+        TestCase.assertEquals( 8, manyToManyNoCounts.associate( 26, 6 ) );
+        TestCase.assertEquals( 9, manyToManyNoCounts.associate( 27, 6 ) );
+        TestCase.assertEquals( 3, manyToManyNoCounts.getCountForRight( 6 ) );
 
 
         TestCase.assertEquals( 10, manyToManyCounts.getSize() );
@@ -86,7 +86,7 @@ public class TestManyToManyInt
 
 
     /**
-     * Do a manual iteration, and make sure it is insert order and assert size
+     * Do a manual iteration, and make sure it is insertLeft order and assert size
      * Compare with getting all rights with a null target (should be exact size and same contents)
      */
     @Test

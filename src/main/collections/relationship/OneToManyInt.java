@@ -50,14 +50,14 @@ import java.util.Arrays;
  * 2
  * </pre>
  * Inserting {1-4}, gets handle of 1 from <b>associations</b>
- * Follow the index of lefts[1], insert 1 into leftNexts[0]
+ * Follow the index of lefts[1], insertLeft 1 into leftNexts[0]
  * <pre>
  *      lefts   leftNexts
  * 0               1
  * 1     0
  * 2
  * </pre>
- * Inserting {1-5}, gets handle of 2 from <b>associations</b>.We follow the list, and insert leftNexts into
+ * Inserting {1-5}, gets handle of 2 from <b>associations</b>.We follow the list, and insertLeft leftNexts into
  * index 2.
  * <pre>
  *      lefts   leftNexts
@@ -80,8 +80,8 @@ import java.util.Arrays;
  * 2
  * </pre>
  * <p/>
- * Note that an insertion now will result in index 1. We can continue to insert as normal,
- * and it will re-use the index.  We insert {0,6}, which gets handle 1.
+ * Note that an insertion now will result in index 1. We can continue to insertLeft as normal,
+ * and it will re-use the index.  We insertLeft {0,6}, which gets handle 1.
  * <pre>
  *      lefts   leftNexts
  * 0     3         2
@@ -97,7 +97,7 @@ public class OneToManyInt implements Collection
     protected final GrowthStrategy growthStrategy;
     /** Factory used to allocate and grow the int arrays */
     protected final ArrayFactoryInt intFactory;
-    private static final int DEFAULT_REL_SIZE = 2;
+    protected static final int DEFAULT_REL_SIZE = 2;
 
     /** HashSet of longs that will hold the associations of the OneToMany */
     protected HashSetLong associations;
@@ -156,8 +156,90 @@ public class OneToManyInt implements Collection
     }
 
     /**
+     * Will ensure capacity of the left, leftNext, leftCount (if applicable) arrays so that
+     * we ensure that we can insertLeft the association.
+     *
+     * @param left left int of the association
+     * @param right right int of the association
+     * @param handle handle into the {@link HashSetLong}
+     */
+    protected void ensureCapacity(int left, int right, int handle)
+    {
+        if( left > leftHighWaterMark ) //guarding growth checks
+        {
+            lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy );
+            leftHighWaterMark = left;
+            if( countLefts )
+            {
+                leftCounts = intFactory.ensureArrayCapacity( leftCounts, left + 1, growthStrategy );
+            }
+        }
+        if( countLefts )
+        {
+            leftCounts[ left ]++;
+        }
+
+        //we will never grow the leftNexts past the handle +1 (we use the handle to determine where we are
+        //inserting into the array)
+        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, Const.NO_ENTRY, growthStrategy );
+    }
+
+
+    /**
+     * Do the insertion of the item into the linked list of the left side. If this is the first item
+     * to be associated to this left, then it is inserted into the <i>lefts array</i>. Otherwise,
+     * iterate through the <i>leftNexts</i>, inserting the handle at the end of the chain.
+     *
+     * @param left left int of the association
+     * @param handle the handle we are going to insertLeft for this association
+     */
+    protected void insertLeft( int left, int handle )
+    {
+        insertIntoLinkedList( left, handle, lefts, leftNexts );
+    }
+
+    /**
+     * Do the insertion of an item into the type of linked lists in this structure. If the head
+     * array has an open spot, insertLeft <i>x</i> there, otherwise cycle through the nexts, until
+     * there is an opening to insertLeft <i>x</i>. For a more concrete example, see
+     * the structure description at the top of the class.
+     *
+     * @param listHead the head of the linked list
+     * @param x the item we need to insertLeft
+     * @param headArray the headArray where we start our search for an empty slot
+     * @param nextArray the nextArray, which we cycle if headArray slot if taken
+     */
+    protected void insertIntoLinkedList(int listHead, int x, int[] headArray, int[] nextArray )
+    {
+        int testInsert = headArray[ listHead ];
+        if( testInsert == Const.NO_ENTRY ) //first item, insertLeft into the left array
+        {
+            headArray[ listHead ] = x;
+        }
+        else
+        {
+            int prev = testInsert;
+            testInsert = nextArray[ testInsert ]; //cycle through nexts
+            if( testInsert == Const.NO_ENTRY )
+            {
+                nextArray[ prev ] = x;
+
+            }
+            else
+            {
+                while( testInsert != Const.NO_ENTRY )
+                {
+                    prev = testInsert;
+                    testInsert = nextArray[ testInsert ];
+                }
+                nextArray[ prev ] = x;
+            }
+        }
+    }
+
+    /**
      * <p>
-     * Associate two integers, insert the composed long into our associations. Insert the resulting handle into our
+     * Associate two integers, insertLeft the composed long into our associations. Insert the resulting handle into our
      * singly linked list type of structure. See {@link OneToManyInt} base description for a more verbose description
      * of the insertion process via example.
      * </p>
@@ -181,48 +263,8 @@ public class OneToManyInt implements Collection
         {
             return handle;
         }
-        if( left > leftHighWaterMark ) //guarding growth checks
-        {
-            lefts = intFactory.ensureArrayCapacity( lefts, left + 1, Const.NO_ENTRY, growthStrategy );
-            leftHighWaterMark = left;
-            if( countLefts )
-            {
-                leftCounts = intFactory.ensureArrayCapacity( leftCounts, left + 1, growthStrategy );
-            }
-        }
-        if( countLefts )
-        {
-            leftCounts[ left ]++;
-        }
-
-        //we will never grow the leftNexts past the handle +1 (we use the handle to determine where we are
-        //inserting into the array)
-        leftNexts = intFactory.ensureArrayCapacity( leftNexts, handle + 1, Const.NO_ENTRY, growthStrategy );
-
-        int testInsert = lefts[ left ];
-        if( testInsert == Const.NO_ENTRY ) //first item, insert into the left array
-        {
-            lefts[ left ] = handle;
-        }
-        else
-        {
-            int prev = testInsert;
-            testInsert = leftNexts[ testInsert ]; //cycle through leftNexts
-            if( testInsert == Const.NO_ENTRY )
-            {
-                leftNexts[ prev ] = handle;
-
-            }
-            else
-            {
-                while( testInsert != Const.NO_ENTRY )
-                {
-                    prev = testInsert;
-                    testInsert = leftNexts[ testInsert ];
-                }
-                leftNexts[ prev ] = handle;
-            }
-        }
+        ensureCapacity( left, right, handle );
+        insertLeft( left, handle );
         size++;
         return handle;
     }
@@ -370,6 +412,7 @@ public class OneToManyInt implements Collection
         return target;
     }
 
+
     /**
      * Disassociate the two integers and return the entry that holds their association.
      * If the two numbers are not associated, return -1.
@@ -454,6 +497,18 @@ public class OneToManyInt implements Collection
         {
             target = new OneToManyInt( leftLen, associations.getSize(), this.countLefts, growthStrategy, intFactory );
         }
+        copyOneToManyState( target, leftLen );
+        return target;
+    }
+
+    /**
+     * Copy the relevant state for this class to a target, for the given length of the lefts.
+     *
+     * @param target the target OneToMany
+     * @param leftLen length of lefts to copy
+     */
+    protected void copyOneToManyState( OneToManyInt target, int leftLen )
+    {
         target.associations = associations.copy( target.associations );
         if( countLefts )     //cannot change counting
         {
@@ -476,6 +531,5 @@ public class OneToManyInt implements Collection
         target.leftNexts = intFactory.ensureArrayCapacity( target.leftNexts, nextLen, GrowthStrategy.toExactSize );
         System.arraycopy( leftNexts, 0, target.leftNexts, 0, nextLen );
         target.size = size;
-        return target;
     }
 }

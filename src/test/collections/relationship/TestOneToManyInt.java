@@ -107,7 +107,7 @@ public class TestOneToManyInt
     }
 
     /**
-     * Do a manual iteration, and make sure it is insert order and assert size
+     * Do a manual iteration, and make sure it is insertLeft order and assert size
      * Compare with getting all rights with a null target (should be exact size and same contents)
      */
     @Test
@@ -124,7 +124,7 @@ public class TestOneToManyInt
             rights[ rtCt++ ] = right;
         }
         TestCase.assertEquals( rtCt, 3 );
-        //insert order
+        //insertLeft order
         TestCase.assertEquals( 5, rights[ 0 ] );
         TestCase.assertEquals( 8, rights[ 1 ] );
         TestCase.assertEquals( 9, rights[ 2 ] );
