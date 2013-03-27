@@ -16,9 +16,7 @@ import java.util.Arrays;
  * <p/>
  * User: Max Miller
  * Created: 1/27/13
-
- * <p>IMPORTANT! THIS STRUCTURE ASSUME THAT THE LEFTS INSERTED ARE ALREADY COMPACTED. IF THEY ARE NOT, INSERT
- * INTO A JENTRY COLLECTION AND INSERT THE HANDLES.</p>
+ *
  * <p>
  * A collection of One (left) to Many (right) ints. The One to Many allows for iteration over the associations from a
  * left, going in order, as well as checking to see if a left and right are associated.
@@ -86,6 +84,51 @@ import java.util.Arrays;
  * 3               1
  * </pre>
  * </p>
+ * <p>
+ * </p>
+ *  <p><b>IMPORTANT!</b> THIS STRUCTURE ASSUME THAT THE LEFTS INSERTED ARE COMPACT. IF THEY ARE NOT, INSERT
+ * INTO A JENTRY COLLECTION AND INSERT THE HANDLES. Consider example situation to illustrate this point:
+ *      <ul>
+ *      You are associating three trading algorithms with market orders. The orders are streaming constantly,
+ *      only a few are associated to our algorithms. Let us say that these algorithms we are tracking having internal
+ *      ids of {10453, 41879, and 60147} respectively. We could insert directly into the OneToMany, however this would
+ *      put only three items in the first 60147 slots. A better method is to use the handle:
+ *      </ul>
+ *          <pre>
+ *              OneToManyInt algoToOrder = new OneToManyInt(3, 100000, false);
+ *              HashSetInt algoSet = new HashSetInt(3);
+ *              int strat1 = algoSet.insert(10453); // strat1 will now be 0
+ *              int strat2 = algoSet.insert(41879); // strat2 will now be 1
+ *              int strat3 = algoSet.insert(60147); // strat3 will now be 2
+ *          </pre>
+ *      <ul>Instead of inserting relationships of orders to the id of the strategy,
+ *      insert based on the new handles. The left side will have a size of 3, instead of 60147. For the order side,
+ *      if we do not care about all the orders, the ids on the right side would not be compact.
+ *      When not comapct, insert them into a collection. If this time you also wanted to keep track of the largest
+ *      order, use a {@link collections.generic.heap.Heap_KeyTypeName_} instead of a HashSet. Inserting the relevant
+ *      orders will give you a handle that you can associate on the right side of the OneToMany,
+ *      while the Heap itself will make sure the largest item is at the top.
+ *      </ul>
+ *          <pre>
+ *              BinaryHeapLong orders = new BinaryHeapLong(1000000, Comparators.LongDesc)
+ *              if (order.isRelevantStrategy())
+ *              {
+ *                  int strat = algoSet.insert(order.strategy);
+ *                  int orderHandle = orders.insert(order.value);
+ *                  algoToOrder.insert(strat, orderHandle);
+ *              }
+ *          </pre>
+ *          <ul>
+ *          If say only 5% of the orders are relevant, then this insertion into the Heap (besides giving us the
+ *          'greatest' item) will allow us to associated ids for the algorithm and the order using ~95% less space
+ *          than if we inserted directly by id. The memory savings are immense, and as in all Jentry collections,
+ *          we  <b>guarantee that the item can be retrieved by the handle</b>, and <b>retrieving the item by a
+ *          handle is a direct array access</b>. This makes the OneToManyInt (and {@link ManyToManyInt}) small and fast.
+ *          </pre>
+ *      </ul>
+ * </p>
+ * <p></p>
+ * <p>
  *
  */
 public class OneToManyInt implements Collection
