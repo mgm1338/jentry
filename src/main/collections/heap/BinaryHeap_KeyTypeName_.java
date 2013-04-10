@@ -38,10 +38,9 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * </pre>
  * <p/>
  * Note that the same elements can take different orders in a Heap (differing
- * from a Binary tree), so the Heap should used for searching. The Heap's
+ * from a Binary tree), so the Heap should not be used for searching. The Heap's
  * purpose is collecting the 'greatest' item as its top element. Another typical
- * use is that removing items from a heap results in a sorted collection, with a
- * relatively small memory footprint.
+ * use is sorting items with a relatively small memory footprint.
  * </p>
  * <p/>
  * <p>The singly-typed heap is simply a collection of keys, that are guaranteed
@@ -64,25 +63,24 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * Internally the Heap will store its items in a binary tree formed as an array.
  * The array will start at index 1 for the sole reason that doing parent
  * and child math is quicker than starting from 0, and it doesn't use much
- * extra space. When visualizing a tree from an array, the indexes are as follows:
+ * extra space. When visualizing a tree from an array, the indices in the array are as follows:
  * <p/>
  * <pre>
  *          1
  *        /   \
- *       2    3
- *      / \  / \
- *     4  5  6  7
+ *       2     3
+ *      / \   / \
+ *     4  5  6   7
  * </pre>
  * and so on.
  * </p>
  * <p>
- * The tree elements will actually store the entries of the collection that
- * are inserted. Therefore the actual key elements do not move once they
- * are inserted, only the 'pointers' to the key array (example following).
- * There is one more array, that will store the 'inverse' tree array. For
- * a given entry, upon removal it is necessary to know where in the tree
- * the entry is currently located. The extra state in the inverse array
- * allows us to remove without having to search through the heap.
+ * The tree array will store the entries of the collection that are inserted, not the values themselves. This requires
+ * an array that will store the values (<i>key</i> array). We also need an 'inverse array', which for a given key
+ * , will store the spot in the tree. This last array will allow us to remove a key without having to search. Like
+ * the other Jentry structure, upon insertion, a handle to the key will be returned. This handle, when
+ * used to retrieve an item, is guaranteed to return the key inserted. Upon removal of a key, the corresponding
+ * handle will be returned.
  * </p>
  * <p/>
  * <p><b>Example: Simple Insertion</b></p>
@@ -98,7 +96,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  *
  *  arrays:
  *      keys    tree    inverse
- * 0     7       -1        1      <- denotes entry 0 is at spot 1 in tree array
+ * 0     7       -1        1
  * 1              0
  * 2
  * 3
@@ -115,7 +113,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  *
  *  arrays:
  *      keys    tree    inverse
- * 0     7       -1        0
+ * 0     7       -1        2
  * 1     3        1        1
  * 2              0
  * 3
@@ -132,9 +130,9 @@ import core.util.comparator.Comparator_KeyTypeName_;
  *
  *  arrays:
  *      keys    tree    inverse
- * 0     7       -1        0
+ * 0     7       -1        2
  * 1     3        1        1
- * 2     10       0        2
+ * 2     10       0        3
  * 3              2
  * 4
  * 5
@@ -255,9 +253,13 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
     @Override
     public void clear()
     {
-
+        //TODO:
     }
 
+    /**
+     * Remove the top element (the 'greatest') element). If we only want to view the top
+     * element, use {@link #peek()}
+     */
     @Override
     public void removeGreatest()
     {
@@ -265,13 +267,23 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
         remove( tree[ 1 ] );
     }
 
+    /**
+     * Return the value of 'greatest' element. Will not modify the structure.
+     *
+     * @return the 'greatest' key.
+     */
     @Override
     public _key_ peek()
     {
         return keys[ tree[ 1 ] ];
     }
 
-
+    /**
+     * Insert an item into the Heap.
+     *
+     * @param key the key to insert
+     * @return the handle to this key
+     */
     @Override
     public int insert( _key_ key )
     {

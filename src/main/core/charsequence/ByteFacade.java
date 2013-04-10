@@ -9,21 +9,21 @@ package core.charsequence;
  * <p/>
  * <p>
  * A Utility collection that acts as a facade over a byte[] to represent a sequence of
- * ASCII characters. Used in collections, ByteSlices are very efficient ways to represent
+ * ASCII characters. Used in collections, ByteFacades are very efficient ways to represent
  * a collection of CharSequences (like {@link String}s), provided that they can be represented
  * by the standard ASCII codes that overlap with a Java byte (0-127). This means that the standard
  * English alphabet, numeric characters, and punctuation are included.
  * </p>
  * <p/>
- * <p>A ByteSlice does NOT OWN ITS UNDERLYING BYTE ARRAY. This is a very important, as modification
- * of this byte array from a ByteSlice may have unintended consequences to other items that are
- * referencing it. In this way, ByteSlices and Strings are somewhat similar in mutability. </p>
+ * <p>A ByteFacade does NOT OWN ITS UNDERLYING BYTE ARRAY. This is a very important, as modification
+ * of this byte array from a ByteFacade may have unintended consequences to other items that are
+ * referencing it.</p>
  * <p/>
- * <p>For the purpose of Jentry, ByteSlice collections will be commonly used when dealing with
- * CharSequence typed Collections. This limits the ability of Unicode, which may be extended
- * in the future, but will not be supported in early releases </p>
+ * <p>For the purpose of Jentry, ByteFacade collections will be commonly used when dealing with
+ * CharSequence typed Collections. This obvious limits the efficiency of Unicode=based structures,
+ * which may be extended in the future.</p>
  */
-public class ByteSliceASCII implements CharSequence
+public class ByteFacade implements CharSequence
 {
     /**
      * Reference to the array of bytes. The CharSequence only holds a reference to this array, and
@@ -35,7 +35,7 @@ public class ByteSliceASCII implements CharSequence
     /** Length (in bytes), of this slice of text */
     int len;
 
-    public ByteSliceASCII( byte[] bytes, int offSet, int len )
+    public ByteFacade( byte[] bytes, int offSet, int len )
     {
         this.bytes = bytes;
         this.offSet = offSet;
@@ -94,32 +94,28 @@ public class ByteSliceASCII implements CharSequence
     @Override
     public CharSequence subSequence( int start, int end )
     {
-        return new ByteSliceASCII( this.bytes, offSet + start, end - start );
+        return new ByteFacade( this.bytes, offSet + start, end - start );
     }
 
 
     @Override
     public boolean equals( Object o )
     {
-        if( o != null )
+        if( o != null || ( !( o instanceof CharSequence ) ) )
         {
-            if( ( o instanceof CharSequence ) )
+            if( ( ( CharSequence ) o ).length() != this.len )
             {
-                if( ( ( CharSequence ) o ).length() != this.len )
+                int len = this.len;
+                for( int i = 0; i < len; i++ )
                 {
-                    int len = this.len;
-                    for( int i = 0; i < len; i++ )
+                    if( charAt( i ) != ( ( CharSequence ) o ).charAt( 0 ) )
                     {
-                        if( charAt( i ) != ( ( CharSequence ) o ).charAt( 0 ) )
-                        {
-                            return false;
-                        }
+                        return false;
                     }
-                    return true;
                 }
+                return true;
             }
         }
         return false;
     }
-
 }

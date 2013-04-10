@@ -1,7 +1,7 @@
 package collections.heap;
 
 import core.stub.IntValueConverter;
-import core.stub._key_;
+import core.stub.*;
 import core.util.comparator.Comparators;
 import junit.framework.TestCase;
 import org.junit.Before;
