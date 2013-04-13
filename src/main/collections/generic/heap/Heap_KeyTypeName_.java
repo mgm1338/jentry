@@ -20,7 +20,7 @@ import core.util.comparator.Comparator_KeyTypeName_;
  * </p>
  * <p/>
  * <p>Searching for items should be done through Hashing the item and using either a HashSet or Map. A Jentry-style
- * AVL binary tree has been designed in the past, however was not used enough to warrant it. TODO: still true?</p>
+ * AVL binary tree has been designed in the past, however was not used enough to warrant it. </p>
  */
 public interface Heap_KeyTypeName_ extends Collection
 {

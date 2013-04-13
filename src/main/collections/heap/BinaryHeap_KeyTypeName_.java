@@ -8,6 +8,8 @@ import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.stub.*;
 import core.util.comparator.Comparator_KeyTypeName_;
 
+import java.util.Arrays;
+
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
@@ -164,27 +166,47 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * and inverse arrays.
      */
     protected final ArrayFactoryInt intFactory;
-    /** {@link Comparator_KeyTypeName_} that will order the keys from greatest to least */
+    /**
+     * {@link Comparator_KeyTypeName_} that will order the keys from greatest to least
+     */
     protected final Comparator_KeyTypeName_ cmp;
-    /** Key factory that will allocate new typed keys */
+    /**
+     * Key factory that will allocate new typed keys
+     */
     protected final ArrayFactory_KeyTypeName_ keyFactory;
-    /** Growth strategy for growing the arrays in the heap */
+    /**
+     * Growth strategy for growing the arrays in the heap
+     */
     protected final GrowthStrategy growthStrategy;
 
 
-    /** current size of the heap (in elements) */
+    /**
+     * current size of the heap (in elements)
+     */
     private int size = 0;
-    /** Entry to the key values (not sorted array) */
+    /**
+     * Entry to the key values (not sorted array)
+     */
     protected _key_[] keys;
-    /** The binary tree node to the entry it stores */
+    /**
+     * The binary tree node to the entry it stores
+     */
     protected int[] tree;
-    /** For each entry (as index), the node it occupies in the tree */
+    /**
+     * For each entry (as index), the node it occupies in the tree
+     */
     protected int[] inverse;
-    /** Pointer to the next entry that is unoccupied */
+    /**
+     * Pointer to the next entry that is unoccupied
+     */
     protected int entryPtr = 0;
-    /** List of vacated entries, that will be used first upon insertions */
+    /**
+     * List of vacated entries, that will be used first upon insertions
+     */
     protected int[] freeList;
-    /** Pointer to the next free entry to use in the free list */
+    /**
+     * Pointer to the next free entry to use in the free list
+     */
     int freeListCt = 0;
     /**
      * Pointer to the next free item in the tree (we start with 1 to simplify parent/child operations).
@@ -198,11 +220,11 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @param initialCapacity the initial capacity of the heap
      * @param cmp             {@link Comparator_KeyTypeName_} that will order the elements from greatest to least
      */
-    public BinaryHeap_KeyTypeName_( int initialCapacity, Comparator_KeyTypeName_ cmp )
+    public BinaryHeap_KeyTypeName_ (int initialCapacity, Comparator_KeyTypeName_ cmp)
     {
-        this( initialCapacity, cmp, ArrayFactoryInt.defaultIntProvider,
+        this (initialCapacity, cmp, ArrayFactoryInt.defaultIntProvider,
               ArrayFactory_KeyTypeName_.default_KeyTypeName_Provider,
-              GrowthStrategy.doubleGrowth );
+              GrowthStrategy.doubleGrowth);
     }
 
     /**
@@ -214,18 +236,18 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @param keyFactory      the factory that allocates the keys for the Heap
      * @param growthStrategy  strategy for growing the arrays in this Heap
      */
-    public BinaryHeap_KeyTypeName_(
+    public BinaryHeap_KeyTypeName_ (
             int initialCapacity, Comparator_KeyTypeName_ cmp, ArrayFactoryInt intFactory,
-            ArrayFactory_KeyTypeName_ keyFactory, GrowthStrategy growthStrategy )
+            ArrayFactory_KeyTypeName_ keyFactory, GrowthStrategy growthStrategy)
     {
         this.cmp = cmp;
         this.intFactory = intFactory;
         this.keyFactory = keyFactory;
         this.growthStrategy = growthStrategy;
-        tree = intFactory.alloc( initialCapacity, Const.NO_ENTRY );
-        inverse = intFactory.alloc( initialCapacity );
-        keys = keyFactory.alloc( initialCapacity );
-        freeList = intFactory.alloc( 4 );
+        tree = intFactory.alloc (initialCapacity, Const.NO_ENTRY);
+        inverse = intFactory.alloc (initialCapacity);
+        keys = keyFactory.alloc (initialCapacity);
+        freeList = intFactory.alloc (4);
     }
 
     /**
@@ -234,7 +256,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @return the number of keys in the heap
      */
     @Override
-    public int getSize()
+    public int getSize ()
     {
         return size;
     }
@@ -245,15 +267,30 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @return true if the Heap is empty, false otherwise.
      */
     @Override
-    public boolean isEmpty()
+    public boolean isEmpty ()
     {
         return size == 0;
     }
 
+    /**
+     * Clear all the items in the heap, so that it may be re-used.
+     * Note that the keys array is not actually cleared, but without
+     * references to the entries, they will simply be overwritten upon
+     * re-use.
+     */
     @Override
-    public void clear()
+    public void clear ()
     {
-        //TODO:
+        //clear tree array from 1 to treePtr
+        Arrays.fill (tree, 1, treePtr, Const.NO_ENTRY);
+        treePtr = 1;
+        //clear inverse based on entry (entryPtr)
+        Arrays.fill (inverse, 0, entryPtr, Const.NO_ENTRY);
+        entryPtr = 0;
+
+        Arrays.fill (freeList, Const.NO_ENTRY);
+        freeListCt = 0;
+        size = 0;
     }
 
     /**
@@ -261,10 +298,10 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * element, use {@link #peek()}
      */
     @Override
-    public void removeGreatest()
+    public void removeGreatest ()
     {
-        if( size == 0 ) return;
-        remove( tree[ 1 ] );
+        if (size == 0) return;
+        remove (tree[1]);
     }
 
     /**
@@ -273,33 +310,37 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @return the 'greatest' key.
      */
     @Override
-    public _key_ peek()
+    public _key_ peek ()
     {
-        return keys[ tree[ 1 ] ];
+        return keys[tree[1]];
     }
 
     /**
-     * Insert an item into the Heap.
+     * Insert an item into the Heap. This consists of inserting the key
+     * into the next entry, and then inserting the item into the last tree
+     * spot. Following the insertion into the last tree spot, the tree
+     * will test the node against its parent until the item is located in a
+     * correct spot, see {@link #shiftUp(_key_, int)}  }.
      *
      * @param key the key to insert
      * @return the handle to this key
      */
     @Override
-    public int insert( _key_ key )
+    public int insert (_key_ key)
     {
-        int entry = getNextEntry();
-        keys[ entry ] = key;
-        int treeSpot = getNextFreeTreeSpot();
-        tree[ treeSpot ] = entry;
-        inverse[ entry ] = treeSpot;
-        shiftUp( key, treeSpot );
+        int entry = getNextEntry ();
+        keys[entry] = key;
+        int treeSpot = getNextFreeTreeSpot ();
+        tree[treeSpot] = entry;
+        inverse[entry] = treeSpot;
+        shiftUp (key, treeSpot);
         size++;
         return entry;
     }
 
 
     /**
-     * Get the value inserted for a particular entry. See {@link #insert(core.stub._key_)}
+     * Get the value inserted for a particular entry. See {@link #insert(_key_)}
      * for description of the handles, called entries. For the entry passed
      * here, is guaranteed to return the same value that was returned upon
      * insertion.
@@ -307,52 +348,79 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @param entry the entry for the item
      * @return the value of the item
      */
-    public _key_ get( int entry )
+    public _key_ get (int entry)
     {
-        return keys[ entry ];
+        return keys[entry];
     }
 
+    /**
+     * <p>
+     * Remove an item from the heap by entry. There is a related
+     * convenience method for the greatest item (see {@link #removeGreatest()}  }.
+     * This remove method is meant when data is associated with the entry
+     * of the heap, and must be removed. Typically this method would not be
+     * used by a traditional heap.
+     * </p>
+     *
+     * <p>Steps are to find the spot in the tree of the entry (this is the
+     * purpose of the <i>inverse array</i>, direct access of this step). After
+     * removing the item from the tree, we flip the removed entry and the
+     * last item in the tree (by array position). We shift-down this flipped
+     * item with its children (and repeat the process), until the item
+     * is in a correct place. See {@link #shiftDown(int)}  } for implementation.
+     * </p>
+     *
+     *
+     *
+     * @param entry the entry of the item to remove
+     * @return the entry that we have removed (not very useful here)
+     * or -1 if the entry was empty already.
+     */
     @Override
-    public int remove( int entry )
+    public int remove (int entry)
     {
-        int treePtrRemoval = inverse[ entry ];
-        if( entry == Const.NO_ENTRY )
+        int treePtrRemoval = inverse[entry];
+        //no item in the entry
+        if (entry == Const.NO_ENTRY)
         {
             return Const.NO_ENTRY;
         }
+        //flip removed spot with the last item in the tree
         int lastElPtr = --treePtr;
-        flip( treePtrRemoval, lastElPtr );
-        shiftDown( treePtrRemoval );
-        //now remove the treePtrRemoval
-        int removalEntry = tree[ lastElPtr ];
-        inverse[ removalEntry ] = Const.NO_ENTRY;
-        tree[ lastElPtr ] = Const.NO_ENTRY;
-        freeList = intFactory.ensureArrayCapacity( freeList, freeListCt + 1, Const.NO_ENTRY,
+        flip (treePtrRemoval, lastElPtr);
+        shiftDown (treePtrRemoval);
+        //now remove the item and referenced to the item, which is in the last
+        //spot in the tree
+        int removalEntry = tree[lastElPtr];
+        inverse[removalEntry] = Const.NO_ENTRY;
+        tree[lastElPtr] = Const.NO_ENTRY;
+        //add to free list
+        freeList = intFactory.ensureArrayCapacity (freeList, freeListCt + 1, Const.NO_ENTRY,
                                                    growthStrategy
         );
-        freeList[ freeListCt++ ] = removalEntry;
+        freeList[freeListCt++] = removalEntry;
         size--;
         return entry;
     }
 
-    protected void shiftDown( int curSpot )
+    protected void shiftDown (int curSpot)
     {
-        int left = leftChild( curSpot );
-        int right = rightChild( curSpot );
-        if( left >= treePtr ) left = Const.NO_ENTRY;
-        if( right >= treePtr ) right = Const.NO_ENTRY;
+        int left = leftChild (curSpot);
+        int right = rightChild (curSpot);
+        if (left >= treePtr) left = Const.NO_ENTRY;
+        if (right >= treePtr) right = Const.NO_ENTRY;
 
-        while( left != Const.NO_ENTRY || right != Const.NO_ENTRY )
+        while (left != Const.NO_ENTRY || right != Const.NO_ENTRY)
         {
             //both valid, compare to the 'greater one'
-            if( left != Const.NO_ENTRY && right != Const.NO_ENTRY )
+            if (left != Const.NO_ENTRY && right != Const.NO_ENTRY)
             {
-                int cmpResult = cmp.compare( keys[ tree[ left ] ], keys[ tree[ right ] ] );
-                if( cmpResult > 0 ) //compare with left
+                int cmpResult = cmp.compare (keys[tree[left]], keys[tree[right]]);
+                if (cmpResult > 0) //compare with left
                 {
-                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) < 0 )
+                    if (cmp.compare (keys[tree[curSpot]], keys[tree[left]]) < 0)
                     {
-                        flip( curSpot, left );
+                        flip (curSpot, left);
                         curSpot = left;
                     }
                     else
@@ -362,9 +430,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
                 }
                 else //compare with right
                 {
-                    if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) < 0 )
+                    if (cmp.compare (keys[tree[curSpot]], keys[tree[right]]) < 0)
                     {
-                        flip( curSpot, right );
+                        flip (curSpot, right);
                         curSpot = right;
                     }
                     else
@@ -373,11 +441,11 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
                     }
                 }
             }
-            else if( left != Const.NO_ENTRY )
+            else if (left != Const.NO_ENTRY)
             {
-                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ left ] ] ) < 0 )
+                if (cmp.compare (keys[tree[curSpot]], keys[tree[left]]) < 0)
                 {
-                    flip( curSpot, left );
+                    flip (curSpot, left);
                     curSpot = left;
                 }
                 else
@@ -387,9 +455,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             }
             else // right!=Const.Entry
             {
-                if( cmp.compare( keys[ tree[ curSpot ] ], keys[ tree[ right ] ] ) < 0 )
+                if (cmp.compare (keys[tree[curSpot]], keys[tree[right]]) < 0)
                 {
-                    flip( curSpot, right );
+                    flip (curSpot, right);
                     curSpot = right;
                 }
                 else
@@ -397,69 +465,69 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
                     return;
                 }
             }
-            left = leftChild( curSpot );
-            right = rightChild( curSpot );
-            if( left >= treePtr ) left = Const.NO_ENTRY;
-            if( right >= treePtr ) right = Const.NO_ENTRY;
+            left = leftChild (curSpot);
+            right = rightChild (curSpot);
+            if (left >= treePtr) left = Const.NO_ENTRY;
+            if (right >= treePtr) right = Const.NO_ENTRY;
         }
     }
 
-    protected void shiftUp( _key_ key, int curSpot )
+    protected void shiftUp (_key_ key, int curSpot)
     {
-        int parent = parent( curSpot );
-        while( curSpot != 1 && cmp.compare( key, keys[ tree[ parent ] ] ) > 0 )
+        int parent = parent (curSpot);
+        while (curSpot != 1 && cmp.compare (key, keys[tree[parent]]) > 0)
         {
-            flip( curSpot, parent );
+            flip (curSpot, parent);
             curSpot = parent;
-            parent = parent( parent );
+            parent = parent (parent);
         }
     }
 
-    protected int getNextFreeTreeSpot()
+    protected int getNextFreeTreeSpot ()
     {
-        tree = intFactory.ensureArrayCapacity( tree, treePtr + 2, Const.NO_ENTRY, growthStrategy );
-        inverse = intFactory.ensureArrayCapacity( inverse, treePtr + 2, Const.NO_ENTRY, growthStrategy );
+        tree = intFactory.ensureArrayCapacity (tree, treePtr + 2, Const.NO_ENTRY, growthStrategy);
+        inverse = intFactory.ensureArrayCapacity (inverse, treePtr + 2, Const.NO_ENTRY, growthStrategy);
         return treePtr++;
     }
 
-    protected int getNextEntry()
+    protected int getNextEntry ()
     {
-        if( freeListCt != 0 )
+        if (freeListCt != 0)
         {
-            return freeList[ --freeListCt ];
+            return freeList[--freeListCt];
         }
         int nextEntry = entryPtr++;
-        keys = keyFactory.ensureArrayCapacity( keys, nextEntry + 1,
-                                               growthStrategy );
+        keys = keyFactory.ensureArrayCapacity (keys, nextEntry + 1,
+                                               growthStrategy);
         return nextEntry;
     }
 
-    protected void flip( int a, int b )
+    protected void flip (int a, int b)
     {
-        int entryA = tree[ a ];
-        int entryB = tree[ b ];
-        inverse[ entryA ] = b;
-        inverse[ entryB ] = a;
-        tree[ a ] = entryB;
-        tree[ b ] = entryA;
+        int entryA = tree[a];
+        int entryB = tree[b];
+        inverse[entryA] = b;
+        inverse[entryB] = a;
+        tree[a] = entryB;
+        tree[b] = entryA;
     }
 
-    protected int leftChild( int parent )
+    protected int leftChild (int parent)
     {
         return parent * 2;
     }
 
-    protected int rightChild( int parent )
+    protected int rightChild (int parent)
     {
-        return ( parent * 2 ) + 1;
+        return (parent * 2) + 1;
     }
 
-    protected int parent( int child )
+    protected int parent (int child)
     {
-        return ( child / 2 );
+        return (child / 2);
     }
 
-    public Comparator_KeyTypeName_ getCmp()
+    public Comparator_KeyTypeName_ getCmp ()
     {
         return cmp;
     }

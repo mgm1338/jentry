@@ -14,6 +14,9 @@ import java.util.Random;
 /**
  * Copyright © 2012 Max Miller
  * All rights reserved.
+ *
+ * Object is not generated for comparison between Objects is already well-defined
+ * within JDK, and we wouldnt want to mess with that
  */
 public class TestBinaryHeapObject
 {
@@ -148,9 +151,53 @@ public class TestBinaryHeapObject
         TestCase.assertEquals( 0, heap.getSize() );
     }
 
+    /**
+     * Clear tests. Run many times with different sets to mitigate the risk
+     * that left over state will ruin re-use of the heap.
+     */
+    @Test
+    public void clearTests ()
+    {
+        if (template) return;
+        heap.clear (); //clearing empty
+        TestCase.assertEquals (0, heap.getSize ());
+        TestCase.assertTrue (heap.isEmpty ());
+
+        testRandomInsertionCorrectOrder (); //random insertion
+        TestCase.assertEquals (TEST_SIZE, heap.getSize ());
+        heap.clear ();
+        TestCase.assertEquals (0, heap.getSize ());
+        TestCase.assertTrue (heap.isEmpty ());
+
+        //stolen from random growth test
+        Random random = new Random (42);
+        for (int i = 0; i < 24; i++)
+        {
+            TestCase.assertEquals (i,
+                                   heap.insert (IntValueConverter.ObjectFromInt (random.nextInt (16))));
+        }
+        TestCase.assertEquals (24, heap.getSize ());
+        heap.clear (); //insertion with growth
+        TestCase.assertEquals (0, heap.getSize ());
+        TestCase.assertTrue (heap.isEmpty ());
+
+        //stolen from backwards growth test
+        for (int i = 0; i < 24; i++)
+        {
+            TestCase.assertEquals (i,
+                                   heap.insert (IntValueConverter.ObjectFromInt (24 - i)));
+        }
+        TestCase.assertEquals (24, heap.getSize ());
+        heap.clear ();
+        TestCase.assertEquals (0, heap.getSize ());
+        TestCase.assertTrue (heap.isEmpty ());
+
+
+    }
+
+
+
     //test free list, and internal equals with copy methods
-
-
     protected void assertInAscOrder( BinaryHeapObject heap )
     {
         if( template ) return;
