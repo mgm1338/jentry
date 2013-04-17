@@ -1,25 +1,30 @@
 Introduction to Jentry
 
 Jentry is a light-weight Java framework designed for efficient store and processing of flows of information. Designed originally for the financial industry, the collections
-and ideas are ideal for processing millions of records in memory in sub-second times. 
+and ideas are designed for processing millions of records in memory in sub-second times. 
 
 
-I originally encountered the ideas for the Jentry framework while developing an internal framework at a multinational investment bank. The framework's purpose was to greatly 
-improve the efficiency and performance of many trading applications. The ideas at the framework had proven successful in before in other financial institutions, so we tried
-to replicate some of the practices and standards that worked well, while adding our own improvements to the mix. 
+I originally encountered the ideas for the Jentry framework while helping develop a similar framework at a multinational investment bank. The framework's purpose was to greatly 
+improve the performance of many trading applications. This style of framework had proven successful in before in other financial institutions, and many of the other
+developers had been poached from these successful frameworks of the past. For about two years (and many re-written components), where the framework was employed in tens
+of internal applications. 
 
-In the end, we had some success, but the framework's development was driven by the internal groups at the bank. Everyone demanded their application's features be developed by
-our group (often at the same time), so quickly what began as a few simple cool ideas became a clutter of random purposes. The essence of the framework was quickly obfiscated by 
-unnecessary features and in a time of trying to cut costs as quickly as possible, the framework was shipped off to Russia, where the original intent of the framework was 
-completely lost and gutted. 
+In the end, we had some success, but the framework's development was largely driven by the internal groups at the bank. Everyone demanded their application's features be pushed
+into the development path, so quickly what began as a few simple cool ideas became a clutter of random purposes. The essence of the framework was quickly obfiscated by 
+unnecessary features. As you may have heard in the news, the past few years the banks have had to cut some costs. Our framework was shipped off to Russia, where the original intent of the framework was 
+completely lost and gutted. Now most of the developers, like myself, have spread to different jobs (with much more mundance purpose).
+
+The internal framework, with all its faults, was pretty sweet. It has a lot of complexity, but it also very powerful. With the boring subject of my current job, I decided
+to start working on a replacement with a much lighter footprint. After much deliberation, I decided on the name Jentry (which will be explained later, but I am very proud
+of this name). 
 
 
-Jentry is a bit different. As there are no stakeholders forcing features and releases, the mission is to be much clearer, with a few basic principles.
+Few Basic Pricincples of Jentry:
 
 - Memory efficiency
 
 Jentry is array-based and based on the primitive arrays. When starting to store millions of record in memory, Object allocation and garbage collection can often 
-become the largest cost of resources. In this way, Jentry Collections are similar to the GNU trove framework. The collections are designed to be faster and use less memory
+become a large drain (in many cases the largest) on resources. In this way, Jentry Collections are similar to the GNU trove framework. The collections are designed to be faster and use less memory
 than the standard JDK collections. Trove explains this tenant in a very succinct way in its second objective:
 
 	Whenever possible, provide the same collections support for primitive types. This gap in the JDK is often addressed by using the "wrapper" 
@@ -27,12 +32,13 @@ than the standard JDK collections. Trove explains this tenant in a very succinct
 	directly will require less space and yield significant performance gains.
 
 
-Jentry expands on this idea, with a couple wrinkles that makes it ideal for in-memory data stores. This will be discussed as a great length with many examples, however
+Jentry Collections expands on this idea, with a couple wrinkles that makes it ideal for in-memory data stores (or else I would have simply stolen the Trove Collections). 
+This will be discussed as a great length with many examples, however
 it is easiest to get the gist in a couple examples.
 
 	Example 1:
 	
-	Suppose that you want to quickly process an ASCII text, recording the number of occurences of a letter in the text. Suppose this is many years ago, where memory efficiency was
+	Suppose that you want to quickly process an ASCII text, recording the number of occurences of a letter in the text. Suppose  memory efficiency is
 	king, and any trick to store the data efficiently is ideal. A good solution would be to allocate an array of the valid ascci slots, do one pass over the text, and do something
 	along the order of:
 
