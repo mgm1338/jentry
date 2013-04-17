@@ -14,7 +14,49 @@ import core.util.comparator.EqualityFunctions;
  * Copyright © 2012 Max Miller
  * All rights reserved.
  * <p/>
- * TODO: doc
+ *
+ * <p>The HashSet for the Jentry Collections. Similar to the JDK HashSet in searching for items in linear time,
+ * and ensuring uniqueness of items in the collection. The added benefit is that items inserted into the set
+ * provide compact keys. This last bit is used all over the place in Jentry.</p>
+ *
+ * <b>Common Use</b>
+ *  <ul>
+ *      The paradigm of insertion into a HashSet to provide a storage location for items.
+ *      Suppose we are storing market orders in memory:
+ *      <pre>
+ *          HashSetInt orders = new HashSet(1000000);
+ *          int idx = orders.insert(order.getId());
+ *          prices[idx] = order.getPrice();
+ *          shares[idx] = orders.getShares();
+ *          counterPartyIds[idx] = order.getCounterPartyId();
+ *          etc....
+ *      </pre>
+ *
+ *      Now because this is a HashSet, we can find that order in linear time, and we know exactly how to get
+ *      all of its information:
+ *
+ *      <pre>
+ *          int idx = orders.getEntry(42013);
+ *          if (idx==-1) return; //doesnt exist
+ *          long price = prices[idx];
+ *          long shares = shares[idx];
+ *          etc...
+ *      </pre>
+ *  </ul>
+ *
+ *  <b>Compactness</b>
+ *  <p>As mentioned above, items stored in the HashSet are 'compact'. In our setting, what this means
+ *  is that the entries, or handles inserted into the HashSet start with zero, and continue with 1, 2,
+ *  etc... When an item is removed, its entry is the next one used. These entries add a level of indirection,
+ *  which has a memory cost, however the speed increase of the direct array access outweighs this cost.
+ *  This is a very important point of Jentry, which is pervasive in the Jentry Collections and structures that
+ *  employ them. See the documentation for more justification and explanation of these concepts.</p>
+ *
+ *  <b>Structure</b>
+ *  <p>
+ *
+ *  </p>
+ *
  */
 public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
 {
