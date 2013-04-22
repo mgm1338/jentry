@@ -1,9 +1,11 @@
 package collections.relationship;
 
+import collections.hash.set.TestHashSetLong;
 import core.Const;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtilsInt;
 
 /**
  * Copyright 2/9/13

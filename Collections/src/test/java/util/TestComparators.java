@@ -1,5 +1,7 @@
 package util;
 
+import core.util.comparator.ComparatorObject;
+
 /**
  * Copyright 2/26/13
  * All rights reserved.

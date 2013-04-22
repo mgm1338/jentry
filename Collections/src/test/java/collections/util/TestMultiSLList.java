@@ -4,6 +4,7 @@ import core.Const;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtilsInt;
 
 import java.util.ArrayList;
 

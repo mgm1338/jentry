@@ -5,6 +5,7 @@ import collections.hash.HashFunctions;
 import collections.hash.set.HashSet_KeyTypeName_;
 import core.Const;
 import core.array.GrowthStrategy;
+import core.array.factory.*;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.array.factory.ArrayFactory_ValueTypeName_;
 import core.stub.*;

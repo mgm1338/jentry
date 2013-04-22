@@ -1,210 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/Jentry.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/build.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/build.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/collections.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/core.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/pom.xml" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\build.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\Collection.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\Collection_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\heap\Heap_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\map\Map_KeyTypeName__ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\HashFunctions.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\Hasher.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\map\HashMap_KeyTypeName__ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetByte.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetChar.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetCharSequence.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetDouble.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetFloat.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetLong.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetObject.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetShort.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSet_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\heap\BinaryHeap_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\relationship\ManyToManyInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\relationship\OneToManyInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\util\MultiLinkedListInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\Const.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\NumberUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\Types.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\ArrayGrowthException.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\GrowthStrategy.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryBool.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryByte.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryChar.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryCharSequence.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryDouble.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryFloat.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryLong.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryObject.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryShort.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactory_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactory_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\charsequence\ByteFacade.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\ArrayFactory_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\DefaultValueProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\IntValueConverter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\_key_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\_val_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparator.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparator_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparators.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\EqualityFunctions.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\perf\collections\hash\set\HashSetInsertTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\map\TestHashMap_KeyTypeName__ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetByte.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetChar.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetCharSequence.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetDouble.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetFloat.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetLong.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetObject.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetShort.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSet_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\heap\TestBinaryHeap_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\heap\ungen\TestBinaryHeapObject.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\relationship\TestManyToManyInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\relationship\TestOneToManyInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\util\TestMultiSLList.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\core\array\growth\DoubleGrowthTest.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\core\array\growth\TestNumberUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestComparators.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsBool.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsByte.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsChar.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsCharSequence.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsDouble.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsFloat.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsInt.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsLong.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsObject.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsShort.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtils_KeyTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunction_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\Hasher.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSet_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\util\MultiLinkedListInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\Const.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\NumberUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\Types.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\ArrayGrowthException.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy$DoubleGrowth.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy$ExactSizeGrowth.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryBool$ArrayProviderBoolImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryBool.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryByte$ArrayProviderByteImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryChar$ArrayProviderCharImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryCharSequence$ArrayProviderCharSequenceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryDouble$ArrayProviderDoubleImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryFloat$ArrayProviderFloatImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryInt$ArrayProviderIntImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryLong$ArrayProviderLongImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryObject$ArrayProviderObjectImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryShort$ArrayProviderShortImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactory_KeyTypeName_$ArrayProvider_KeyTypeName_Impl.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactory_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultBool.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$Default_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\IntValueConverter.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\_key_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\_val_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsBool.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$Equals_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetByte$SameBucketHashFunctionByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetChar$SameBucketHashFunctionChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetCharSequence$SameBucketHashFunctionCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetDouble$SameBucketHashFunctionDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetFloat$SameBucketHashFunctionFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetInt$SameBucketHashFunctionInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetLong$SameBucketHashFunctionLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetObject$SameBucketHashFunctionObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetShort$SameBucketHashFunctionShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSet_KeyTypeName_$SameBucketHashFunction_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSet_KeyTypeName_.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\util\TestMultiSLList.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\core\array\growth\DoubleGrowthTest.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\core\array\growth\TestNumberUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsBool.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsByte.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsChar.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsCharSequence.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsDouble.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsFloat.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsInt.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsLong.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsObject.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsShort.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtils_KeyTypeName_.class" afterPath="" />
-      <change type="MOVED" beforePath="C:\dev\Jentry\Jentry.iml" afterPath="$PROJECT_DIR$/jentry.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generateUtils.xml" afterPath="$PROJECT_DIR$/generateUtils.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-    </list>
+    <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="" />
     <ignored path="Jentry.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596296412" ignored="false" />
@@ -227,7 +24,7 @@
     <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596878290" ignored="false" />
     <file path="/File Header.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358187294508" ignored="false" />
     <file path="/Collection.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359083341709" ignored="false" />
-    <file path="/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364153523639" ignored="false" />
+    <file path="/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366598316761" ignored="false" />
     <file path="/HashSetBool.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358304172662" ignored="false" />
     <file path="/TestHashSetChar.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358826558620" ignored="false" />
     <file path="/TestHashSetByte.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362019204580" ignored="false" />
@@ -254,12 +51,12 @@
     <file path="/Catch Statement Body.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359683328145" ignored="false" />
     <file path="/Dynamic Method Body.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359683343484" ignored="false" />
     <file path="/Implemented Method Body.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359683355014" ignored="false" />
-    <file path="/OneToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364357223168" ignored="false" />
+    <file path="/OneToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366598201559" ignored="false" />
     <file path="/ByteSlice.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362968967350" ignored="false" />
     <file path="/ByteSliceTest.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359688998168" ignored="false" />
-    <file path="/ManyToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364106112425" ignored="false" />
+    <file path="/ManyToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366598157810" ignored="false" />
     <file path="/TestManyToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364107315699" ignored="false" />
-    <file path="/HashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362947219899" ignored="false" />
+    <file path="/HashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366598051945" ignored="false" />
     <file path="/Comparators.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362345214187" ignored="false" />
     <file path="/TestComparators.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1361929508790" ignored="false" />
     <file path="/TestHeapObject.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362286710073" ignored="false" />
@@ -359,16 +156,6 @@
     <file path="/TestHashSetLong.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364152997442" ignored="false" />
     <file path="/ByteFacade.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1365557138761" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596304039" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597089030" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/util/MultiLinkedListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/main/java/collections/relationship/ManyToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
-    <file path="$PROJECT_DIR$/collections/src/test/java/util/TestComparators.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597089030" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +167,7 @@
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_growthTest.coverage" NAME="TestMultiSLList.growthTest Coverage Results" MODIFIED="1356296518948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.util.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$All_in_Jentry.coverage" NAME="All in Jentry Coverage Results" MODIFIED="1365556889058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Jentry$All_in_Jentry.coverage" NAME="All in Jentry Coverage Results" MODIFIED="1366598525405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/Jentry$TestManyToManyInt.coverage" NAME="TestManyToManyInt Coverage Results" MODIFIED="1364153020195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.relationship.*</FILTER>
     </SUITE>
@@ -972,53 +759,7 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/collections/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="71" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/collections/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="52" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.6245695">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comparators.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparators.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="52" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="37" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="39" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -1036,22 +777,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/collections/relationship/OneToManyInt.java" />
-        <option value="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_ValueTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/core/charsequence/ByteSliceASCII.java" />
-        <option value="$PROJECT_DIR$/src/main/core/charsequence/ByteFacade.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeapObject.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeapByte.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/core/src/build.xml" />
-        <option value="$PROJECT_DIR$/core/build.xml" />
-        <option value="$PROJECT_DIR$/core/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/collections/pom.xml" />
-        <option value="$PROJECT_DIR$/collections/build.xml" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharByte.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetChar.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleCharSequence.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMap_KeyTypeName__ValueTypeName_.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/relationship/ManyToManyInt.java" />
+        <option value="$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/util/TestComparators.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectLong.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMap_KeyTypeName__ValueTypeName_.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestOneToManyInt.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestManyToManyInt.java" />
+        <option value="$PROJECT_DIR$/collections/src/test/java/collections/util/TestMultiSLList.java" />
       </list>
     </option>
   </component>
@@ -1167,6 +908,100 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1703,7 +1538,7 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2022412" sideWeight="0.6822742" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2022412" sideWeight="0.6822742" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36008918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32236096" sideWeight="0.4983836" order="8" side_tool="true" content_ui="tabs" />
@@ -1711,17 +1546,17 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31772575" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2022412" sideWeight="0.67335564" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16488793" sideWeight="0.57063407" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16862327" sideWeight="0.6822742" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.6822742" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664436" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.67335564" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32664436" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2025862" sideWeight="0.2138794" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1841,65 +1676,120 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/collections/collections.iml">
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0">
+        <state line="9" column="28" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/core.iml">
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetByte.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="10" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.3903559">
+        <state line="164" column="65" selection-start="4380" selection-end="4380" vertical-scroll-proportion="4.525597">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateUtils.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapCharSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="55" selection-start="9505" selection-end="9505" vertical-scroll-proportion="0.0">
+        <state line="168" column="20" selection-start="4653" selection-end="4653" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/build.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="49" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
+        <state line="2" column="40" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/relationship/ManyToManyInt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="37" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+        <state line="2" column="45" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/pom.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="39" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
+        <state line="218" column="0" selection-start="6596" selection-end="6596" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/util/TestComparators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="11" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/collections/pom.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetByte.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="71" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
+        <state line="355" column="41" selection-start="13722" selection-end="13722" vertical-scroll-proportion="6.714122">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparators.java">
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="52" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
+        <state line="15" column="82" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMap_KeyTypeName__ValueTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="91" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/collections/build.xml">
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestOneToManyInt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="52" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.6245695">
+        <state line="301" column="5" selection-start="12243" selection-end="12243" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestManyToManyInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="368" column="57" selection-start="15672" selection-end="15672" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/util/TestMultiSLList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="54" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="68" selection-start="286" selection-end="286" vertical-scroll-proportion="0.17566016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectLong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="55" selection-start="116" selection-end="116" vertical-scroll-proportion="0.058553386">
           <folding />
         </state>
       </provider>
@@ -1956,11 +1846,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>core</last-edited>
+          <last-edited>collections</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
