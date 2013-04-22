@@ -1,25 +1,27 @@
 Introduction to Jentry
 
-Jentry is a light-weight Java framework designed for efficient store and processing of flows of information. Designed originally for the financial industry, the collections
-and ideas are designed for processing millions of records in memory in sub-second times. 
+Jentry is a light-weight Java framework designed for efficient store and processing of flows of information. Designed originally for the financial industry, the main purpose
+is for processing millions of records in memory in sub-second times. 
 
+Preface:
 
-I originally encountered the ideas for the Jentry framework while helping develop a similar framework at a multinational investment bank. The framework's purpose was to greatly 
+I originally encountered the ideas for the Jentry framework while developing a similar framework at a multinational investment bank. The framework's purpose was to greatly 
 improve the performance of many trading applications. This style of framework had proven successful in before in other financial institutions, and many of the other
-developers had been poached from these successful frameworks of the past. For about two years (and many re-written components), where the framework was employed in tens
-of internal applications. 
+developers in my group had been 'poached' from successful frameworks of the past. For about two years we worked on the framework, with approximately 20 active groups
+using the frameworks in their applications.
 
-In the end, we had some success, but the framework's development was largely driven by the internal groups at the bank. Everyone demanded their application's features be pushed
-into the development path, so quickly what began as a few simple cool ideas became a clutter of random purposes. The essence of the framework was quickly obfiscated by 
-unnecessary features. As you may have heard in the news, the past few years the banks have had to cut some costs. Our framework was shipped off to Russia, where the original intent of the framework was 
-completely lost and gutted. Now most of the developers, like myself, have spread to different jobs (with much more mundance purpose).
+In the end, we had some success, however the framework's development was largely driven by the internal groups at the bank. Application's features were pushed
+into the development path, so quickly what began as a few simple ideas became clutted with business-specific purposes. The essence of the framework was quickly obfiscated by 
+unnecessary features. As you may have heard in the news, the past few years the banks have had to cut some costs. Our framework was shelved, and disappeared into the ether.
 
-The internal framework, with all its faults, was pretty sweet. It has a lot of complexity, but it also very powerful. With the boring subject of my current job, I decided
-to start working on a replacement with a much lighter footprint. After much deliberation, I decided on the name Jentry (which will be explained later, but I am very proud
-of this name). 
+Now:
+
+The internal framework, with all its faults, was pretty sweet in my opinion. It is a bit complex, but it is very powerful in situations that need to process large streams of
+data very quickly. I decided to start working on a replacement with a much more focused approach (without being a slave to whatever group paid me the most). The name of the framework
+is Jentry. I will discuss the name explanation later, for now just trust me that it is not just a play on the word 'Gentry' (that was just a cool coincidence). 
 
 
-Few Basic Pricincples of Jentry:
+A Few Basic Pricincples of Jentry:
 
 - Memory efficiency
 
@@ -31,41 +33,50 @@ than the standard JDK collections. Trove explains this tenant in a very succinct
 	classes (java.lang.Integer, java.lang.Float, etc.) with Object-based collections. For most applications, however, collections which store primitives 
 	directly will require less space and yield significant performance gains.
 
+-  Collection 'Compactness' witn Indirection
 
-Jentry Collections expands on this idea, with a couple wrinkles that makes it ideal for in-memory data stores (or else I would have simply stolen the Trove Collections). 
-This will be discussed as a great length with many examples, however
-it is easiest to get the gist in a couple examples.
+Jentry collections have a unique wrinkle that is probably the largest part of its 'special sauce'. Compactness itself in this case is a very simple idea: dont
+waste space in arrays by having empty slots (duh, I know). The second part reminds me of C++ pointers in a Java way, by using some additional space
+and allowing the collections to access all data by direct array access. 
 
-	Example 1:
-	
-	Suppose that you want to quickly process an ASCII text, recording the number of occurences of a letter in the text. Suppose  memory efficiency is
-	king, and any trick to store the data efficiently is ideal. A good solution would be to allocate an array of the valid ascci slots, do one pass over the text, and do something
-	along the order of:
+The simplest way to show the difference is to show an example:
 
-	CharSequence text;
-	long[] occurances = new long[74]; //index 0 = 48 (code for 0), index 73 = 122 (code for z)
-	
-	int len = text.length();
-	for (int i =0; i< len; i++)
+Lets say you wanted to store a few million financial orders in memory in Java. The financial orders have well-defined fields and unique ids. An easy way to do this in Java would be
+to define a POJO, and create a data store of some sort of HashMap to search them by id, something like:
+
+	HashMap<Integer, Order> orderStore = new HashMap<Integer,Order>(1000000);
+	for (int i=0; i<1000000; i++)
 	{
-		byte c = text.charAt(i);
-		if (c > 47 && c < 122)
-		{
-			occurances[c-48]++;
-		}	
+		Order = new Order(id, price, etc....);
+		orderStore.put(id, Order);
 	}
 
-	This way is quick, passing over the text once, and allocates one array. Every character has to be part of the 74 characters, and we can simply retrieve the 
-	number of 'a's in the text by getting the value of occurances of the ascii code - 48 (so occurances[97-48]). The idea is simple, we use the index of the 
-	occurances array to store information, in this case the index of the array corresponds to the ASCII code. 
+THis is all fine and good, and would probably work reasonably well up to a point, but start to do a ton of actual work with the store, and you encounter a very common problem
+that GC time and PermGen space needs to be increased by crazy amounts. Common solutions of duct tape and massive caching appications can only help so much.
 
-	Every slot in the array is going to be used, which we would call 'compactness' in our framework. The indirection to the index or slot in the array (in this case,
-	the ASCII code - 48) will be called an entry. This is the reasons that it is called Jentry, for J-entry (the snobby play on the word Gentry with a J is just a 
-	delightful coincidence). 
+
+Jentry collection uses a convention of 'handles' to the data. These 'handles' are also called 'entries' (hence, Jentry), but really are just slots in an array. Now we ditch
+the POJOs, and use a slightly different method of storage of the Orders:
+
+	HashSetInt orderStore = new HashSetInt(1000000);
+	long[] price = new long[1000000];
+	int[] instrumentId = int[1000000];
+	etc..., for each order attribute
+	
+	for (int i=0; i<1000000; i++)
+	{
+		int entry = orderStore.insert(id);
+		price[entry] = price;
+		instrument[entry] instrumentId;
+		etc... for each attribute
+	}
+		
+
+Now the difference here is obviously the ditching of the POJOS, but in this case, these entries are 'compact'. That means that the first entry for your first order will be 0,
+followed by 1, 2, etc.... We also make a contract with the Collection that if you retrieve an item by an entry, you get the exact item you inserted. (Example of retrieval and
+modification).
 
 	
-
-		
 
 
 	
