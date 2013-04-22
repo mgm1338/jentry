@@ -2,22 +2,220 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\dev\Jentry\src\main\core\charsequence\ByteSliceASCII.java" afterPath="$PROJECT_DIR$/src/main/core/charsequence/ByteFacade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java" afterPath="$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/Jentry.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/build.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/build.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/collections.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/core.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/pom.xml" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\build.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\Collection.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\Collection_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\heap\Heap_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\generic\map\Map_KeyTypeName__ValueTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\HashFunctions.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\Hasher.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\map\HashMap_KeyTypeName__ValueTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetByte.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetChar.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetCharSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetLong.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSetShort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\hash\set\HashSet_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\heap\BinaryHeap_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\relationship\ManyToManyInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\relationship\OneToManyInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\collections\util\MultiLinkedListInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\Const.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\NumberUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\Types.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\ArrayGrowthException.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\GrowthStrategy.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryBool.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryByte.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryChar.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryCharSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryLong.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactoryShort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactory_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\array\factory\ArrayFactory_ValueTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\charsequence\ByteFacade.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\ArrayFactory_ValueTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\DefaultValueProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\IntValueConverter.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\_key_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\stub\_val_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparator.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparator_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\Comparators.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\main\core\util\comparator\EqualityFunctions.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\perf\collections\hash\set\HashSetInsertTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\map\TestHashMap_KeyTypeName__ValueTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetByte.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetChar.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetCharSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetLong.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSetShort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\hash\set\TestHashSet_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\heap\TestBinaryHeap_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\heap\ungen\TestBinaryHeapObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\relationship\TestManyToManyInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\relationship\TestOneToManyInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\collections\util\TestMultiSLList.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\core\array\growth\DoubleGrowthTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\core\array\growth\TestNumberUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestComparators.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsBool.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsByte.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsChar.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsCharSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsInt.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsLong.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsObject.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtilsShort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\src\test\util\TestUtils_KeyTypeName_.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunctionShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions$HashFunction_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\HashFunctions.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\Hasher.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSetShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\hash\set\HashSet_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\collections\util\MultiLinkedListInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\Const.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\NumberUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\Types.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\ArrayGrowthException.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy$DoubleGrowth.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy$ExactSizeGrowth.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\GrowthStrategy.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryBool$ArrayProviderBoolImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryBool.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryByte$ArrayProviderByteImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryChar$ArrayProviderCharImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryCharSequence$ArrayProviderCharSequenceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryDouble$ArrayProviderDoubleImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryFloat$ArrayProviderFloatImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryInt$ArrayProviderIntImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryLong$ArrayProviderLongImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryObject$ArrayProviderObjectImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryShort$ArrayProviderShortImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactoryShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactory_KeyTypeName_$ArrayProvider_KeyTypeName_Impl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\array\factory\ArrayFactory_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultBool.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$DefaultShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider$Default_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\DefaultValueProvider.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\IntValueConverter.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\_key_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\stub\_val_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsBool.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$EqualsShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions$Equals_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\classes\core\util\comparator\EqualityFunctions.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetByte$SameBucketHashFunctionByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetChar$SameBucketHashFunctionChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetCharSequence$SameBucketHashFunctionCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetDouble$SameBucketHashFunctionDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetFloat$SameBucketHashFunctionFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetInt$SameBucketHashFunctionInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetLong$SameBucketHashFunctionLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetObject$SameBucketHashFunctionObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetShort$SameBucketHashFunctionShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSetShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSet_KeyTypeName_$SameBucketHashFunction_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\hash\set\TestHashSet_KeyTypeName_.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\collections\util\TestMultiSLList.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\core\array\growth\DoubleGrowthTest.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\core\array\growth\TestNumberUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsBool.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsByte.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsChar.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsCharSequence.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsDouble.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsFloat.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsInt.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsLong.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsObject.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtilsShort.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\dev\Jentry\target\test-classes\util\TestUtils_KeyTypeName_.class" afterPath="" />
+      <change type="MOVED" beforePath="C:\dev\Jentry\Jentry.iml" afterPath="$PROJECT_DIR$/jentry.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generateUtils.xml" afterPath="$PROJECT_DIR$/generateUtils.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="Jentry.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1365560077333" ignored="false" />
-    <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364152987846" ignored="false" />
+    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596296412" ignored="false" />
+    <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597066554" ignored="false" />
     <file path="/MultiListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358453996485" ignored="false" />
     <file path="/TestMultiSLList.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364082586978" ignored="false" />
     <file path="/a.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358179898030" ignored="false" />
     <file path="/sample.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356203475590" ignored="false" />
     <file path="/Types.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356637433629" ignored="false" />
     <file path="/ArrayFactory_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1361930977649" ignored="false" />
-    <file path="/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1363835724545" ignored="false" />
+    <file path="/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366583947854" ignored="false" />
     <file path="/HashFunction_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1356636628549" ignored="false" />
     <file path="/Hasher.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1361930099814" ignored="false" />
     <file path="/HashFunctions.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358396260219" ignored="false" />
@@ -26,7 +224,7 @@
     <file path="/Collection_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362285170767" ignored="false" />
     <file path="/DefaultValueProvider.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362540755621" ignored="false" />
     <file path="/Const.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358827090651" ignored="false" />
-    <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362966266569" ignored="false" />
+    <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596878290" ignored="false" />
     <file path="/File Header.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358187294508" ignored="false" />
     <file path="/Collection.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359083341709" ignored="false" />
     <file path="/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364153523639" ignored="false" />
@@ -74,10 +272,10 @@
     <file path="/Heap.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362286540209" ignored="false" />
     <file path="$PROJECT_DIR$/src/main/collections/generic/heap/Heap.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362286546752" ignored="false" />
     <file path="/TestHeap_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362286692630" ignored="false" />
-    <file path="/BinaryHeap_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1365561275539" ignored="false" />
+    <file path="/BinaryHeap_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366166206516" ignored="false" />
     <file path="/TestBinaryHeapObject.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362345048323" ignored="false" />
     <file path="/generateUtils.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362965535788" ignored="false" />
-    <file path="/pom.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362944560276" ignored="false" />
+    <file path="/pom.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596778024" ignored="false" />
     <file path="/HashMapByteBool.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362947171445" ignored="false" />
     <file path="/TestBinaryHeapBool.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362966336880" ignored="false" />
     <file path="/AsciiByteSlice.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362967440663" ignored="false" />
@@ -160,6 +358,17 @@
     <file path="$PROJECT_DIR$/src/test/collections/hash/map/TestHashMapCharObject.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364082716596" ignored="false" />
     <file path="/TestHashSetLong.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364152997442" ignored="false" />
     <file path="/ByteFacade.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1365557138761" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366596304039" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597089030" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMap_KeyTypeName__ValueTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/util/MultiLinkedListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/main/java/collections/relationship/ManyToManyInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597074825" ignored="false" />
+    <file path="$PROJECT_DIR$/collections/src/test/java/util/TestComparators.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1366597089030" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,14 +408,14 @@
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_removeMiddleFromLongList.coverage" NAME="TestMultiSLList.removeMiddleFromLongList Coverage Results" MODIFIED="1356207806028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.list.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList.coverage" NAME="TestMultiSLList Coverage Results" MODIFIED="1364082609589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.util.*</FILTER>
+    <SUITE FILE_PATH="coverage/Jentry$collections_relationship_in_Jentry.coverage" NAME="collections.relationship in Jentry Coverage Results" MODIFIED="1364153029453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.relationship.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestOneToMany_simpleAssociateNoTracking.coverage" NAME="TestOneToMany.simpleAssociateNoTracking Coverage Results" MODIFIED="1360214385883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.relationship.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$collections_relationship_in_Jentry.coverage" NAME="collections.relationship in Jentry Coverage Results" MODIFIED="1364153029453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.relationship.*</FILTER>
+    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList.coverage" NAME="TestMultiSLList Coverage Results" MODIFIED="1364082609589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.util.*</FILTER>
     </SUITE>
   </component>
   <component name="CoverageOptionsProvider">
@@ -220,92 +429,7 @@
   </component>
   <component name="DebuggerManager">
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java" line="187" class="collections.hash.set.TestHashSetObject" package="collections.hash.set">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetChar.java" line="180" class="collections.hash.set.TestHashSetChar" package="collections.hash.set">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetInt.java" line="181" class="collections.hash.set.TestHashSetInt" package="collections.hash.set">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/core/array/growth/TestNumberUtil.java" line="27" class="core.array.growth.TestNumberUtil" package="core.array.growth">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetLong.java" line="331" class="collections.hash.set.TestHashSetLong" package="collections.hash.set">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/collections/relationship/TestManyToManyInt.java" line="335" class="collections.relationship.TestManyToManyInt" package="collections.relationship">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -346,96 +470,549 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Jentry" />
+    <favorites_list name="collections">
+      <favorite_root url="file://$PROJECT_DIR$/collections/src" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+        <favorite_root url="file://$PROJECT_DIR$/collections/src/main" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/Collection.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/CollectionShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/Collection_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/HeapShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/heap/Heap_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapBoolShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapByteShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharSequenceShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapCharShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapDoubleShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapFloatShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapIntShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapLongShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapObjectShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/MapShortShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/Map_KeyTypeName__ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/Hasher.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/HashFunctions.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapByteShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharSequenceShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapCharShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapDoubleShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapFloatShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapIntShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapLongShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapObjectShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMapShortShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/map/HashMap_KeyTypeName__ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSetShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeapShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/relationship" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/relationship/ManyToManyInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/util" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/main/java/collections/util/MultiLinkedListInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+            </favorite_root>
+          </favorite_root>
+        </favorite_root>
+        <favorite_root url="file://$PROJECT_DIR$/collections/src/perf" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/collections/src/perf/java" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/collections/src/perf/java/collections" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/perf/java/collections/hash" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/perf/java/collections/hash/set" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/perf/java/collections/hash/set/HashSetInsertTest.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+            </favorite_root>
+          </favorite_root>
+        </favorite_root>
+        <favorite_root url="file://$PROJECT_DIR$/collections/src/test" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapByteShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharSequenceShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapCharShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapDoubleShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapFloatShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapIntShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapLongShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapObjectShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMapShortShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/map/TestHashMap_KeyTypeName__ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSetShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeap_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/TestBinaryHeapObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/relationship" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestManyToManyInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestOneToManyInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/util" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/collections/util/TestMultiSLList.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+            </favorite_root>
+            <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util" module="collections" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestComparators.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtilsShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtils_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/collections/src/test/java/util/TestUtils_ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </favorite_root>
+          </favorite_root>
+        </favorite_root>
+      </favorite_root>
+    </favorites_list>
+    <favorites_list name="core">
+      <favorite_root url="file://$PROJECT_DIR$/core/src" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+        <favorite_root url="file://$PROJECT_DIR$/core/src/main" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/core/src/main/java" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/Const.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/NumberUtil.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/Types.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/ArrayGrowthException.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/GrowthStrategy.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactoryShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactory_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/array/factory/ArrayFactory_ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/charsequence" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteFacade.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub/ArrayFactory_ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub/DefaultValueProvider.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub/IntValueConverter.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub/_key_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/stub/_val_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+              <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparator.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorBool.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorByte.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorChar.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorCharSequence.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorDouble.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorFloat.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorInt.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorLong.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorObject.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/ComparatorShort.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparator_KeyTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparator_ValueTypeName_.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparators.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/EqualityFunctions.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+            </favorite_root>
+          </favorite_root>
+        </favorite_root>
+        <favorite_root url="file://$PROJECT_DIR$/core/src/test" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/core/src/test/java" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/core/src/test/java/core" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="file://$PROJECT_DIR$/core/src/test/java/core/array" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="file://$PROJECT_DIR$/core/src/test/java/core/array/growth" module="core" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/test/java/core/array/growth/DoubleGrowthTest.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/core/src/test/java/core/array/growth/TestNumberUtil.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+              </favorite_root>
+            </favorite_root>
+          </favorite_root>
+        </favorite_root>
+      </favorite_root>
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ManyToManyInt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/ManyToManyInt.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/collections/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="67" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0">
+            <state line="25" column="71" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OneToManyInt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/OneToManyInt.java">
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/collections/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="209" column="35" selection-start="9327" selection-end="9327" vertical-scroll-proportion="0.0">
+            <state line="32" column="52" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.6245695">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestBinaryHeap_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java">
+      <file leaf-file-name="Comparators.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparators.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+            <state line="18" column="52" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ByteFacade.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/charsequence/ByteFacade.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="60" selection-start="3745" selection-end="3745" vertical-scroll-proportion="0.0">
+            <state line="13" column="37" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HashSetInsertTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/perf/collections/hash/set/HashSetInsertTest.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="53" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BinaryHeap_KeyTypeName_.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="67" selection-start="299" selection-end="299" vertical-scroll-proportion="-8.702337">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComparatorCharSequence.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/ComparatorCharSequence.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="3" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comparator_KeyTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="30" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestBinaryHeapShort.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeapShort.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="19" selection-start="80" selection-end="81" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comparator_ValueTypeName_.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/Comparator_ValueTypeName_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="19" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+            <state line="23" column="39" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -459,22 +1036,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/util/TestUtils_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/hash/map/HashMapByteInt.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/hash/map/HashMap_KeyTypeName__ValueTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/generic/Collection_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/generic/heap/Heap_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/generic/map/Map_KeyTypeName__ValueTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java" />
-        <option value="$PROJECT_DIR$/src/test/collections/hash/set/TestHashSet_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/collections/relationship/OneToManyInt.java" />
         <option value="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_ValueTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java" />
         <option value="$PROJECT_DIR$/src/main/core/charsequence/ByteSliceASCII.java" />
         <option value="$PROJECT_DIR$/src/main/core/charsequence/ByteFacade.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeapObject.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeapByte.java" />
         <option value="$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/src/main/collections/hash/set/HashSet_KeyTypeName_.java" />
+        <option value="$PROJECT_DIR$/core/src/build.xml" />
+        <option value="$PROJECT_DIR$/core/build.xml" />
+        <option value="$PROJECT_DIR$/core/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/collections/pom.xml" />
+        <option value="$PROJECT_DIR$/collections/build.xml" />
       </list>
     </option>
   </component>
@@ -502,12 +1079,14 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="collections" />
+          <option name="myItemId" value="jentry" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
+      </PATH>
+      <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -526,10 +1105,10 @@
     <option name="jreName" value="1.6" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1918" />
-    <option name="height" value="1038" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -573,7 +1152,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -592,87 +1170,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="perf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="set" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Jentry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
       </pane>
       <pane id="Scope" />
     </panes>
@@ -680,16 +1181,16 @@
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/build.xml" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jentry" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jentry" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -704,8 +1205,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -713,16 +1214,17 @@
       <recent name="collections.hash" />
       <recent name="core.array" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\dev\Jentry\src\test\collections\hash" />
-      <recent name="C:\dev\Jentry\src\test\core" />
-      <recent name="C:\dev\Jentry\src\test\collections" />
-      <recent name="C:\dev\Jentry\src\main\collections" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="util" />
       <recent name="collections.hash.set" />
       <recent name="collections.hash" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\Jentry" />
+      <recent name="C:\dev\Jentry\core" />
+      <recent name="C:\dev\Jentry\src\test\collections\hash" />
+      <recent name="C:\dev\Jentry\src\test\core" />
+      <recent name="C:\dev\Jentry\src\test\collections" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in Jentry">
@@ -790,40 +1292,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TestHashSetLong.copyFromSmaller" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="collections.hash.set.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Jentry" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="collections.hash.set" />
-      <option name="MAIN_CLASS_NAME" value="collections.hash.set.TestHashSetLong" />
-      <option name="METHOD_NAME" value="copyFromSmaller" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="collections.relationship in Jentry" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -854,7 +1322,7 @@
     </configuration>
     <configuration default="false" name="All in Jentry" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <module name="Jentry" />
+      <module name="collections" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="PACKAGE_NAME" value="" />
@@ -874,6 +1342,34 @@
       <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="collections.heap in Jentry" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="collections.heap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Jentry" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="collections.heap" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -912,6 +1408,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -938,19 +1447,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -992,17 +1488,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt.copyFromNull" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestHashSetLong.copyFromSmaller" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.collections.relationship in Jentry" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in Jentry" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.collections.relationship in Jentry" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in Jentry" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.collections.heap in Jentry" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in Jentry" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.collections.relationship in Jentry" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt.copyFromNull" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestHashSetLong.copyFromSmaller" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.collections.heap in Jentry" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.collections.relationship in Jentry" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestManyToManyInt.copyFromNull" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1188,35 +1684,43 @@
       <created>1364357245036</created>
       <updated>1364357245036</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Clean up of the heap, minor code changes and finish java doc first iteration.">
+      <created>1366166285931</created>
+      <updated>1366166285931</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Preface documentation to HashSet.">
+      <created>1366167829939</created>
+      <updated>1366167829939</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1918" height="1038" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2025862" sideWeight="0.45051193" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2022412" sideWeight="0.6822742" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36008918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32236096" sideWeight="0.4983836" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.32107022" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31772575" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16488793" sideWeight="0.57063407" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16864224" sideWeight="0.67804325" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16862327" sideWeight="0.6822742" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27316812" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.6822742" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664436" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3188406" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2025862" sideWeight="0.2138794" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1260,7 +1764,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Immense javadoc for the OneToMany" />
+    <option name="LAST_COMMIT_MESSAGE" value="Preface documentation to HashSet." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1273,8 +1777,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="new type of byteslice, keep inserting until we can remove enough to compact, will stay in order." />
-    <MESSAGE value="One to Many work 1/2 way through TDD" />
     <MESSAGE value="One to many, fixed up some disassociation errors.  MultiLinkedListInt, on remove of head item, needed to -1 out the heads[next] and next[next] (or else this extra state would point to a potentially valid item and crap out). Caught this from a OneToMany bug that messed up everything. Added test that exposes this, and now compactness is valid on OneToMany. Cleaned up Test assertions, so that expected, actual is in right order." />
     <MESSAGE value="Finishing up OneToMany testing (initial)" />
     <MESSAGE value="finishing up local commit to merge in remote" />
@@ -1298,6 +1800,8 @@
     <MESSAGE value="Passing all M2M tests, fixed error in equality assertion of HashSet. Some cleanup of O2M comments" />
     <MESSAGE value="Passing all M2M tests, fixed error in equality assertion of HashSet. Some cleanup of O2M comments. Had to add back in stub.* imports after cleanup" />
     <MESSAGE value="Immense javadoc for the OneToMany" />
+    <MESSAGE value="Clean up of the heap, minor code changes and finish java doc first iteration." />
+    <MESSAGE value="Preface documentation to HashSet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1317,7 +1821,16 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-    <buildFile url="file://$PROJECT_DIR$/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/collections/build.xml">
+      <antCommandLine value="" />
+      <runInBackground value="true" />
+      <targetFilters />
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+      <expanded value="true" />
+    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/core/build.xml">
       <antCommandLine value="" />
       <runInBackground value="true" />
       <targetFilters />
@@ -1328,111 +1841,66 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/core/array/factory/ArrayFactory_KeyTypeName_.java">
+    <entry file="file://$PROJECT_DIR$/collections/collections.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="18" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSetObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+        <state line="21" column="0" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/collections/hash/set/TestHashSet_KeyTypeName_.java">
+    <entry file="file://$PROJECT_DIR$/core/core.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="65" selection-start="307" selection-end="307" vertical-scroll-proportion="0.17566016" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/ComparatorLong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="69" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/heap/BinaryHeapLong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="57" selection-start="5987" selection-end="5987" vertical-scroll-proportion="0.0">
+        <state line="20" column="10" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.3903559">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/collections/relationship/TestManyToManyInt.java">
+    <entry file="file://$PROJECT_DIR$/generateUtils.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
+        <state line="197" column="55" selection-start="9505" selection-end="9505" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/ManyToManyInt.java">
+    <entry file="file://$PROJECT_DIR$/core/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="67" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0">
+        <state line="16" column="49" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/relationship/OneToManyInt.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="35" selection-start="9327" selection-end="9327" vertical-scroll-proportion="0.0">
+        <state line="13" column="37" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/Comparator_ValueTypeName_.java">
+    <entry file="file://$PROJECT_DIR$/core/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+        <state line="23" column="39" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/ComparatorCharSequence.java">
+    <entry file="file://$PROJECT_DIR$/collections/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+        <state line="25" column="71" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/util/comparator/Comparator_KeyTypeName_.java">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparators.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="30" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+        <state line="18" column="52" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeapShort.java">
+    <entry file="file://$PROJECT_DIR$/collections/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="19" selection-start="80" selection-end="81" vertical-scroll-proportion="0.0">
+        <state line="32" column="52" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.6245695">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/collections/heap/TestBinaryHeap_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/core/charsequence/ByteFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="60" selection-start="3745" selection-end="3745" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/perf/collections/hash/set/HashSetInsertTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="53" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/collections/heap/BinaryHeap_KeyTypeName_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="67" selection-start="299" selection-end="299" vertical-scroll-proportion="-8.702337">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1488,12 +1956,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Jentry</last-edited>
+          <last-edited>core</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

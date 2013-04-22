@@ -1,5 +1,5 @@
 <project name="Jentry" basedir="src">
-    <property name="src" location="."/>
+    <property name="src" location="collections/src"/>
 
 
     <!--START GENERATING TYPE-SPECIFIC CLASSES FOR CLASSES WITH ONLY _KeyTypeName_-->

@@ -1,0 +1,16 @@
+<project name="core" basedir="src">
+    <property name="src" location="."/>
+    <property name="gen" location="main/generated"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+
+    <include file="../generateUtils.xml"/>
+
+    <target name="generate">
+        <generateKeyTypesBoolVal fileBase="ArrayFactory"
+                                 package="main\java\core\array\factory"/>
+        <generateKeyTypesBoolVal fileBase="Comparator"
+                                 package="main\java\core\util\comparator"/>
+    </target>
+</project>
