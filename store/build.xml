@@ -1,0 +1,16 @@
+<project name="store" basedir="src">
+    <property name="src" location="."/>
+    <property name="gen" location="main/generated"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+
+    <include file="../generateUtils.xml"/>
+
+    <target name="generate">
+        <generateKeyTypesBoolVal fileBase="Column"
+                                 package="main\java\store\col"/>
+        <generateKeyTypesBoolVal fileBase="ColStore"
+                                 package="main\java\store\core"/>
+    </target>
+</project>
