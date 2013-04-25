@@ -5,6 +5,9 @@
     <groupId>com.jentry</groupId>
     <artifactId>jentry</artifactId>
     <version>0.1</version>
+    <modules>
+        <module>store</module>
+    </modules>
     <packaging>pom</packaging>
 
     <dependencies>

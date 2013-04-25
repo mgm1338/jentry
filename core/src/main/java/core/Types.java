@@ -112,4 +112,9 @@ public class Types
     }
 
 
+    //stub types
+    public static final byte _KeyTypeName_ = -1;
+    public static final byte _ValueTypeName_ = _KeyTypeName_;
+
+
 }
