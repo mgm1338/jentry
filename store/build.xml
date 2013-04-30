@@ -12,5 +12,7 @@
                                  package="main\java\store\col"/>
         <generateKeyTypesBoolVal fileBase="ColStore"
                                  package="main\java\store\core"/>
+        <generateKeyTypesBoolVal fileBase="ColStoreArray"
+                                 package="main\java\store\core\array"/>
     </target>
 </project>

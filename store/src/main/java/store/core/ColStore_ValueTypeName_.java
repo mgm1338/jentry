@@ -1,6 +1,6 @@
 package store.core;
 
-import core.stub._val_;
+import core.stub.*;
 
 /**
  * Copyright 4/24/13
@@ -9,7 +9,7 @@ import core.stub._val_;
  * User: Max Miller
  * Created: 4/24/13
  */
-public interface ColStore_ValueTypeName_
+public interface ColStore_ValueTypeName_ extends TypedColumnStorage
 {
     _val_ getValue(int row);
 

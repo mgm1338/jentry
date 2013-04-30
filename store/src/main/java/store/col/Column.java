@@ -12,4 +12,6 @@ public interface Column
     int getId();
 
     byte getType();
+
+    CharSequence getName();
 }

@@ -15,11 +15,13 @@ public class Column_KeyTypeName_ implements Column
 {
     protected final ColStore_KeyTypeName_ storage;
     protected final int id;
+    protected final CharSequence name;
 
-    public Column_KeyTypeName_( ColStore_KeyTypeName_ storage, int id )
+    public Column_KeyTypeName_( ColStore_KeyTypeName_ storage, int id, CharSequence name )
     {
         this.storage = storage;
         this.id = id;
+        this.name = name;
     }
 
     public _key_ get_KeyTypeName_(int row)
@@ -44,4 +46,9 @@ public class Column_KeyTypeName_ implements Column
         return Types._KeyTypeName_;
     }
 
+    @Override
+    public CharSequence getName()
+    {
+        return name;
+    }
 }

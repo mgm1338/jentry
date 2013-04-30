@@ -2,6 +2,7 @@ package store.schema;
 
 import store.col.Column;
 import store.col.ColumnDefinition;
+import store.col.ColumnUtils;
 
 /**
  * Copyright 4/24/13
@@ -12,21 +13,48 @@ import store.col.ColumnDefinition;
  */
 public class Schema
 {
-    Column[] columns;
-    int size = -1;
+    protected static final int DEFAULT_NUM_COLS = 4;
 
-    public Schema ()
+    protected Column[] columns;
+    protected int numColumns = -1;
+    protected boolean initialized = false;
+
+    public Schema( ColumnDefinition... defs )
     {
+        int len = defs.length;
+        int initSize = (Math.max( DEFAULT_NUM_COLS, len ));
+        columns = new Column[initSize];
+        for( int i = 0; i < initSize; i++ )
+        {
+            columns[i] = ColumnUtils.getTypedColumn( i, defs[ i ].getType(), defs[ i ].getName() );
+
+        }
     }
 
-    public Schema(byte... types)
+    public void initialize()
     {
+
+        initialized = true;
+    }
+
+
+    public void addColumn( ColumnDefinition colDef )
+    {
+        if( initialized )
+        {
+            throw new IllegalStateException( "Schemas are immutable after initialization" );
+        }
 
     }
 
-    public Schema(ColumnDefinition... defs)
+    public void removeColumn( int idx)
     {
-
+        if (initialized)
+        {
+            throw new IllegalStateException( "Schemas are immutable after initialization" );
+        }
     }
+
+
 
 }
