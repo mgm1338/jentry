@@ -390,7 +390,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
     }
 
     /**
-     * Remove the item in the HashSet by entry. Usually used in conjunction with {@link #getEntry(core.stub._key_)}
+     * Remove the item in the HashSet by entry. Usually used in conjunction with {@link #getEntry(_key_)}
      * to remove the item without having to first ensure it is in the structure. To maintain convention,
      * we will still return the entry of the item removed.
      *
@@ -398,7 +398,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @return the entry
      */
     @UncheckedArray
-    public int remove( int entry)
+    public int removeByEntry( int entry )
     {
         int bucket = getBucket( keys[entry] );
         remove( entry, bucket );

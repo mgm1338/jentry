@@ -68,6 +68,8 @@ public class TestHashSet_KeyTypeName_
         }
     }
 
+
+
     /**
      * Load TEST_SIZE entries into the same bucket into the HashSet, this will show that collisions
      * do not effect insertion.
@@ -169,6 +171,29 @@ public class TestHashSet_KeyTypeName_
         for( int i = 0; i < TEST_SIZE; i++ )
         {
             TestCase.assertNotSame( hashSet.remove( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) ), Const.NO_ENTRY );
+            TestCase.assertEquals( ( TEST_SIZE - i - 1 ), hashSet.getSize() );
+            TestCase.assertTrue( hashSet.getEntry( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) )
+                                 == Const.NO_ENTRY );
+        }
+        TestCase.assertTrue( hashSet.getSize() == 0 );
+        TestCase.assertTrue( hashSet.isEmpty() );
+
+
+    }
+
+
+    @Test
+    public void fullRemoveByEntry()
+    {
+        if( template ) return;
+
+        loadTest();//fill up
+
+        //remove each item iteratively, asserting it was removed
+        for( int i = 0; i < TEST_SIZE; i++ )
+        {
+            int entry = hashSet.getEntry( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) );
+            hashSet.removeByEntry( entry );
             TestCase.assertEquals( ( TEST_SIZE - i - 1 ), hashSet.getSize() );
             TestCase.assertTrue( hashSet.getEntry( IntValueConverter._key_FromInt( i + OFFSET_FROM_ZERO ) )
                                  == Const.NO_ENTRY );
