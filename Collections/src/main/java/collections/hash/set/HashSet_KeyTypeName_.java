@@ -4,6 +4,7 @@ import collections.generic.Collection_KeyTypeName_;
 import collections.hash.HashFunctions;
 import collections.util.MultiLinkedListInt;
 import core.Const;
+import core.annotations.UncheckedArray;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.array.factory.*;
@@ -321,6 +322,7 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
      * @param entry the entry into the set
      * @return the value
      */
+    @UncheckedArray
     @Override
     public _key_ get( int entry )
     {
@@ -383,10 +385,39 @@ public class HashSet_KeyTypeName_ implements Collection_KeyTypeName_
         {
             return entry;
         }
+        remove( entry,  bucket);
+        return entry;
+    }
+
+    /**
+     * Remove the item in the HashSet by entry. Usually used in conjunction with {@link #getEntry(core.stub._key_)}
+     * to remove the item without having to first ensure it is in the structure. To maintain convention,
+     * we will still return the entry of the item removed.
+     *
+     * @param entry the entry of the item to remove
+     * @return the entry
+     */
+    @UncheckedArray
+    public int remove( int entry)
+    {
+        int bucket = getBucket( keys[entry] );
+        remove( entry, bucket );
+        return entry;
+    }
+
+    /**
+     * Do the removal of the item in the HashSet. This will remove it from the bucket list
+     * as well as add it to the free list. We do not remove it from the keys, they no longer
+     * have a mapping and will be overwritten.
+     *
+     * @param entry entry of the item to remove
+     * @param bucket items hash bucket
+     */
+    protected void remove(int entry, int bucket)
+    {
         bucketList.remove( bucket, entry );
         size--;
         addEntryToFreeList( entry );
-        return entry;
     }
 
 
