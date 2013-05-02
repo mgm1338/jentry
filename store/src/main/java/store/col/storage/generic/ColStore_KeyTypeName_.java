@@ -1,6 +1,7 @@
-package store.core;
+package store.col.storage.generic;
 
 import core.stub.*;
+import store.col.storage.generic.TypedColumnStorage;
 
 /**
  * Copyright 4/24/13
@@ -14,4 +15,6 @@ public interface ColStore_KeyTypeName_ extends TypedColumnStorage
     _key_ getValue(int row);
 
     void setValue(int row, _key_ val);
+
+
 }

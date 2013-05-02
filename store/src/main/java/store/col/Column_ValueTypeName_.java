@@ -2,7 +2,7 @@ package store.col;
 
 import core.Types;
 import core.stub.*;
-import store.core.ColStore_ValueTypeName_;
+import store.col.storage.generic.ColStore_ValueTypeName_;
 
 /**
  * Copyright 4/24/13

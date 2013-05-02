@@ -2,6 +2,7 @@ package collections.heap;
 
 import collections.generic.heap.Heap_KeyTypeName_;
 import core.Const;
+import core.annotations.UncheckedArray;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactory_KeyTypeName_;
 import core.array.factory.*;
@@ -328,6 +329,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
      * @param entry the entry for the item
      * @return the value of the item
      */
+    @UncheckedArray
     public _key_ get( int entry )
     {
         return keys[ entry ];

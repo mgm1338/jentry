@@ -1,6 +1,6 @@
 package store.core.factory;
 
-import store.core.TypedColumnStorage;
+import store.col.storage.generic.TypedColumnStorage;
 
 /**
  * Copyright 4/29/13

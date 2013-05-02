@@ -1,4 +1,4 @@
-package store.core;
+package store.col.storage.generic;
 
 import core.array.GrowthStrategy;
 

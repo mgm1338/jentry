@@ -1,11 +1,11 @@
-package store.core.array;
+package store.col.storage.simple;
 
 import core.Types;
 import core.annotations.UncheckedArray;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.*;
-import store.core.ColStore_KeyTypeName_;
+import store.col.storage.generic.ColStore_KeyTypeName_;
 
 /**
  * Copyright 4/29/13

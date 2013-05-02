@@ -1,5 +1,9 @@
 package store.schema;
 
+import collections.hash.map.HashMapCharSequenceObject;
+import collections.hash.set.HashSetCharSequence;
+import com.sun.org.apache.bcel.internal.classfile.ConstantObject;
+import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;
 import store.col.ColumnUtils;
@@ -13,27 +17,32 @@ import store.col.ColumnUtils;
  */
 public class Schema
 {
-    protected static final int DEFAULT_NUM_COLS = 4;
 
-    protected Column[] columns;
-    protected int numColumns = -1;
+    /** Is the Schema initialized. Column additions and removals may only be made before initialization. After
+     * the columns are set, the Schema is locked and storage to the column allocated by {@link #initialize(int)}*/
     protected boolean initialized = false;
+    /** Set of the names of the columns. Must be unique. The handles to these names will be the column's id.
+     * Inserting a column of the same name will overwrite the column that was originally inserted.*/
+    protected HashSetCharSequence colNames;
+    /** Array of columns, index and/or id of each column is determined by entry in <i>colNames</i>*/
+    protected Column[] columns;
+    /** Number of columns (this is not the size of <i>columns</i>, which may have holes in it*/
+    protected int numColumns = -1;
+
 
     public Schema( ColumnDefinition... defs )
     {
-        int len = defs.length;
-        int initSize = (Math.max( DEFAULT_NUM_COLS, len ));
-        columns = new Column[initSize];
-        for( int i = 0; i < initSize; i++ )
+        numColumns =  defs.length;
+        colNames = new HashSetCharSequence( numColumns );
+        columns = new Column[ numColumns ];
+        for( int i = 0; i < numColumns; i++ )
         {
-            columns[i] = ColumnUtils.getTypedColumn( i, defs[ i ].getType(), defs[ i ].getName() );
-
+            addColumn( defs[ i ] );
         }
     }
 
-    public void initialize()
+    public void initialize(int numRows)
     {
-
         initialized = true;
     }
 
@@ -44,17 +53,39 @@ public class Schema
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
-
+        CharSequence name = colDef.getName();
+        int entry = colNames.insert( name );
+        if( entry == columns.length ) //exact growth, columns can become massive
+        {
+            Column[] temp = new Column[ entry + 1 ];
+            System.arraycopy( columns, 0, temp, 0, entry );
+            columns = temp;
+        }
+        columns[ entry ] = ColumnUtils.getTypedColumn( entry, colDef.getType(), name );
+        numColumns++;
     }
 
-    public void removeColumn( int idx)
+    public void removeColumn( int id )
     {
-        if (initialized)
+        if( initialized )
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
+        colNames.remove( id );
+        columns[id] = null;
+        numColumns--;
     }
 
+    public void removeColumn( CharSequence name)
+    {
+        if( initialized )
+        {
+            throw new IllegalStateException( "Schemas are immutable after initialization" );
+        }
+        int entry = colNames.getEntry( name );
+        if (entry== Const.NO_ENTRY) throw new IllegalArgumentException( "Column with name ["+name+"] does not exist." );
+        removeColumn( entry );
+    }
 
 
 }
