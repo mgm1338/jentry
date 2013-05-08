@@ -1,7 +1,7 @@
 package store.col.storage.generic;
 
 import core.stub.*;
-import store.col.storage.generic.TypedColumnStorage;
+import store.col.storage.generic.*;
 
 /**
  * Copyright 4/24/13

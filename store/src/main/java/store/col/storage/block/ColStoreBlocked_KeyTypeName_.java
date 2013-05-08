@@ -69,19 +69,36 @@ public class ColStoreBlocked_KeyTypeName_
 
     _key_[][] data;
 
+    /**
+     * Short Constructor. Uses double growth for all growth requests.
+     *
+     * @param bitsPerBlock the number of bits that represent indices in the block
+     * @param size the size of that storage. If not a multiple of the blockSize, will be the next multiple after
+     *             the size passed.
+     */
     public ColStoreBlocked_KeyTypeName_( int bitsPerBlock, int size )
     {
         this( bitsPerBlock, size, GrowthStrategy.doubleGrowth );
     }
 
+    /**
+     * Fully Qualified Constructor
+     *
+     * @param bitsPerBlock the number of bits that represent indices in the block
+     * @param size the size of that storage. If not a multiple of the blockSize, will be the next multiple after
+     *             the size passed.
+     * @param growthStrategy the growth strategy of the store.
+     */
     public ColStoreBlocked_KeyTypeName_( int bitsPerBlock, int size, GrowthStrategy growthStrategy )
     {
         this.growthStrategy = growthStrategy;
         this.bitsPerBlock = bitsPerBlock;
-        this.size = size;
         blockSize = 1 << bitsPerBlock;
         bitsMask = blockSize - 1;
-        int numBlocks = size / blockSize;
+        //if size is not multiple of blocks, we add one so we can accompany size
+        int numBlocks = ( size % blockSize == 0 ) ? size / blockSize : ( size / blockSize ) + 1;
+        //size will be a multiple of blockSize
+        this.size = numBlocks * blockSize;
         data = new _key_[ numBlocks ][];
         for( int i = 0; i < numBlocks; i++ )
         {
@@ -109,7 +126,7 @@ public class ColStoreBlocked_KeyTypeName_
     @UncheckedArray
     public _key_ get( int idx )
     {
-        return null;
+        return IntValueConverter._key_FromInt( 1 );
     }
 
     public void grow( int size )

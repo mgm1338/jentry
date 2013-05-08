@@ -71,7 +71,7 @@ public class Schema
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
-        colNames.remove( id );
+        colNames.removeByEntry( id );
         columns[id] = null;
         numColumns--;
     }
