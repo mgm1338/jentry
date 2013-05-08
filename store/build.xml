@@ -13,5 +13,9 @@
         <generateKeyTypesBoolVal fileBase="ColStoreArray" package="main\java\store\col\storage\simple"/>
         <generateKeyTypesBoolVal fileBase="ColStoreBlocked" package="main\java\store\col\storage\block"/>
 
+
+        <generateKeyTypesBoolVal fileBase="TestColStoreBlocked" package="main\java\store\col\storage\block"/>
+
+
     </target>
 </project>
