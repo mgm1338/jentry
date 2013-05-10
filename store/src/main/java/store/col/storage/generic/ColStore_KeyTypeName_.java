@@ -14,7 +14,6 @@ public interface ColStore_KeyTypeName_ extends TypedColumnStorage
 {
     _key_ getValue(int row);
 
-    void setValue(int row, _key_ val);
-
+    void setValue(_key_ val, int row);
 
 }

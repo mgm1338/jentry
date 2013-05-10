@@ -16,17 +16,20 @@ import store.col.storage.generic.ColStore_KeyTypeName_;
  */
 public class ColStoreArray_KeyTypeName_ implements ColStore_KeyTypeName_
 {
-    public static final int DEFAULT_INIT_SIZE = 128;
-    _key_[] data;
 
-    public ColStoreArray_KeyTypeName_()
-    {
-        this( DEFAULT_INIT_SIZE );
-    }
+    protected final GrowthStrategy strategy;
+    protected _key_[] data;
+
 
     public ColStoreArray_KeyTypeName_( int initialSize )
     {
+        this( initialSize, GrowthStrategy.doubleGrowth );
+    }
+
+    public ColStoreArray_KeyTypeName_( int initialSize, GrowthStrategy strategy )
+    {
         data = new _key_[ initialSize ];
+        this.strategy = strategy;
     }
 
 
@@ -39,7 +42,7 @@ public class ColStoreArray_KeyTypeName_ implements ColStore_KeyTypeName_
 
     @UncheckedArray
     @Override
-    public void setValue( int row, _key_ val )
+    public void setValue( _key_ val, int row )
     {
         data[ row ] = val;
     }
@@ -51,12 +54,12 @@ public class ColStoreArray_KeyTypeName_ implements ColStore_KeyTypeName_
     }
 
     @Override
-    public void grow( int minSize, GrowthStrategy strategy )
+    public void grow( int minSize )
     {
         int curSize = data.length;
         int newSize = strategy.growthRequest( curSize, minSize );
-        if (curSize==newSize) throw new ArrayGrowthException( this.getClass(), curSize, newSize, getType() );
-        _key_[] temp = new _key_[newSize];
+        if( curSize == newSize ) throw new ArrayGrowthException( this.getClass(), curSize, newSize, getType() );
+        _key_[] temp = new _key_[ newSize ];
         System.arraycopy( data, 0, temp, 0, curSize );
         data = temp;
     }

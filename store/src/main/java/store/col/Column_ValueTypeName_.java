@@ -24,14 +24,14 @@ public class Column_ValueTypeName_ implements Column
         this.name = name;
     }
 
-    public _val_ get_ValueTypeName_(int row)
+    public _val_ get_ValueTypeName_( int row )
     {
-        return storage.getValue(row);
+        return storage.getValue( row );
     }
 
-    public void set_ValueTypeName_(_val_ val_, int row)
+    public void set_ValueTypeName_( _val_ val, int row )
     {
-        storage.setValue(row, val_  );
+        storage.setValue( val, row );
     }
 
     @Override

@@ -13,5 +13,5 @@ public interface TypedColumnStorage
 {
     public byte getType();
 
-    public void grow(int minSize, GrowthStrategy strategy);
+    public void grow(int minSize);
 }
