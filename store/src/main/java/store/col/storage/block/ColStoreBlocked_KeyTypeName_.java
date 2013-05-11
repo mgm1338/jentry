@@ -164,7 +164,7 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         _key_[][] temp = new _key_[ newNumBlocks ][ blockSize ];
         for( int i = 0; i < newNumBlocks; i++ )
         {
-            temp[ i ] = ( i <= this.numBlocks ) ? data[ i ] : new _key_[ blockSize ];
+            temp[ i ] = ( i < this.numBlocks ) ? data[ i ] : new _key_[ blockSize ];
         }
         this.numBlocks = newNumBlocks;
         data = temp;
