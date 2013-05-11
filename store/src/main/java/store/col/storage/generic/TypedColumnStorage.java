@@ -11,7 +11,17 @@ import core.array.GrowthStrategy;
  */
 public interface TypedColumnStorage
 {
+    /**
+     * Return the Jentry type of the storage that is being held. See {@link core.Types}
+     *
+     * @return the type
+     */
     public byte getType();
 
-    public void grow(int minSize);
+    /**
+     * Grow the Storage to be able to store at least <i>minSize</i> number of elements.
+     *
+     * @param minSize the minimum number of elements
+     */
+    public void grow( int minSize );
 }

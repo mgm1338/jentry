@@ -15,7 +15,7 @@ import java.util.Arrays;
  * <p/>
  * User: Max Miller
  * Created: 5/1/13
- * <p/>
+ *
  * <p>
  * A type of storage that is set up as an array of arrays (blocks). Compared to one long continuous array, this
  * structure will not require as much copying when growing. For smaller (under a million rows),
@@ -24,14 +24,19 @@ import java.util.Arrays;
  * these structures are intended to store very large data sets. The control of growth also allows users to grow
  * much closer to their heap sizes without blowing up.
  * </p>
+ *
  * <p/>
+ *  Note: The Storage here has many dangerous methods that are unchecked for sake of efficiency. Wrapper
+ * classes and extensions handle bounds checking and error conditions. Take care when using this class directly.</p>
+ * <p/>
+ *
  * <b>Structure</b>
  * <p>The blocked storage will use the least significant bits as the block index,
  * and the most significant bits to determine which block we are writing to.
  * </p>
  * <b>Example:</b>
  * <p>
- * Say we have a block size of 1024 (block sizes usually perform best with powers of 2),
+ * Say we have a block size of 1024 (block sizes will always be a power of 2, or else we would be wasting bits),
  * it will take 10 bits to represent the 0-1023 indices in the block. Assume we are using ints, the other 22
  * bits will be be used to map to the correct block. Suppose  inserting into index
  * 504,634, or 1111011001100111010, we are inserting into index 1100111010 (826) of block 111101100 (492).
@@ -59,18 +64,18 @@ import java.util.Arrays;
 public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
 {
 
+    /** Growth strategy of the store */
     protected final GrowthStrategy growthStrategy;
-
     /** As shown above, this will be the (2^bitPerBlock-1), mask that when 'anded' gets index in the block */
     protected int bitsMask;
     /** Number of bits per block, the block size will be 2^(bitsPerBlock) */
     protected int bitsPerBlock;
     /** The block size */
     protected int blockSize;
-
-    _key_[][] data;
-
-    int numBlocks = 0;
+    /** Array of format [block][index in block] that stores our data */
+    protected _key_[][] data;
+    /** Number of our active blocks */
+    protected int numBlocks = 0;
 
     /**
      * Short Constructor. Uses double growth for all growth requests.
@@ -94,7 +99,7 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
     public ColStoreBlocked_KeyTypeName_( int blockSize, int size, GrowthStrategy growthStrategy )
     {
         this.growthStrategy = growthStrategy;
-        if ((blockSize & (blockSize-1))!=0) //if not a power of 2
+        if( ( blockSize & ( blockSize - 1 ) ) != 0 ) //if not a power of 2, little bit of bit trickery
         {
             blockSize = nextPowerOfTwo( blockSize );
         }
@@ -113,11 +118,24 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
     }
 
 
+    /**
+     * Get the blockSize, will return the number of items one block may accommodate
+     *
+     * @return the block size
+     */
     public int getBlockSize()
     {
         return blockSize;
     }
 
+    /**
+     * {@inheritDoc}
+     * Sets the row to the computed block/index in the store. Unchecked method, store must be correct
+     * capacity to hold hte value.
+     *
+     * @param value the value
+     * @param idx   index into the store
+     */
     @Override
     @UncheckedArray
     public void setValue( _key_ value, int idx )
@@ -125,11 +143,23 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         data[ idx >> bitsPerBlock ][ idx & bitsMask ] = value;
     }
 
+    /**
+     * Get the total size of the store. This will always be a multiple of <i>blockSize</i>.
+     *
+     * @return the size of the store
+     */
     public int getSize()
     {
         return blockSize * numBlocks;
     }
 
+    /**
+     * Get the value at the index specified. Unchecked, ensure that is not outside of bounds
+     * of the store.
+     *
+     * @param idx index
+     * @return the value at the index
+     */
     @Override
     @UncheckedArray
     public _key_ getValue( int idx )
@@ -137,6 +167,11 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         return data[ idx >> bitsPerBlock ][ idx & bitsMask ];
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return the type
+     */
     @Override
     public byte getType()
     {
@@ -144,9 +179,8 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
     }
 
     /**
-     * <p>
-     * Grow the store to be able to store <i>minSize</i>.
-     * </p>
+     *  {@inheritDoc}
+     *
      * <p>This structure grows by blockSize, so as long as the {@link GrowthStrategy} allows
      * for growth, this will grow it to the new size to a multiple of blocksize.</p>
      *
@@ -161,19 +195,25 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         }
         int newSize = growthStrategy.growthRequest( size, minSize );
         if( newSize == size ) throw new ArrayGrowthException( this.getClass(), size, minSize, Types._KeyTypeName_ );
+
         int newNumBlocks = newSize / blockSize;
         if( newSize % blockSize != 0 ) newNumBlocks++;
-
         _key_[][] temp = new _key_[ newNumBlocks ][ blockSize ];
         for( int i = 0; i < newNumBlocks; i++ )
         {
-            temp[ i ] = ( i < this.numBlocks ) ? data[ i ] : new _key_[ blockSize ];
+            temp[ i ] = ( i < this.numBlocks ) ? data[ i ] : new _key_[ blockSize ]; //update or allocate new blocks
         }
         this.numBlocks = newNumBlocks;
         data = temp;
     }
 
 
+    /**
+     * Analogous to {@link java.util.Arrays#fill}. Will fill the store with the value <i>val</i>
+     * specified.
+     *
+     * @param val the value to fill the entire store with
+     */
     public void fill( _key_ val )
     {
         int len = data.length;
@@ -183,6 +223,15 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         }
     }
 
+    /**
+     * Analogous to {@link Arrays#fill}, will fill every index from <i>fromIndex</i> (inclusive)
+     * to <i>toIndex</i> (exclusive), with the value specified. Unchecked array bounds, as many
+     * of the methods manipulating with the storage.
+     *
+     * @param val
+     * @param fromIndex
+     * @param toIndex
+     */
     @UncheckedArray
     public void fill( _key_ val, int fromIndex, int toIndex )
     {
@@ -205,6 +254,11 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
             Arrays.fill( data[ endBlock ], 0, endIdx, val );
     }
 
+    /**
+     * Return a deep copy of <i>this</i>
+     *
+     * @return a copy of this store
+     */
     public ColStoreBlocked_KeyTypeName_ getCopy()
     {
         ColStoreBlocked_KeyTypeName_ copy = new ColStoreBlocked_KeyTypeName_( this.blockSize, this.getSize(),
@@ -231,21 +285,21 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
         return idx & bitsMask;
     }
 
-    protected int nextPowerOfTwo(int n)
+    protected int nextPowerOfTwo( int n )
     {
         n = n - 1;
-        n = n | (n >> 1);
-        n = n | (n >> 2);
-        n = n | (n >> 4);
-        n = n | (n >> 8);
-        n = n | (n >> 16);
-        return n+1;
+        n = n | ( n >> 1 );
+        n = n | ( n >> 2 );
+        n = n | ( n >> 4 );
+        n = n | ( n >> 8 );
+        n = n | ( n >> 16 );
+        return n + 1;
     }
 
     protected int getBitsInBlock( int blockSize )
     {
-        int bits =0;
-        while ((blockSize>>bits)!=1)
+        int bits = 0;
+        while( ( blockSize >> bits ) != 1 )
         {
             bits++;
         }

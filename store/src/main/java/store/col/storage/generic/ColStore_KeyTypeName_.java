@@ -12,8 +12,20 @@ import store.col.storage.generic.*;
  */
 public interface ColStore_KeyTypeName_ extends TypedColumnStorage
 {
-    _key_ getValue(int row);
+    /**
+     * Get the value for the row desired.
+     *
+     * @param row the row in the column
+     * @return the value
+     */
+    _key_ getValue( int row );
 
-    void setValue(_key_ val, int row);
+    /**
+     * Set a value for a particular row in the column.
+     *
+     * @param val value for the row
+     * @param row the row index
+     */
+    void setValue( _key_ val, int row );
 
 }
