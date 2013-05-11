@@ -75,36 +75,39 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
     /**
      * Short Constructor. Uses double growth for all growth requests.
      *
-     * @param bitsPerBlock the number of bits that represent indices in the block
-     * @param size         the size of that storage. If not a multiple of the blockSize, will be the next multiple after
-     *                     the size passed.
+     * @param blockSize size of a block (will automatically be converted to the next power of 2, if not one).
+     * @param storeSize the size of that storage. If not a multiple of the blockSize, will be the next multiple after
      */
-    public ColStoreBlocked_KeyTypeName_( int bitsPerBlock, int size )
+    public ColStoreBlocked_KeyTypeName_( int blockSize, int storeSize )
     {
-        this( bitsPerBlock, size, GrowthStrategy.doubleGrowth );
+        this( blockSize, storeSize, GrowthStrategy.doubleGrowth );
     }
 
     /**
      * Fully Qualified Constructor
      *
-     * @param bitsPerBlock   the number of bits that represent indices in the block
+     * @param blockSize      size of a block (will automatically be converted to the next power of 2, if not one).
      * @param size           the size of that storage. If not a multiple of the blockSize, will be the next multiple after
      *                       the size passed.
      * @param growthStrategy the growth strategy of the store.
      */
-    public ColStoreBlocked_KeyTypeName_( int bitsPerBlock, int size, GrowthStrategy growthStrategy )
+    public ColStoreBlocked_KeyTypeName_( int blockSize, int size, GrowthStrategy growthStrategy )
     {
         this.growthStrategy = growthStrategy;
-        this.bitsPerBlock = bitsPerBlock;
-        blockSize = 1 << bitsPerBlock;
-        bitsMask = blockSize - 1;
+        if ((blockSize & (blockSize-1))!=0) //if not a power of 2
+        {
+            blockSize = nextPowerOfTwo( blockSize );
+        }
+        this.blockSize = blockSize;
+        this.bitsPerBlock = getBitsInBlock( this.blockSize );
+        bitsMask = this.blockSize - 1;
         //if size is not multiple of blocks, we add one so we can accompany size
-        int numBlocks = ( size % blockSize == 0 ) ? size / blockSize : ( size / blockSize ) + 1;
+        int numBlocks = ( size % this.blockSize == 0 ) ? size / this.blockSize : ( size / this.blockSize ) + 1;
         //size will be a multiple of blockSize
         data = new _key_[ numBlocks ][];
         for( int i = 0; i < numBlocks; i++ )
         {
-            data[ i ] = new _key_[ blockSize ];
+            data[ i ] = new _key_[ this.blockSize ];
         }
         this.numBlocks = numBlocks;
     }
@@ -204,7 +207,7 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
 
     public ColStoreBlocked_KeyTypeName_ getCopy()
     {
-        ColStoreBlocked_KeyTypeName_ copy = new ColStoreBlocked_KeyTypeName_( this.bitsPerBlock, this.getSize(),
+        ColStoreBlocked_KeyTypeName_ copy = new ColStoreBlocked_KeyTypeName_( this.blockSize, this.getSize(),
                                                                               this.growthStrategy );
         copy.copyFrom( this, 0, 0, this.getSize() );
         return copy;
@@ -227,4 +230,27 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
     {
         return idx & bitsMask;
     }
+
+    protected int nextPowerOfTwo(int n)
+    {
+        n = n - 1;
+        n = n | (n >> 1);
+        n = n | (n >> 2);
+        n = n | (n >> 4);
+        n = n | (n >> 8);
+        n = n | (n >> 16);
+        return n+1;
+    }
+
+    protected int getBitsInBlock( int blockSize )
+    {
+        int bits =0;
+        while ((blockSize>>bits)!=1)
+        {
+            bits++;
+        }
+        return bits;
+
+    }
+
 }

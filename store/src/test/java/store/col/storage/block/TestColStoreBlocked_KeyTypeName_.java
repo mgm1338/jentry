@@ -24,7 +24,19 @@ public class TestColStoreBlocked_KeyTypeName_
     @Before
     public void setup()
     {
-        store = new ColStoreBlocked_KeyTypeName_( 4, 1024 );
+        store = new ColStoreBlocked_KeyTypeName_( 1024, 1024 );
+    }
+
+
+    public void testSizeBitsInBlock()
+    {
+        TestCase.assertEquals( 8, store.nextPowerOfTwo( 7 ));
+        TestCase.assertEquals( 8, store.nextPowerOfTwo( 8 ));
+        TestCase.assertEquals( 1, store.getBitsInBlock( 2 ) );
+        TestCase.assertEquals( 2, store.getBitsInBlock( 4 ) );
+        TestCase.assertEquals( 4, store.getBitsInBlock( 16 ) );
+        TestCase.assertEquals( 5, store.getBitsInBlock( 32 ) );
+
     }
 
     //Assert on construction, that block sizes will be the next power of two larger
@@ -33,10 +45,10 @@ public class TestColStoreBlocked_KeyTypeName_
     {
         if( template ) return;
 
-        store = new ColStoreBlocked_KeyTypeName_( 4, 401 );
-        TestCase.assertEquals( 16, store.getBlockSize() ); //4 bits, can represent 0-15 (or 0-F)
-        TestCase.assertEquals( 416, store.getSize() ); //size in blocks, must fit initial size
-        store = new ColStoreBlocked_KeyTypeName_( 12, 1024 ); //block size is 2^12
+        store = new ColStoreBlocked_KeyTypeName_( 1024, 401 );
+        TestCase.assertEquals( 1024, store.getBlockSize() ); //4 bits, can represent 0-15 (or 0-F)
+        TestCase.assertEquals( 1024, store.getSize() ); //size in blocks, must fit initial size
+        store = new ColStoreBlocked_KeyTypeName_( 4096, 1024 ); //block size is 2^12
         TestCase.assertEquals( 4096, store.getSize() ); //size is at least one block
 
 
@@ -58,7 +70,7 @@ public class TestColStoreBlocked_KeyTypeName_
         TestCase.assertEquals( 2048, store.getSize() ); //default double growth
 
         //new store with exact size growth
-        store = new ColStoreBlocked_KeyTypeName_( 4, 1024, GrowthStrategy.toExactSize );
+        store = new ColStoreBlocked_KeyTypeName_( 16, 1024, GrowthStrategy.toExactSize );
         store.grow( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
         TestCase.assertEquals( 1040, store.getSize() ); //growth of one more block
@@ -95,7 +107,7 @@ public class TestColStoreBlocked_KeyTypeName_
         }
 
         //insert same values in a different store with different block size
-        ColStoreBlocked_KeyTypeName_ oneBlockStore = new ColStoreBlocked_KeyTypeName_( 10, 1024 );  //one block
+        ColStoreBlocked_KeyTypeName_ oneBlockStore = new ColStoreBlocked_KeyTypeName_( 1024, 1024 );  //one block
         TestCase.assertEquals( 1024, oneBlockStore.getSize() );
         TestCase.assertEquals( 1024, oneBlockStore.getBlockSize() );
         for( int i = 0; i < 1024; i++ )
@@ -161,7 +173,7 @@ public class TestColStoreBlocked_KeyTypeName_
     public void fillTests()
     {
         if( template ) return;
-        store = new ColStoreBlocked_KeyTypeName_( 4, 128 );
+        store = new ColStoreBlocked_KeyTypeName_( 1024, 128 );
         store.fill( IntValueConverter._key_FromInt( 2 ) );
         store.fill( IntValueConverter._key_FromInt( 5 ), 10, 20 );
 
@@ -175,7 +187,7 @@ public class TestColStoreBlocked_KeyTypeName_
     public void copyOverRanges()
     {
         if( template ) return;
-        ColStoreBlocked_KeyTypeName_ source = new ColStoreBlocked_KeyTypeName_( 6, 512 );
+        ColStoreBlocked_KeyTypeName_ source = new ColStoreBlocked_KeyTypeName_( 1024, 512 );
         source.fill( IntValueConverter._key_FromInt( 1 ) );
 
         source.fill( IntValueConverter._key_FromInt( 2 ), 100, 200 );
@@ -208,6 +220,8 @@ public class TestColStoreBlocked_KeyTypeName_
     {
         //TODO:
     }
+
+
 
     protected void assertValues( _key_ value, int startIdx, int endIdx )
     {
