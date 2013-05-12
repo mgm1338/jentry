@@ -13,11 +13,11 @@ import store.col.storage.generic.*;
  */
 public class Column_ValueTypeName_ implements Column
 {
-    protected final ColStore_ValueTypeName_ storage;
+    protected final ColStorage_ValueTypeName_ storage;
     protected final int id;
     protected final CharSequence name;
 
-    public Column_ValueTypeName_( ColStore_ValueTypeName_ storage, int id, CharSequence name )
+    public Column_ValueTypeName_( ColStorage_ValueTypeName_ storage, int id, CharSequence name )
     {
         this.storage = storage;
         this.id = id;

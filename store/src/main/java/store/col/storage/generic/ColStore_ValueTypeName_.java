@@ -1,7 +1,6 @@
 package store.col.storage.generic;
 
 import core.stub.*;
-import store.col.storage.generic.*;
 
 /**
  * Copyright 4/24/13
@@ -10,10 +9,22 @@ import store.col.storage.generic.*;
  * User: Max Miller
  * Created: 4/24/13
  */
-public interface ColStore_ValueTypeName_ extends TypedColumnStorage
+public interface ColStore_ValueTypeName_
 {
-    _val_ getValue(int row);
+    /**
+     * Get the value for the row desired.
+     *
+     * @param row the row in the column
+     * @return the value
+     */
+    _val_ getValue( int row );
 
-    void setValue(_val_ val, int row);
+    /**
+     * Set a value for a particular row in the column.
+     *
+     * @param val value for the row
+     * @param row the row index
+     */
+    void setValue( _val_ val, int row );
 
 }

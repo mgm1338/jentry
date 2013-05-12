@@ -1,8 +1,9 @@
 package store.col.storage;
 
-import store.col.storage.block.ColStoreBlockedInt;
+import store.col.storage.block.ColStorageBlockedInt;
+import store.col.storage.generic.ColStorageInt;
 import store.col.storage.generic.ColStoreInt;
-import store.col.storage.simple.ColStoreArrayInt;
+import store.col.storage.simple.ColStorageArrayInt;
 
 /**
  * Copyright 5/9/13
@@ -14,23 +15,23 @@ import store.col.storage.simple.ColStoreArrayInt;
 public class StorageComparisonTest
 {
 
-    protected static ColStoreArrayInt simpleStore;
-    protected static ColStoreBlockedInt blockedStore;
+    protected static ColStorageArrayInt simpleStore;
+    protected static ColStorageBlockedInt blockedStore;
 
     public static void main( String[] args )
     {
         //simple array for small values is much quicker when growing not involved
-        simpleStore = new ColStoreArrayInt( 1048576 );
-        blockedStore = new ColStoreBlockedInt( 12, 1048576 );
+        simpleStore = new ColStorageArrayInt( 1048576 );
+        blockedStore = new ColStorageBlockedInt( 4096, 1048576 );
         long simple = iterativeFillNoGrow( simpleStore, 1048576 );
         long blocked = iterativeFillNoGrow( blockedStore, 1048576 );
         System.out.print( "Simple Insertion, no Growth\n" );
         System.out.println( "Simple = " + simple / 100000 );
         System.out.println( "Blocked = " + blocked / 100000 );
 
-        //With growth, simple array starts to become close at around 1 million rows (when blockSize is optimal)
-        simpleStore = new ColStoreArrayInt( 1024 );
-        blockedStore = new ColStoreBlockedInt( 20, 1024 );
+        //With growth, simple array starts to become closer at around 1 million rows
+        simpleStore = new ColStorageArrayInt( 1024 );
+        blockedStore = new ColStorageBlockedInt( 32768, 1024 );
         simple = iterativeWithGrowth( simpleStore, 1048576, 1024 );
         blocked = iterativeWithGrowth( blockedStore, 1048576, 1024 );
         System.out.print( "1 million insertion, Double Growth\n" );
@@ -38,8 +39,8 @@ public class StorageComparisonTest
         System.out.println( "Blocked = " + blocked / 100000 );
 
         //With WRONG bits per block, can totally mess it up for large data sets
-        simpleStore = new ColStoreArrayInt( 1024 );
-        blockedStore = new ColStoreBlockedInt( 12, 1024 );
+        simpleStore = new ColStorageArrayInt( 1024 );
+        blockedStore = new ColStorageBlockedInt( 4096, 1024 );
         simple = iterativeWithGrowth( simpleStore, 8388608, 1024 );
         blocked = iterativeWithGrowth( blockedStore, 8388608, 1024 );
         System.out.print( "8 million insertion, Double Growth, Bad BlockSize\n" );
@@ -47,8 +48,8 @@ public class StorageComparisonTest
         System.out.println( "Blocked = " + blocked / 100000 );
 
         //Now correct bits per block, start to see that blocked wins
-        simpleStore = new ColStoreArrayInt( 1024 );
-        blockedStore = new ColStoreBlockedInt( 24, 1024 );
+        simpleStore = new ColStorageArrayInt( 1024 );
+        blockedStore = new ColStorageBlockedInt( 16777216, 1024 );
         simple = iterativeWithGrowth( simpleStore, 8388608, 1024 );
         blocked = iterativeWithGrowth( blockedStore, 8388608, 1024 );
         System.out.print( "8 million insertion, Double Growth, Good BlockSize\n" );
@@ -56,8 +57,8 @@ public class StorageComparisonTest
         System.out.println( "Blocked = " + blocked / 100000 );
 
         //multi-million index stores, blocked storage wins handily
-        simpleStore = new ColStoreArrayInt( 1024 );
-        blockedStore = new ColStoreBlockedInt( 26, 1024 );
+        simpleStore = new ColStorageArrayInt( 1024 );
+        blockedStore = new ColStorageBlockedInt( 67108864, 1024 );
         simple = iterativeWithGrowth( simpleStore, 33554432, 1024 );
         blocked = iterativeWithGrowth( blockedStore, 33554432, 1024 );
         System.out.print( "33 million insertion, Double Growth, Good BlockSize\n" );
@@ -68,7 +69,7 @@ public class StorageComparisonTest
     }
 
 
-    protected static long iterativeFillNoGrow( ColStoreInt target, int numFill )
+    protected static long iterativeFillNoGrow( ColStorageInt target, int numFill )
     {
         long start = System.nanoTime();
         for( int i = 0; i < numFill; i++ )
@@ -79,7 +80,7 @@ public class StorageComparisonTest
         return end - start;
     }
 
-    protected static long iterativeWithGrowth( ColStoreInt target, int numFill, int curSize )
+    protected static long iterativeWithGrowth( ColStorageInt target, int numFill, int curSize )
     {
         long start = System.nanoTime();
         for( int i = 0; i < numFill; i++ )

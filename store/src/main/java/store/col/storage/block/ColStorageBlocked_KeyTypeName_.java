@@ -5,7 +5,7 @@ import core.annotations.UncheckedArray;
 import core.array.ArrayGrowthException;
 import core.array.GrowthStrategy;
 import core.stub.*;
-import store.col.storage.generic.ColStore_KeyTypeName_;
+import store.col.storage.generic.ColStorage_KeyTypeName_;
 
 import java.util.Arrays;
 
@@ -61,7 +61,7 @@ import java.util.Arrays;
  *
  * </p>
  */
-public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
+public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
 {
 
     /** Growth strategy of the store */
@@ -83,7 +83,7 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
      * @param blockSize size of a block (will automatically be converted to the next power of 2, if not one).
      * @param storeSize the size of that storage. If not a multiple of the blockSize, will be the next multiple after
      */
-    public ColStoreBlocked_KeyTypeName_( int blockSize, int storeSize )
+    public ColStorageBlocked_KeyTypeName_( int blockSize, int storeSize )
     {
         this( blockSize, storeSize, GrowthStrategy.doubleGrowth );
     }
@@ -96,7 +96,7 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
      *                       the size passed.
      * @param growthStrategy the growth strategy of the store.
      */
-    public ColStoreBlocked_KeyTypeName_( int blockSize, int size, GrowthStrategy growthStrategy )
+    public ColStorageBlocked_KeyTypeName_( int blockSize, int size, GrowthStrategy growthStrategy )
     {
         this.growthStrategy = growthStrategy;
         if( ( blockSize & ( blockSize - 1 ) ) != 0 ) //if not a power of 2, little bit of bit trickery
@@ -259,15 +259,15 @@ public class ColStoreBlocked_KeyTypeName_ implements ColStore_KeyTypeName_
      *
      * @return a copy of this store
      */
-    public ColStoreBlocked_KeyTypeName_ getCopy()
+    public ColStorageBlocked_KeyTypeName_ getCopy()
     {
-        ColStoreBlocked_KeyTypeName_ copy = new ColStoreBlocked_KeyTypeName_( this.blockSize, this.getSize(),
+        ColStorageBlocked_KeyTypeName_ copy = new ColStorageBlocked_KeyTypeName_( this.blockSize, this.getSize(),
                                                                               this.growthStrategy );
         copy.copyFrom( this, 0, 0, this.getSize() );
         return copy;
     }
 
-    public void copyFrom( ColStoreBlocked_KeyTypeName_ source, int srcPos, int destPos, int length )
+    public void copyFrom( ColStorage_KeyTypeName_ source, int srcPos, int destPos, int length )
     {
         for( int i = 0; i < length; i++ )
         {

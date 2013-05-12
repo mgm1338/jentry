@@ -20,7 +20,7 @@ package core.charsequence;
  * referencing it.</p>
  * <p/>
  * <p>For the purpose of Jentry, ByteFacade collections will be commonly used when dealing with
- * CharSequence typed Collections. This obvious limits the efficiency of Unicode=based structures,
+ * CharSequence typed Collections. This obvious limits the efficiency of Unicode-based structures,
  * which may be extended in the future.</p>
  */
 public class ByteFacade implements CharSequence

@@ -14,17 +14,17 @@ import org.junit.Test;
  * User: Max Miller
  * Created: 5/7/13
  */
-public class TestColStoreBlocked_KeyTypeName_
+public class TestColStorageBlocked_KeyTypeName_
 {
 
     boolean template = ( this.getClass().getCanonicalName().contains( "_" ) );
 
-    protected ColStoreBlocked_KeyTypeName_ store;
+    protected ColStorageBlocked_KeyTypeName_ store;
 
     @Before
     public void setup()
     {
-        store = new ColStoreBlocked_KeyTypeName_( 1024, 1024 );
+        store = new ColStorageBlocked_KeyTypeName_( 1024, 1024 );
     }
 
 
@@ -45,10 +45,10 @@ public class TestColStoreBlocked_KeyTypeName_
     {
         if( template ) return;
 
-        store = new ColStoreBlocked_KeyTypeName_( 1024, 401 );
+        store = new ColStorageBlocked_KeyTypeName_( 1024, 401 );
         TestCase.assertEquals( 1024, store.getBlockSize() ); //4 bits, can represent 0-15 (or 0-F)
         TestCase.assertEquals( 1024, store.getSize() ); //size in blocks, must fit initial size
-        store = new ColStoreBlocked_KeyTypeName_( 4096, 1024 ); //block size is 2^12
+        store = new ColStorageBlocked_KeyTypeName_( 4096, 1024 ); //block size is 2^12
         TestCase.assertEquals( 4096, store.getSize() ); //size is at least one block
 
 
@@ -70,7 +70,7 @@ public class TestColStoreBlocked_KeyTypeName_
         TestCase.assertEquals( 2048, store.getSize() ); //default double growth
 
         //new store with exact size growth
-        store = new ColStoreBlocked_KeyTypeName_( 16, 1024, GrowthStrategy.toExactSize );
+        store = new ColStorageBlocked_KeyTypeName_( 16, 1024, GrowthStrategy.toExactSize );
         store.grow( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
         TestCase.assertEquals( 1040, store.getSize() ); //growth of one more block
@@ -107,7 +107,7 @@ public class TestColStoreBlocked_KeyTypeName_
         }
 
         //insert same values in a different store with different block size
-        ColStoreBlocked_KeyTypeName_ oneBlockStore = new ColStoreBlocked_KeyTypeName_( 1024, 1024 );  //one block
+        ColStorageBlocked_KeyTypeName_ oneBlockStore = new ColStorageBlocked_KeyTypeName_( 1024, 1024 );  //one block
         TestCase.assertEquals( 1024, oneBlockStore.getSize() );
         TestCase.assertEquals( 1024, oneBlockStore.getBlockSize() );
         for( int i = 0; i < 1024; i++ )
@@ -139,7 +139,7 @@ public class TestColStoreBlocked_KeyTypeName_
     public void setOutOfBounds()
     {
         if( template ) return;
-        store = new ColStoreBlocked_KeyTypeName_( 2, 4 );
+        store = new ColStorageBlocked_KeyTypeName_( 2, 4 );
         try
         {
             store.setValue( IntValueConverter._key_FromInt( 3 ), 5 );
@@ -158,7 +158,7 @@ public class TestColStoreBlocked_KeyTypeName_
     public void copyTests()
     {
         if( template ) return;
-        ColStoreBlocked_KeyTypeName_ store2 = store.getCopy();
+        ColStorageBlocked_KeyTypeName_ store2 = store.getCopy();
         assertEquals( store, store2 );
 
         fillTest();
@@ -173,7 +173,7 @@ public class TestColStoreBlocked_KeyTypeName_
     public void fillTests()
     {
         if( template ) return;
-        store = new ColStoreBlocked_KeyTypeName_( 1024, 128 );
+        store = new ColStorageBlocked_KeyTypeName_( 1024, 128 );
         store.fill( IntValueConverter._key_FromInt( 2 ) );
         store.fill( IntValueConverter._key_FromInt( 5 ), 10, 20 );
 
@@ -187,14 +187,14 @@ public class TestColStoreBlocked_KeyTypeName_
     public void copyOverRanges()
     {
         if( template ) return;
-        ColStoreBlocked_KeyTypeName_ source = new ColStoreBlocked_KeyTypeName_( 1024, 512 );
+        ColStorageBlocked_KeyTypeName_ source = new ColStorageBlocked_KeyTypeName_( 1024, 512 );
         source.fill( IntValueConverter._key_FromInt( 1 ) );
 
         source.fill( IntValueConverter._key_FromInt( 2 ), 100, 200 );
         source.fill( IntValueConverter._key_FromInt( 3 ), 250, 350 );
         source.fill( IntValueConverter._key_FromInt( 4 ), 350, 450 );
 
-        ColStoreBlocked_KeyTypeName_ copyOfSource = source.getCopy();
+        ColStorageBlocked_KeyTypeName_ copyOfSource = source.getCopy();
         assertEquals( source, copyOfSource );
         copyOfSource.fill( IntValueConverter._key_FromInt( 6 ), 500, 512 );
 
@@ -215,14 +215,6 @@ public class TestColStoreBlocked_KeyTypeName_
     }
 
 
-    @Test
-    public void insertMinMaxValues()
-    {
-        //TODO:
-    }
-
-
-
     protected void assertValues( _key_ value, int startIdx, int endIdx )
     {
         int idxPtr = startIdx;
@@ -232,7 +224,7 @@ public class TestColStoreBlocked_KeyTypeName_
         }
     }
 
-    protected void assertSame( ColStoreBlocked_KeyTypeName_ a, ColStoreBlocked_KeyTypeName_ b, int startIdx, int endIdx )
+    protected void assertSame( ColStorageBlocked_KeyTypeName_ a, ColStorageBlocked_KeyTypeName_ b, int startIdx, int endIdx )
     {
         if( a.getSize() < endIdx )
             TestCase.fail( "a is not large enough, it only has size of " + a.getSize() + " which" +
@@ -250,7 +242,7 @@ public class TestColStoreBlocked_KeyTypeName_
     }
 
 
-    protected void assertEquals( ColStoreBlocked_KeyTypeName_ a, ColStoreBlocked_KeyTypeName_ b )
+    protected void assertEquals( ColStorageBlocked_KeyTypeName_ a, ColStorageBlocked_KeyTypeName_ b )
     {
         TestCase.assertEquals( a.getSize(), b.getSize() );
         TestCase.assertEquals( a.bitsMask, b.bitsMask );
