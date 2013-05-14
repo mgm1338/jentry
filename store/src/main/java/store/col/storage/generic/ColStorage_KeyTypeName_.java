@@ -32,13 +32,39 @@ public interface ColStorage_KeyTypeName_
      *
      * @return the type
      */
-    public byte getType();
+    byte getType();
 
     /**
      * Grow the Storage to be able to store at least <i>minSize</i> number of elements.
      *
      * @param minSize the minimum number of elements
      */
-    public void grow( int minSize );
+    void grow( int minSize );
+
+    /**
+     * Return a deep copy of this store.
+     *
+     * @return a copy of the store
+     */
+    ColStorage_KeyTypeName_ getCopy();
+
+    /**
+     * Copy a portion (or all) data from <i>source</i> to this store. Starting copying
+     * at index <i>srcPos</i> in the source, to <i>destPos</i> in this store for <i>length</i>
+     * items.
+     *
+     * @param source  source of the data to copy from
+     * @param srcPos  index in the source to start copying from
+     * @param destPos index in <i>this</i> to start copying to
+     * @param length  number of items to copy
+     */
+    void copyFrom( ColStorage_KeyTypeName_ source, int srcPos, int destPos, int length );
+
+    /**
+     * Return the current capacity of the store, in elements.
+     *
+     * @return the capacity of the store
+     */
+    int getCapacity();
 
 }

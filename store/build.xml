@@ -10,11 +10,13 @@
     <target name="generate">
         <generateKeyTypesBoolVal fileBase="Column" package="main\java\store\col"/>
         <generateKeyTypesBoolVal fileBase="ColStorage" package="main\java\store\col\storage\generic"/>
-        <generateKeyTypesBoolVal fileBase="ColStorageArray" package="main\java\store\col\storage\simple"/>
+        <generateKeyTypesBoolVal fileBase="ColStorageArray" package="main\java\store\col\storage\array"/>
         <generateKeyTypesBoolVal fileBase="ColStorageBlocked" package="main\java\store\col\storage\block"/>
 
 
         <generateKeyTypesBoolVal fileBase="TestColStorageBlocked" package="test\java\store\col\storage\block"/>
+        <generateKeyTypesBoolVal fileBase="TestColStorageArray" package="test\java\store\col\storage\array"/>
+
 
 
     </target>

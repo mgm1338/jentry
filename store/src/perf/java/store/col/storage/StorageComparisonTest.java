@@ -2,8 +2,7 @@ package store.col.storage;
 
 import store.col.storage.block.ColStorageBlockedInt;
 import store.col.storage.generic.ColStorageInt;
-import store.col.storage.generic.ColStoreInt;
-import store.col.storage.simple.ColStorageArrayInt;
+import store.col.storage.array.ColStorageArrayInt;
 
 /**
  * Copyright 5/9/13

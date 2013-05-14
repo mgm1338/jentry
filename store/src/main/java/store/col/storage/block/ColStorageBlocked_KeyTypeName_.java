@@ -15,7 +15,7 @@ import java.util.Arrays;
  * <p/>
  * User: Max Miller
  * Created: 5/1/13
- *
+ * <p/>
  * <p>
  * A type of storage that is set up as an array of arrays (blocks). Compared to one long continuous array, this
  * structure will not require as much copying when growing. For smaller (under a million rows),
@@ -24,12 +24,12 @@ import java.util.Arrays;
  * these structures are intended to store very large data sets. The control of growth also allows users to grow
  * much closer to their heap sizes without blowing up.
  * </p>
- *
  * <p/>
- *  Note: The Storage here has many dangerous methods that are unchecked for sake of efficiency. Wrapper
+ * <p/>
+ * Note: The Storage here has many dangerous methods that are unchecked for sake of efficiency. Wrapper
  * classes and extensions handle bounds checking and error conditions. Take care when using this class directly.</p>
  * <p/>
- *
+ * <p/>
  * <b>Structure</b>
  * <p>The blocked storage will use the least significant bits as the block index,
  * and the most significant bits to determine which block we are writing to.
@@ -148,7 +148,8 @@ public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
      *
      * @return the size of the store
      */
-    public int getSize()
+    @Override
+    public int getCapacity()
     {
         return blockSize * numBlocks;
     }
@@ -179,8 +180,8 @@ public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
     }
 
     /**
-     *  {@inheritDoc}
-     *
+     * {@inheritDoc}
+     * <p/>
      * <p>This structure grows by blockSize, so as long as the {@link GrowthStrategy} allows
      * for growth, this will grow it to the new size to a multiple of blocksize.</p>
      *
@@ -188,7 +189,7 @@ public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
      */
     public void grow( int minSize )
     {
-        int size = getSize();
+        int size = getCapacity();
         if( size >= minSize )
         {
             return;
@@ -255,18 +256,30 @@ public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
     }
 
     /**
-     * Return a deep copy of <i>this</i>
+     * {@inheritDoc}
      *
      * @return a copy of this store
      */
+    @Override
     public ColStorageBlocked_KeyTypeName_ getCopy()
     {
-        ColStorageBlocked_KeyTypeName_ copy = new ColStorageBlocked_KeyTypeName_( this.blockSize, this.getSize(),
-                                                                              this.growthStrategy );
-        copy.copyFrom( this, 0, 0, this.getSize() );
+        ColStorageBlocked_KeyTypeName_ copy = new ColStorageBlocked_KeyTypeName_( this.blockSize, this.getCapacity(),
+                                                                                  this.growthStrategy );
+        copy.copyFrom( this, 0, 0, this.getCapacity() );
         return copy;
     }
 
+    /**
+     * {@inheritDoc}.
+     * <p>Note We do not check the bounds of the array for this method.</p>
+     *
+     * @param source  source of the data to copy from
+     * @param srcPos  index in the source to start copying from
+     * @param destPos index in <i>this</i> to start copying to
+     * @param length  number of items to copy
+     */
+    @UncheckedArray
+    @Override
     public void copyFrom( ColStorage_KeyTypeName_ source, int srcPos, int destPos, int length )
     {
         for( int i = 0; i < length; i++ )

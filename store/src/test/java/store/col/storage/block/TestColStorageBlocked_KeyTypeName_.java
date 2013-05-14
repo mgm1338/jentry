@@ -47,9 +47,9 @@ public class TestColStorageBlocked_KeyTypeName_
 
         store = new ColStorageBlocked_KeyTypeName_( 1024, 401 );
         TestCase.assertEquals( 1024, store.getBlockSize() ); //4 bits, can represent 0-15 (or 0-F)
-        TestCase.assertEquals( 1024, store.getSize() ); //size in blocks, must fit initial size
+        TestCase.assertEquals( 1024, store.getCapacity() ); //size in blocks, must fit initial size
         store = new ColStorageBlocked_KeyTypeName_( 4096, 1024 ); //block size is 2^12
-        TestCase.assertEquals( 4096, store.getSize() ); //size is at least one block
+        TestCase.assertEquals( 4096, store.getCapacity() ); //size is at least one block
 
 
     }
@@ -63,31 +63,31 @@ public class TestColStorageBlocked_KeyTypeName_
         //dont grow
         store.grow( 300 );
         store.grow( 1024 );
-        TestCase.assertEquals( 1024, store.getSize() );
+        TestCase.assertEquals( 1024, store.getCapacity() );
 
         store.grow( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
-        TestCase.assertEquals( 2048, store.getSize() ); //default double growth
+        TestCase.assertEquals( 2048, store.getCapacity() ); //default double growth
 
         //new store with exact size growth
         store = new ColStorageBlocked_KeyTypeName_( 16, 1024, GrowthStrategy.toExactSize );
         store.grow( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
-        TestCase.assertEquals( 1040, store.getSize() ); //growth of one more block
+        TestCase.assertEquals( 1040, store.getCapacity() ); //growth of one more block
 
         //checking will not grow here
         store.setValue( IntValueConverter._key_FromInt( 13 ), 1039 );
-        TestCase.assertEquals( 1040, store.getSize() ); //growth of one more block
+        TestCase.assertEquals( 1040, store.getCapacity() ); //growth of one more block
 
         //bounds check, should grow here
         store.grow( 1041 );
         store.setValue( IntValueConverter._key_FromInt( 14 ), 1040 );
-        TestCase.assertEquals( 1056, store.getSize() ); //growth of one more block
+        TestCase.assertEquals( 1056, store.getCapacity() ); //growth of one more block
 
         //larger growth, up to double
         store.grow( 2048 );
         store.setValue( IntValueConverter._key_FromInt( 15 ), 2047 );
-        TestCase.assertEquals( 2048, store.getSize() );
+        TestCase.assertEquals( 2048, store.getCapacity() );
     }
 
     /** Basic filling of the store */
@@ -108,7 +108,7 @@ public class TestColStorageBlocked_KeyTypeName_
 
         //insert same values in a different store with different block size
         ColStorageBlocked_KeyTypeName_ oneBlockStore = new ColStorageBlocked_KeyTypeName_( 1024, 1024 );  //one block
-        TestCase.assertEquals( 1024, oneBlockStore.getSize() );
+        TestCase.assertEquals( 1024, oneBlockStore.getCapacity() );
         TestCase.assertEquals( 1024, oneBlockStore.getBlockSize() );
         for( int i = 0; i < 1024; i++ )
         {
@@ -226,11 +226,11 @@ public class TestColStorageBlocked_KeyTypeName_
 
     protected void assertSame( ColStorageBlocked_KeyTypeName_ a, ColStorageBlocked_KeyTypeName_ b, int startIdx, int endIdx )
     {
-        if( a.getSize() < endIdx )
-            TestCase.fail( "a is not large enough, it only has size of " + a.getSize() + " which" +
+        if( a.getCapacity() < endIdx )
+            TestCase.fail( "a is not large enough, it only has size of " + a.getCapacity() + " which" +
                            "will not hold index " + endIdx );
-        if( b.getSize() < endIdx )
-            TestCase.fail( "b is not large enough, it only has size of " + b.getSize() + " which" +
+        if( b.getCapacity() < endIdx )
+            TestCase.fail( "b is not large enough, it only has size of " + b.getCapacity() + " which" +
                            "will not hold index " + endIdx );
 
         int idxPtr = startIdx;
@@ -244,11 +244,11 @@ public class TestColStorageBlocked_KeyTypeName_
 
     protected void assertEquals( ColStorageBlocked_KeyTypeName_ a, ColStorageBlocked_KeyTypeName_ b )
     {
-        TestCase.assertEquals( a.getSize(), b.getSize() );
+        TestCase.assertEquals( a.getCapacity(), b.getCapacity() );
         TestCase.assertEquals( a.bitsMask, b.bitsMask );
         TestCase.assertEquals( a.growthStrategy, b.growthStrategy );
         TestCase.assertEquals( a.blockSize, b.blockSize );
         TestCase.assertEquals( a.bitsPerBlock, b.bitsPerBlock );
-        assertSame( a, b, 0, a.getSize() - 1 );
+        assertSame( a, b, 0, a.getCapacity() - 1 );
     }
 }
