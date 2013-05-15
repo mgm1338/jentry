@@ -1,6 +1,5 @@
 package collections.relationship;
 
-import collections.hash.set.TestHashSetLong;
 import core.Const;
 import junit.framework.TestCase;
 import org.junit.Before;
