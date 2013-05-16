@@ -1,8 +1,6 @@
 package store.schema;
 
-import collections.hash.map.HashMapCharSequenceObject;
 import collections.hash.set.HashSetCharSequence;
-import com.sun.org.apache.bcel.internal.classfile.ConstantObject;
 import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;

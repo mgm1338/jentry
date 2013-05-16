@@ -76,7 +76,7 @@ public class ColStorageArray_KeyTypeName_ implements ColStorage_KeyTypeName_
     public ColStorageArray_KeyTypeName_ getCopy()
     {
         ColStorageArray_KeyTypeName_ copy = new ColStorageArray_KeyTypeName_( this.capacity, this.strategy );
-        System.arraycopy( this, 0, copy.data, 0, this.capacity );
+        System.arraycopy( data, 0, copy.data, 0, this.capacity );
         return copy;
     }
 
@@ -100,8 +100,14 @@ public class ColStorageArray_KeyTypeName_ implements ColStorage_KeyTypeName_
         }
     }
 
+    @Override
     public int getCapacity()
     {
         return capacity;
+    }
+
+    public GrowthStrategy getStrategy()
+    {
+        return strategy;
     }
 }
