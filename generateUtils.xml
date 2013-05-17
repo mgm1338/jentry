@@ -224,4 +224,65 @@
     </macrodef>
     <!--END UTIL GENERATION CLASSES-->
 
+    <macrodef name="deleteGenerated">
+        <attribute name="package" />
+        <attribute name="fileBase" />
+        <sequential>
+            <delete>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Bool.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Byte.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Char.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}CharSequence.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Double.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Float.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Int.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Long.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Object.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}Short.java"/>
+                <fileset dir="@{package}"
+                         includes="@{fileBase}_ValueTypeName_.java"/>
+            </delete>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="deleteGeneratedKeyVal">
+        <attribute name="package" />
+        <attribute name="fileBase" />
+        <sequential>
+            <delete>
+                <fileset dir="@{package}"
+                         includes="*Bool.java"/>
+                <fileset dir="@{package}"
+                         includes="*Byte.java"/>
+                <fileset dir="@{package}"
+                         includes="*Char.java"/>
+                <fileset dir="@{package}"
+                         includes="*CharSequence.java"/>
+                <fileset dir="@{package}"
+                         includes="*Double.java"/>
+                <fileset dir="@{package}"
+                         includes="*Float.java"/>
+                <fileset dir="@{package}"
+                         includes="*Int.java"/>
+                <fileset dir="@{package}"
+                         includes="*Long.java"/>
+                <fileset dir="@{package}"
+                         includes="*Object.java"/>
+                <fileset dir="@{package}"
+                         includes="*Short.java"/>
+            </delete>
+        </sequential>
+    </macrodef>
+
+
 </project>

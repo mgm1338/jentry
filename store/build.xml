@@ -7,17 +7,29 @@
 
     <include file="../generateUtils.xml"/>
 
+
+
+
     <target name="generate">
-        <generateKeyTypesBoolVal fileBase="Column" package="main\java\store\col"/>
-        <generateKeyTypesBoolVal fileBase="ColStorage" package="main\java\store\col\storage\generic"/>
-        <generateKeyTypesBoolVal fileBase="ColStorageArray" package="main\java\store\col\storage\array"/>
-        <generateKeyTypesBoolVal fileBase="ColStorageBlocked" package="main\java\store\col\storage\block"/>
+        <generateKeyTypesBool fileBase="Column" package="main\java\store\col"/>
+        <generateKeyTypesBool fileBase="ColStorage" package="main\java\store\col\storage\generic"/>
+        <generateKeyTypesBool fileBase="ColStorageArray" package="main\java\store\col\storage\array"/>
+        <generateKeyTypesBool fileBase="ColStorageBlocked" package="main\java\store\col\storage\block"/>
+
+        <generateKeyTypesBool fileBase="TestColStorageBlocked" package="test\java\store\col\storage\block"/>
+        <generateKeyTypesBool fileBase="TestColStorageArray" package="test\java\store\col\storage\array"/>
 
 
-        <generateKeyTypesBoolVal fileBase="TestColStorageBlocked" package="test\java\store\col\storage\block"/>
-        <generateKeyTypesBoolVal fileBase="TestColStorageArray" package="test\java\store\col\storage\array"/>
 
+    </target>
 
+    <target name="deleteGenerated">
+        <deleteGenerated fileBase="Column" package="main\java\store\col"/>
+        <deleteGenerated fileBase="ColStorage" package="main\java\store\col\storage\generic"/>
+        <deleteGenerated fileBase="ColStorageArray" package="main\java\store\col\storage\array"/>
+        <deleteGenerated fileBase="ColStorageBlocked" package="main\java\store\col\storage\block"/>
 
+        <deleteGenerated fileBase="TestColStorageBlocked" package="test\java\store\col\storage\block"/>
+        <deleteGenerated fileBase="TestColStorageArray" package="test\java\store\col\storage\array"/>
     </target>
 </project>

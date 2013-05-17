@@ -13,4 +13,12 @@
         <generateKeyTypesBoolVal fileBase="Comparator"
                                  package="main\java\core\util\comparator"/>
     </target>
+
+
+    <target name="deletedGenerated">
+        <deleteGenerated fileBase="ArrayFactory"
+                                 package="main\java\core\array\factory"/>
+        <deleteGenerated fileBase="Comparator"
+                                 package="main\java\core\util\comparator"/>
+    </target>
 </project>

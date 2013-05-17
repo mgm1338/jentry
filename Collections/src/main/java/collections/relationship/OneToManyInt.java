@@ -1,6 +1,7 @@
 package collections.relationship;
 
 import collections.generic.Collection;
+import collections.hash.set.HashSetLong;
 import core.Const;
 import core.NumberUtil;
 import core.array.GrowthStrategy;

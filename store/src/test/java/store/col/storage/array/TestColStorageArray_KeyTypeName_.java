@@ -31,6 +31,9 @@ public class TestColStorageArray_KeyTypeName_
         TestCase.assertEquals( Types._KeyTypeName_, store.getType() );
     }
 
+    /**
+     * Load the storage, and assert that exception thrown when overloaded
+     */
     @Test
     public void loadTest()
     {
@@ -62,6 +65,10 @@ public class TestColStorageArray_KeyTypeName_
         }
     }
 
+    /**
+     * A variety of growths, assert that doesnt grow if already large enough,
+     * assert that growth copies correctly, and that follows strategy correctly.
+     */
     @Test
     public void growthTest()
     {
@@ -87,6 +94,9 @@ public class TestColStorageArray_KeyTypeName_
         TestCase.assertEquals( TEST_SIZE + 1, store.getCapacity() );
     }
 
+    /**
+     * Test copying empty and copying a loaded store
+     */
     @Test
     public void copyTest()
     {
@@ -100,7 +110,10 @@ public class TestColStorageArray_KeyTypeName_
     }
 
 
-
+    /**
+     * Test copy from, assert the correct values are copied, and doesn't overwrite
+     * any correct existing data.
+     */
     @Test
     public void testCopyFrom()
     {
