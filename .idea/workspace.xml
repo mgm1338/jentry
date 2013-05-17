@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="fleshing out the array store, pushing up methods to interface, continued store testing">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collections/src/main/java/collections/util/BitSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlocksList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreBool.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreByte.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreChar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreCharSequence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreDouble.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreFloat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreInt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreLong.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreObject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/src/main/java/store/col/storage/generic/ColStoreShort.java" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\collections\src\main\java\collections\hash\map\HashMap_KeyTypeName__ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\collections\src\test\java\util\TestUtils_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\core\src\main\java\core\array\factory\ArrayFactory_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\core\src\main\java\core\util\comparator\Comparator_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\store\src\main\java\store\col\Column_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\store\src\main\java\store\col\storage\block\ColStorageBlocked_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\store\src\main\java\store\col\storage\generic\ColStorage_ValueTypeName_.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\Jentry\store\src\test\java\store\col\storage\block\TestColStorageBlocked_ValueTypeName_.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\dev\Jentry\core\src\main\java\core\charsequence\ByteFacade.java" afterPath="$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlock.java" />
-      <change type="MODIFICATION" beforePath="C:\dev\Jentry\collections\src\main\java\collections\relationship\OneToManyInt.java" afterPath="$PROJECT_DIR$/collections/src/main/java/collections/relationship/OneToManyInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/store/src/test/java/store/col/storage/array/TestColStorageArray_KeyTypeName_.java" afterPath="$PROJECT_DIR$/store/src/test/java/store/col/storage/array/TestColStorageArray_KeyTypeName_.java" />
-      <change type="MODIFICATION" beforePath="C:\dev\Jentry\collections\src\test\java\collections\relationship\TestManyToManyInt.java" afterPath="$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestManyToManyInt.java" />
-      <change type="MODIFICATION" beforePath="C:\dev\Jentry\collections\src\test\java\collections\relationship\TestOneToManyInt.java" afterPath="$PROJECT_DIR$/collections/src/test/java/collections/relationship/TestOneToManyInt.java" />
-      <change type="MODIFICATION" beforePath="C:\dev\Jentry\collections\build.xml" afterPath="$PROJECT_DIR$/collections/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build.xml" afterPath="$PROJECT_DIR$/core/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/store/build.xml" afterPath="$PROJECT_DIR$/store/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generateUtils.xml" afterPath="$PROJECT_DIR$/generateUtils.xml" />
-    </list>
+    <list default="true" id="52686f1b-037a-4c8a-a977-7722a81f327c" name="Default" comment="fleshing out the array store, pushing up methods to interface, continued store testing" />
     <ignored path="Jentry.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1368764427739" ignored="false" />
+    <file path="/Dummy.txt" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1368765027427" ignored="false" />
     <file path="/fragment.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1368759008465" ignored="false" />
     <file path="/MultiListInt.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358453996485" ignored="false" />
     <file path="/TestMultiSLList.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1364082586978" ignored="false" />
@@ -51,7 +21,7 @@
     <file path="/Collection_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362285170767" ignored="false" />
     <file path="/DefaultValueProvider.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1362540755621" ignored="false" />
     <file path="/Const.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358827090651" ignored="false" />
-    <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1368758674339" ignored="false" />
+    <file path="/build.xml" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1368765086408" ignored="false" />
     <file path="/File Header.txt.ft" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1358187294508" ignored="false" />
     <file path="/Collection.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1359083341709" ignored="false" />
     <file path="/TestHashSet_KeyTypeName_.java" changelist="52686f1b-037a-4c8a-a977-7722a81f327c" time="1367463036578" ignored="false" />
@@ -281,20 +251,20 @@
     <SUITE FILE_PATH="coverage/Jentry$store_col_storage_in_store.coverage" NAME="store.col.storage in store Coverage Results" MODIFIED="1368501371878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>store.col.storage.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$store_col_storage_array_in_store.coverage" NAME="store.col.storage.array in store Coverage Results" MODIFIED="1368757483254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>store.col.storage.array.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList_removeMiddleFromLongList.coverage" NAME="TestMultiSLList.removeMiddleFromLongList Coverage Results" MODIFIED="1356207806028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.list.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList.coverage" NAME="TestMultiSLList Coverage Results" MODIFIED="1364082609589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.util.*</FILTER>
+    <SUITE FILE_PATH="coverage/Jentry$store_col_storage_array_in_store.coverage" NAME="store.col.storage.array in store Coverage Results" MODIFIED="1368757483254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>store.col.storage.array.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Jentry$collections_relationship_in_Jentry.coverage" NAME="collections.relationship in Jentry Coverage Results" MODIFIED="1364153029453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.relationship.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Jentry$TestOneToMany_simpleAssociateNoTracking.coverage" NAME="TestOneToMany.simpleAssociateNoTracking Coverage Results" MODIFIED="1360214385883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>collections.relationship.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Jentry$collections_relationship_in_Jentry.coverage" NAME="collections.relationship in Jentry Coverage Results" MODIFIED="1364153029453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>collections.relationship.*</FILTER>
+    <SUITE FILE_PATH="coverage/Jentry$TestMultiSLList.coverage" NAME="TestMultiSLList Coverage Results" MODIFIED="1364082609589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>collections.util.*</FILTER>
     </SUITE>
   </component>
   <component name="CoverageOptionsProvider">
@@ -307,6 +277,23 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/store/src/test/java/store/col/storage/block/TestColStorageBlocked_KeyTypeName_.java" line="2" class="TestColStorageBlocked_KeyTypeName_.java" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -341,23 +328,6 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/store/src/test/java/store/col/storage/block/TestColStorageBlocked_KeyTypeName_.java" line="2" class="TestColStorageBlocked_KeyTypeName_.java" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -879,10 +849,19 @@
       <file leaf-file-name="ByteBlocksList.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlocksList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="53" selection-start="4715" selection-end="4715" vertical-scroll-proportion="0.72835314">
+            <state line="53" column="75" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.20160367">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/collections/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="110" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -924,7 +903,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/collections/build.xml" />
         <option value="$PROJECT_DIR$/generateUtils.xml" />
         <option value="$PROJECT_DIR$/collections/src/main/java/collections/heap/ungen/BinaryHeapObject.java" />
         <option value="$PROJECT_DIR$/collections/src/main/java/collections/hash/set/ungen/HashSetByteFacade.java" />
@@ -940,6 +918,7 @@
         <option value="$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlockList.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlockAppendList.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlocksList.java" />
+        <option value="$PROJECT_DIR$/collections/build.xml" />
       </list>
     </option>
   </component>
@@ -1064,9 +1043,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1087,22 +1063,25 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
-    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/store/build.xml" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jentry" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GoToClass.includeJavaFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jentry" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -1117,8 +1096,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1340,6 +1319,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1366,19 +1358,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1696,32 +1675,32 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32329988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2022412" sideWeight="0.68561876" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2022412" sideWeight="0.68631816" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36008918" sideWeight="0.49786553" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36008918" sideWeight="0.49839914" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.32107022" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31438127" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2022412" sideWeight="0.2173913" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31368187" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16488793" sideWeight="0.57063407" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16862327" sideWeight="0.6767001" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.68561876" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.68631816" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32329988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2022412" sideWeight="0.2173913" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1850,67 +1829,63 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/Map_KeyTypeName__ValueTypeName_.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_38/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="64" selection-start="491" selection-end="491" vertical-scroll-proportion="0.35132033">
+        <state line="985" column="27" selection-start="37346" selection-end="37346" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_38/src.zip!/java/lang/StringCoding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="274" column="40" selection-start="7962" selection-end="7962" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/map/Map_KeyTypeName__ValueTypeName_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="64" selection-start="491" selection-end="491" vertical-scroll-proportion="0.35132033" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/heap/ungen/TestBinaryHeapObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="58" selection-start="766" selection-end="766" vertical-scroll-proportion="0.29276693">
-          <folding />
-        </state>
+        <state line="29" column="58" selection-start="766" selection-end="766" vertical-scroll-proportion="0.29276693" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/heap/BinaryHeap_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="81" selection-start="520" selection-end="610" vertical-scroll-proportion="0.18828933">
-          <folding />
-        </state>
+        <state line="20" column="81" selection-start="520" selection-end="610" vertical-scroll-proportion="0.18828933" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/core/util/comparator/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="217" selection-end="217" vertical-scroll-proportion="0.21469575">
-          <folding />
-        </state>
+        <state line="11" column="35" selection-start="217" selection-end="217" vertical-scroll-proportion="0.21469575" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/test/java/collections/hash/set/TestHashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="39" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="39" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="38" selection-start="758" selection-end="758" vertical-scroll-proportion="0.56">
-          <folding />
-        </state>
+        <state line="28" column="38" selection-start="758" selection-end="758" vertical-scroll-proportion="0.56" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/test/java/store/col/storage/array/TestColStorageArray_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="43" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="51" column="43" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/generic/Collection_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="54" selection-start="877" selection-end="877" vertical-scroll-proportion="0.4293915">
-          <folding />
-        </state>
+        <state line="22" column="54" selection-start="877" selection-end="877" vertical-scroll-proportion="0.4293915" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/collections/src/main/java/collections/hash/set/HashSet_KeyTypeName_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="31" selection-start="9016" selection-end="9016" vertical-scroll-proportion="5.2112513">
-          <folding />
-        </state>
+        <state line="276" column="31" selection-start="9016" selection-end="9016" vertical-scroll-proportion="5.2112513" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlock.java">
@@ -1934,9 +1909,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/collections/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="110" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/core/charsequence/ByteBlocksList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="53" selection-start="4715" selection-end="4715" vertical-scroll-proportion="0.72835314">
+        <state line="53" column="75" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.20160367">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
