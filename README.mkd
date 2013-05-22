@@ -19,8 +19,8 @@ approximately 20 active groups using the frameworks in their applications.
 In the end, we had some success, however the framework's development was largely
 driven by the internal groups at the bank. Application's features were pushed
 into the development path, so quickly what began as a few simple ideas became
-clutted with business-specific purposes. The essence of the framework was
-quickly obfiscated by unnecessary features. As you may have heard in the news,
+cluttered with business-specific purposes. The essence of the framework was
+quickly obfuscated by unnecessary features. As you may have heard in the news,
 the past few years the banks have had to cut some costs. Our framework was
 shelved, and disappeared into the ether.
 
@@ -34,7 +34,7 @@ me the most). The name of the framework is Jentry. I will discuss the name
 explanation later, for now just trust me that it is not just a play on the word
 'Gentry' (that was just a cool coincidence).
 
-## A Few Basic Pricincples of Jentry
+## A Few Basic Principles of Jentry
 
 ### Memory efficiency
 
@@ -45,17 +45,17 @@ Jentry Collections are similar to the GNU trove framework. The collections are
 designed to be faster and use less memory than the standard JDK collections.
 Trove explains this tenant in a very succinct way in its second objective:
 
->>> Whenever possible, provide the same collections support for primitive types.
->>> This gap in the JDK is often addressed by using the "wrapper" classes
->>> (java.lang.Integer, java.lang.Float, etc.) with Object-based collections.
->>> For most applications, however, collections which store primitives directly
->>> will require less space and yield significant performance gains.
+> Whenever possible, provide the same collections support for primitive types.
+> This gap in the JDK is often addressed by using the "wrapper" classes
+> (java.lang.Integer, java.lang.Float, etc.) with Object-based collections.
+> For most applications, however, collections which store primitives directly
+> will require less space and yield significant performance gains.
 
 ### Collection 'Compactness' witn Indirection
 
 Jentry collections have a unique wrinkle that is probably the largest part of
-its 'special sauce'. Compactness itself in this case is a very simple idea: dont
-waste space in arrays by having empty slots (duh, I know). The second part
+its 'special sauce'. Compactness itself in this case is a very simple idea:
+don't waste space in arrays by having empty slots (duh, I know). The second part
 reminds me of C++ pointers in a Java way, by using some additional space and
 allowing the collections to access all data by direct array access.
 
@@ -76,8 +76,8 @@ HashMap to search them by id, something like:
 This is all fine and good, and would probably work reasonably well up to a
 point, but start to do a ton of actual work with the store, and you encounter a
 very common problem that GC time and PermGen space needs to be increased by
-crazy amounts. Common solutions of duct tape and massive caching appications can
-only help so much.
+crazy amounts. Common solutions of duct tape and massive caching applications
+can only help so much.
 
 Jentry collection uses a convention of 'handles' to the data. These 'handles'
 are also called 'entries' (hence, Jentry), but really are just slots in an
