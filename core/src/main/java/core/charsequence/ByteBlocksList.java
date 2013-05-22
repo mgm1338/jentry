@@ -4,6 +4,8 @@ import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
 import core.array.util.MasterSlaveIntSort;
+import core.util.comparator.Comparator;
+import core.util.comparator.ComparatorInt;
 import core.util.comparator.Comparators;
 
 /**
@@ -53,6 +55,8 @@ public class ByteBlocksList
     private byte[] scratch = new byte[ DEFAULT_BLOCK_SIZE ];
     protected int[] offsetScratch = new int[ 8 ];
     protected int[] lenScratch = new int[ 8 ];
+
+    protected final ComparatorInt cmp = new Comparators.IntAsc();
 
 
     public ByteBlocksList( int numBlocks )
@@ -150,21 +154,28 @@ public class ByteBlocksList
             System.arraycopy( freeList, freeListUsePtr, freeList, 0, numFreeListLeft );
             freeListPtr = numFreeListLeft;
         }
-        //process from 0-freeListPtr, squishing their holes, and decrement dataPtr
-        int newDataPtr;
-        if (freeListPtr>offsetScratch.length)
+        //check the scratches can hold the freed entries
+        if( freeListUsePtr > offsetScratch.length )
         {
-            offsetScratch = new int[freeListPtr];
-            lenScratch = new int[freeListPtr];
+            offsetScratch = new int[ freeListPtr ];
+            lenScratch = new int[ freeListPtr ];
         }
-        for( int i = 0; i < freeListPtr; i++ )
+        //fill the scratches with offsets,lengths of freed
+        for( int i = 0; i < freeListUsePtr; i++ )
         {
-            MasterSlaveIntSort.sort( offsets, lengths, new Comparators.IntAsc() );
+            int freedIdx = freeList[ i ];
+            offsetScratch[ i ] = offsets[ freedIdx ];
+            lenScratch[ i ] = lengths[ freedIdx ];
         }
-
-        freeListLockPtr = freeListPtr; //now we can use up to this pointer
-        return;
-
+        MasterSlaveIntSort.sort( offsets, lengths, cmp );
+        for( int i = 0; i < freeListUsePtr; i++ )
+        {
+            int length = lengths[i];
+            int offset = offsets[i];
+            //we will 'squish out the space for this freed item
+            System.arraycopy( data, offset+length, data, offset, length );
+        }
+        freeListLockPtr = freeListPtr;
     }
 
 }
