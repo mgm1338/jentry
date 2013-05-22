@@ -148,12 +148,6 @@ public class ByteBlocksList
     {
         if( freeListPtr == 0 ) return; //nothing to compact
 
-        if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
-        {
-            int numFreeListLeft = freeListPtr - freeListUsePtr;
-            System.arraycopy( freeList, freeListUsePtr, freeList, 0, numFreeListLeft );
-            freeListPtr = numFreeListLeft;
-        }
         //check the scratches can hold the freed entries
         if( freeListUsePtr > offsetScratch.length )
         {
@@ -175,7 +169,15 @@ public class ByteBlocksList
             //we will 'squish out the space for this freed item
             System.arraycopy( data, offset+length, data, offset, length );
         }
+        if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
+        {
+            int numFreeListLeft = freeListPtr - freeListUsePtr;
+            System.arraycopy( freeList, freeListUsePtr, freeList, 0, numFreeListLeft );
+            freeListPtr = numFreeListLeft;
+        }
         freeListLockPtr = freeListPtr;
+        freeListUsePtr = 0;
+
     }
 
 }
