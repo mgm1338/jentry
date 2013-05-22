@@ -1,49 +1,70 @@
 Jentry
 =======
 
-Jentry is a light-weight Java framework designed for efficient store and processing of flows of information. Designed originally for the financial industry, the main purpose
-is for processing millions of records in memory in sub-second times.
+Jentry is a light-weight Java framework designed for efficient store and
+processing of flows of information. Designed originally for the financial
+industry, the main purpose is for processing millions of records in memory in
+sub-second times.
 
 ## Preface
 
-I originally encountered the ideas for the Jentry framework while developing a similar framework at a multinational investment bank. The framework's purpose was to greatly
-improve the performance of many trading applications. This style of framework had proven successful in before in other financial institutions, and many of the other
-developers in my group had been 'poached' from successful frameworks of the past. For about two years we worked on the framework, with approximately 20 active groups
-using the frameworks in their applications.
+I originally encountered the ideas for the Jentry framework while developing a
+similar framework at a multinational investment bank. The framework's purpose
+was to greatly improve the performance of many trading applications. This style
+of framework had proven successful in before in other financial institutions,
+and many of the other developers in my group had been 'poached' from successful
+frameworks of the past. For about two years we worked on the framework, with
+approximately 20 active groups using the frameworks in their applications.
 
-In the end, we had some success, however the framework's development was largely driven by the internal groups at the bank. Application's features were pushed
-into the development path, so quickly what began as a few simple ideas became clutted with business-specific purposes. The essence of the framework was quickly obfiscated by
-unnecessary features. As you may have heard in the news, the past few years the banks have had to cut some costs. Our framework was shelved, and disappeared into the ether.
+In the end, we had some success, however the framework's development was largely
+driven by the internal groups at the bank. Application's features were pushed
+into the development path, so quickly what began as a few simple ideas became
+clutted with business-specific purposes. The essence of the framework was
+quickly obfiscated by unnecessary features. As you may have heard in the news,
+the past few years the banks have had to cut some costs. Our framework was
+shelved, and disappeared into the ether.
 
 ## Now
 
-The internal framework, with all its faults, was pretty sweet in my opinion. It is a bit complex, but it is very powerful in situations that need to process large streams of
-data very quickly. I decided to start working on a replacement with a much more focused approach (without being a slave to whatever group paid me the most). The name of the framework
-is Jentry. I will discuss the name explanation later, for now just trust me that it is not just a play on the word 'Gentry' (that was just a cool coincidence).
+The internal framework, with all its faults, was pretty sweet in my opinion. It
+is a bit complex, but it is very powerful in situations that need to process
+large streams of data very quickly. I decided to start working on a replacement
+with a much more focused approach (without being a slave to whatever group paid
+me the most). The name of the framework is Jentry. I will discuss the name
+explanation later, for now just trust me that it is not just a play on the word
+'Gentry' (that was just a cool coincidence).
 
+## A Few Basic Pricincples of Jentry
 
-A Few Basic Pricincples of Jentry:
+### Memory efficiency
 
-- Memory efficiency
+Jentry is array-based and based on the primitive arrays. When starting to store
+millions of record in memory, Object allocation and garbage collection can often
+become a large drain (in many cases the largest) on resources. In this way,
+Jentry Collections are similar to the GNU trove framework. The collections are
+designed to be faster and use less memory than the standard JDK collections.
+Trove explains this tenant in a very succinct way in its second objective:
 
-Jentry is array-based and based on the primitive arrays. When starting to store millions of record in memory, Object allocation and garbage collection can often
-become a large drain (in many cases the largest) on resources. In this way, Jentry Collections are similar to the GNU trove framework. The collections are designed to be faster and use less memory
-than the standard JDK collections. Trove explains this tenant in a very succinct way in its second objective:
+>>> Whenever possible, provide the same collections support for primitive types.
+>>> This gap in the JDK is often addressed by using the "wrapper" classes
+>>> (java.lang.Integer, java.lang.Float, etc.) with Object-based collections.
+>>> For most applications, however, collections which store primitives directly
+>>> will require less space and yield significant performance gains.
 
-	Whenever possible, provide the same collections support for primitive types. This gap in the JDK is often addressed by using the "wrapper"
-	classes (java.lang.Integer, java.lang.Float, etc.) with Object-based collections. For most applications, however, collections which store primitives
-	directly will require less space and yield significant performance gains.
+### Collection 'Compactness' witn Indirection
 
--  Collection 'Compactness' witn Indirection
-
-Jentry collections have a unique wrinkle that is probably the largest part of its 'special sauce'. Compactness itself in this case is a very simple idea: dont
-waste space in arrays by having empty slots (duh, I know). The second part reminds me of C++ pointers in a Java way, by using some additional space
-and allowing the collections to access all data by direct array access.
+Jentry collections have a unique wrinkle that is probably the largest part of
+its 'special sauce'. Compactness itself in this case is a very simple idea: dont
+waste space in arrays by having empty slots (duh, I know). The second part
+reminds me of C++ pointers in a Java way, by using some additional space and
+allowing the collections to access all data by direct array access.
 
 The simplest way to show the difference is to show an example:
 
-Lets say you wanted to store a few million financial orders in memory in Java. The financial orders have well-defined fields and unique ids. An easy way to do this in Java would be
-to define a POJO, and create a data store of some sort of HashMap to search them by id, something like:
+Lets say you wanted to store a few million financial orders in memory in Java.
+The financial orders have well-defined fields and unique ids. An easy way to do
+this in Java would be to define a POJO, and create a data store of some sort of
+HashMap to search them by id, something like:
 
 	HashMap<Integer, Order> orderStore = new HashMap<Integer,Order>(1000000);
 	for (int i=0; i<1000000; i++)
@@ -52,12 +73,16 @@ to define a POJO, and create a data store of some sort of HashMap to search them
 		orderStore.put(id, Order);
 	}
 
-THis is all fine and good, and would probably work reasonably well up to a point, but start to do a ton of actual work with the store, and you encounter a very common problem
-that GC time and PermGen space needs to be increased by crazy amounts. Common solutions of duct tape and massive caching appications can only help so much.
+This is all fine and good, and would probably work reasonably well up to a
+point, but start to do a ton of actual work with the store, and you encounter a
+very common problem that GC time and PermGen space needs to be increased by
+crazy amounts. Common solutions of duct tape and massive caching appications can
+only help so much.
 
-
-Jentry collection uses a convention of 'handles' to the data. These 'handles' are also called 'entries' (hence, Jentry), but really are just slots in an array. Now we ditch
-the POJOs, and use a slightly different method of storage of the Orders:
+Jentry collection uses a convention of 'handles' to the data. These 'handles'
+are also called 'entries' (hence, Jentry), but really are just slots in an
+array. Now we ditch the POJOs, and use a slightly different method of storage of
+the Orders:
 
 	HashSetInt orderStore = new HashSetInt(1000000);
 	long[] price = new long[1000000];
@@ -72,7 +97,8 @@ the POJOs, and use a slightly different method of storage of the Orders:
 		etc... for each attribute
 	}
 
-
-Now the difference here is obviously the ditching of the POJOS, but in this case, these entries are 'compact'. That means that the first entry for your first order will be 0,
-followed by 1, 2, etc.... We also make a contract with the Collection that if you retrieve an item by an entry, you get the exact item you inserted. (Example of retrieval and
-modification).
+Now the difference here is obviously the ditching of the POJOS, but in this
+case, these entries are 'compact'. That means that the first entry for your
+first order will be 0, followed by 1, 2, etc.... We also make a contract with
+the Collection that if you retrieve an item by an entry, you get the exact item
+you inserted. (Example of retrieval and modification).
