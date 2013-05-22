@@ -1,5 +1,6 @@
 package collections.heap.ungen;
 
+import collections.heap.BinaryHeapObject;
 import core.stub.IntValueConverter;
 import core.util.comparator.ComparatorObject;
 import junit.framework.TestCase;
@@ -230,7 +231,7 @@ public class TestBinaryHeapObject
         @Override
         public int compare( Object a, Object b )
         {
-            return IntValueConverter.toInt( b ) - IntValueConverter.toInt( a );
+            return IntValueConverter.toInt( a ) - IntValueConverter.toInt( b );
         }
     }
 

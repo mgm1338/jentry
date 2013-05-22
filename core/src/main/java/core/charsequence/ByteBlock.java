@@ -1,5 +1,7 @@
 package core.charsequence;
 
+import java.util.Arrays;
+
 /**
  * Copyright 3/10/13
  * All rights reserved.
@@ -39,6 +41,7 @@ public class ByteBlock implements CharSequence
         this.bytes = bytes;
         this.offSet = offSet;
         this.len = len;
+        Arrays.sort(bytes);
     }
 
     /**

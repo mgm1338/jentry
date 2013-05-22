@@ -1,9 +1,10 @@
 package core.charsequence;
 
-import core.Const;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
+import core.array.util.MasterSlaveIntSort;
+import core.util.comparator.Comparators;
 
 /**
  * Copyright 5/16/13
@@ -158,7 +159,7 @@ public class ByteBlocksList
         }
         for( int i = 0; i < freeListPtr; i++ )
         {
-            //need the parallel array sorter, we parallel sort then squish based on offset sorted
+            MasterSlaveIntSort.sort( offsets, lengths, new Comparators.IntAsc() );
         }
 
         freeListLockPtr = freeListPtr; //now we can use up to this pointer

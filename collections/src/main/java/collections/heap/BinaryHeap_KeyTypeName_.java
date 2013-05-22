@@ -408,9 +408,9 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             if( left != Const.NO_ENTRY && right != Const.NO_ENTRY )
             {
                 int cmpResult = cmp.compare( keys[ tree[ left ] ], keys[ tree[ right ] ] );
-                if( cmpResult > 0 ) //compare with left
+                if( cmpResult < 0 ) //compare with left
                 {
-                    if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ left ] ] ) < 0 )
+                    if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ left ] ] ) > 0 )
                     {
                         flip( parentPtr, left );
                         parentPtr = left;
@@ -422,7 +422,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
                 }
                 else //compare with right
                 {
-                    if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ right ] ] ) < 0 )
+                    if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ right ] ] ) > 0 )
                     {
                         flip( parentPtr, right );
                         parentPtr = right;
@@ -435,7 +435,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             }
             else if( left != Const.NO_ENTRY )   //only have left child
             {
-                if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ left ] ] ) < 0 )
+                if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ left ] ] ) > 0 )
                 {
                     flip( parentPtr, left );
                     parentPtr = left;
@@ -447,7 +447,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
             }
             else // only have right child
             {
-                if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ right ] ] ) < 0 )
+                if( cmp.compare( keys[ tree[ parentPtr ] ], keys[ tree[ right ] ] ) > 0 )
                 {
                     flip( parentPtr, right );
                     parentPtr = right;
@@ -474,7 +474,7 @@ public class BinaryHeap_KeyTypeName_ implements Heap_KeyTypeName_
     protected void shiftUp( _key_ key, int treePtr )
     {
         int parent = parent( treePtr );
-        while( treePtr != 1 && cmp.compare( key, keys[ tree[ parent ] ] ) > 0 )
+        while( treePtr != 1 && cmp.compare( key, keys[ tree[ parent ] ] ) < 0 )
         {
             flip( treePtr, parent );
             treePtr = parent;

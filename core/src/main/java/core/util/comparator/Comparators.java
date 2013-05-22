@@ -14,7 +14,7 @@ public class Comparators
      * Return greater than 0 if b is 'greater' (less than a).
      */
     //stub, never used
-    public static final class _KeyTypeName_Asc
+    public static final class _KeyTypeName_Desc
             implements Comparator_KeyTypeName_
     {
 
@@ -26,7 +26,7 @@ public class Comparators
     }
 
 
-    public static final class BoolAsc implements ComparatorBool
+    public static final class BoolDesc implements ComparatorBool
     {
         @Override
         public int compare( boolean a, boolean b )
@@ -38,7 +38,7 @@ public class Comparators
     }
 
 
-    public static final class CharAsc implements ComparatorChar
+    public static final class CharDesc implements ComparatorChar
     {
         @Override
         public int compare( char a, char b )
@@ -47,7 +47,7 @@ public class Comparators
         }
     }
 
-    public static final class ByteAsc implements ComparatorByte
+    public static final class ByteDesc implements ComparatorByte
     {
 
         @Override
@@ -57,7 +57,7 @@ public class Comparators
         }
     }
 
-    public static final class ShortAsc implements ComparatorShort
+    public static final class ShortDesc implements ComparatorShort
     {
         @Override
         public int compare( short a, short b )
@@ -67,7 +67,7 @@ public class Comparators
     }
 
 
-    public final static class IntAsc implements ComparatorInt
+    public final static class IntDesc implements ComparatorInt
     {
 
         @Override
@@ -77,7 +77,7 @@ public class Comparators
         }
     }
 
-    public final static class FloatAsc implements ComparatorFloat
+    public final static class FloatDesc implements ComparatorFloat
     {
 
         @Override
@@ -87,7 +87,7 @@ public class Comparators
         }
     }
 
-    public final static class DoubleAsc implements ComparatorDouble
+    public final static class DoubleDesc implements ComparatorDouble
     {
         @Override
         public int compare( double a, double b )
@@ -97,7 +97,7 @@ public class Comparators
     }
 
 
-    public final static class LongAsc implements ComparatorLong
+    public final static class LongDesc implements ComparatorLong
     {
         @Override
         public int compare( long a, long b )
@@ -106,7 +106,7 @@ public class Comparators
         }
     }
 
-    public final static class CharSequenceAsc implements ComparatorCharSequence,
+    public final static class CharSequenceDesc implements ComparatorCharSequence,
                                                          java.util.Comparator<CharSequence>
     {
         @Override
@@ -124,7 +124,7 @@ public class Comparators
             {
                 return -1;
             }
-            CharAsc charCmp = new CharAsc();
+            CharDesc charCmp = new CharDesc();
             int aLen = a.length();
             int bLen = b.length();
             for( int i = 0; i < a.length() && i < b.length(); i++ )
@@ -148,11 +148,11 @@ public class Comparators
     }
 
     /**
-     * Descending Comparators, Return less than 0 if a is less than b.
+     * Ascending Comparators, Return less than 0 if a is less than b.
      * Return greater than 0 if b is less than a.
      */
     //stub, never used
-    public static final class _KeyTypeName_Desc
+    public static final class _KeyTypeName_Asc
             implements Comparator_KeyTypeName_
     {
 
@@ -164,7 +164,7 @@ public class Comparators
 
     }
 
-    public static final class BoolDesc implements ComparatorBool
+    public static final class BoolAsc implements ComparatorBool
     {
         @Override
         public int compare( boolean a, boolean b )
@@ -176,7 +176,7 @@ public class Comparators
     }
 
 
-    public static final class CharDesc implements ComparatorChar
+    public static final class CharAsc implements ComparatorChar
     {
         @Override
         public int compare( char a, char b )
@@ -186,7 +186,7 @@ public class Comparators
     }
 
 
-    public static final class ByteDesc implements ComparatorByte
+    public static final class ByteAsc implements ComparatorByte
     {
 
         @Override
@@ -197,7 +197,7 @@ public class Comparators
     }
 
 
-    public static final class ShortDesc implements ComparatorShort
+    public static final class ShortAsc implements ComparatorShort
     {
         @Override
         public int compare( short a, short b )
@@ -207,7 +207,7 @@ public class Comparators
     }
 
 
-    public final static class IntDesc implements ComparatorInt
+    public final static class IntAsc implements ComparatorInt
     {
 
         @Override
@@ -218,7 +218,7 @@ public class Comparators
     }
 
 
-    public final static class FloatDesc implements ComparatorFloat
+    public final static class FloatAsc implements ComparatorFloat
     {
         @Override
         public int compare( float a, float b )
@@ -228,7 +228,7 @@ public class Comparators
     }
 
 
-    public final static class DoubleDesc implements ComparatorDouble
+    public final static class DoubleAsc implements ComparatorDouble
     {
         @Override
         public int compare( double a, double b )
@@ -237,7 +237,7 @@ public class Comparators
         }
     }
 
-    public final static class LongDesc implements ComparatorLong
+    public final static class LongAsc implements ComparatorLong
     {
         @Override
         public int compare( long a, long b )
@@ -247,7 +247,7 @@ public class Comparators
     }
 
 
-    public final static class CharSequenceDesc implements ComparatorCharSequence
+    public final static class CharSequenceAsc implements ComparatorCharSequence
             , java.util.Comparator<CharSequence>
     {
         @Override
@@ -265,7 +265,7 @@ public class Comparators
             {
                 return 1;
             }
-            CharDesc charCmp = new CharDesc();
+            CharAsc charCmp = new CharAsc();
             int aLen = a.length();
             int bLen = b.length();
             for( int i = 0; i < a.length() && i < b.length(); i++ )
