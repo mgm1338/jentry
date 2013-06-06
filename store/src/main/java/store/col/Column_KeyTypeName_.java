@@ -1,6 +1,7 @@
 package store.col;
 
 import core.Types;
+import core.annotations.UncheckedArray;
 import core.stub.*;
 import store.col.storage.generic.*;
 
@@ -13,26 +14,28 @@ import store.col.storage.generic.*;
  */
 public class Column_KeyTypeName_ implements Column
 {
-    protected final ColStorage_KeyTypeName_ storage;
-    protected final int id;
-    protected final CharSequence name;
     protected ColStorage_KeyTypeName_ data;
 
-    public Column_KeyTypeName_( ColStorage_KeyTypeName_ storage, int id, CharSequence name )
+    protected final int id;
+    protected final CharSequence name;
+    boolean initialized = false;
+
+    public Column_KeyTypeName_( int id, CharSequence name )
     {
-        this.storage = storage;
         this.id = id;
         this.name = name;
     }
 
+    @UncheckedArray
     public _key_ get_KeyTypeName_( int row )
     {
-        return storage.getValue( row );
+        return data.getValue( row );
     }
 
+    @UncheckedArray
     public void set_KeyTypeName_( _key_ val, int row )
     {
-        storage.setValue( val, row );
+        data.setValue( val, row );
     }
 
     @Override
@@ -56,5 +59,11 @@ public class Column_KeyTypeName_ implements Column
     public void setStorage(ColStorage_KeyTypeName_ storage)
     {
         this.data = storage;
+        initialized = true;
+    }
+
+    public boolean isInitialized()
+    {
+        return initialized;
     }
 }

@@ -5,7 +5,7 @@ import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;
 import store.col.ColumnUtils;
-import store.col.storage.ColumnAllocationStrategy;
+import store.col.storage.StorageTypes;
 
 /**
  * Copyright 4/24/13
@@ -17,8 +17,7 @@ import store.col.storage.ColumnAllocationStrategy;
 public class Schema
 {
 
-    public static final int ONE_MILLION = 1000000;
-    public static final int STORAGE_TYPE_CUTOFF = ( 2 * ONE_MILLION );
+    protected final static byte defaultStorageType = StorageTypes.Blocked;
 
     /**
      * Is the Schema initialized. Column additions and removals may only be made before initialization. After
@@ -47,22 +46,25 @@ public class Schema
         }
     }
 
+
     public void initialize( int numRows )
     {
-        initialize( numRows, (numRows > STORAGE_TYPE_CUTOFF) ?
-                                ColumnAllocationStrategy.blockedStorageDoubleGrowth : //better for larger stores
-                                ColumnAllocationStrategy.arrayFactoryDoubleGrowth );  //better for smaller stores
+        initialize( numRows, defaultStorageType );
     }
 
-    public void initialize( int numRows, ColumnAllocationStrategy strategy )
+    public void initialize( int numRows, byte storageType )
     {
         initialized = true;
         int colsAllocated = 0;
         int len = columns.length;
+        Column col;
         for( int i = 0; i < len && colsAllocated != numColumns; i++ )
         {
-            if( columns[ i ] != null )
+            col = columns[ i ];
+            if( col != null )
             {
+                byte type = col.getType();
+
 
             }
         }

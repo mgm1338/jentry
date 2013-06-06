@@ -20,9 +20,10 @@ import java.util.Arrays;
  * A type of storage that is set up as an array of arrays (blocks). Compared to one long continuous array, this
  * structure will not require as much copying when growing. For smaller (under a million rows),
  * the a simple array structure is usually more efficient, however more multi-million record columns,
- * the blocked storage starts to way outperform simple arrays. Insertion and retrieval are more expensive, so
- * these structures are intended to store very large data sets. The control of growth also allows users to checkGrowth
- * much closer to their heap sizes without blowing up.
+ * the blocked storage's growth will become necessary (imagine doubling an array of 200 million records, it
+ * is much better to grow it slowly in blocks). There are also significant gains due to caching, when
+ * sequential rows are accessed (many times an entire block can be cached). The trade-off is access and
+ * insertion does incur a slight extra cost.
  * </p>
  * <p/>
  * <p/>

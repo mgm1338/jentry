@@ -9,7 +9,7 @@ import core.stub.*;
  * User: Max Miller
  * Created: 4/24/13
  */
-public interface ColStorage_KeyTypeName_
+public interface ColStorage_KeyTypeName_ extends ColStorage
 {
     /**
      * Get the value for the row desired.
@@ -27,19 +27,8 @@ public interface ColStorage_KeyTypeName_
      */
     void setValue( _key_ val, int row );
 
-    /**
-     * Return the Jentry type of the storage that is being held. See {@link core.Types}
-     *
-     * @return the type
-     */
-    byte getType();
 
-    /**
-     * Grow the Storage to be able to store at least <i>minSize</i> number of elements.
-     *
-     * @param minSize the minimum number of elements
-     */
-    void checkGrowth( int minSize );
+
 
     /**
      * Return a deep copy of this store.
@@ -59,12 +48,5 @@ public interface ColStorage_KeyTypeName_
      * @param length  number of items to copy
      */
     void copyFrom( ColStorage_KeyTypeName_ source, int srcPos, int destPos, int length );
-
-    /**
-     * Return the current capacity of the store, in elements.
-     *
-     * @return the capacity of the store
-     */
-    int getCapacity();
 
 }
