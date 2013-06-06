@@ -6,6 +6,8 @@
     <artifactId>jentry</artifactId>
     <version>0.1</version>
     <modules>
+        <module>core</module>
+        <module>collections</module>
         <module>store</module>
     </modules>
     <packaging>pom</packaging>
