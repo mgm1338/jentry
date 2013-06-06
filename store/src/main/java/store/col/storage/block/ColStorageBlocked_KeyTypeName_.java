@@ -21,7 +21,7 @@ import java.util.Arrays;
  * structure will not require as much copying when growing. For smaller (under a million rows),
  * the a simple array structure is usually more efficient, however more multi-million record columns,
  * the blocked storage starts to way outperform simple arrays. Insertion and retrieval are more expensive, so
- * these structures are intended to store very large data sets. The control of growth also allows users to grow
+ * these structures are intended to store very large data sets. The control of growth also allows users to checkGrowth
  * much closer to their heap sizes without blowing up.
  * </p>
  * <p/>
@@ -183,11 +183,11 @@ public class ColStorageBlocked_KeyTypeName_ implements ColStorage_KeyTypeName_
      * {@inheritDoc}
      * <p/>
      * <p>This structure grows by blockSize, so as long as the {@link GrowthStrategy} allows
-     * for growth, this will grow it to the new size to a multiple of blocksize.</p>
+     * for growth, this will checkGrowth it to the new size to a multiple of blocksize.</p>
      *
      * @param minSize the minimum new size of the store
      */
-    public void grow( int minSize )
+    public void checkGrowth( int minSize )
     {
         int size = getCapacity();
         if( size >= minSize )

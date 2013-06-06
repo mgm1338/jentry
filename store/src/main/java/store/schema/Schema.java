@@ -5,6 +5,7 @@ import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;
 import store.col.ColumnUtils;
+import store.col.storage.ColumnAllocationStrategy;
 
 /**
  * Copyright 4/24/13
@@ -16,21 +17,28 @@ import store.col.ColumnUtils;
 public class Schema
 {
 
-    /** Is the Schema initialized. Column additions and removals may only be made before initialization. After
-     * the columns are set, the Schema is locked and storage to the column allocated by {@link #initialize(int)}*/
+    public static final int ONE_MILLION = 1000000;
+    public static final int STORAGE_TYPE_CUTOFF = ONE_MILLION;
+
+    /**
+     * Is the Schema initialized. Column additions and removals may only be made before initialization. After
+     * the columns are set, the Schema is locked and storage to the column allocated by {@link #initialize(int)}
+     */
     protected boolean initialized = false;
-    /** Set of the names of the columns. Must be unique. The handles to these names will be the column's id.
-     * Inserting a column of the same name will overwrite the column that was originally inserted.*/
+    /**
+     * Set of the names of the columns. Must be unique. The handles to these names will be the column's id.
+     * Inserting a column of the same name will overwrite the column that was originally inserted.
+     */
     protected HashSetCharSequence colNames;
-    /** Array of columns, index and/or id of each column is determined by entry in <i>colNames</i>*/
+    /** Array of columns, index and/or id of each column is determined by entry in <i>colNames</i> */
     protected Column[] columns;
-    /** Number of columns (this is not the size of <i>columns</i>, which may have holes in it*/
+    /** Number of columns (this is not the size of <i>columns</i>, which may have holes in it */
     protected int numColumns = -1;
 
 
     public Schema( ColumnDefinition... defs )
     {
-        numColumns =  defs.length;
+        numColumns = defs.length;
         colNames = new HashSetCharSequence( numColumns );
         columns = new Column[ numColumns ];
         for( int i = 0; i < numColumns; i++ )
@@ -39,9 +47,26 @@ public class Schema
         }
     }
 
-    public void initialize(int numRows)
+    public void initialize( int numRows )
+    {
+        initialize( numRows, (numRows > STORAGE_TYPE_CUTOFF) ?
+                                ColumnAllocationStrategy.blockedStorageDoubleGrowth : //better for larger stores
+                                ColumnAllocationStrategy.arrayFactoryDoubleGrowth );  //better for smaller stores
+    }
+
+    public void initialize( int numRows, ColumnAllocationStrategy strategy )
     {
         initialized = true;
+        int colsAllocated = 0;
+        int len = columns.length;
+        for( int i = 0; i < len && colsAllocated != numColumns; i++ )
+        {
+            if( columns[ i ] != null )
+            {
+
+            }
+        }
+
     }
 
 
@@ -53,7 +78,7 @@ public class Schema
         }
         CharSequence name = colDef.getName();
         int entry = colNames.insert( name );
-        if( entry == columns.length ) //exact growth, columns can become massive
+        if( entry == columns.length ) //exact growth, column storage can become massive
         {
             Column[] temp = new Column[ entry + 1 ];
             System.arraycopy( columns, 0, temp, 0, entry );
@@ -70,18 +95,19 @@ public class Schema
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
         colNames.removeByEntry( id );
-        columns[id] = null;
+        columns[ id ] = null;
         numColumns--;
     }
 
-    public void removeColumn( CharSequence name)
+    public void removeColumn( CharSequence name )
     {
         if( initialized )
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
         int entry = colNames.getEntry( name );
-        if (entry== Const.NO_ENTRY) throw new IllegalArgumentException( "Column with name ["+name+"] does not exist." );
+        if( entry == Const.NO_ENTRY )
+            throw new IllegalArgumentException( "Column with name [" + name + "] does not exist." );
         removeColumn( entry );
     }
 

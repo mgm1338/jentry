@@ -1,6 +1,5 @@
 package store.col.storage.array;
 
-import com.sun.deploy.util.ArrayUtil;
 import core.Types;
 import core.array.GrowthStrategy;
 import core.stub.IntValueConverter;
@@ -66,7 +65,7 @@ public class TestColStorageArray_KeyTypeName_
     }
 
     /**
-     * A variety of growths, assert that doesnt grow if already large enough,
+     * A variety of growths, assert that doesnt checkGrowth if already large enough,
      * assert that growth copies correctly, and that follows strategy correctly.
      */
     @Test
@@ -74,23 +73,23 @@ public class TestColStorageArray_KeyTypeName_
     {
         if( template ) return;
         loadTest();
-        store.grow( TEST_SIZE / 2 );
+        store.checkGrowth( TEST_SIZE / 2 );
         TestCase.assertEquals( TEST_SIZE, store.getCapacity() );
-        store.grow( TEST_SIZE );
+        store.checkGrowth( TEST_SIZE );
         TestCase.assertEquals( TEST_SIZE, store.getCapacity() );
         for( int i = 0; i < TEST_SIZE; i++ )
         {
             TestCase.assertEquals( IntValueConverter._key_FromInt( i ), store.getValue( i ) );
         }
 
-        store.grow( TEST_SIZE + 1 );
+        store.checkGrowth( TEST_SIZE + 1 );
         TestCase.assertEquals( TEST_SIZE * 2, store.getCapacity() );
         for( int i = 0; i < TEST_SIZE; i++ )
         {
             TestCase.assertEquals( IntValueConverter._key_FromInt( i ), store.getValue( i ) );
         }
         store = new ColStorageArray_KeyTypeName_( TEST_SIZE, GrowthStrategy.toExactSize );
-        store.grow( TEST_SIZE + 1 );
+        store.checkGrowth( TEST_SIZE + 1 );
         TestCase.assertEquals( TEST_SIZE + 1, store.getCapacity() );
     }
 

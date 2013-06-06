@@ -16,6 +16,7 @@ public class Column_KeyTypeName_ implements Column
     protected final ColStorage_KeyTypeName_ storage;
     protected final int id;
     protected final CharSequence name;
+    protected ColStorage_KeyTypeName_ data;
 
     public Column_KeyTypeName_( ColStorage_KeyTypeName_ storage, int id, CharSequence name )
     {
@@ -50,5 +51,10 @@ public class Column_KeyTypeName_ implements Column
     public CharSequence getName()
     {
         return name;
+    }
+
+    public void setStorage(ColStorage_KeyTypeName_ storage)
+    {
+        this.data = storage;
     }
 }

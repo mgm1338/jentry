@@ -14,4 +14,5 @@ public interface Column
     byte getType();
 
     CharSequence getName();
+
 }

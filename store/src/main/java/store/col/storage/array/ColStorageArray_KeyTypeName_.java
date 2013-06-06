@@ -56,7 +56,7 @@ public class ColStorageArray_KeyTypeName_ implements ColStorage_KeyTypeName_
     }
 
     @Override
-    public void grow( int minSize )
+    public void checkGrowth( int minSize )
     {
         if( capacity >= minSize ) return;
         int newSize = strategy.growthRequest( capacity, minSize );

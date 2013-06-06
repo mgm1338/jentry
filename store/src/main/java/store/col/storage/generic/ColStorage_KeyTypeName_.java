@@ -39,7 +39,7 @@ public interface ColStorage_KeyTypeName_
      *
      * @param minSize the minimum number of elements
      */
-    void grow( int minSize );
+    void checkGrowth( int minSize );
 
     /**
      * Return a deep copy of this store.

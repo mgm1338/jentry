@@ -60,32 +60,32 @@ public class TestColStorageBlocked_KeyTypeName_
     {
         if( template ) return;
 
-        //dont grow
-        store.grow( 300 );
-        store.grow( 1024 );
+        //dont checkGrowth
+        store.checkGrowth( 300 );
+        store.checkGrowth( 1024 );
         TestCase.assertEquals( 1024, store.getCapacity() );
 
-        store.grow( 1025 );
+        store.checkGrowth( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
         TestCase.assertEquals( 2048, store.getCapacity() ); //default double growth
 
         //new store with exact size growth
         store = new ColStorageBlocked_KeyTypeName_( 16, 1024, GrowthStrategy.toExactSize );
-        store.grow( 1025 );
+        store.checkGrowth( 1025 );
         store.setValue( IntValueConverter._key_FromInt( 16 ), 1025 );
         TestCase.assertEquals( 1040, store.getCapacity() ); //growth of one more block
 
-        //checking will not grow here
+        //checking will not checkGrowth here
         store.setValue( IntValueConverter._key_FromInt( 13 ), 1039 );
         TestCase.assertEquals( 1040, store.getCapacity() ); //growth of one more block
 
-        //bounds check, should grow here
-        store.grow( 1041 );
+        //bounds check, should checkGrowth here
+        store.checkGrowth( 1041 );
         store.setValue( IntValueConverter._key_FromInt( 14 ), 1040 );
         TestCase.assertEquals( 1056, store.getCapacity() ); //growth of one more block
 
         //larger growth, up to double
-        store.grow( 2048 );
+        store.checkGrowth( 2048 );
         store.setValue( IntValueConverter._key_FromInt( 15 ), 2047 );
         TestCase.assertEquals( 2048, store.getCapacity() );
     }
