@@ -57,6 +57,7 @@ public class ByteBlocksList
     protected int[] lenScratch = new int[ 8 ];
 
     protected final ComparatorInt cmp = new Comparators.IntAsc();
+    protected int size = 0;
 
 
     public ByteBlocksList( int numBlocks )
@@ -122,6 +123,7 @@ public class ByteBlocksList
         lengths[ entry ] = length;
         System.arraycopy( block, offset, data, dataPtr, length );
         dataPtr += length;
+        size++;
         return entry;
     }
 
@@ -178,6 +180,21 @@ public class ByteBlocksList
         freeListLockPtr = freeListPtr;
         freeListUsePtr = 0;
 
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
+    public ByteBlock getByteBlock( int idx, ByteBlock target)
+    {
+        return null;
+    }
+
+    public CharSequence getByteBlock( int idx )
+    {
+        return null;
     }
 
 }
