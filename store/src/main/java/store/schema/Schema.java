@@ -18,7 +18,7 @@ public class Schema
 {
 
     public static final int ONE_MILLION = 1000000;
-    public static final int STORAGE_TYPE_CUTOFF = ONE_MILLION;
+    public static final int STORAGE_TYPE_CUTOFF = ( 2 * ONE_MILLION );
 
     /**
      * Is the Schema initialized. Column additions and removals may only be made before initialization. After
