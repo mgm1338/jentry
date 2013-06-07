@@ -5,7 +5,7 @@ import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;
 import store.col.ColumnUtils;
-import store.col.storage.StorageTypes;
+import store.col.storage.ColStorageFactory;
 
 /**
  * Copyright 4/24/13
@@ -16,8 +16,6 @@ import store.col.storage.StorageTypes;
  */
 public class Schema
 {
-
-    protected final static byte defaultStorageType = StorageTypes.Blocked;
 
     /**
      * Is the Schema initialized. Column additions and removals may only be made before initialization. After
@@ -49,10 +47,10 @@ public class Schema
 
     public void initialize( int numRows )
     {
-        initialize( numRows, defaultStorageType );
+        initialize( numRows, ColStorageFactory.defaultBlockedStorageFactory);
     }
 
-    public void initialize( int numRows, byte storageType )
+    public void initialize( int numRows, ColStorageFactory factory )
     {
         initialized = true;
         int colsAllocated = 0;
@@ -63,14 +61,11 @@ public class Schema
             col = columns[ i ];
             if( col != null )
             {
-                byte type = col.getType();
-
-
+                ColumnUtils.setTypedStorage( col.getType(), col, numRows, factory );
             }
         }
 
     }
-
 
     public void addColumn( ColumnDefinition colDef )
     {

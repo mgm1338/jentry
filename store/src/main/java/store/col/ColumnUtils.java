@@ -1,9 +1,8 @@
 package store.col;
 
 import core.Types;
-import store.col.storage.StorageTypes;
-import store.col.storage.block.ColStorageBlockedBool;
-import store.col.storage.generic.ColStorage;
+import store.col.storage.ColStorageFactory;
+import store.col.storage.generic.*;
 
 /**
  * Copyright 4/29/13
@@ -48,68 +47,43 @@ public class ColumnUtils
         return null;
     }
 
-    //TODO: need FACTORY that provides storage per type
-    public static void setTypedStorage( byte columnType, byte storageType, Column c, int numRows )
+    public static void setTypedStorage( byte columnType, Column c, int numRows, ColStorageFactory factory )
     {
-        switch( storageType )
+        switch( columnType )
         {
-            case StorageTypes.Blocked:
-                switch( columnType )
-                {
-                    case Types.Bool:
-                        ( ( ColumnBool ) c ).setStorage( new ColStorageBlockedBool( numRows / BLOCK_DIVISOR, numRows ) );
-                    case Types.Byte:
-                        break;
-                    case Types.Char:
-                        break;
-                    case Types.Short:
-                        break;
-                    case Types.Int:
-                        break;
-                    case Types.Float:
-                        break;
-                    case Types.Double:
-                        break;
-                    case Types.Long:
-                        break;
-                    case Types.CharSequence:
-                        break;
-                    case Types.Object:
-                        break;
-                    case Types.Unknown:
-                        break;
-                    default:
-                }
+            case Types.Bool:
+                ( ( ColumnBool ) c ).setStorage( ( ColStorageBool ) factory.getStorage( columnType, numRows ) );
                 break;
-
-            case StorageTypes.SimpleArray:
-                switch( columnType )
-                {
-                    case Types.Bool:
-                        break;
-                    case Types.Byte:
-                        break;
-                    case Types.Char:
-                        break;
-                    case Types.Short:
-                        break;
-                    case Types.Int:
-                        break;
-                    case Types.Float:
-                        break;
-                    case Types.Double:
-                        break;
-                    case Types.Long:
-                        break;
-                    case Types.CharSequence:
-                        break;
-                    case Types.Object:
-                        break;
-                    case Types.Unknown:
-                        break;
-                    default:
-                }
+            case Types.Byte:
+                ( ( ColumnByte ) c ).setStorage( ( ColStorageByte ) factory.getStorage( columnType, numRows ) );
                 break;
+            case Types.Char:
+                ( ( ColumnChar ) c ).setStorage( ( ColStorageChar ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Short:
+                ( ( ColumnShort ) c ).setStorage( ( ColStorageShort ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Int:
+                ( ( ColumnInt ) c ).setStorage( ( ColStorageInt ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Float:
+                ( ( ColumnFloat ) c ).setStorage( ( ColStorageFloat ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Double:
+                ( ( ColumnDouble ) c ).setStorage( ( ColStorageDouble ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Long:
+                ( ( ColumnLong ) c ).setStorage( ( ColStorageLong ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.CharSequence:
+                ( ( ColumnCharSequence ) c ).setStorage( ( ColStorageCharSequence ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Object:
+                ( ( ColumnObject ) c ).setStorage( ( ColStorageObject ) factory.getStorage( columnType, numRows ) );
+                break;
+            case Types.Unknown:
+                break;
+            default:
         }
     }
 }
