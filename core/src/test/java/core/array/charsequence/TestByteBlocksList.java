@@ -36,10 +36,22 @@ public class TestByteBlocksList
         TestCase.assertEquals( testObj.insert( "quux" ), 3 );
         TestCase.assertEquals( 4, testObj.getSize() );
 
-        TestCase.assertEquals( new ByteBlock("baz".getBytes(), 0, 3), testObj.getByteBlock( 2, null ));
-        TestCase.assertEquals( "baz", testObj.getByteBlock( 2 ));
+        TestCase.assertEquals( testObj.getByteBlock( 2 ), "baz" );
+    }
 
-
+    @Test
+    public void compactNoRemovesTest()
+    {
+        TestCase.assertEquals( 0, testObj.getSize() );
+        TestCase.assertEquals( testObj.insert( "foo" ), 0 );
+        TestCase.assertEquals( testObj.insert( "bar" ), 1 );
+        TestCase.assertEquals( testObj.insert( "baz" ), 2 );
+        TestCase.assertEquals( testObj.insert( "quux" ), 3 );
+        testObj.compact();
+        TestCase.assertEquals( testObj.getByteBlock( 0 ), "foo" );
+        TestCase.assertEquals( testObj.getByteBlock( 1 ), "bar" );
+        TestCase.assertEquals( testObj.getByteBlock( 2 ), "baz" );
+        TestCase.assertEquals( testObj.getByteBlock( 3 ), "quux" );
     }
 
 

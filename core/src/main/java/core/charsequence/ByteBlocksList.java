@@ -35,11 +35,12 @@ public class ByteBlocksList
     /** Parallel arrays that will describe the location and length of {@link ByteBlock}s in list */
     protected int[] offsets;
     protected int[] lengths;
-    protected int[] freeList;
 
 
     /** Current number of blocks */
     protected int nextBlock = 0;
+    /** Free list of vacated entries */
+    protected int[] freeList;
     /** Number of items in the free list */
     protected int freeListPtr = 0;
     /** After a compact, we can use the free entries, this will denote how many we have left */
@@ -99,12 +100,12 @@ public class ByteBlocksList
         int offsetsLen = offsets.length;
         int dataLen = data.length;
         //check growth conditions, if we need to grow we do a compact
-        if( freeListPtr + nextBlock == offsetsLen )
+        if( freeListPtr + nextBlock == offsetsLen ) //growing offset length arrays
         {
             compact();
             growOffsetsLengths( offsetsLen );
         }
-        if( dataPtr + length > dataLen )
+        if( dataPtr + length > dataLen )     //growing bytes
         {
             compact();
             growData( dataLen );
@@ -145,31 +146,25 @@ public class ByteBlocksList
         freeList[ freeListPtr ] = blockIdx;
     }
 
-
+    /**
+     * <p>
+     * Compacting will free the removed bytes in the data array, and allow entries to be re-used.
+     * </p>
+     * <p/>
+     * <p>Because {@link ByteBlock}s can be of variable length, we cannot re-use their state until we have
+     * completely cleared the old data. Compact will sort the offsets in ascending order, </p>
+     */
     public void compact()
     {
         if( freeListPtr == 0 ) return; //nothing to compact
 
-        //check the scratches can hold the freed entries
-        if( freeListUsePtr > offsetScratch.length )
-        {
-            offsetScratch = new int[ freeListPtr ];
-            lenScratch = new int[ freeListPtr ];
-        }
-        //fill the scratches with offsets,lengths of freed
+        MasterSlaveIntSort.sort( offsets, lengths, cmp ); //sort the offsets, keeping the lengths in parallel state
         for( int i = 0; i < freeListUsePtr; i++ )
         {
-            int freedIdx = freeList[ i ];
-            offsetScratch[ i ] = offsets[ freedIdx ];
-            lenScratch[ i ] = lengths[ freedIdx ];
-        }
-        MasterSlaveIntSort.sort( offsets, lengths, cmp );
-        for( int i = 0; i < freeListUsePtr; i++ )
-        {
-            int length = lengths[i];
-            int offset = offsets[i];
+            int length = lengths[ i ];
+            int offset = offsets[ i ];
             //we will 'squish out the space for this freed item
-            System.arraycopy( data, offset+length, data, offset, length );
+            System.arraycopy( data, offset + length, data, offset, length );
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
         {
@@ -187,14 +182,13 @@ public class ByteBlocksList
         return size;
     }
 
-    public ByteBlock getByteBlock( int idx, ByteBlock target)
-    {
-        return null;
-    }
 
     public CharSequence getByteBlock( int idx )
     {
-        return null;
+        int len = lengths[ idx ];
+        byte[] target = new byte[ len ];
+        System.arraycopy( data, offsets[ idx ], target, 0, len );
+        return new CharSequenceBytes( target );
     }
 
 }

@@ -41,7 +41,6 @@ public class ByteBlock implements CharSequence
         this.bytes = bytes;
         this.offSet = offSet;
         this.len = len;
-        Arrays.sort(bytes);
     }
 
     /**
@@ -105,12 +104,12 @@ public class ByteBlock implements CharSequence
     {
         if( o != null || ( !( o instanceof CharSequence ) ) )
         {
-            if( ( ( CharSequence ) o ).length() != this.len )
+            if( ( ( CharSequence ) o ).length() == this.len )
             {
                 int len = this.len;
                 for( int i = 0; i < len; i++ )
                 {
-                    if( charAt( i ) != ( ( CharSequence ) o ).charAt( 0 ) )
+                    if( charAt( i ) != ( ( CharSequence ) o ).charAt( i ) )
                     {
                         return false;
                     }
