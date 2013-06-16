@@ -7,6 +7,7 @@ package store.table.change;
  * User: Max Miller
  * Created: 4/24/13
  */
-public class ChangeQueue
+public interface ChangeQueue
 {
+    public boolean isChanged(int rowId, int colId);
 }

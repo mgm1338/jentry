@@ -1,7 +1,11 @@
 package store.table;
 
+import store.col.Column;
+import store.col.ColumnUtils;
+import store.col.storage.ColStorageFactory;
 import store.schema.Schema;
 import store.table.change.ChangeQueue;
+import store.table.rowtracker.RowTracker;
 
 /**
  * Copyright 4/24/13
@@ -10,38 +14,58 @@ import store.table.change.ChangeQueue;
  * User: Max Miller
  * Created: 4/24/13
  */
-public class BaseTable
+public abstract class BaseTable
 {
 
     protected Schema schema;
     protected ChangeQueue changeQueue;
+    protected RowTracker rowTracker;
+
     protected int rowCount;
     public int capacity;
+    boolean initialized;
 
     public BaseTable( Schema schema )
     {
         this.schema = schema;
     }
 
-    public int beginAddRow()
+    public void setStorage( int numRows )
     {
-        return rowCount++;
+        setStorage( numRows, ColStorageFactory.defaultBlockedStorageFactory );
     }
 
-    public void endAddRow()
+    public void setStorage( int numRows, ColStorageFactory factory )
     {
+        if( !initialized )
+        {
+            initialized = true;
+            int colsAllocated = 0;
+            Column[] columns = schema.getColumns();
+            int numColumns = schema.getNumColumns();
+            int len = columns.length;
+            Column col;
+            for( int i = 0; i < len && colsAllocated != numColumns; i++ )
+            {
+                col = columns[ i ];
+                if( col != null )
+                {
+                    ColumnUtils.setTypedStorage( col.getType(), col, numRows, factory );
+                }
+            }
+            schema.setLocked( true );
+        }
     }
 
-    public void beginChangeRow(int row)
-    {
-    }
 
-    public void endChangeRow()
-    {
-    }
+    public abstract int beginAddRow();
 
-    public void removeRow(int row)
-    {
-    }
+    public abstract void endAddRow();
+
+    public abstract void beginChangeRow( int row );
+
+    public abstract void endChangeRow();
+
+    public abstract void removeRow( int row );
 
 }

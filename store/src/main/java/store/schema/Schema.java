@@ -5,7 +5,6 @@ import core.Const;
 import store.col.Column;
 import store.col.ColumnDefinition;
 import store.col.ColumnUtils;
-import store.col.storage.ColStorageFactory;
 
 /**
  * Copyright 4/24/13
@@ -13,15 +12,20 @@ import store.col.storage.ColStorageFactory;
  * <p/>
  * User: Max Miller
  * Created: 4/24/13
+ *
+ * <p>A Schema is the description of a set of Columns. </p>
+ *
+ * <p>A Schema can only be changed before it has been locked. Locking usually occurs when
+ * storage has been allocated for the columns. </p>
  */
 public class Schema
 {
 
     /**
-     * Is the Schema initialized. Column additions and removals may only be made before initialization. After
-     * the columns are set, the Schema is locked and storage to the column allocated by {@link #initialize(int)}
+     * Is the Schema locked. A schema is normally locked when storage is set for the columns, afterwards
+     * no columns can be removed or added.
      */
-    protected boolean initialized = false;
+    protected boolean locked = false;
     /**
      * Set of the names of the columns. Must be unique. The handles to these names will be the column's id.
      * Inserting a column of the same name will overwrite the column that was originally inserted.
@@ -33,6 +37,12 @@ public class Schema
     protected int numColumns = -1;
 
 
+    /**
+     * Constructor the the Schema. The constructor is simply a array of {@link ColumnDefinition} items.
+     *
+     *
+     * @param defs
+     */
     public Schema( ColumnDefinition... defs )
     {
         numColumns = defs.length;
@@ -45,31 +55,9 @@ public class Schema
     }
 
 
-    public void initialize( int numRows )
-    {
-        initialize( numRows, ColStorageFactory.defaultBlockedStorageFactory);
-    }
-
-    public void initialize( int numRows, ColStorageFactory factory )
-    {
-        initialized = true;
-        int colsAllocated = 0;
-        int len = columns.length;
-        Column col;
-        for( int i = 0; i < len && colsAllocated != numColumns; i++ )
-        {
-            col = columns[ i ];
-            if( col != null )
-            {
-                ColumnUtils.setTypedStorage( col.getType(), col, numRows, factory );
-            }
-        }
-
-    }
-
     public void addColumn( ColumnDefinition colDef )
     {
-        if( initialized )
+        if( locked )
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
@@ -87,7 +75,7 @@ public class Schema
 
     public void removeColumn( int id )
     {
-        if( initialized )
+        if( locked )
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
@@ -98,7 +86,7 @@ public class Schema
 
     public void removeColumn( CharSequence name )
     {
-        if( initialized )
+        if( locked )
         {
             throw new IllegalStateException( "Schemas are immutable after initialization" );
         }
@@ -109,4 +97,23 @@ public class Schema
     }
 
 
+    public Column[] getColumns()
+    {
+        return columns;
+    }
+
+    public int getNumColumns()
+    {
+        return numColumns;
+    }
+
+    public boolean isLocked()
+    {
+        return locked;
+    }
+
+    public void setLocked( boolean locked )
+    {
+        this.locked = locked;
+    }
 }
