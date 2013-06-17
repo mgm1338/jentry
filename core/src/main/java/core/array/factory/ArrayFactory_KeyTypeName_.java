@@ -91,6 +91,27 @@ public abstract class ArrayFactory_KeyTypeName_
                                   _key_ defaultValue,
                                   GrowthStrategy growthStrategy );
 
+    /**
+     * <p>
+     * Overloaded grow, that will not do the extra work of filling
+     * with a default value. Will also not check the size before growing
+     * to the minimum size.
+     * </p>
+     * <p>
+     * We pass <i>minSize</i> as the number of elements that this array
+     * should grow to (depending on the strategy, it may grow past this
+     * size, but it is guaranteed to be at least this many elements).
+     * </p>
+     *
+     * @param array          array to grow
+     * @param minSize        the minimum number of elements that this array will
+     *                       be able to hold after growing
+     * @param growthStrategy see {@link GrowthStrategy }
+     * @return the grown array
+     */
+    public abstract _key_[] grow( _key_[] array, int minSize,
+                                  GrowthStrategy growthStrategy );
+
 
     //STATIC IMPLEMENTATION BELOW
 
@@ -169,6 +190,21 @@ public abstract class ArrayFactory_KeyTypeName_
             {
                 Arrays.fill( temp, len, newSize, defaultValue );
             }
+            return temp;
+        }
+
+        public _key_[] grow( _key_[] array, int minSize,
+                             GrowthStrategy growthStrategy )
+        {
+            int len = array.length;
+            int newSize = growthStrategy.growthRequest( len, minSize );
+            if( newSize < minSize )
+            {
+                throw new ArrayGrowthException( ArrayFactory_KeyTypeName_.class, len,
+                                                minSize, Types.Int );
+            }
+            _key_[] temp = new _key_[ newSize ];
+            System.arraycopy( array, 0, temp, 0, len );
             return temp;
         }
     }
