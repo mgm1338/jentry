@@ -130,12 +130,13 @@ public class ByteBlocksList
 
     private void growData( int dataLen )
     {
-        //To change body of created methods use File | Settings | File Templates.
+        byteFactory.grow( data, dataLen, growthStrategy );
     }
 
     private void growOffsetsLengths( int offsetsLen )
     {
-        //To change body of created methods use File | Settings | File Templates.
+        intFactory.grow( offsets, offsetsLen,growthStrategy );
+        intFactory.grow( lengths, offsetsLen,growthStrategy );
     }
 
     public void remove( int blockIdx )
