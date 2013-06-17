@@ -23,6 +23,9 @@ public class ByteBlocksList
     /** Default size for a block of bytes, does not restrict the size of the block, just allocates the byte array */
     public static final int DEFAULT_BLOCK_SIZE = 64;
 
+    protected static final int DEFAULT_FREE_LIST_SIZE = 2;
+
+
     /** Factory for allocating offsets and lengths */
     protected final ArrayFactoryInt intFactory;
     /** Factory for allocating bytes that blocks making up the {@link ByteBlock}s */
@@ -79,6 +82,7 @@ public class ByteBlocksList
         offsets = intFactory.alloc( numBlocks );
         lengths = intFactory.alloc( numBlocks );
         data = byteFactory.alloc( blockSize * numBlocks );
+        freeList = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
         this.intFactory = intFactory;
         this.byteFactory = byteFactory;
         this.growthStrategy = growthStrategy;
@@ -142,9 +146,9 @@ public class ByteBlocksList
     public void remove( int blockIdx )
     {
         lengths[ blockIdx ] = 0;
-        freeListPtr++;
         freeList = intFactory.ensureArrayCapacity( freeList, freeListPtr + 1, growthStrategy );
-        freeList[ freeListPtr ] = blockIdx;
+        freeList[ freeListPtr++ ] = blockIdx;
+        size--;
     }
 
     /**
@@ -159,13 +163,18 @@ public class ByteBlocksList
     {
         if( freeListPtr == 0 ) return; //nothing to compact
 
-        MasterSlaveIntSort.sort( offsets, lengths, cmp ); //sort the offsets, keeping the lengths in parallel state
-        for( int i = 0; i < freeListUsePtr; i++ )
+        MasterSlaveIntSort.sort( offsets, 0, size, lengths, cmp ); //sort the offsets,
+        // keeping the lengths in parallel state
+        for( int i = 0; i < freeListPtr; i++ )
         {
-            int length = lengths[ i ];
-            int offset = offsets[ i ];
+            int toFree = freeList[i];
+            int length = lengths[ toFree ];
+            int offset = offsets[ toFree ];
+            int oldStart = offsets[toFree+1];
+            int hole = oldStart - offset;
             //we will 'squish out the space for this freed item
-            System.arraycopy( data, offset + length, data, offset, length );
+            System.arraycopy( data, oldStart, data, offset, hole );
+            dataPtr-=hole;
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
         {
@@ -187,6 +196,7 @@ public class ByteBlocksList
     public CharSequence getByteBlock( int idx )
     {
         int len = lengths[ idx ];
+        if (len==0) return null;
         byte[] target = new byte[ len ];
         System.arraycopy( data, offsets[ idx ], target, 0, len );
         return new CharSequenceBytes( target );

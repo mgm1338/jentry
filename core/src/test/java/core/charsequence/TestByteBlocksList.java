@@ -1,4 +1,4 @@
-package core.array.charsequence;
+package core.charsequence;
 
 import core.charsequence.ByteBlock;
 import core.charsequence.ByteBlocksList;
@@ -66,6 +66,49 @@ public class TestByteBlocksList
         TestCase.assertEquals( 4, testObj.getSize() );
 
         TestCase.assertEquals( testObj.getByteBlock( 2 ), "baz" );
+    }
+
+    @Test
+    public void simpleCompactTest()
+    {
+        loadStringsTest();
+        //removing valid item "baz"
+        testObj.remove( 2 );
+        TestCase.assertEquals( null, testObj.getByteBlock( 2 ) );
+        TestCase.assertEquals( 3, testObj.getSize() );
+        int dataSize = testObj.dataPtr;
+
+        //asserting a bunch of the internal state, we assume that the structure is
+        //data      0   1   2   3   4   5    6    7    8    10  11   12   13
+        //        {'f','o','o','b','a','r', 'b', 'a', 'z', 'q','u', 'u', 'x'},
+        //lens      0   1  2  3
+        //         {3 , 3, 0, 4
+        //offsets
+        //         {0,  3, 6, 10}
+        {
+            TestCase.assertEquals( testObj.freeListPtr, 1 );
+            TestCase.assertEquals( testObj.freeList[0], 2 );
+            TestCase.assertEquals( testObj.data[6], (byte)'b' );
+            TestCase.assertEquals( testObj.data[7], (byte)'a' );
+            TestCase.assertEquals( testObj.data[8], (byte)'z' );
+        }
+        testObj.compact();
+        //we want 'quux' to move down to the space formally occupied by 'baz'
+        {
+            TestCase.assertEquals( testObj.freeListPtr, 1 );
+            TestCase.assertEquals( testObj.freeList[0], 2 );
+            TestCase.assertEquals( testObj.data[6], (byte)'q' );
+            TestCase.assertEquals( testObj.data[7], (byte)'u' );
+            TestCase.assertEquals( testObj.data[8], (byte)'u' );
+        }
+
+        TestCase.assertEquals( null, testObj.getByteBlock( 2 ) );
+        TestCase.assertEquals( 3, testObj.getSize() );
+        //removed space for "baz", should be 3 less
+        TestCase.assertEquals( dataSize-3, testObj.dataPtr );
+
+
+
     }
 
 

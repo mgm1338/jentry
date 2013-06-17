@@ -13,6 +13,7 @@ public class MasterSlaveIntSort
 {
 
 
+
     public static void sort( int[] master, int[] slave, ComparatorInt cmp )
     {
         if( master.length != slave.length )
@@ -20,6 +21,9 @@ public class MasterSlaveIntSort
         sort( master, 0, master.length, slave, cmp );
 
     }
+
+
+
 
     /**
      * Stolen Sort from {@link java.util.Arrays#sort(int[])}.
@@ -30,7 +34,7 @@ public class MasterSlaveIntSort
      * @param slave
      * @param cmp
      */
-    private static void sort( int[] master, int off, int len, int[] slave, ComparatorInt cmp )
+    public static void sort( int[] master, int off, int len, int[] slave, ComparatorInt cmp )
     {
         // Insertion sort on smallest arrays
         if( len < 7 )
