@@ -54,5 +54,19 @@ public class TestByteBlocksList
         TestCase.assertEquals( testObj.getByteBlock( 3 ), "quux" );
     }
 
+    @Test
+    public void simpleGrowthTest()
+    {
+        testObj = new ByteBlocksList( 1 );
+        TestCase.assertEquals( 0, testObj.getSize() );
+        TestCase.assertEquals( testObj.insert( "foo" ), 0 );
+        TestCase.assertEquals( testObj.insert( "bar" ), 1 );
+        TestCase.assertEquals( testObj.insert( "baz" ), 2 );
+        TestCase.assertEquals( testObj.insert( "quux" ), 3 );
+        TestCase.assertEquals( 4, testObj.getSize() );
+
+        TestCase.assertEquals( testObj.getByteBlock( 2 ), "baz" );
+    }
+
 
 }
