@@ -103,7 +103,7 @@ public class ByteBlocksList
         if( freeListPtr + nextBlock == offsetsLen ) //growing offset length arrays
         {
             compact();
-            growOffsetsLengths( offsetsLen );
+            growOffsetsLengths( offsetsLen + 1 );
         }
         if( dataPtr + length > dataLen )     //growing bytes
         {
@@ -130,13 +130,13 @@ public class ByteBlocksList
 
     private void growData( int dataLen )
     {
-        byteFactory.grow( data, dataLen, growthStrategy );
+        data = byteFactory.grow( data, dataLen, growthStrategy );
     }
 
     private void growOffsetsLengths( int offsetsLen )
     {
-        intFactory.grow( offsets, offsetsLen,growthStrategy );
-        intFactory.grow( lengths, offsetsLen,growthStrategy );
+        offsets = intFactory.grow( offsets, offsetsLen, growthStrategy );
+        lengths = intFactory.grow( lengths, offsetsLen, growthStrategy );
     }
 
     public void remove( int blockIdx )
