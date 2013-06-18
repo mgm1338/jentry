@@ -1,5 +1,6 @@
 package core.charsequence;
 
+import com.sun.servicetag.SystemEnvironment;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
@@ -40,6 +41,8 @@ public class ByteBlocksList
     /** Parallel arrays that will describe the location and length of {@link ByteBlock}s in list */
     protected int[] offsets;
     protected int[] lengths;
+
+    protected int[] shiftArray;
 
 
     /** Current number of blocks */
@@ -88,6 +91,7 @@ public class ByteBlocksList
         this.intFactory = intFactory;
         this.byteFactory = byteFactory;
         this.growthStrategy = growthStrategy;
+        this.shiftArray = intFactory.alloc( DEFAULT_FREE_LIST_SIZE );
     }
 
     public int insert( CharSequence block )
@@ -147,7 +151,7 @@ public class ByteBlocksList
 
     public void remove( int blockIdx )
     {
-        lengths[ blockIdx ] = 0;
+        lengths[ blockIdx ] = -lengths[blockIdx];
         freeList = intFactory.ensureArrayCapacity( freeList, freeListPtr + 1, growthStrategy );
         freeList[ freeListPtr++ ] = blockIdx;
         size--;
@@ -167,23 +171,29 @@ public class ByteBlocksList
 
         MasterSlaveIntSort.sort( offsets, 0, size, lengths, cmp ); //sort the offsets,
         // keeping the lengths in parallel state
-        int oldDtrPtr = dataPtr;
         int totalSize = size+freeListPtr;
-        for( int i = 0; i < freeListPtr; i++ )      //need to subtract offset of everything after
+
+        //if we have items in the free list, we need to 'squish holes' and shift everything left
+        if (freeListPtr>0)
         {
-            int toFree = freeList[i];
-            int offset = offsets[ toFree ];
-            int oldStart = offsets[toFree+1];
-            int hole = oldStart - offset;
-            //squish out the old data
-            System.arraycopy( data, oldStart, data, offset, hole );
-            for( int j = toFree + 1; j < totalSize; j++ ) //shift all applicable items down  TODO: one shift?
+
+            int shift = 0; //rolling total of how much to squish left remaining elements
+            for( int i = 0; i < totalSize; i++ )
             {
-                int oldOffset = offsets[ j ];
-                offsets[ j ] -= hole;
-                System.arraycopy( data, oldOffset, data, offsets[ j ], lengths[j] );
+                if( lengths[ i ] < 0 ) //a negative length means item was removed, old length is absolute value of length
+                {
+                    shift += lengths[ i ];
+                }
+                else
+                {
+                    if( shift != 0 ) //we need to shift this item left in the array
+                    {
+                        System.arraycopy( data, offsets[ i ], data, offsets[ i ] + shift,
+                                          lengths[ i ] );
+                        offsets[ i ] += shift;
+                    }
+                }
             }
-            dataPtr-=hole;
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
         {
@@ -205,7 +215,7 @@ public class ByteBlocksList
     public CharSequence getByteBlock( int idx )
     {
         int len = lengths[ idx ];
-        if (len==0) return null;
+        if (len<0) return null;
         byte[] target = new byte[ len ];
         System.arraycopy( data, offsets[ idx ], target, 0, len );
         return new CharSequenceBytes( target );
