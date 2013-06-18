@@ -107,6 +107,36 @@ public class TestByteBlocksList
         //removed space for "baz", should be 3 less
         TestCase.assertEquals( dataSize-3, testObj.dataPtr );
 
+        TestCase.assertEquals( 2, testObj.insert( "newBaz" ) );
+
+        //internal assertions again
+        {
+            TestCase.assertEquals( testObj.data[10], (byte)'n' );
+            TestCase.assertEquals( testObj.data[11], (byte)'e' );
+            TestCase.assertEquals( testObj.data[12], (byte)'w' );
+        }
+
+
+
+    }
+
+    @Test
+    public void compactWithFreeListLeft()
+    {
+        loadStringsTest();
+        testObj.remove( 1 );
+        testObj.remove( 2 );
+        //now its fooquux
+        testObj.compact();
+        TestCase.assertEquals( testObj.getSize(), 2 );
+        TestCase.assertEquals( 1, testObj.insert( "newBar" ) );
+        TestCase.assertEquals( 2, testObj.insert( "newBaz" ) );
+
+        TestCase.assertEquals( testObj.getByteBlock( 0 ), "foo" );
+        TestCase.assertEquals( testObj.getByteBlock( 1 ), "newBar" );
+        TestCase.assertEquals( testObj.getByteBlock( 2 ), "newBaz" );
+        TestCase.assertEquals( testObj.getByteBlock( 3 ), "quux" );
+
 
 
     }

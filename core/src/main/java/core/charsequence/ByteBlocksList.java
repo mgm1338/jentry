@@ -8,6 +8,8 @@ import core.util.comparator.Comparator;
 import core.util.comparator.ComparatorInt;
 import core.util.comparator.Comparators;
 
+import java.util.Arrays;
+
 /**
  * Copyright 5/16/13
  * All rights reserved.
@@ -165,15 +167,22 @@ public class ByteBlocksList
 
         MasterSlaveIntSort.sort( offsets, 0, size, lengths, cmp ); //sort the offsets,
         // keeping the lengths in parallel state
-        for( int i = 0; i < freeListPtr; i++ )
+        int oldDtrPtr = dataPtr;
+        int totalSize = size+freeListPtr;
+        for( int i = 0; i < freeListPtr; i++ )      //need to subtract offset of everything after
         {
             int toFree = freeList[i];
-            int length = lengths[ toFree ];
             int offset = offsets[ toFree ];
             int oldStart = offsets[toFree+1];
             int hole = oldStart - offset;
-            //we will 'squish out the space for this freed item
+            //squish out the old data
             System.arraycopy( data, oldStart, data, offset, hole );
+            for( int j = toFree + 1; j < totalSize; j++ ) //shift all applicable items down  TODO: one shift?
+            {
+                int oldOffset = offsets[ j ];
+                offsets[ j ] -= hole;
+                System.arraycopy( data, oldOffset, data, offsets[ j ], lengths[j] );
+            }
             dataPtr-=hole;
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
