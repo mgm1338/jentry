@@ -1,15 +1,12 @@
 package core.charsequence;
 
-import com.sun.servicetag.SystemEnvironment;
 import core.array.GrowthStrategy;
 import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
-import core.array.util.MasterSlaveIntSort;
-import core.util.comparator.Comparator;
+import core.array.util.masterslave.MasterSlaveSortInt;
+import core.array.util.masterslave.SwappableInt;
 import core.util.comparator.ComparatorInt;
 import core.util.comparator.Comparators;
-
-import java.util.Arrays;
 
 /**
  * Copyright 5/16/13
@@ -62,7 +59,7 @@ public class ByteBlocksList
 
     /** Scratch array that will grow to necessary size as temporary block holder */
     private byte[] scratch = new byte[ DEFAULT_BLOCK_SIZE ];
-    protected int[] offsetScratch = new int[ 8 ];
+    protected int[] positionHolder = new int[ 8 ];
     protected int[] lenScratch = new int[ 8 ];
 
     protected final ComparatorInt cmp = new Comparators.IntAsc();
@@ -151,7 +148,7 @@ public class ByteBlocksList
 
     public void remove( int blockIdx )
     {
-        lengths[ blockIdx ] = -lengths[blockIdx];
+        lengths[ blockIdx ] = -lengths[ blockIdx ];
         freeList = intFactory.ensureArrayCapacity( freeList, freeListPtr + 1, growthStrategy );
         freeList[ freeListPtr++ ] = blockIdx;
         size--;
@@ -169,12 +166,21 @@ public class ByteBlocksList
     {
         if( freeListPtr == 0 ) return; //nothing to compact
 
-        MasterSlaveIntSort.sort( offsets, 0, size, lengths, cmp ); //sort the offsets,
-        // keeping the lengths in parallel state
-        int totalSize = size+freeListPtr;
+        int offsetLen = offsets.length;
+        if( offsetLen > positionHolder.length )
+        {
+            positionHolder = new int[ offsetLen ];
+        }
+        for (int i=0; i<offsetLen; i++) //scratch stores the slots
+        {
+            positionHolder[i] = i;
+        }
+        MasterSlaveSortInt.sort( offsets, 0, size, cmp, new SwappableInt( lengths ), //sort the offsets, keeping
+                                 new SwappableInt( positionHolder ) );  //the positions and length in parallel order
+        int totalSize = size + freeListPtr;
 
         //if we have items in the free list, we need to 'squish holes' and shift everything left
-        if (freeListPtr>0)
+        if( freeListPtr > 0 )
         {
 
             int shift = 0; //rolling total of how much to squish left remaining elements
@@ -188,12 +194,13 @@ public class ByteBlocksList
                 {
                     if( shift != 0 ) //we need to shift this item left in the array
                     {
-                        System.arraycopy( data, offsets[ i ], data, offsets[ i ] + shift,
-                                          lengths[ i ] );
+                        System.arraycopy( data, offsets[ i ], data, offsets[ i ] + shift, lengths[ i ] );
                         offsets[ i ] += shift;
                     }
                 }
             }
+            dataPtr+=shift; //move the data pointer the total shift
+            //TODO: back into correct positions (use parallel sorter)
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
         {
@@ -203,7 +210,6 @@ public class ByteBlocksList
         }
         freeListLockPtr = freeListPtr;
         freeListUsePtr = 0;
-
     }
 
     public int getSize()
@@ -215,7 +221,7 @@ public class ByteBlocksList
     public CharSequence getByteBlock( int idx )
     {
         int len = lengths[ idx ];
-        if (len<0) return null;
+        if( len < 0 ) return null;
         byte[] target = new byte[ len ];
         System.arraycopy( data, offsets[ idx ], target, 0, len );
         return new CharSequenceBytes( target );

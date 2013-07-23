@@ -1,5 +1,6 @@
 package core.charsequence;
 
+import core.array.growth.TestNumberUtil;
 import core.charsequence.ByteBlock;
 import core.charsequence.ByteBlocksList;
 import junit.framework.TestCase;
@@ -81,7 +82,7 @@ public class TestByteBlocksList
         //asserting a bunch of the internal state, we assume that the structure is
         //data      0   1   2   3   4   5    6    7    8    10  11   12   13
         //        {'f','o','o','b','a','r', 'b', 'a', 'z', 'q','u', 'u', 'x'},
-        //lens      0   1  2  3
+        //lens
         //         {3 , 3, 0, 4
         //offsets
         //         {0,  3, 6, 10}
@@ -106,18 +107,18 @@ public class TestByteBlocksList
         TestCase.assertEquals( 3, testObj.getSize() );
         //removed space for "baz", should be 3 less
         TestCase.assertEquals( dataSize-3, testObj.dataPtr );
-
         TestCase.assertEquals( 2, testObj.insert( "newBaz" ) );
-
         //internal assertions again
         {
             TestCase.assertEquals( testObj.data[10], (byte)'n' );
             TestCase.assertEquals( testObj.data[11], (byte)'e' );
             TestCase.assertEquals( testObj.data[12], (byte)'w' );
+            TestCase.assertEquals( testObj.data[13], (byte)'B' );
+            TestCase.assertEquals( testObj.data[14], (byte)'a' );
+            TestCase.assertEquals( testObj.data[15], (byte)'z' );
         }
-
-
-
+        TestCase.assertEquals( testObj.offsets[2], 10 );
+        TestCase.assertEquals( testObj.lengths[2], 6 );
     }
 
     @Test
@@ -136,6 +137,23 @@ public class TestByteBlocksList
         TestCase.assertEquals( testObj.getByteBlock( 1 ), "newBar" );
         TestCase.assertEquals( testObj.getByteBlock( 2 ), "newBaz" );
         TestCase.assertEquals( testObj.getByteBlock( 3 ), "quux" );
+
+        //lengths
+        TestCase.assertEquals( testObj.lengths[0],3 );
+        TestCase.assertEquals( testObj.lengths[1],6 );
+        TestCase.assertEquals( testObj.lengths[2],6 );
+        TestCase.assertEquals( testObj.lengths[3],4 );
+
+        //TODO: align positions
+        //offsets
+        TestCase.assertEquals( testObj.offsets[0],0 );
+        TestCase.assertEquals( testObj.offsets[1],3 );
+        TestCase.assertEquals( testObj.offsets[2],9 );
+        TestCase.assertEquals( testObj.offsets[3],15 );
+
+        //offsets
+        TestCase.assertEquals( testObj.dataPtr, 19 );
+
 
 
 

@@ -26,16 +26,7 @@ public class Comparators
     }
 
 
-    public static final class BoolDesc implements ComparatorBool
-    {
-        @Override
-        public int compare( boolean a, boolean b )
-        {
-            if( a ) return -1;
-            if( b ) return 1;
-            return 0;
-        }
-    }
+
 
 
     public static final class CharDesc implements ComparatorChar
@@ -162,17 +153,6 @@ public class Comparators
             return 0;
         }
 
-    }
-
-    public static final class BoolAsc implements ComparatorBool
-    {
-        @Override
-        public int compare( boolean a, boolean b )
-        {
-            if( !a ) return -1;
-            if( !b ) return 1;
-            return 0;
-        }
     }
 
 
