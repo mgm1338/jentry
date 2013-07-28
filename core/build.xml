@@ -8,14 +8,19 @@
     <include file="../generateUtils.xml"/>
 
     <target name="generate">
-        <generateKeyTypes fileBase="ArrayFactory"
+        <generateKeyTypesVal fileBase="ArrayFactory"
                                  package="main\java\core\array\factory"/>
         <generateKeyTypes fileBase="Comparator"
                                  package="main\java\core\util\comparator"/>
         <generateKeyTypes fileBase="MasterSlaveSort"
-                                 package="main\java\core\array\util\masterslave"/>
+                                 package="main\java\core\array"/>
         <generateKeyTypes fileBase="Swappable"
-                                 package="main\java\core\array\util\masterslave"/>
+                                 package="main\java\core\array"/>
+
+        <generateKeyTypes fileBase="TestMasterSlaveSort"
+                          package="test\java\core\array"/>
+        <generateKeyTypesVal fileBase="TestUtils"
+                             package="test\java\util"/>
     </target>
 
 

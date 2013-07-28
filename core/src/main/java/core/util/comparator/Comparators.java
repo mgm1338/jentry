@@ -1,6 +1,9 @@
 package core.util.comparator;
 
+import core.stub.IntValueConverter;
 import core.stub._key_;
+
+import java.util.*;
 
 /**
  * Copyright © 2012 Max Miller
@@ -8,6 +11,7 @@ import core.stub._key_;
  */
 public class Comparators
 {
+
 
     /**
      * Ascending Comparators, Return less than 0 if a is 'greater' (in this case less) than b.
@@ -24,10 +28,6 @@ public class Comparators
             return 0;
         }
     }
-
-
-
-
 
     public static final class CharDesc implements ComparatorChar
     {
@@ -267,5 +267,30 @@ public class Comparators
             return 0;
         }
     }
+
+    /**
+     * Object comparators, probably better to stick with java.util.Comparator.
+     */
+    public final static class ObjectAsc implements ComparatorObject
+    {
+
+        @Override
+        public int compare( Object a, Object b )
+        {
+            return IntValueConverter.toInt( a ) - IntValueConverter.toInt( b );
+        }
+    }
+
+    public final static class ObjectDesc implements ComparatorObject
+    {
+
+        @Override
+        public int compare( Object a, Object b )
+        {
+            return IntValueConverter.toInt( b ) - IntValueConverter.toInt( a );
+        }
+    }
+
+
 
 }

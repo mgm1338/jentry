@@ -1,5 +1,6 @@
-package core.array.util.masterslave;
+package core.array;
 
+import core.array.Swappable;
 import core.stub.*;
 
 /**
@@ -9,7 +10,7 @@ import core.stub.*;
  * User: Max Miller
  * Created: 7/22/13
  *
- * Simple class that will wrap an array in the {@link Swappable} interface.
+ * Simple class that will wrap an array in the {@link core.array.Swappable} interface.
  *
  */
 public class Swappable_KeyTypeName_ implements Swappable
@@ -35,8 +36,16 @@ public class Swappable_KeyTypeName_ implements Swappable
         data[ b ] = t;
     }
 
+    @Override
+    public int getLength()
+    {
+        return data.length;
+    }
+
     public _key_[] getData()
     {
         return data;
     }
+
+
 }

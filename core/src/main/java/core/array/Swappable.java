@@ -1,4 +1,4 @@
-package core.array.util.masterslave;
+package core.array;
 
 import core.annotations.UncheckedArray;
 
@@ -22,4 +22,6 @@ public interface Swappable
      */
     @UncheckedArray
     public void swap(int a, int b);
+
+    int getLength();
 }

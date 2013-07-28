@@ -1,10 +1,10 @@
 package core.charsequence;
 
 import core.array.GrowthStrategy;
+import core.array.MasterSlaveSortInt;
+import core.array.SwappableInt;
 import core.array.factory.ArrayFactoryByte;
 import core.array.factory.ArrayFactoryInt;
-import core.array.util.masterslave.MasterSlaveSortInt;
-import core.array.util.masterslave.SwappableInt;
 import core.util.comparator.ComparatorInt;
 import core.util.comparator.Comparators;
 
@@ -175,7 +175,7 @@ public class ByteBlocksList
         {
             positionHolder[i] = i;
         }
-        MasterSlaveSortInt.sort( offsets, 0, size, cmp, new SwappableInt( lengths ), //sort the offsets, keeping
+        MasterSlaveSortInt.sort( offsets, 0, size, cmp, 2, new SwappableInt( lengths ), //sort the offsets, keeping
                                  new SwappableInt( positionHolder ) );  //the positions and length in parallel order
         int totalSize = size + freeListPtr;
 

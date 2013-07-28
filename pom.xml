@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
 
+    <!--Global external deps-->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -31,4 +32,6 @@
             <version>1.8.4</version>
         </dependency>
     </dependencies>
+
+
 </project>

@@ -1,10 +1,7 @@
-package core.array.growth.util;
+package core.array;
 
-import core.array.util.masterslave.MasterSlaveSort_KeyTypeName_;
-import core.array.util.masterslave.SwappableInt;
 import core.stub.IntValueConverter;
-import core.stub._key_;
-import core.util.comparator.Comparator_KeyTypeName_;
+import core.stub.*;
 import core.util.comparator.Comparators;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -47,18 +44,28 @@ public class TestMasterSlaveSort_KeyTypeName_
     @Test
     public void errorOnMisMatchedArrays()
     {
+        if (template) return;
         try
         {
-        MasterSlaveSort_KeyTypeName_.sort( toSortNormal,
+            MasterSlaveSort_KeyTypeName_.sort( toSortNormal,
                                            new Comparators._KeyTypeName_Asc() ,
                                            new SwappableInt( new int[0] ) );
             TestCase.fail();
         }
         catch(Exception e)
         {
-
         }
     }
+
+    @Test
+    public void sortOfJustMaster() //not sure what use this would ACTUALLY have
+    {
+        if (template) return;
+        MasterSlaveSort_KeyTypeName_.sort( toSortNormal, new Comparators._KeyTypeName_Asc(),
+                                           new SwappableInt(new int[8]) );
+    }
+
+
 
 
 

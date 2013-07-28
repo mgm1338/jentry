@@ -3,8 +3,6 @@ package collections.hash.map;
 import collections.hash.HashFunctions;
 import collections.hash.set.TestHashSet_KeyTypeName_;
 import core.array.GrowthStrategy;
-import core.array.factory.ArrayFactoryObject;
-import core.array.factory.ArrayFactoryLong;
 import core.array.factory.*;
 import core.stub.IntValueConverter;
 import junit.framework.TestCase;

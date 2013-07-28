@@ -1,4 +1,4 @@
-package core.array.util.masterslave;
+package core.array;
 
 import core.stub.*;
 import core.util.comparator.Comparator_KeyTypeName_;
@@ -50,9 +50,18 @@ public class MasterSlaveSort_KeyTypeName_
      */
     public static void sort( _key_[] master, Comparator_KeyTypeName_ cmp, Swappable... slaves )
     {
-        if( master.length != slaves.length )
-            throw new IllegalStateException( "Master and Slave Arrays must have same length" );
-        sort( master, 0, master.length, cmp, slaves.length, slaves );
+        int numSlaves = slaves.length;
+        int masterLen = master.length;
+        for( int i = 0; i < numSlaves; i++ )
+        {
+            if( slaves[ i ].getLength() != masterLen )
+            {
+                throw new IllegalStateException( "Master and Slave Arrays must have same length," +
+                                                 "Master has length of [" + masterLen + "], while slave" +
+                                                 "of index [" + i + "] has length of [" + slaves[ i ].getLength() + "]" );
+            }
+        }
+        sort( master, 0, master.length, cmp, numSlaves, slaves );
     }
 
     /**
@@ -65,7 +74,7 @@ public class MasterSlaveSort_KeyTypeName_
      * @param len       length from offset to sort
      * @param cmp       comparator used to sort
      * @param numSlaves number of slave elements (computed once for efficiency)
-     * @param slaves    the slave {@link core.array.util.masterslave.Swappable} items to keep in parallel order
+     * @param slaves    the slave {@link Swappable} items to keep in parallel order
      */
     public static void sort( _key_[] master, int off, int len, Comparator_KeyTypeName_ cmp, int numSlaves, Swappable... slaves )
     {
