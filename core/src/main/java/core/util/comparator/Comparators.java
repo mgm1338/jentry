@@ -2,6 +2,7 @@ package core.util.comparator;
 
 import core.stub.IntValueConverter;
 import core.stub._key_;
+import core.stub._val_;
 
 import java.util.*;
 
@@ -12,11 +13,54 @@ import java.util.*;
 public class Comparators
 {
 
+    //stub
+    public static final Comparator_KeyTypeName_ _key_Asc = new _KeyTypeName_Asc();
+    public static final Comparator_KeyTypeName_ _key_Desc = new _KeyTypeName_Desc();
+    public static final Comparator_ValueTypeName_ _val_Asc = new _ValueTypeName_Asc();
+    public static final Comparator_ValueTypeName_ _val_Desc = new _ValueTypeName_Desc();
+
+
+
+    public static final ComparatorByte byteAsc = new ByteAsc();
+    public static final ComparatorChar charAsc = new CharAsc();
+    public static final ComparatorShort shortAsc = new ShortAsc();
+    public static final ComparatorInt intAsc = new IntAsc();
+    public static final ComparatorFloat floatAsc = new FloatAsc();
+    public static final ComparatorDouble doubleAsc = new DoubleAsc();
+    public static final ComparatorLong longAsc = new LongAsc();
+    public static final ComparatorCharSequence CharSequenceAsc = new CharSequenceAsc();
+    public static final ComparatorObject ObjectAsc = new ObjectAsc();
+
+    public static final ComparatorByte byteDesc = new ByteDesc();
+    public static final ComparatorChar charDesc = new CharDesc();
+    public static final ComparatorShort shortDesc = new ShortDesc();
+    public static final ComparatorInt intDesc = new IntDesc();
+    public static final ComparatorFloat floatDesc = new FloatDesc();
+    public static final ComparatorDouble doubleDesc = new DoubleDesc();
+    public static final ComparatorLong longDesc = new LongDesc();
+    public static final ComparatorCharSequence CharSequenceDesc = new CharSequenceDesc();
+    public static final ComparatorObject ObjectDesc = new ObjectDesc();
+
+
+
 
     /**
-     * Ascending Comparators, Return less than 0 if a is 'greater' (in this case less) than b.
-     * Return greater than 0 if b is 'greater' (less than a).
+     * Descending Comparators
      */
+
+    //stub, never used
+    public static final class _ValueTypeName_Desc
+            implements Comparator_ValueTypeName_
+    {
+
+        @Override
+        public int compare( _val_ a, _val_ b )
+        {
+            return 0;
+        }
+
+    }
+
     //stub, never used
     public static final class _KeyTypeName_Desc
             implements Comparator_KeyTypeName_
@@ -139,8 +183,7 @@ public class Comparators
     }
 
     /**
-     * Ascending Comparators, Return less than 0 if a is less than b.
-     * Return greater than 0 if b is less than a.
+     * Ascending Comparators
      */
     //stub, never used
     public static final class _KeyTypeName_Asc
@@ -154,6 +197,20 @@ public class Comparators
         }
 
     }
+
+    //stub, never used
+    public static final class _ValueTypeName_Asc
+            implements Comparator_ValueTypeName_
+    {
+
+        @Override
+        public int compare( _val_ a, _val_ b )
+        {
+            return 0;
+        }
+
+    }
+
 
 
     public static final class CharAsc implements ComparatorChar

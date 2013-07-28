@@ -10,7 +10,7 @@
     <target name="generate">
         <generateKeyTypesVal fileBase="ArrayFactory"
                                  package="main\java\core\array\factory"/>
-        <generateKeyTypes fileBase="Comparator"
+        <generateKeyTypesVal fileBase="Comparator"
                                  package="main\java\core\util\comparator"/>
         <generateKeyTypes fileBase="MasterSlaveSort"
                                  package="main\java\core\array"/>

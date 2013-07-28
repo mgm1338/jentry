@@ -25,7 +25,7 @@ public class TestBinaryHeap_KeyTypeName_
     @Before
     public void setup ()
     {
-        heap = new BinaryHeap_KeyTypeName_ (8, new Comparators._KeyTypeName_Asc ());
+        heap = new BinaryHeap_KeyTypeName_ (8, Comparators._key_Asc);
     }
 
     /**

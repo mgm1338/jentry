@@ -1,6 +1,8 @@
 package util;
 
 import core.stub.*;
+import core.util.comparator.Comparator;
+import core.util.comparator.Comparator_KeyTypeName_;
 import core.util.comparator.EqualityFunctions;
 import junit.framework.TestCase;
 
@@ -40,6 +42,15 @@ public class TestUtils_KeyTypeName_
         {
             TestCase.assertTrue( "At idx [" + i + "], array a has [" + a[ i ] + "] while arary b has [" + b[ i ] + "]",
                                  eq.equals( a[ i ], b[ i ] ) );
+        }
+    }
+
+    public static void assertArrayContentsSorted( _key_[] a, Comparator_KeyTypeName_ cmp )
+    {
+        int len = a.length;
+        for( int i = 0; i < len - 1; i++ )
+        {
+            TestCase.assertTrue( cmp.compare( a[ i ], a[ i + 1 ] ) <= 0 );
         }
     }
 

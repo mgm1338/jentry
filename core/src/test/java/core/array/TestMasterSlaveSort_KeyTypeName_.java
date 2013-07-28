@@ -6,6 +6,10 @@ import core.util.comparator.Comparators;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtilsInt;
+import util.TestUtils_KeyTypeName_;
+
+import java.util.Arrays;
 
 /**
  * Copyright 7/26/13
@@ -48,7 +52,7 @@ public class TestMasterSlaveSort_KeyTypeName_
         try
         {
             MasterSlaveSort_KeyTypeName_.sort( toSortNormal,
-                                           new Comparators._KeyTypeName_Asc() ,
+                                           Comparators._key_Asc,
                                            new SwappableInt( new int[0] ) );
             TestCase.fail();
         }
@@ -61,9 +65,12 @@ public class TestMasterSlaveSort_KeyTypeName_
     public void sortOfJustMaster() //not sure what use this would ACTUALLY have
     {
         if (template) return;
-        MasterSlaveSort_KeyTypeName_.sort( toSortNormal, new Comparators._KeyTypeName_Asc(),
+        MasterSlaveSort_KeyTypeName_.sort( toSortNormal, Comparators._key_Asc,
                                            new SwappableInt(new int[8]) );
+        TestUtils_KeyTypeName_.assertArrayContentsSorted( toSortNormal, Comparators._key_Asc );
+
     }
+
 
 
 
