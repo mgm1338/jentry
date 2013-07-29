@@ -136,9 +136,9 @@ public class MasterSlaveSort_KeyTypeName_
 
         // Recursively sort non-partition-elements
         if( ( s = b - a ) > 1 )
-            sort( master, off, s, cmp, 0, slaves );
+            sort( master, off, s, cmp, numSlaves, slaves );
         if( ( s = d - c ) > 1 )
-            sort( master, n - s, s, cmp, 0, slaves );
+            sort( master, n - s, s, cmp, numSlaves, slaves );
     }
 
     private static int med3( _key_[] x, int a, int b, int c, Comparator_KeyTypeName_ cmp )

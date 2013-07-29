@@ -6,6 +6,7 @@ import core.util.comparator.Comparators;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtilsByte;
 import util.TestUtilsInt;
 import util.TestUtils_KeyTypeName_;
 
@@ -26,6 +27,8 @@ public class TestMasterSlaveSort_KeyTypeName_
     boolean template = (this.getClass ().getCanonicalName ().contains ("_"));
 
     _key_[] toSortNormal;
+    byte[] byteArray;
+    int[] intArray;
 
     @Before
     public void setup()
@@ -41,6 +44,32 @@ public class TestMasterSlaveSort_KeyTypeName_
                 IntValueConverter._key_FromInt( 99 ),
                 IntValueConverter._key_FromInt( 4 ),
         };
+
+        // o, b, a, f, r, o, a, b
+        byteArray = new byte[]
+                {
+                        'f', //6
+                        'o', //1
+                        'o', //9
+                        'b', //2
+                        'a', //13
+                        'r', //7
+                        'b', //99
+                        'a', //4
+                };
+
+        //30, 30, 30, 20, 15, 64, 6, 20
+        intArray = new int[]
+                {
+                        20, //6
+                        30, //1
+                        64, //9
+                        30, //2
+                        6, //13
+                        15, //7
+                        20, //99
+                        30, //4
+                };
 
     }
 
@@ -68,9 +97,26 @@ public class TestMasterSlaveSort_KeyTypeName_
         MasterSlaveSort_KeyTypeName_.sort( toSortNormal, Comparators._key_Asc,
                                            new SwappableInt(new int[8]) );
         TestUtils_KeyTypeName_.assertArrayContentsSorted( toSortNormal, Comparators._key_Asc );
-
     }
 
+
+    @Test
+    public void testWrongNumberPassed()
+    {
+        if (template) return;
+        MasterSlaveSort_KeyTypeName_.sort( toSortNormal, 0, 8, Comparators._key_Asc,
+                                           1, new SwappableByte( byteArray ),
+                                           new SwappableInt( intArray ));
+
+        TestUtils_KeyTypeName_.assertArrayContentsSorted( toSortNormal, Comparators._key_Asc );
+        TestUtilsByte.assertArrayContentsEqual( byteArray, new byte[]{
+                'o', 'b', 'a', 'f', 'r', 'o', 'a', 'b'
+        } );
+        TestCase.assertEquals( intArray[0], 20 ); //not sorted, not effected
+
+
+
+    }
 
 
 
