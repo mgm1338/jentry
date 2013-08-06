@@ -6,6 +6,8 @@ import core.charsequence.ByteBlocksList;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import util.TestUtilsByte;
+import util.TestUtils_KeyTypeName_;
 
 /**
  * Copyright 6/5/13
@@ -144,12 +146,18 @@ public class TestByteBlocksList
         TestCase.assertEquals( testObj.lengths[2],6 );
         TestCase.assertEquals( testObj.lengths[3],4 );
 
-        //TODO: align positions
         //offsets
         TestCase.assertEquals( testObj.offsets[0],0 );
-        TestCase.assertEquals( testObj.offsets[1],3 );
-        TestCase.assertEquals( testObj.offsets[2],9 );
-        TestCase.assertEquals( testObj.offsets[3],15 );
+        TestCase.assertEquals( testObj.offsets[1],7 );
+        TestCase.assertEquals( testObj.offsets[2],13 );
+        TestCase.assertEquals( testObj.offsets[3],3 );
+
+        //now "fooquuxnewBarnewBaz"
+        TestUtilsByte.assertArrayContentsToLen( testObj.data, new byte[]{
+                ( byte ) 'f', ( byte ) 'o', ( byte ) 'o', ( byte ) 'q', ( byte ) 'u', ( byte ) 'u', ( byte ) 'x',
+                ( byte ) 'n', ( byte ) 'e', ( byte ) 'w', ( byte ) 'B', ( byte ) 'a', ( byte ) 'r', ( byte ) 'n',
+                ( byte ) 'e', ( byte ) 'w', ( byte ) 'B', ( byte ) 'a', ( byte ) 'z'
+        }, 19 );
 
         //offsets
         TestCase.assertEquals( testObj.dataPtr, 19 );

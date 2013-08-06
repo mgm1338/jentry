@@ -200,7 +200,8 @@ public class ByteBlocksList
                 }
             }
             dataPtr+=shift; //move the data pointer the total shift
-            //TODO: back into correct positions (use parallel sorter)
+            MasterSlaveSortInt.sort( positionHolder, 0, size, cmp, 2,
+                                     new SwappableInt( lengths ), new SwappableInt( offsets ) );
         }
         if( freeListUsePtr > 0 )    //shifts all un-used free list items to zero
         {
