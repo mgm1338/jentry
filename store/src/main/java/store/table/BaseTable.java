@@ -6,6 +6,7 @@ import store.col.storage.ColStorageFactory;
 import store.schema.Schema;
 import store.table.change.ChangeQueue;
 import store.table.rowtracker.RowTracker;
+import store.table.rowtracker.RowTrackerBits;
 
 /**
  * Copyright 4/24/13
@@ -33,6 +34,7 @@ public abstract class BaseTable
     public void setStorage( int numRows )
     {
         setStorage( numRows, ColStorageFactory.defaultBlockedStorageFactory );
+        this.rowTracker = new RowTrackerBits(numRows);
     }
 
     public void setStorage( int numRows, ColStorageFactory factory )
