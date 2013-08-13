@@ -64,7 +64,7 @@ public class TestRowTrackerBits
             TestCase.assertEquals( 17, rowTracker.getMaxRowId() );
         }
         rowTracker.removeRow( 17 );
-        TestCase.assertEquals( 0, rowTracker.getMaxRowId() );
+        TestCase.assertEquals( -1, rowTracker.getMaxRowId() );
         rowTracker.clear();
         TestCase.assertEquals( -1, rowTracker.getRowCount() );
         TestCase.assertEquals( -1, rowTracker.getMaxRowId() );
