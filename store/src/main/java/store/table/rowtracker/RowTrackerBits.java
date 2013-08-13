@@ -81,7 +81,7 @@ public class RowTrackerBits implements RowTracker
             {
                 if( numActiveRows == 0 )
                 {
-                    highWaterMark = 0;
+                    highWaterMark = Const.NO_ENTRY;
                     return;
                 }
                 int testBit = numActiveRows - 1; //must be at least this bit
