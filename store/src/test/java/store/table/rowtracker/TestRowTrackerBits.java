@@ -22,7 +22,7 @@ public class TestRowTrackerBits
     public void setup()
     {
         rowTracker = new RowTrackerBits( 0 );
-        TestCase.assertEquals( 0, rowTracker.highWaterMark );
+        TestCase.assertEquals( -1, rowTracker.highWaterMark );
         TestCase.assertEquals( 0, rowTracker.numActiveRows );
         rowTracker = new RowTrackerBits( 16 );
     }
@@ -66,7 +66,7 @@ public class TestRowTrackerBits
         rowTracker.removeRow( 17 );
         TestCase.assertEquals( -1, rowTracker.getMaxRowId() );
         rowTracker.clear();
-        TestCase.assertEquals( -1, rowTracker.getRowCount() );
+        TestCase.assertEquals( 0, rowTracker.getRowCount() );
         TestCase.assertEquals( -1, rowTracker.getMaxRowId() );
 
         rowTracker.addRow( 1 );

@@ -23,7 +23,7 @@ public class RowTrackerBits implements RowTracker
     int numActiveRows;
 
     /** The initial high water mark (highest id). Will start at -1 */
-    int highWaterMark = -Const.NO_ENTRY;
+    int highWaterMark = Const.NO_ENTRY;
 
     /**
      * Constructor
@@ -33,7 +33,6 @@ public class RowTrackerBits implements RowTracker
      */
     public RowTrackerBits( int numRows )
     {
-        this.highWaterMark = 0;
         this.rows = new BitSet( numRows );
     }
 
