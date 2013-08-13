@@ -49,4 +49,10 @@ public interface RowTracker
      * @return the maximum row id.
      */
     int getMaxRowId();
+
+    /**
+     * Clear all the rows in the rowTracker.
+     */
+    void clear();
+
 }

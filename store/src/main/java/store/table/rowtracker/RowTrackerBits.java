@@ -1,5 +1,7 @@
 package store.table.rowtracker;
 
+import core.Const;
+
 import java.util.BitSet;
 
 /**
@@ -20,11 +22,18 @@ public class RowTrackerBits implements RowTracker
     /** The number of rows that are currently active in the row tracker */
     int numActiveRows;
 
-    int highWaterMark = -1;
+    /** The initial high water mark (highest id). Will start at -1 */
+    int highWaterMark = -Const.NO_ENTRY;
 
+    /**
+     * Constructor
+     *
+     * @param numRows the number of rows to start with. This will give an indication of how large the BitSet should
+     *                start as.
+     */
     public RowTrackerBits( int numRows )
     {
-        this.highWaterMark = numRows;
+        this.highWaterMark = 0;
         this.rows = new BitSet( numRows );
     }
 
@@ -70,10 +79,20 @@ public class RowTrackerBits implements RowTracker
             rows.set( rowId, false );
             if( rowId == highWaterMark )     //removing the high water mark, get a new one
             {
+                if( numActiveRows == 0 )
+                {
+                    highWaterMark = 0;
+                    return;
+                }
                 int testBit = numActiveRows - 1; //must be at least this bit
                 int nextBit;
-                while( ( nextBit = rows.nextSetBit( testBit ) ) != -1 )
+                while( ( nextBit = rows.nextSetBit( testBit ) ) != -1 )  //iterate through set bits
                 {
+                    if( testBit == nextBit )   //we are at last set bit
+                    {
+                        highWaterMark = testBit;
+                        return;
+                    }
                     testBit = nextBit;
                 }
                 highWaterMark = testBit;
@@ -104,5 +123,13 @@ public class RowTrackerBits implements RowTracker
     public int getMaxRowId()
     {
         return highWaterMark;
+    }
+
+    /** Clear all the rows in the row tracker. The high water mark will go back to -1. */
+    public void clear()
+    {
+        rows.clear();
+        highWaterMark = Const.NO_ENTRY;
+        numActiveRows  = 0;
     }
 }
