@@ -16,24 +16,6 @@ and many of the other developers in my group had been 'poached' from successful
 frameworks of the past. For about two years we worked on the framework, with
 approximately 20 active groups using the frameworks in their applications.
 
-In the end, we had some success, however the framework's development was largely
-driven by the internal groups at the bank. Application's features were pushed
-into the development path, so quickly what began as a few simple ideas became
-cluttered with business-specific purposes. The essence of the framework was
-quickly obfuscated by unnecessary features. As you may have heard in the news,
-the past few years the banks have had to cut some costs. Our framework was
-shelved, and disappeared into the ether.
-
-## Now
-
-The internal framework, with all its faults, was pretty sweet in my opinion. It
-is a bit complex, but it is very powerful in situations that need to process
-large streams of data very quickly. I decided to start working on a replacement
-with a much more focused approach (without being a slave to whatever group paid
-me the most). The name of the framework is Jentry. I will discuss the name
-explanation later, for now just trust me that it is not just a play on the word
-'Gentry' (that was just a cool coincidence).
-
 ## A Few Basic Principles of Jentry
 
 ### Memory efficiency
@@ -53,15 +35,11 @@ Trove explains this tenant in a very succinct way in its second objective:
 
 ### Collection 'Compactness' witn Indirection
 
-Jentry collections have a unique wrinkle that is probably the largest part of
-its 'special sauce'. Compactness itself in this case is a very simple idea:
-don't waste space in arrays by having empty slots (duh, I know). The second part
-reminds me of C++ pointers in a Java way, by using some additional space and
-allowing the collections to access all data by direct array access.
+Jentry collections have a unique wrinkle in the contract between the user.
 
 The simplest way to show the difference is to show an example:
 
-Lets say you wanted to store a few million financial orders in memory in Java.
+Lets say you wanted to store a few million orders in memory in Java (for my example I will assume they are financial orders).
 The financial orders have well-defined fields and unique ids. An easy way to do
 this in Java would be to define a POJO, and create a data store of some sort of
 HashMap to search them by id, something like:
@@ -74,12 +52,12 @@ HashMap to search them by id, something like:
 	}
 
 This is all fine and good, and would probably work reasonably well up to a
-point, but start to do a ton of actual work with the store, and you encounter a
+point, but start to do a ton of actual work with the data store, and you encounter a
 very common problem that GC time and PermGen space needs to be increased by
 crazy amounts. Common solutions of duct tape and massive caching applications
 can only help so much.
 
-Jentry collection uses a convention of 'handles' to the data. These 'handles'
+Jentry collections uses a convention of 'handles' to the data. These 'handles'
 are also called 'entries' (hence, Jentry), but really are just slots in an
 array. Now we ditch the POJOs, and use a slightly different method of storage of
 the Orders:
@@ -102,3 +80,7 @@ case, these entries are 'compact'. That means that the first entry for your
 first order will be 0, followed by 1, 2, etc.... We also make a contract with
 the Collection that if you retrieve an item by an entry, you get the exact item
 you inserted. (Example of retrieval and modification).
+
+This is a long winded way of implementation of column based storage, however combined with other constructs, it allows users that want to use the other niceties of Java to quickly form an efficient data store. If the entry formation will not be used as an ID, or if attempting to achieve efficiency goals by replacing too many Objects, consider GNU trove. GNU trove does the simple goal of replacing tons of Wrapper Object classes with their primitive types, and attempts to maintain the same contract as the regular JDK classes.
+
+
